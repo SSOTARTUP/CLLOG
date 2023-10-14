@@ -11,6 +11,8 @@
 		304180D32ADA8E37002AD2E3 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304180D22ADA8E37002AD2E3 /* StartView.swift */; };
 		304180D52ADA8E39002AD2E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 304180D42ADA8E39002AD2E3 /* Assets.xcassets */; };
 		304180D82ADA8E39002AD2E3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 304180D72ADA8E39002AD2E3 /* Preview Assets.xcassets */; };
+		304180E52ADAC730002AD2E3 /* AgreementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304180E42ADAC730002AD2E3 /* AgreementView.swift */; };
+		304180E72ADAC9D7002AD2E3 /* NextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304180E62ADAC9D7002AD2E3 /* NextButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +21,8 @@
 		304180D22ADA8E37002AD2E3 /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
 		304180D42ADA8E39002AD2E3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		304180D72ADA8E39002AD2E3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		304180E42ADAC730002AD2E3 /* AgreementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AgreementView.swift; path = Hamsters/AgreementView.swift; sourceTree = SOURCE_ROOT; };
+		304180E62ADAC9D7002AD2E3 /* NextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +91,8 @@
 			isa = PBXGroup;
 			children = (
 				304180D22ADA8E37002AD2E3 /* StartView.swift */,
+				304180E42ADAC730002AD2E3 /* AgreementView.swift */,
+				304180E62ADAC9D7002AD2E3 /* NextButton.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -162,6 +168,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				304180D32ADA8E37002AD2E3 /* StartView.swift in Sources */,
+				304180E52ADAC730002AD2E3 /* AgreementView.swift in Sources */,
+				304180E72ADAC9D7002AD2E3 /* NextButton.swift in Sources */,
 				304180D12ADA8E37002AD2E3 /* HamstersApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -8,11 +8,19 @@
 import SwiftUI
 
 struct NextButton: View {
+    @Binding var isActive: Bool
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Text("다음")
+            .font(.headline)
+            .fontWeight(.semibold)
+            .foregroundStyle(isActive ? .white : .thoNavy)
+            .frame(maxWidth: .infinity)
+            .padding(.vertical, 15)
+            .background(isActive ? .thoNavy : .thoDisabled)
+            .cornerRadius(15)
     }
 }
 
 #Preview {
-    NextButton()
+    NextButton(isActive: .constant(false))
 }
