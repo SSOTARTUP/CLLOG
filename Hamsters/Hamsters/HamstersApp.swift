@@ -11,7 +11,7 @@ import SwiftUI
 struct HamstersApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            StartView()
         }
     }
 }
