@@ -33,7 +33,7 @@ struct AgreementView: View {
                     NextButton(isActive: $isActiveNext)
                         .padding(.bottom, 30)
                 }
-                .disabled(isActiveNext ? false : true)
+                .disabled(!isActiveNext)
                 
             }
             .padding(.horizontal, 24)
