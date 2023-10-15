@@ -9,9 +9,6 @@ import SwiftUI
 
 struct AgreementView: View {
     @State private var isActiveNext = false
-    @State private var allAgree = false
-    @State private var requiredAgree = false
-    @State private var optionalAgree = false
     
     var body: some View {
         VStack(alignment: .leading, spacing: 38) {
@@ -26,7 +23,7 @@ struct AgreementView: View {
                 InfoText()
                     .padding(.bottom, 6)
                 
-                AgreementCheck(isActiveNext: $isActiveNext, allAgree: $allAgree, requiredAgree: $requiredAgree, optionalAgree: $optionalAgree)
+                AgreementCheck(isActiveNext: $isActiveNext)
                 
                 Spacer()
                 
@@ -62,9 +59,9 @@ struct InfoText: View {
 
 struct AgreementCheck: View {
     @Binding var isActiveNext: Bool
-    @Binding var allAgree: Bool
-    @Binding var requiredAgree: Bool
-    @Binding var optionalAgree: Bool
+    @State private var allAgree = false
+    @State private var requiredAgree = false
+    @State private var optionalAgree = false
     
     var body: some View {
         VStack(spacing: 10) {
