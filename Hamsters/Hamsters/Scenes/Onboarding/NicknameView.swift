@@ -72,14 +72,7 @@ struct NicknameView: View {
             
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
-                    Button {
-                        
-                    } label: {
-                        Image(systemName: "chevron.backward")
-                            .font(.headline)
-                            .fontWeight(.semibold)
-                            .foregroundStyle(.thoNavy)
-                    }
+                    OnboardingBackButton(pageNumber: $pageNumber)
                 }
             }
         }
