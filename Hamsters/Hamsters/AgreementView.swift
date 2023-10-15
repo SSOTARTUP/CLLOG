@@ -112,20 +112,22 @@ struct AgreementCheck: View {
                     } label: {
                         Image(systemName: requiredAgree ? "checkmark.circle.fill" : "circle")
                             .font(.title2)
-                            .foregroundStyle(requiredAgree ? .thoNavy : .gray)
+                            .foregroundStyle(requiredAgree ? .thoNavy : .secondary)
                     }
                     
-                    Link(destination: URL(string: "https://www.apple.com/")!) {
-                        HStack {
-                            Text("이용 약관 동의(필수)")
-                            
-                            Spacer()
-                            
-                            Image(systemName: "chevron.forward")
-                                .fontWeight(.semibold)
-                        }
+                    Text("이용 약관 동의(필수)")
                         .font(.body)
-                        .foregroundStyle(.gray)
+                        .foregroundStyle(.secondary)
+                        .fixedSize()
+                    
+                    Spacer()
+                    
+                    Link(destination: URL(string: "https://www.apple.com/")!) {
+                        Image(systemName: "chevron.forward")
+                            .font(.body)
+                            .fontWeight(.semibold)
+                            .foregroundStyle(.secondary)
+                            .foregroundStyle(.gray)
                     }
                 }
                 
@@ -141,20 +143,22 @@ struct AgreementCheck: View {
                     } label: {
                         Image(systemName: optionalAgree ? "checkmark.circle.fill" : "circle")
                             .font(.title2)
-                            .foregroundStyle(optionalAgree ? .thoNavy : .gray)
+                            .foregroundStyle(optionalAgree ? .thoNavy : .secondary)
                     }
                     
-                    Link(destination: URL(string: "https://www.apple.com/")!) {
-                        HStack {
-                            Text("선택 약관 동의")
-                            
-                            Spacer()
-                            
-                            Image(systemName: "chevron.forward")
-                                .fontWeight(.semibold)
-                        }
+                    Text("선택 약관 동의")
                         .font(.body)
-                        .foregroundStyle(.gray)
+                        .foregroundStyle(.secondary)
+                        .fixedSize()
+                    
+                    Spacer()
+                    
+                    Link(destination: URL(string: "https://www.apple.com/")!) {
+                        Image(systemName: "chevron.forward")
+                            .font(.body)
+                            .fontWeight(.semibold)
+                            .foregroundStyle(.secondary)
+                            .foregroundStyle(.gray)
                     }
                 }
             }
