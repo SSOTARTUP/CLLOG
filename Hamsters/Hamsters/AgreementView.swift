@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct AgreementView: View {
+    @Binding var pageNumber: Int
     @State private var isActiveNext = false
     
     var body: some View {
@@ -27,14 +28,7 @@ struct AgreementView: View {
                 
                 Spacer()
                 
-                Button {
-                    
-                } label: {
-                    NextButton(isActive: $isActiveNext)
-                        .padding(.bottom, 30)
-                }
-                .disabled(!isActiveNext)
-                
+                OnboardingNextButton(isActive: $isActiveNext, pageNumber: $pageNumber)
             }
             .padding(.horizontal, 24)
         }
@@ -166,5 +160,5 @@ struct AgreementCheck: View {
 }
 
 #Preview {
-    AgreementView()
+    AgreementView(pageNumber: .constant(0))
 }

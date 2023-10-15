@@ -60,16 +60,10 @@ struct NicknameView: View {
                     }
 
                 Spacer()
-
-                Button {
-                    
-                } label: {
-                    NextButton(isActive: $isActiveNext, pageNumber: $pageNumber)
-                        .padding(.bottom, 30)
-                }
-                .disabled(!isActiveNext)
-                .padding(.horizontal, 24)
-                .padding(.bottom, 30)
+                
+                OnboardingNextButton(isActive: $isActiveNext, pageNumber: $pageNumber)
+                    .padding(.horizontal, 24)
+                    .padding(.bottom, 30)
             }
             .onTapGesture {
                 hideKeyboard()
