@@ -126,8 +126,7 @@ struct AgreementCheck: View {
                         Image(systemName: "chevron.forward")
                             .font(.body)
                             .fontWeight(.semibold)
-                            .foregroundStyle(.secondary)
-                            .foregroundStyle(.gray)
+                            .foregroundStyle(Color.secondary)
                     }
                 }
                 
@@ -157,8 +156,7 @@ struct AgreementCheck: View {
                         Image(systemName: "chevron.forward")
                             .font(.body)
                             .fontWeight(.semibold)
-                            .foregroundStyle(.secondary)
-                            .foregroundStyle(.gray)
+                            .foregroundStyle(Color.secondary)
                     }
                 }
             }
