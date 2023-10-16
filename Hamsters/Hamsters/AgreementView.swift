@@ -54,20 +54,20 @@ struct InfoText: View {
 struct AgreementCheck: View {
     @Binding var isActiveNext: Bool
     @State private var allAgree = false
+    @State private var privacyAgree = false
     @State private var requiredAgree = false
-    @State private var optionalAgree = false
-    
+
     var body: some View {
         VStack(spacing: 10) {
             Button {
                 allAgree.toggle()
                 if allAgree {
+                    privacyAgree = true
                     requiredAgree = true
-                    optionalAgree = true
                     isActiveNext = true
                 } else {
+                    privacyAgree = false
                     requiredAgree = false
-                    optionalAgree = false
                     isActiveNext = false
                 }
             } label: {
@@ -93,23 +93,22 @@ struct AgreementCheck: View {
             Group {
                 HStack(spacing: 16) {
                     Button {
-                        requiredAgree.toggle()
-                        if requiredAgree {
-                           isActiveNext = true
-                        } else {
+                        privacyAgree.toggle()
+                        if !privacyAgree {
                             allAgree = false
                             isActiveNext = false
                         }
-                        if requiredAgree && optionalAgree {
+                        if requiredAgree && privacyAgree {
                             allAgree = true
+                            isActiveNext = true
                         }
                     } label: {
-                        Image(systemName: requiredAgree ? "checkmark.circle.fill" : "circle")
+                        Image(systemName: privacyAgree ? "checkmark.circle.fill" : "circle")
                             .font(.title2)
-                            .foregroundStyle(requiredAgree ? .thoNavy : .secondary)
+                            .foregroundStyle(privacyAgree ? .thoNavy : .secondary)
                     }
                     
-                    Text("이용 약관 동의(필수)")
+                    Text("개인 정보 처리 방침(필수)")
                         .font(.body)
                         .foregroundStyle(.secondary)
                         .fixedSize()
@@ -126,20 +125,22 @@ struct AgreementCheck: View {
                 
                 HStack(spacing: 16) {
                     Button {
-                        optionalAgree.toggle()
-                        if !optionalAgree {
+                        requiredAgree.toggle()
+                        if !requiredAgree {
                             allAgree = false
+                            isActiveNext = false
                         }
-                        if requiredAgree && optionalAgree {
+                        if requiredAgree && privacyAgree {
                             allAgree = true
+                            isActiveNext = true
                         }
                     } label: {
-                        Image(systemName: optionalAgree ? "checkmark.circle.fill" : "circle")
+                        Image(systemName: requiredAgree ? "checkmark.circle.fill" : "circle")
                             .font(.title2)
-                            .foregroundStyle(optionalAgree ? .thoNavy : .secondary)
+                            .foregroundStyle(requiredAgree ? .thoNavy : .secondary)
                     }
                     
-                    Text("선택 약관 동의")
+                    Text("이용 약관 동의(필수)")
                         .font(.body)
                         .foregroundStyle(.secondary)
                         .fixedSize()
