@@ -12,6 +12,7 @@ struct NicknameSetView: View {
     @State private var nickname = ""
     @State private var isActiveNext = false
     @State private var focusField = false
+    @State private var characterLimitWarning = false
     
     var body: some View {
         NavigationStack {
@@ -50,13 +51,22 @@ struct NicknameSetView: View {
                             isActiveNext = true
                         }
 
-                        if nickname.count > 5 {
-                            nickname = String(nickname.prefix(5))
+                        if nickname.count > 7 {
+                            characterLimitWarning = true
+                            nickname = String(nickname.prefix(7))
+                        } else if nickname.count < 7 {
+                            characterLimitWarning = false
                         }
                     }
                     .onSubmit {
                         focusField = false
                     }
+                
+                Text("한글, 영문, 특수 문자 사용 최대 7자로 입력해주세요!")
+                    .font(.footnote)
+                    .foregroundStyle(characterLimitWarning ? .red : .secondary)
+                    .padding(.leading, 24)
+                    .padding(.top, 6)
 
                 Spacer()
                 
