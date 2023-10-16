@@ -91,6 +91,11 @@ struct SelectSexView: View {
                     .padding(.horizontal, 24)
                     .padding(.bottom, 30)
             }
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    OnboardingBackButton(pageNumber: $pageNumber)
+                }
+            }
         }
     }
 }
