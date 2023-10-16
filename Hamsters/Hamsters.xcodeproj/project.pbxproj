@@ -15,7 +15,7 @@
 		304180E72ADAC9D7002AD2E3 /* OnboardingNextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304180E62ADAC9D7002AD2E3 /* OnboardingNextButton.swift */; };
 		304180EC2ADAEFFC002AD2E3 /* NicknameSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304180EB2ADAEFFC002AD2E3 /* NicknameSetView.swift */; };
 		304180EF2ADBB37B002AD2E3 /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304180EE2ADBB37B002AD2E3 /* View+.swift */; };
-		304180F12ADBCA6E002AD2E3 /* OnboardinProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304180F02ADBCA6E002AD2E3 /* OnboardinProgressBar.swift */; };
+		304180F12ADBCA6E002AD2E3 /* OnboardingProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304180F02ADBCA6E002AD2E3 /* OnboardingProgressBar.swift */; };
 		304180F32ADC0C3F002AD2E3 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304180F22ADC0C3F002AD2E3 /* OnboardingView.swift */; };
 		304180F52ADC1325002AD2E3 /* OnboardingBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304180F42ADC1325002AD2E3 /* OnboardingBackButton.swift */; };
 		304180F82ADC15A9002AD2E3 /* SexSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304180F72ADC15A9002AD2E3 /* SexSetView.swift */; };
@@ -33,7 +33,7 @@
 		304180E62ADAC9D7002AD2E3 /* OnboardingNextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingNextButton.swift; sourceTree = "<group>"; };
 		304180EB2ADAEFFC002AD2E3 /* NicknameSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameSetView.swift; sourceTree = "<group>"; };
 		304180EE2ADBB37B002AD2E3 /* View+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+.swift"; sourceTree = "<group>"; };
-		304180F02ADBCA6E002AD2E3 /* OnboardinProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardinProgressBar.swift; sourceTree = "<group>"; };
+		304180F02ADBCA6E002AD2E3 /* OnboardingProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingProgressBar.swift; sourceTree = "<group>"; };
 		304180F22ADC0C3F002AD2E3 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		304180F42ADC1325002AD2E3 /* OnboardingBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingBackButton.swift; sourceTree = "<group>"; };
 		304180F72ADC15A9002AD2E3 /* SexSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SexSetView.swift; sourceTree = "<group>"; };
@@ -132,7 +132,7 @@
 			children = (
 				304180E62ADAC9D7002AD2E3 /* OnboardingNextButton.swift */,
 				304180F42ADC1325002AD2E3 /* OnboardingBackButton.swift */,
-				304180F02ADBCA6E002AD2E3 /* OnboardinProgressBar.swift */,
+				304180F02ADBCA6E002AD2E3 /* OnboardingProgressBar.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -211,7 +211,7 @@
 				304180FA2ADCC740002AD2E3 /* SmokingSetView.swift in Sources */,
 				304180D32ADA8E37002AD2E3 /* StartView.swift in Sources */,
 				304180E52ADAC730002AD2E3 /* AgreementView.swift in Sources */,
-				304180F12ADBCA6E002AD2E3 /* OnboardinProgressBar.swift in Sources */,
+				304180F12ADBCA6E002AD2E3 /* OnboardingProgressBar.swift in Sources */,
 				304180E72ADAC9D7002AD2E3 /* OnboardingNextButton.swift in Sources */,
 				304180F32ADC0C3F002AD2E3 /* OnboardingView.swift in Sources */,
 				304180EF2ADBB37B002AD2E3 /* View+.swift in Sources */,

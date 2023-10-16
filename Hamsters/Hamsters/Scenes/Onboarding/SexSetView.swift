@@ -22,7 +22,7 @@ struct SexSetView: View {
     var body: some View {
         NavigationStack {
             VStack(alignment: .leading, spacing: 0) {
-                OnboardinProgressBar(pageNumber: $pageNumber)
+                OnboardingProgressBar(pageNumber: $pageNumber)
                 
                 Group {
                     Text("성별을 선택해주세요")

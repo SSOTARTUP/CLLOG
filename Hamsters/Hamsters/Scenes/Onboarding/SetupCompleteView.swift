@@ -14,7 +14,7 @@ struct SetupCompleteView: View {
     var body: some View {
         NavigationStack {
             VStack(spacing: 0) {
-                OnboardinProgressBar(pageNumber: $pageNumber)
+                OnboardingProgressBar(pageNumber: $pageNumber)
                 
                 Image("HamsterV")
                     .resizable()

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct OnboardinProgressBar: View {
+struct OnboardingProgressBar: View {
     @Binding var pageNumber: Int
     
     var body: some View {
@@ -20,5 +20,5 @@ struct OnboardinProgressBar: View {
 }
 
 #Preview {
-    OnboardinProgressBar(pageNumber: .constant(5))
+    OnboardingProgressBar(pageNumber: .constant(5))
 }
