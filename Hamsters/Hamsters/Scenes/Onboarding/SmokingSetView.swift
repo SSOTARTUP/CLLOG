@@ -7,15 +7,10 @@
 
 import SwiftUI
 
-enum SmokingStatus {
-    case smoking
-    case nonSmoking
-}
-
 struct SmokingSetView: View {
     @Binding var pageNumber: Int
+    @Binding var status: SmokingStatus?
     @State private var isActiveNext = false
-    @State private var status: SmokingStatus?
     
     var body: some View {
         NavigationStack {
@@ -23,7 +18,7 @@ struct SmokingSetView: View {
                 OnboardingProgressBar(pageNumber: $pageNumber)
                 
                 Group {
-                    Text("성별을 선택해주세요")
+                    Text("흡연 중 이신가요?")
                         .font(.largeTitle)
                         .fontWeight(.bold)
                         .padding(.bottom, 45)
@@ -74,5 +69,5 @@ struct SmokingSetView: View {
 }
 
 #Preview {
-    SmokingSetView(pageNumber: .constant(4))
+    SmokingSetView(pageNumber: .constant(4), status: .constant(.smoking))
 }

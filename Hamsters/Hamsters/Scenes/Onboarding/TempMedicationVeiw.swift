@@ -12,7 +12,7 @@ struct TempMedicationVeiw: View {
     @State private var isActive = true
     var body: some View {
         NavigationStack {
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 0) {
                 OnboardingProgressBar(pageNumber: $pageNumber)
                 
                 Text("투여하시는 약물이\n있나요?")
