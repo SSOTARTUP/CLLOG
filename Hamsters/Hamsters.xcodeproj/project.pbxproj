@@ -11,6 +11,16 @@
 		304180D32ADA8E37002AD2E3 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304180D22ADA8E37002AD2E3 /* StartView.swift */; };
 		304180D52ADA8E39002AD2E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 304180D42ADA8E39002AD2E3 /* Assets.xcassets */; };
 		304180D82ADA8E39002AD2E3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 304180D72ADA8E39002AD2E3 /* Preview Assets.xcassets */; };
+		304180E52ADAC730002AD2E3 /* AgreementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304180E42ADAC730002AD2E3 /* AgreementView.swift */; };
+		304180E72ADAC9D7002AD2E3 /* OnboardingNextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304180E62ADAC9D7002AD2E3 /* OnboardingNextButton.swift */; };
+		304180EC2ADAEFFC002AD2E3 /* NicknameSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304180EB2ADAEFFC002AD2E3 /* NicknameSetView.swift */; };
+		304180EF2ADBB37B002AD2E3 /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304180EE2ADBB37B002AD2E3 /* View+.swift */; };
+		304180F12ADBCA6E002AD2E3 /* OnboardingProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304180F02ADBCA6E002AD2E3 /* OnboardingProgressBar.swift */; };
+		304180F32ADC0C3F002AD2E3 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304180F22ADC0C3F002AD2E3 /* OnboardingView.swift */; };
+		304180F52ADC1325002AD2E3 /* OnboardingBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304180F42ADC1325002AD2E3 /* OnboardingBackButton.swift */; };
+		304180F82ADC15A9002AD2E3 /* SexSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304180F72ADC15A9002AD2E3 /* SexSetView.swift */; };
+		304180FA2ADCC740002AD2E3 /* SmokingSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304180F92ADCC740002AD2E3 /* SmokingSetView.swift */; };
+		304180FC2ADCC9ED002AD2E3 /* SetupCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304180FB2ADCC9ED002AD2E3 /* SetupCompleteView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +29,16 @@
 		304180D22ADA8E37002AD2E3 /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
 		304180D42ADA8E39002AD2E3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		304180D72ADA8E39002AD2E3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		304180E42ADAC730002AD2E3 /* AgreementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AgreementView.swift; path = Hamsters/AgreementView.swift; sourceTree = SOURCE_ROOT; };
+		304180E62ADAC9D7002AD2E3 /* OnboardingNextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingNextButton.swift; sourceTree = "<group>"; };
+		304180EB2ADAEFFC002AD2E3 /* NicknameSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameSetView.swift; sourceTree = "<group>"; };
+		304180EE2ADBB37B002AD2E3 /* View+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+.swift"; sourceTree = "<group>"; };
+		304180F02ADBCA6E002AD2E3 /* OnboardingProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingProgressBar.swift; sourceTree = "<group>"; };
+		304180F22ADC0C3F002AD2E3 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		304180F42ADC1325002AD2E3 /* OnboardingBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingBackButton.swift; sourceTree = "<group>"; };
+		304180F72ADC15A9002AD2E3 /* SexSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SexSetView.swift; sourceTree = "<group>"; };
+		304180F92ADCC740002AD2E3 /* SmokingSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmokingSetView.swift; sourceTree = "<group>"; };
+		304180FB2ADCC9ED002AD2E3 /* SetupCompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupCompleteView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +72,7 @@
 			isa = PBXGroup;
 			children = (
 				304180D02ADA8E37002AD2E3 /* HamstersApp.swift */,
+				304180ED2ADBB36A002AD2E3 /* Extensions */,
 				304180DF2ADAACF1002AD2E3 /* Models */,
 				304180DE2ADAACE2002AD2E3 /* Scenes */,
 				304180D42ADA8E39002AD2E3 /* Assets.xcassets */,
@@ -71,6 +92,7 @@
 		304180DE2ADAACE2002AD2E3 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				304180D22ADA8E37002AD2E3 /* StartView.swift */,
 				304180E02ADAAD03002AD2E3 /* Onboarding */,
 			);
 			path = Scenes;
@@ -86,9 +108,33 @@
 		304180E02ADAAD03002AD2E3 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				304180D22ADA8E37002AD2E3 /* StartView.swift */,
+				304180F62ADC1375002AD2E3 /* Components */,
+				304180F22ADC0C3F002AD2E3 /* OnboardingView.swift */,
+				304180E42ADAC730002AD2E3 /* AgreementView.swift */,
+				304180EB2ADAEFFC002AD2E3 /* NicknameSetView.swift */,
+				304180F72ADC15A9002AD2E3 /* SexSetView.swift */,
+				304180F92ADCC740002AD2E3 /* SmokingSetView.swift */,
+				304180FB2ADCC9ED002AD2E3 /* SetupCompleteView.swift */,
 			);
 			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		304180ED2ADBB36A002AD2E3 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				304180EE2ADBB37B002AD2E3 /* View+.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		304180F62ADC1375002AD2E3 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				304180E62ADAC9D7002AD2E3 /* OnboardingNextButton.swift */,
+				304180F42ADC1325002AD2E3 /* OnboardingBackButton.swift */,
+				304180F02ADBCA6E002AD2E3 /* OnboardingProgressBar.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -161,8 +207,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				304180EC2ADAEFFC002AD2E3 /* NicknameSetView.swift in Sources */,
+				304180FA2ADCC740002AD2E3 /* SmokingSetView.swift in Sources */,
 				304180D32ADA8E37002AD2E3 /* StartView.swift in Sources */,
+				304180E52ADAC730002AD2E3 /* AgreementView.swift in Sources */,
+				304180F12ADBCA6E002AD2E3 /* OnboardingProgressBar.swift in Sources */,
+				304180E72ADAC9D7002AD2E3 /* OnboardingNextButton.swift in Sources */,
+				304180F32ADC0C3F002AD2E3 /* OnboardingView.swift in Sources */,
+				304180EF2ADBB37B002AD2E3 /* View+.swift in Sources */,
+				304180F82ADC15A9002AD2E3 /* SexSetView.swift in Sources */,
 				304180D12ADA8E37002AD2E3 /* HamstersApp.swift in Sources */,
+				304180F52ADC1325002AD2E3 /* OnboardingBackButton.swift in Sources */,
+				304180FC2ADCC9ED002AD2E3 /* SetupCompleteView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
