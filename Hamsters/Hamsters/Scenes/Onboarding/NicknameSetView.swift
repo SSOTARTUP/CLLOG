@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct NicknameView: View {
+struct NicknameSetView: View {
     @Binding var pageNumber: Int
     @State private var nickname = ""
     @State private var isActiveNext = false
@@ -79,5 +79,5 @@ struct NicknameView: View {
 }
 
 #Preview {
-    NicknameView(pageNumber: .constant(1))
+    NicknameSetView(pageNumber: .constant(1))
 }

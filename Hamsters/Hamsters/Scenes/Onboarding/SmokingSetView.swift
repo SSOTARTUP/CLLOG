@@ -12,7 +12,7 @@ enum SmokingStatus {
     case nonSmoking
 }
 
-struct SmokingStatusView: View {
+struct SmokingSetView: View {
     @Binding var pageNumber: Int
     @State private var isActiveNext = false
     @State private var status: SmokingStatus?
@@ -74,5 +74,5 @@ struct SmokingStatusView: View {
 }
 
 #Preview {
-    SmokingStatusView(pageNumber: .constant(4))
+    SmokingSetView(pageNumber: .constant(4))
 }

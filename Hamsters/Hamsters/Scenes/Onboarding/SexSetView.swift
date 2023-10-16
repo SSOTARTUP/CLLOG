@@ -13,7 +13,7 @@ enum Sex {
     case menopause
 }
 
-struct SelectSexView: View {
+struct SexSetView: View {
     @Binding var pageNumber: Int
     @State private var isActiveNext = false
     @State private var seletedSex: Sex?
@@ -101,5 +101,5 @@ struct SelectSexView: View {
 }
 
 #Preview {
-    SelectSexView(pageNumber: .constant(2))
+    SexSetView(pageNumber: .constant(2))
 }
