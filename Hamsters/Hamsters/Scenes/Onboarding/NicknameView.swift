@@ -17,7 +17,6 @@ struct NicknameView: View {
         NavigationStack {
             VStack(alignment: .leading, spacing: 0) {
                 OnboardinProgressBar(pageNumber: $pageNumber)
-                    .padding(.bottom, 15)
                 
                 Group {
                     Text("닉네임을 알려주세요!")
