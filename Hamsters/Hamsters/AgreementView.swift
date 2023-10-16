@@ -115,7 +115,7 @@ struct AgreementCheck: View {
                     
                     Spacer()
                     
-                    Link(destination: URL(string: "https://www.apple.com/")!) {
+                    Link(destination: URL(string: "https://cooperative-coast-cf5.notion.site/f8a0eee2711e4613a70400bd7ae40132?pvs=4")!) {
                         Image(systemName: "chevron.forward")
                             .font(.body)
                             .fontWeight(.semibold)
@@ -147,7 +147,7 @@ struct AgreementCheck: View {
                     
                     Spacer()
                     
-                    Link(destination: URL(string: "https://www.apple.com/")!) {
+                    Link(destination: URL(string: "https://cooperative-coast-cf5.notion.site/8dec0150593b404a9071bacbc066c3e0?pvs=4")!) {
                         Image(systemName: "chevron.forward")
                             .font(.body)
                             .fontWeight(.semibold)
