@@ -11,8 +11,9 @@ struct AddMedicineView: View {
     @StateObject private var alarmModel = AlarmViewModel()
     @State var medicineName = ""
     @State var capacity = ""
-    @State var isSelectedMedi = false
     @State var date = Date()
+    @State private var selectedMediIndex: Int = 0
+
     
     let mediCapacity = ["정", "mg", "mcg", "mL", "g", "%"]
     let mediColumn = Array(repeating: GridItem(.flexible(), spacing: 6), count: 3)
@@ -32,7 +33,8 @@ struct AddMedicineView: View {
         
         // 이 시간을 기반으로 다음 오전 8시로 설정된 날짜/시간 객체를 생성합니다.
         if let defaultAlarmTime = calendar.nextDate(after: Date(), matching: dateComponents, matchingPolicy: .nextTime) {
-            alarmModel.alarms.append(AlarmItem(date: defaultAlarmTime)) //
+//            alarmModel.alarms.append(AlarmItem(date: defaultAlarmTime))
+            alarmModel.addAlarmTime(date: defaultAlarmTime)
         }
     }
     
@@ -84,14 +86,17 @@ struct AddMedicineView: View {
                         LazyVGrid(columns: mediColumn) {
                             ForEach(0..<6) { index in
                                 Button(action: {
-                                    
+                                    selectedMediIndex = index
                                 }, label: {
                                     Text("\(mediCapacity[index])")
                                         .font(.body)
-                                        .foregroundStyle(isSelectedMedi ? .white : .thoNavy)
+                                        .foregroundStyle(selectedMediIndex == index ? Color.white : Color.thoNavy) // 선택된 버튼은 다른 색상을 가집니다.
+//                                        .foregroundStyle(isSelectedMedi ? .white : .thoNavy)
                                         .frame(maxWidth: .infinity)
                                         .padding(.vertical, 15)
-                                        .background(isSelectedMedi ? .thoNavy :.thoDisabled)
+                                        .background(selectedMediIndex == index ? Color.thoNavy : Color.thoDisabled) // 선택된 버튼은 다른 배경을 가집니다.
+
+//                                        .background(isSelectedMedi ? .thoNavy :.thoDisabled)
                                         .cornerRadius(13)
                                 })
                                 
@@ -148,7 +153,7 @@ struct AddMedicineView: View {
                                 AlarmRow(alarm: $alarmModel.alarms[alarmModel.alarms.firstIndex(where: { $0.id == alarm.id })!], removeAction: {
                                     if let index = alarmModel.alarms.firstIndex(where: { $0.id == alarm.id }) {
                                         // 인덱스를 사용하여 알람을 삭제합니다.
-                                        alarmModel.removeAlarm(at: index)
+                                        alarmModel.removeAlarmTime(at: index)
                                     }
                                 })
                             }
@@ -159,6 +164,7 @@ struct AddMedicineView: View {
                             
                             Button(action: {
                                 addAlarm()
+                                print(alarmModel.alarms)
                             }, label: {
                                 HStack(spacing: 13){
                                     Image(systemName: "plus.circle.fill")
