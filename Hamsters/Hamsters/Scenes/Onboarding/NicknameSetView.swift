@@ -45,6 +45,8 @@ struct NicknameSetView: View {
                         focusField = true
                     }
                     .onChange(of: nickname) { _ in
+                        // 공백 제거
+                        nickname = nickname.trim()
                         if nickname.count == 0 {
                             isActiveNext = false
                         } else {

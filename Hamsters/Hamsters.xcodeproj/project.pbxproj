@@ -25,6 +25,7 @@
 		305240162ADD73EB008FCD14 /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305240132ADD73EB008FCD14 /* UserDefaultsKey.swift */; };
 		305240172ADD73EB008FCD14 /* SmokingStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305240142ADD73EB008FCD14 /* SmokingStatus.swift */; };
 		305240182ADD73EB008FCD14 /* SexClassification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305240152ADD73EB008FCD14 /* SexClassification.swift */; };
+		3052401A2ADE1299008FCD14 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305240192ADE1299008FCD14 /* String+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		305240132ADD73EB008FCD14 /* UserDefaultsKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsKey.swift; sourceTree = "<group>"; };
 		305240142ADD73EB008FCD14 /* SmokingStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmokingStatus.swift; sourceTree = "<group>"; };
 		305240152ADD73EB008FCD14 /* SexClassification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SexClassification.swift; sourceTree = "<group>"; };
+		305240192ADE1299008FCD14 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				304180EE2ADBB37B002AD2E3 /* View+.swift */,
+				305240192ADE1299008FCD14 /* String+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -241,6 +244,7 @@
 				305240162ADD73EB008FCD14 /* UserDefaultsKey.swift in Sources */,
 				304180D12ADA8E37002AD2E3 /* HamstersApp.swift in Sources */,
 				304180F52ADC1325002AD2E3 /* OnboardingBackButton.swift in Sources */,
+				3052401A2ADE1299008FCD14 /* String+.swift in Sources */,
 				305240182ADD73EB008FCD14 /* SexClassification.swift in Sources */,
 				304180FC2ADCC9ED002AD2E3 /* SetupCompleteView.swift in Sources */,
 			);
