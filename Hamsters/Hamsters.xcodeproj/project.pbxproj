@@ -11,6 +11,11 @@
 		304180D32ADA8E37002AD2E3 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304180D22ADA8E37002AD2E3 /* StartView.swift */; };
 		304180D52ADA8E39002AD2E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 304180D42ADA8E39002AD2E3 /* Assets.xcassets */; };
 		304180D82ADA8E39002AD2E3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 304180D72ADA8E39002AD2E3 /* Preview Assets.xcassets */; };
+		B571E1E92ADCB3FE00969755 /* MedicationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B571E1E82ADCB3FE00969755 /* MedicationView.swift */; };
+		B571E1EE2ADCC8DF00969755 /* AddMedicineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B571E1ED2ADCC8DF00969755 /* AddMedicineView.swift */; };
+		B571E1F02ADD1D8700969755 /* AlarmItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B571E1EF2ADD1D8600969755 /* AlarmItem.swift */; };
+		B571E1F32ADD1DDA00969755 /* AlarmViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B571E1F22ADD1DDA00969755 /* AlarmViewModel.swift */; };
+		B571E1F52ADD253600969755 /* AlarmRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B571E1F42ADD253600969755 /* AlarmRow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +24,11 @@
 		304180D22ADA8E37002AD2E3 /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
 		304180D42ADA8E39002AD2E3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		304180D72ADA8E39002AD2E3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		B571E1E82ADCB3FE00969755 /* MedicationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicationView.swift; sourceTree = "<group>"; };
+		B571E1ED2ADCC8DF00969755 /* AddMedicineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMedicineView.swift; sourceTree = "<group>"; };
+		B571E1EF2ADD1D8600969755 /* AlarmItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AlarmItem.swift; path = Hamsters/Scenes/Onboarding/Medication/AlarmItem.swift; sourceTree = SOURCE_ROOT; };
+		B571E1F22ADD1DDA00969755 /* AlarmViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmViewModel.swift; sourceTree = "<group>"; };
+		B571E1F42ADD253600969755 /* AlarmRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmRow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +45,7 @@
 		304180C42ADA8E37002AD2E3 = {
 			isa = PBXGroup;
 			children = (
+				B571E1F12ADD1DBE00969755 /* ViewModel */,
 				304180CF2ADA8E37002AD2E3 /* Hamsters */,
 				304180CE2ADA8E37002AD2E3 /* Products */,
 			);
@@ -79,6 +90,7 @@
 		304180DF2ADAACF1002AD2E3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				B571E1EF2ADD1D8600969755 /* AlarmItem.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -86,9 +98,28 @@
 		304180E02ADAAD03002AD2E3 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				B571E1EC2ADCC8B300969755 /* Medication */,
 				304180D22ADA8E37002AD2E3 /* StartView.swift */,
 			);
 			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		B571E1EC2ADCC8B300969755 /* Medication */ = {
+			isa = PBXGroup;
+			children = (
+				B571E1E82ADCB3FE00969755 /* MedicationView.swift */,
+				B571E1ED2ADCC8DF00969755 /* AddMedicineView.swift */,
+				B571E1F42ADD253600969755 /* AlarmRow.swift */,
+			);
+			path = Medication;
+			sourceTree = "<group>";
+		};
+		B571E1F12ADD1DBE00969755 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B571E1F22ADD1DDA00969755 /* AlarmViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -161,8 +192,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B571E1F02ADD1D8700969755 /* AlarmItem.swift in Sources */,
+				B571E1F32ADD1DDA00969755 /* AlarmViewModel.swift in Sources */,
 				304180D32ADA8E37002AD2E3 /* StartView.swift in Sources */,
+				B571E1EE2ADCC8DF00969755 /* AddMedicineView.swift in Sources */,
+				B571E1E92ADCB3FE00969755 /* MedicationView.swift in Sources */,
 				304180D12ADA8E37002AD2E3 /* HamstersApp.swift in Sources */,
+				B571E1F52ADD253600969755 /* AlarmRow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,7 +333,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Hamsters/Preview Content\"";
-				DEVELOPMENT_TEAM = FJ72KV3U2A;
+				DEVELOPMENT_TEAM = YKG7843K2L;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
@@ -330,7 +366,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Hamsters/Preview Content\"";
-				DEVELOPMENT_TEAM = FJ72KV3U2A;
+				DEVELOPMENT_TEAM = YKG7843K2L;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
