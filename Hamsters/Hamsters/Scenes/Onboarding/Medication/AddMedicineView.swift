@@ -13,7 +13,19 @@ struct AddMedicineView: View {
     @State var capacity = ""
     @State var date = Date()
     @State private var selectedMediIndex: Int = 0
-
+    
+    private var sortedDaysString: String {
+        // 선택된 요일들을 '월, 화, 수...' 순서로 정렬합니다.
+        let sortedDays = selectedDays.sorted()
+        // 정렬된 요일들을 문자열로 변환합니다.
+        return sortedDays.isEmpty ? "선택 안됨" : sortedDays.map { $0.rawValue }.joined(separator: ", ")
+    }
+    
+    // 빈도로 부터 오는 값들 - 시작일, 알람 선택 날짜
+    @State var startDay: Date = Date()
+    @State private var selectedDays: [Day] = []
+    
+    
     
     let mediCapacity = ["정", "mg", "mcg", "mL", "g", "%"]
     let mediColumn = Array(repeating: GridItem(.flexible(), spacing: 6), count: 3)
@@ -33,7 +45,6 @@ struct AddMedicineView: View {
         
         // 이 시간을 기반으로 다음 오전 8시로 설정된 날짜/시간 객체를 생성합니다.
         if let defaultAlarmTime = calendar.nextDate(after: Date(), matching: dateComponents, matchingPolicy: .nextTime) {
-//            alarmModel.alarms.append(AlarmItem(date: defaultAlarmTime))
             alarmModel.addAlarmTime(date: defaultAlarmTime)
         }
     }
@@ -91,12 +102,9 @@ struct AddMedicineView: View {
                                     Text("\(mediCapacity[index])")
                                         .font(.body)
                                         .foregroundStyle(selectedMediIndex == index ? Color.white : Color.thoNavy) // 선택된 버튼은 다른 색상을 가집니다.
-//                                        .foregroundStyle(isSelectedMedi ? .white : .thoNavy)
                                         .frame(maxWidth: .infinity)
                                         .padding(.vertical, 15)
                                         .background(selectedMediIndex == index ? Color.thoNavy : Color.thoDisabled) // 선택된 버튼은 다른 배경을 가집니다.
-
-//                                        .background(isSelectedMedi ? .thoNavy :.thoDisabled)
                                         .cornerRadius(13)
                                 })
                                 
@@ -105,14 +113,14 @@ struct AddMedicineView: View {
                         .padding(.bottom, 48)
                         
                         
-                        NavigationLink(destination: Text("s")) {
+                        NavigationLink(destination: AlarmFrequencyView(selectedDays: $selectedDays, startDay: $startDay)) {
                             HStack {
                                 Text("빈도")
                                     .foregroundStyle(.black)
                                 
                                 Spacer()
                                 
-                                Text("월요일")
+                                Text("\(sortedDaysString)")
                                     .foregroundStyle(.thoNavy)
                             }
                             .font(.body)
@@ -141,8 +149,8 @@ struct AddMedicineView: View {
                         VStack(alignment: .leading, spacing: 0) {
                             
                             ForEach(Array(zip(0..<alarmModel.alarms.count, alarmModel.alarms)), id: \.0) { index, alarm in
-                                //                                AlarmRow(alarm: $alarmModel.alarms[alarm])
                                 
+                                //                                AlarmRow(alarm: $alarmModel.alarms[alarm])
                                 // 위 코드랑 다르게 alarm 객체를 alarms 배열에서 찾기위해 firstindex(where) 메서드를 사용
                                 // alarm 객체의 id가 배열 내의 객체의 id와 일치하는 경우 첫번째 인덱스 반환
                                 
@@ -189,5 +197,5 @@ struct AddMedicineView: View {
 }
 
 #Preview {
-    AddMedicineView()
+    AddMedicineView(startDay: Date())
 }
