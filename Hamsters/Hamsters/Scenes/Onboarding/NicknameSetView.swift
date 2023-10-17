@@ -83,6 +83,11 @@ struct NicknameSetView: View {
                     OnboardingBackButton(pageNumber: $pageNumber)
                 }
             }
+            .onAppear {
+                if nickname != "" {
+                    isActiveNext = true
+                }
+            }
         }
     }
 }

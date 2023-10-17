@@ -90,6 +90,11 @@ struct SexSetView: View {
                     OnboardingBackButton(pageNumber: $pageNumber)
                 }
             }
+            .onAppear {
+                if selectedSex != nil {
+                    isActiveNext = true
+                }
+            }
         }
     }
 }
