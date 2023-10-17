@@ -40,7 +40,6 @@ struct OnboardingView: View {
             case 4:
                 SmokingSetView(pageNumber: $pageNumber, status: $status)
                     .onDisappear {
-                        print(status?.rawValue.description ?? "non")
                         storedSmoking = status?.rawValue ?? false
                     }
             case 5:

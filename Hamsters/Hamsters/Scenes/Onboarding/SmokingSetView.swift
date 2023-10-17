@@ -64,6 +64,11 @@ struct SmokingSetView: View {
                     OnboardingBackButton(pageNumber: $pageNumber)
                 }
             }
+            .onAppear {
+                if status != nil {
+                    isActiveNext = true
+                }
+            }
         }
     }
 }
