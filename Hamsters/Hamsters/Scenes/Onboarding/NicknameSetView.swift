@@ -9,7 +9,7 @@ import SwiftUI
 
 struct NicknameSetView: View {
     @Binding var pageNumber: Int
-    @State private var nickname = ""
+    @Binding var nickname: String
     @State private var isActiveNext = false
     @State private var focusField = false
     @State private var characterLimitWarning = false
@@ -78,7 +78,6 @@ struct NicknameSetView: View {
                 hideKeyboard()
                 focusField = false
             }
-            
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     OnboardingBackButton(pageNumber: $pageNumber)
@@ -89,5 +88,5 @@ struct NicknameSetView: View {
 }
 
 #Preview {
-    NicknameSetView(pageNumber: .constant(1))
+    NicknameSetView(pageNumber: .constant(1), nickname: .constant("토리"))
 }

@@ -21,6 +21,10 @@
 		304180F82ADC15A9002AD2E3 /* SexSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304180F72ADC15A9002AD2E3 /* SexSetView.swift */; };
 		304180FA2ADCC740002AD2E3 /* SmokingSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304180F92ADCC740002AD2E3 /* SmokingSetView.swift */; };
 		304180FC2ADCC9ED002AD2E3 /* SetupCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304180FB2ADCC9ED002AD2E3 /* SetupCompleteView.swift */; };
+		3052400F2ADD21DF008FCD14 /* TempMedicationVeiw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3052400E2ADD21DF008FCD14 /* TempMedicationVeiw.swift */; };
+		305240162ADD73EB008FCD14 /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305240132ADD73EB008FCD14 /* UserDefaultsKey.swift */; };
+		305240172ADD73EB008FCD14 /* SmokingStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305240142ADD73EB008FCD14 /* SmokingStatus.swift */; };
+		305240182ADD73EB008FCD14 /* SexClassification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305240152ADD73EB008FCD14 /* SexClassification.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +43,10 @@
 		304180F72ADC15A9002AD2E3 /* SexSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SexSetView.swift; sourceTree = "<group>"; };
 		304180F92ADCC740002AD2E3 /* SmokingSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmokingSetView.swift; sourceTree = "<group>"; };
 		304180FB2ADCC9ED002AD2E3 /* SetupCompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupCompleteView.swift; sourceTree = "<group>"; };
+		3052400E2ADD21DF008FCD14 /* TempMedicationVeiw.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempMedicationVeiw.swift; sourceTree = "<group>"; };
+		305240132ADD73EB008FCD14 /* UserDefaultsKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsKey.swift; sourceTree = "<group>"; };
+		305240142ADD73EB008FCD14 /* SmokingStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmokingStatus.swift; sourceTree = "<group>"; };
+		305240152ADD73EB008FCD14 /* SexClassification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SexClassification.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +109,7 @@
 		304180DF2ADAACF1002AD2E3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				305240122ADD73EB008FCD14 /* Enums */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -113,6 +122,7 @@
 				304180E42ADAC730002AD2E3 /* AgreementView.swift */,
 				304180EB2ADAEFFC002AD2E3 /* NicknameSetView.swift */,
 				304180F72ADC15A9002AD2E3 /* SexSetView.swift */,
+				3052400E2ADD21DF008FCD14 /* TempMedicationVeiw.swift */,
 				304180F92ADCC740002AD2E3 /* SmokingSetView.swift */,
 				304180FB2ADCC9ED002AD2E3 /* SetupCompleteView.swift */,
 			);
@@ -135,6 +145,16 @@
 				304180F02ADBCA6E002AD2E3 /* OnboardingProgressBar.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		305240122ADD73EB008FCD14 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				305240132ADD73EB008FCD14 /* UserDefaultsKey.swift */,
+				305240142ADD73EB008FCD14 /* SmokingStatus.swift */,
+				305240152ADD73EB008FCD14 /* SexClassification.swift */,
+			);
+			path = Enums;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -208,7 +228,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				304180EC2ADAEFFC002AD2E3 /* NicknameSetView.swift in Sources */,
+				3052400F2ADD21DF008FCD14 /* TempMedicationVeiw.swift in Sources */,
 				304180FA2ADCC740002AD2E3 /* SmokingSetView.swift in Sources */,
+				305240172ADD73EB008FCD14 /* SmokingStatus.swift in Sources */,
 				304180D32ADA8E37002AD2E3 /* StartView.swift in Sources */,
 				304180E52ADAC730002AD2E3 /* AgreementView.swift in Sources */,
 				304180F12ADBCA6E002AD2E3 /* OnboardingProgressBar.swift in Sources */,
@@ -216,8 +238,10 @@
 				304180F32ADC0C3F002AD2E3 /* OnboardingView.swift in Sources */,
 				304180EF2ADBB37B002AD2E3 /* View+.swift in Sources */,
 				304180F82ADC15A9002AD2E3 /* SexSetView.swift in Sources */,
+				305240162ADD73EB008FCD14 /* UserDefaultsKey.swift in Sources */,
 				304180D12ADA8E37002AD2E3 /* HamstersApp.swift in Sources */,
 				304180F52ADC1325002AD2E3 /* OnboardingBackButton.swift in Sources */,
+				305240182ADD73EB008FCD14 /* SexClassification.swift in Sources */,
 				304180FC2ADCC9ED002AD2E3 /* SetupCompleteView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
