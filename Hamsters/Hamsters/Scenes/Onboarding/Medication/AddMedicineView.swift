@@ -8,10 +8,12 @@
 import SwiftUI
 
 struct AddMedicineView: View {
+    @FocusState private var isInputFocused: Bool  // 포커스 상태를 추적합니다.
+    
     @StateObject private var alarmModel = AlarmViewModel()
     @State var medicineName = ""
     @State var capacity = ""
-    @State var date = Date()
+    @State private var fullCapacityText = ""
     @State private var selectedMediIndex: Int = 0
     
     private var sortedDaysString: String {
@@ -49,6 +51,14 @@ struct AddMedicineView: View {
         }
     }
     
+    // 용량 입력이나 약 단위 선택이 변경될 때 마다 호출될 수 있는 함수.
+    private func updateFullCapacityText() {
+        if selectedMediIndex < mediCapacity.count {
+            let unit = mediCapacity[selectedMediIndex]  // 선택된 단위.
+            fullCapacityText = "\(capacity) \(unit)"  // 용량과 단위를 결합합니다.
+        }
+    }
+    
     var body: some View {
         
         NavigationStack {
@@ -73,12 +83,22 @@ struct AddMedicineView: View {
                             .padding(.leading, 8)
                             .padding(.bottom, 6)
                         TextField("약 이름 입력", text: $medicineName)
+                            .focused($isInputFocused)
                             .font(.body)
                             .padding(.vertical, 11)
                             .padding(.leading, 8)
                             .background(.thoTextField)
                             .cornerRadius(10)
                             .padding(.bottom, 28)
+                            .toolbar {
+                                ToolbarItemGroup(placement: .keyboard) {
+                                    Spacer()
+                                    
+                                    Button("완료") {
+                                        isInputFocused = false
+                                    }
+                                }
+                            }
                         
                         
                         Text("용량")
@@ -87,12 +107,20 @@ struct AddMedicineView: View {
                             .padding(.leading, 8)
                             .padding(.bottom, 6)
                         TextField("용량 추가", text: $capacity)
+                            .focused($isInputFocused)
+                            .keyboardType(.numberPad)
                             .font(.body)
                             .padding(.vertical, 11)
                             .padding(.leading, 8)
                             .background(.thoTextField)
                             .cornerRadius(10)
                             .padding(.bottom, 18)
+                            .onChange(of: selectedMediIndex) { newValue in
+                                // 단위가 변경될 때마다 fullCapacityText 업데이트.
+                                updateFullCapacityText()
+                            }
+                        
+                        //                        Text(fullCapacityText)
                         
                         LazyVGrid(columns: mediColumn) {
                             ForEach(0..<6) { index in
@@ -197,5 +225,5 @@ struct AddMedicineView: View {
 }
 
 #Preview {
-    AddMedicineView(startDay: Date())
+    AddMedicineView()
 }
