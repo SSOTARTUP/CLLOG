@@ -19,29 +19,36 @@ struct AlarmFrequencyView: View {
         
         VStack(alignment: .leading, spacing: 0) {
             
-            List {
-                ForEach(Option.allCases, id: \.self) { option in
-                    HStack {
-                        Text("\(option.rawValue)")
-                            .font(.body)
-                        
-                        Spacer()
-
-                        if selectedOption == option {
-                            Image(systemName: "checkmark")
-                                .font(.headline)
-                                .foregroundStyle(.blue)
-                        }
-                    }
-                    .contentShape(Rectangle())
-                    .onTapGesture {
-                        selectedOption = option
+            ForEach(Array(zip(0..<Option.allCases.count, Option.allCases)), id: \.0) { index, option in
+                
+                if index > 0 {
+                    Divider()
+                }
+                
+                HStack {
+                    Text("\(option.rawValue)")
+                        .font(.body)
+                    
+                    Spacer()
+                    
+                    if selectedOption == option {
+                        Image(systemName: "checkmark")
+                            .font(.headline)
+                            .foregroundStyle(.blue)
                     }
                 }
+                .padding(.vertical, 14)
+                .contentShape(Rectangle())
+                .onTapGesture {
+                    selectedOption = option
+                }
             }
-            
+            .padding(.horizontal, 16)
+            .background(.thoTextField)
             
         }
+        .cornerRadius(10)
+        .padding(.horizontal, 16)
         
         
         
