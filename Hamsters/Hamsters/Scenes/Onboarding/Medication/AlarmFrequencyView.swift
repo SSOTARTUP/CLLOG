@@ -8,12 +8,9 @@
 import SwiftUI
 
 struct AlarmFrequencyView: View {
-    enum Option: String, CaseIterable {
-        case specificDay = "특정 요일에"
-        case asNeeded = "필요할 때 투여"
-    }
-    
-    @State private var selectedOption: Option? = nil
+    @Environment(\.dismiss) private var dismiss
+        
+    @Binding var selectedOption: Option?
     @Binding var selectedDays: [Day]
     @Binding var startDay: Date
     
@@ -38,12 +35,18 @@ struct AlarmFrequencyView: View {
                             Image(systemName: "checkmark")
                                 .font(.headline)
                                 .foregroundStyle(.blue)
+                            
                         }
                     }
                     .padding(.vertical, 14)
                     .contentShape(Rectangle())
                     .onTapGesture {
-                        selectedOption = option
+                        if index == 0 {
+                            selectedOption = option
+                        } else {
+                            selectedOption = option
+                            selectedDays.removeAll()
+                        }
                     }
                 }
                 .padding(.horizontal, 16)
@@ -53,14 +56,14 @@ struct AlarmFrequencyView: View {
             .padding(.top, 24)
             .padding(.bottom, 44)
             
-            if selectedOption == Option.specificDay {
+            if selectedOption == Option.specificDay || !selectedDays.isEmpty {
                 Text("요일 선택")
                     .font(.headline)
                     .foregroundStyle(.thoNavy)
                     .padding(.leading, 8)
                     .padding(.bottom, 6)
                 
-                HStack(spacing: 4) {
+                HStack(spacing: 0) {
                     ForEach(Day.allCases, id: \.self) { day in
                         Text(String(day.rawValue.first!))
                             .font(.title3)
@@ -98,12 +101,23 @@ struct AlarmFrequencyView: View {
             Spacer()
         }
         .padding(.horizontal, 16)
-        
-        
+        .navigationTitle("빈도")
+        .navigationBarBackButtonHidden()
+        .toolbar {
+            
+            ToolbarItem(placement: .topBarLeading) {
+                Button(action: {
+                    dismiss()
+                }, label: {
+                    Text("뒤로")
+                })
+            }
+        }
         
     }
+    
 }
 
 #Preview {
-    AlarmFrequencyView(selectedDays:.constant([.monday, .wednesday]), startDay: .constant(Date()))
+    AlarmFrequencyView(selectedOption: .constant(.specificDay), selectedDays:.constant([.monday, .wednesday]), startDay: .constant(Date()))
 }

@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct MedicationView: View {
+    @StateObject private var medicineViewModel = MedicineViewModel()
+
     @State var isactive = false
-    
+    @State private var showingSheet = false
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -26,6 +28,7 @@ struct MedicationView: View {
             
             Button(action: {
                 // 투여약 추가 로직
+                showingSheet.toggle()
             }, label: {
                 HStack {
                     Image(systemName: "plus.circle.fill")
@@ -41,6 +44,9 @@ struct MedicationView: View {
                 .cornerRadius(15)
             })
             .padding(.bottom, 44)
+            .sheet(isPresented: $showingSheet) {
+                AddMedicineView()
+            }
             
             List {
                 Text("1")

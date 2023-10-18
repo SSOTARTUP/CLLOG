@@ -8,17 +8,38 @@
 import SwiftUI
 
 struct AddMedicineView: View {
+    @Environment(\.dismiss) private var dismiss
+    
     @FocusState private var isInputFocused: Bool  // 포커스 상태를 추적합니다.
     
+    @StateObject private var medicineViewModel = MedicineViewModel()
     @StateObject private var alarmModel = AlarmViewModel()
+    
     @State var medicineName = ""
     @State var capacity = ""
     @State private var fullCapacityText = ""
     @State private var selectedMediIndex: Int = 0
     
+    // option .asneeded 나중에 알람 설정 시 매일로 할 필요 존재
     private var sortedDaysString: String {
         // 선택된 요일들을 '월, 화, 수...' 순서로 정렬합니다.
         let sortedDays = selectedDays.sorted()
+        let weekedns: [Day] = [.saturday, .sunday]
+        
+        if selectedOption == .specificDay {
+            if sortedDays == weekedns {
+                return "주말"
+            }
+            
+            if sortedDays.count == 7 {
+                return "매일"
+            }
+        }
+        
+        if selectedOption == .asNeeded {
+            return "필요 시"
+        }
+        
         // 정렬된 요일들을 문자열로 변환합니다.
         return sortedDays.isEmpty ? "선택 안됨" : sortedDays.map { $0.rawValue }.joined(separator: ", ")
     }
@@ -26,12 +47,11 @@ struct AddMedicineView: View {
     // 빈도로 부터 오는 값들 - 시작일, 알람 선택 날짜
     @State var startDay: Date = Date()
     @State private var selectedDays: [Day] = []
-    
+    @State private var selectedOption: Option? = nil
     
     
     let mediCapacity = ["정", "mg", "mcg", "mL", "g", "%"]
     let mediColumn = Array(repeating: GridItem(.flexible(), spacing: 6), count: 3)
-    var mediFrequency = [String]()
     static var timeFormatter: DateFormatter {
         let formatter = DateFormatter()
         formatter.timeStyle = .short
@@ -119,9 +139,7 @@ struct AddMedicineView: View {
                                 // 단위가 변경될 때마다 fullCapacityText 업데이트.
                                 updateFullCapacityText()
                             }
-                        
-                        //                        Text(fullCapacityText)
-                        
+                                                
                         LazyVGrid(columns: mediColumn) {
                             ForEach(0..<6) { index in
                                 Button(action: {
@@ -141,7 +159,7 @@ struct AddMedicineView: View {
                         .padding(.bottom, 48)
                         
                         
-                        NavigationLink(destination: AlarmFrequencyView(selectedDays: $selectedDays, startDay: $startDay)) {
+                        NavigationLink(destination: AlarmFrequencyView(selectedOption: $selectedOption, selectedDays: $selectedDays, startDay: $startDay)) {
                             HStack {
                                 Text("빈도")
                                     .foregroundStyle(.black)
@@ -217,6 +235,36 @@ struct AddMedicineView: View {
                         .cornerRadius(10)
                     }
                     .padding(.horizontal, 16)
+                }
+            }
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button(action: {
+                        dismiss()
+                    }, label: {
+                        Text("뒤로")
+                    })
+                }
+                
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button(action: {
+                        
+                        guard !medicineName.isEmpty,
+                              !capacity.isEmpty
+                            else {
+                            // 하나 이상의 필수 입력 필드가 누락된 경우 작업을 중단합니다.
+                            // 필요에 따라 사용자에게 경고 메시지를 표시할 수 있습니다.
+                            print("실패")
+                            return
+                        }
+                        
+                        medicineViewModel.addMedicine(name: medicineName, capacity: capacity, frequency: selectedDays, unit: mediCapacity[selectedMediIndex], startDay: startDay, alarms: alarmModel.alarms)
+                        // 용량 + unit = fullycapacityText
+                        print(medicineViewModel.medicines)
+                        dismiss()
+                    }, label: {
+                        Text("완료")
+                    })
                 }
             }
         }
