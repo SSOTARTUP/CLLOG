@@ -12,23 +12,30 @@ struct AgreementView: View {
     @State private var isActiveNext = false
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 38) {
+        VStack(alignment: .leading, spacing: 0) {
+            Spacer()
+                .frame(minHeight: 30, maxHeight: 64)
+            
             // 로고 이미지 자리
             Rectangle()
                 .frame(width: 100, height: 100)
                 .padding(.leading)
                 .foregroundColor(.gray)
-                .padding(.top, 69)
+                .padding(.bottom, 24)
+            
+            Spacer()
             
             Group {
                 InfoText()
-                    .padding(.bottom, 6)
+                    .padding(.bottom, 44)
                 
                 AgreementCheck(isActiveNext: $isActiveNext)
                 
                 Spacer()
                 
                 OnboardingNextButton(isActive: $isActiveNext, pageNumber: $pageNumber)
+                    .padding(.bottom, 30)
+                    
             }
             .padding(.horizontal, 24)
         }

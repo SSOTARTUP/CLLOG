@@ -47,6 +47,7 @@ struct SetupCompleteView: View {
                         .cornerRadius(15)
                 }
                 .padding(.horizontal, 24)
+                .padding(.bottom, 30)
             }
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
