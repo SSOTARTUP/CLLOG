@@ -26,6 +26,7 @@
 		305240172ADD73EB008FCD14 /* SmokingStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305240142ADD73EB008FCD14 /* SmokingStatus.swift */; };
 		305240182ADD73EB008FCD14 /* SexClassification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305240152ADD73EB008FCD14 /* SexClassification.swift */; };
 		3052401A2ADE1299008FCD14 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305240192ADE1299008FCD14 /* String+.swift */; };
+		305240462ADFA855008FCD14 /* DailyRecordProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305240452ADFA855008FCD14 /* DailyRecordProgressBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 		305240142ADD73EB008FCD14 /* SmokingStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmokingStatus.swift; sourceTree = "<group>"; };
 		305240152ADD73EB008FCD14 /* SexClassification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SexClassification.swift; sourceTree = "<group>"; };
 		305240192ADE1299008FCD14 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
+		305240452ADFA855008FCD14 /* DailyRecordProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyRecordProgressBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 			children = (
 				304180D22ADA8E37002AD2E3 /* StartView.swift */,
 				304180E02ADAAD03002AD2E3 /* Onboarding */,
+				305240422ADFA766008FCD14 /* DailyRecord */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -158,6 +161,22 @@
 				305240152ADD73EB008FCD14 /* SexClassification.swift */,
 			);
 			path = Enums;
+			sourceTree = "<group>";
+		};
+		305240422ADFA766008FCD14 /* DailyRecord */ = {
+			isa = PBXGroup;
+			children = (
+				305240432ADFA78C008FCD14 /* Components */,
+			);
+			path = DailyRecord;
+			sourceTree = "<group>";
+		};
+		305240432ADFA78C008FCD14 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				305240452ADFA855008FCD14 /* DailyRecordProgressBar.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -237,6 +256,7 @@
 				304180D32ADA8E37002AD2E3 /* StartView.swift in Sources */,
 				304180E52ADAC730002AD2E3 /* AgreementView.swift in Sources */,
 				304180F12ADBCA6E002AD2E3 /* OnboardingProgressBar.swift in Sources */,
+				305240462ADFA855008FCD14 /* DailyRecordProgressBar.swift in Sources */,
 				304180E72ADAC9D7002AD2E3 /* OnboardingNextButton.swift in Sources */,
 				304180F32ADC0C3F002AD2E3 /* OnboardingView.swift in Sources */,
 				304180EF2ADBB37B002AD2E3 /* View+.swift in Sources */,
