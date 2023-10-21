@@ -9,6 +9,7 @@ import SwiftUI
 
 struct OnboardingView: View {
     @Environment(\.dismiss) private var dismiss
+    @StateObject private var medicineViewModel = MedicineViewModel()
     @AppStorage(UserDefaultsKey.nickname.rawValue) private var storedNickname: String = ""
     @AppStorage(UserDefaultsKey.sex.rawValue) private var storedSex: String = ""
     @AppStorage(UserDefaultsKey.smoking.rawValue) private var storedSmoking: Bool = false
@@ -36,7 +37,8 @@ struct OnboardingView: View {
                     }
             case 3:
                 // 투여 약물 등록 페이지(임시)
-                TempMedicationVeiw(pageNumber: $pageNumber)
+                MedicationView(pageNumber: $pageNumber)
+                    .environmentObject(medicineViewModel)
             case 4:
                 SmokingSetView(pageNumber: $pageNumber, status: $status)
                     .onDisappear {
@@ -47,8 +49,9 @@ struct OnboardingView: View {
             default:
                 EmptyView()
                     .onAppear {
-                        setupComplete = true
-                        dismiss()
+                        if setupComplete {
+                            dismiss()
+                        }
                     }
             }
         }

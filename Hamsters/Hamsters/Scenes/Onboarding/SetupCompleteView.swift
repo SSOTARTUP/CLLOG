@@ -10,6 +10,7 @@ import SwiftUI
 // 임시 구현
 struct SetupCompleteView: View {
     @Binding var pageNumber: Int
+    @AppStorage(UserDefaultsKey.complete.rawValue) private var setupComplete: Bool = false
     // 저장 확인용
     @AppStorage(UserDefaultsKey.nickname.rawValue) private var storedNickname: String?
     @AppStorage(UserDefaultsKey.sex.rawValue) private var storedSex: String?
@@ -35,6 +36,7 @@ struct SetupCompleteView: View {
                 Text("흡연 여부 : \(storedSmoking?.description ?? "저장 내용 없음")")
 
                 Button {
+                    setupComplete = true
                     pageNumber += 1
                 } label: {
                     Text("완료")
