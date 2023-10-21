@@ -13,9 +13,8 @@ struct DailyRecordProgressBar: View {
     var body: some View {
         ProgressView(value: Double(pageNumber), total: 12)
             .tint(.thoNavy)
-            .padding(.vertical, 20)
+            .padding(.vertical, 16)
             .padding(.horizontal, 16)
-            .padding(.bottom, 15)
     }
 }
 

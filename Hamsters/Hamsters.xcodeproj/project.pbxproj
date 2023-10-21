@@ -29,6 +29,10 @@
 		305240462ADFA855008FCD14 /* DailyRecordProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305240452ADFA855008FCD14 /* DailyRecordProgressBar.swift */; };
 		30BB50B92ADFABBC0050CF69 /* ConditionSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BB50B82ADFABBC0050CF69 /* ConditionSlider.swift */; };
 		30BB50BC2ADFABDB0050CF69 /* Sliders in Frameworks */ = {isa = PBXBuildFile; productRef = 30BB50BB2ADFABDB0050CF69 /* Sliders */; };
+		30BB50BE2ADFFAE00050CF69 /* ConditionCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BB50BD2ADFFAE00050CF69 /* ConditionCheckView.swift */; };
+		30BB50C02ADFFB710050CF69 /* DailyRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BB50BF2ADFFB710050CF69 /* DailyRecordView.swift */; };
+		30BB50C22AE0C0680050CF69 /* DailyRecordNextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BB50C12AE0C0680050CF69 /* DailyRecordNextButton.swift */; };
+		30BB50C42AE1FCA80050CF69 /* MoodCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BB50C32AE1FCA80050CF69 /* MoodCheckView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +58,10 @@
 		305240192ADE1299008FCD14 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		305240452ADFA855008FCD14 /* DailyRecordProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyRecordProgressBar.swift; sourceTree = "<group>"; };
 		30BB50B82ADFABBC0050CF69 /* ConditionSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionSlider.swift; sourceTree = "<group>"; };
+		30BB50BD2ADFFAE00050CF69 /* ConditionCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionCheckView.swift; sourceTree = "<group>"; };
+		30BB50BF2ADFFB710050CF69 /* DailyRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyRecordView.swift; sourceTree = "<group>"; };
+		30BB50C12AE0C0680050CF69 /* DailyRecordNextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyRecordNextButton.swift; sourceTree = "<group>"; };
+		30BB50C32AE1FCA80050CF69 /* MoodCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodCheckView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,7 +178,11 @@
 		305240422ADFA766008FCD14 /* DailyRecord */ = {
 			isa = PBXGroup;
 			children = (
+				30BB50C72AE2CDE90050CF69 /* ViewModel */,
 				305240432ADFA78C008FCD14 /* Components */,
+				30BB50BF2ADFFB710050CF69 /* DailyRecordView.swift */,
+				30BB50BD2ADFFAE00050CF69 /* ConditionCheckView.swift */,
+				30BB50C32AE1FCA80050CF69 /* MoodCheckView.swift */,
 			);
 			path = DailyRecord;
 			sourceTree = "<group>";
@@ -179,9 +191,17 @@
 			isa = PBXGroup;
 			children = (
 				305240452ADFA855008FCD14 /* DailyRecordProgressBar.swift */,
+				30BB50C12AE0C0680050CF69 /* DailyRecordNextButton.swift */,
 				30BB50B82ADFABBC0050CF69 /* ConditionSlider.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		30BB50C72AE2CDE90050CF69 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,6 +281,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				304180EC2ADAEFFC002AD2E3 /* NicknameSetView.swift in Sources */,
+				30BB50C22AE0C0680050CF69 /* DailyRecordNextButton.swift in Sources */,
 				3052400F2ADD21DF008FCD14 /* TempMedicationVeiw.swift in Sources */,
 				304180FA2ADCC740002AD2E3 /* SmokingSetView.swift in Sources */,
 				305240172ADD73EB008FCD14 /* SmokingStatus.swift in Sources */,
@@ -268,6 +289,9 @@
 				304180D32ADA8E37002AD2E3 /* StartView.swift in Sources */,
 				304180E52ADAC730002AD2E3 /* AgreementView.swift in Sources */,
 				304180F12ADBCA6E002AD2E3 /* OnboardingProgressBar.swift in Sources */,
+				30BB50C42AE1FCA80050CF69 /* MoodCheckView.swift in Sources */,
+				30BB50BE2ADFFAE00050CF69 /* ConditionCheckView.swift in Sources */,
+				30BB50C02ADFFB710050CF69 /* DailyRecordView.swift in Sources */,
 				305240462ADFA855008FCD14 /* DailyRecordProgressBar.swift in Sources */,
 				304180E72ADAC9D7002AD2E3 /* OnboardingNextButton.swift in Sources */,
 				304180F32ADC0C3F002AD2E3 /* OnboardingView.swift in Sources */,

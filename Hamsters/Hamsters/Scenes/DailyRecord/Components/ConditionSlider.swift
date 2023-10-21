@@ -10,7 +10,7 @@ import Sliders
 
 struct ConditionSlider: View {
     let title: String
-    @State private var userValue = 0.0
+    @Binding var userValue: Double
     @State private var range = 0.0...4.0
     
     var body: some View {
@@ -36,7 +36,7 @@ struct ConditionSlider: View {
                             .frame(height: 12),
                         thumb:
                             Circle()
-                            .frame(width: 48, height: 48)
+                            .frame(width: 40, height: 40)
                             .foregroundStyle(.white)
                             .shadow(color: .black.opacity(0.2), radius: 3, x: 0.0, y: 1.0)
                             .overlay{
@@ -46,12 +46,16 @@ struct ConditionSlider: View {
                                     .padding(.top, 6)
                                     .padding(.bottom, 10)
                             },
-                        thumbSize: CGSize(width: 56, height: 56)
+                        thumbSize: CGSize(width: 48, height: 48)
                     )
                 )
-                .frame(height: 64)
+                .frame(height: 56)
                 .clipped()
                 .padding(.horizontal, 8)
+                // 디버깅용
+                .onChange(of: userValue) { _ in
+                    print("\(title) : \(userValue) ")
+                }
             
             HStack {
                 Text("괜찮음")
@@ -86,5 +90,5 @@ struct ConditionSlider: View {
 }
 
 #Preview {
-    ConditionSlider(title: "집중하기 어려움")
+    ConditionSlider(title: "집중하기 어려움", userValue: .constant(0.0))
 }
