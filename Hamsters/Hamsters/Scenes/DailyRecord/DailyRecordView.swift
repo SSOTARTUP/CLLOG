@@ -9,12 +9,13 @@ import SwiftUI
 
 struct DailyRecordView: View {
     @Environment(\.dismiss) private var dismiss
-    @State private var pageNumber = 1
+    @State private var pageNumber = 7
     @State private var conditionValues: [Double] = Array(repeating: 0.0, count: Condition.allCases.count)
     @State private var moodValues: [Double] = Array(repeating: 0.0, count: Mood.allCases.count)
-    @State private var selectedPieces = 0
-    @State private var selectedBottles = 0
-    @State private var selectedCaffeine = 0
+    @State private var amountOfSmoking = 0
+    @State private var amountOfCaffein = 0
+    @State private var selectedCaffeine: [Bool] = Array(repeating: false, count: 10)
+    @State private var amountOfAlcohol = 0
     
     var body: some View {
         NavigationStack {
@@ -30,13 +31,13 @@ struct DailyRecordView: View {
                         MoodCheckView(pageNumber: $pageNumber, userValues: $moodValues)
                         
                     case 7: //  흡연량
-                        SmokingCheckView(pageNumber: $pageNumber, selectedPieces: $selectedPieces)
+                        SmokingCheckView(pageNumber: $pageNumber, amountOfSmoking: $amountOfSmoking)
                         
                     case 8: // 카페인
-                        CaffeineCheckView(pageNumber: $pageNumber, selectedCaffeine: $selectedCaffeine)
+                        CaffeineCheckView(pageNumber: $pageNumber, amountOfCaffein: $amountOfCaffein, isSelected: $selectedCaffeine)
                         
                     case 9: // 음주량
-                        DrinkCheckView(pageNumber: $pageNumber, selectedBottles: $selectedBottles)
+                        DrinkCheckView(pageNumber: $pageNumber, amountOfAlcohol: $amountOfAlcohol)
                         
                     default:
                         EmptyView()

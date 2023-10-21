@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SmokingCheckView: View {
     @Binding var pageNumber: Int
-    @Binding var selectedPieces: Int // 최솟값 기준으로 Int 값 저장
+    @Binding var amountOfSmoking: Int // 최솟값 기준으로 Int 값 저장
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -24,7 +24,7 @@ struct SmokingCheckView: View {
                     if pcs.minValue != 0 {
                         HStack {
                             Button {
-                                selectedPieces = pcs.minValue
+                                amountOfSmoking = pcs.minValue
                             } label: {
                                 Text("\(pcs.minValue)~\(pcs.maxValue) 개피")
                                     .foregroundStyle(Color.primary)
@@ -32,7 +32,7 @@ struct SmokingCheckView: View {
                             
                             Spacer()
                             
-                            if selectedPieces == pcs.minValue {
+                            if amountOfSmoking == pcs.minValue {
                                 Image(systemName: "checkmark")
                                     .fontWeight(.bold)
                                     .foregroundStyle(.thoNavy)
@@ -48,11 +48,11 @@ struct SmokingCheckView: View {
             
             Spacer()
             
-            DailyRecordNextTwoButtons(pageNumber: $pageNumber, selectedValue: $selectedPieces)
+            DailyRecordNextTwoButtons(pageNumber: $pageNumber, selectedValue: $amountOfSmoking)
         }
     }
 }
 
 #Preview {
-    SmokingCheckView(pageNumber: .constant(7), selectedPieces: .constant(0))
+    SmokingCheckView(pageNumber: .constant(7), amountOfSmoking: .constant(0))
 }

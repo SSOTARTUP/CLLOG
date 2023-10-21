@@ -9,8 +9,8 @@ import SwiftUI
 
 struct CaffeineCheckView: View {
     @Binding var pageNumber: Int
-    @Binding var selectedCaffeine: Int
-    @State private var isSelected = Array(repeating: false, count: 10)
+    @Binding var amountOfCaffein: Int
+    @Binding var isSelected: [Bool]
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -29,7 +29,7 @@ struct CaffeineCheckView: View {
                         for i in 0...index {
                             isSelected[i] = true
                         }
-                        selectedCaffeine = index
+                        amountOfCaffein = index
                     } label: {
                         Image(isSelected[index] ? "CaffeineSelected" : "CaffeineUnselected")
                     }
@@ -39,11 +39,11 @@ struct CaffeineCheckView: View {
             
             Spacer()
             
-            DailyRecordNextTwoButtons(pageNumber: $pageNumber, selectedValue: $selectedCaffeine)
+            DailyRecordNextTwoButtons(pageNumber: $pageNumber, selectedValue: $amountOfCaffein)
         }
     }
 }
 
 #Preview {
-    CaffeineCheckView(pageNumber: .constant(8), selectedCaffeine: .constant(0))
+    CaffeineCheckView(pageNumber: .constant(8), amountOfCaffein: .constant(0), isSelected: .constant(Array(repeating: false, count: 10)))
 }
