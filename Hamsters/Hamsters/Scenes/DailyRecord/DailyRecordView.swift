@@ -18,43 +18,29 @@ struct DailyRecordView: View {
     
     var body: some View {
         NavigationStack {
-            ZStack {
-                switch pageNumber {
-                case 1: // ADHD 컨디션 기록
-                    VStack(spacing: 12) {
-                        DailyRecordProgressBar(pageNumber: $pageNumber)
-                        
+            VStack(spacing: 12){
+                DailyRecordProgressBar(pageNumber: $pageNumber)
+                
+                ZStack {
+                    switch pageNumber {
+                    case 1: // ADHD 컨디션 기록
                         ConditionCheckView(pageNumber: $pageNumber, userValues: $conditionValues)
-                    }
-                case 2: // 감정 기록
-                    VStack(spacing: 12) {
-                        DailyRecordProgressBar(pageNumber: $pageNumber)
                         
+                    case 2: // 감정 기록
                         MoodCheckView(pageNumber: $pageNumber, userValues: $moodValues)
-                    }
-                case 7: //  흡연량
-                    VStack(spacing: 12) {
-                        DailyRecordProgressBar(pageNumber: $pageNumber)
                         
+                    case 7: //  흡연량
                         SmokingCheckView(pageNumber: $pageNumber, selectedPieces: $selectedPieces)
-                    }
-                    
-                case 8: // 카페인
-                    VStack(spacing: 12) {
-                        DailyRecordProgressBar(pageNumber: $pageNumber)
                         
+                    case 8: // 카페인
                         CaffeineCheckView(pageNumber: $pageNumber, selectedCaffeine: $selectedCaffeine)
-                    }
-                    
-                case 9: // 음주량
-                    VStack(spacing: 12) {
-                        DailyRecordProgressBar(pageNumber: $pageNumber)
                         
+                    case 9: // 음주량
                         DrinkCheckView(pageNumber: $pageNumber, selectedBottles: $selectedBottles)
+                        
+                    default:
+                        EmptyView()
                     }
-                    
-                default:
-                    EmptyView()
                 }
             }
             .navigationTitle("오늘의 상태 기록하기")
