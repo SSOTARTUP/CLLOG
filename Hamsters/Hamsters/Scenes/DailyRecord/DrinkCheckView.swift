@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DrinkCheckView: View {
     @Binding var pageNumber: Int
-    @Binding var selectedBottles: Int // 최솟값 기준으로 Int 값 저장
+    @Binding var selectedBottles: Int // 최댓값 기준으로 Int 값 저장
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -21,25 +21,30 @@ struct DrinkCheckView: View {
             
             List {
                 ForEach(DrinkAmount.allCases, id: \.self) { bottle in
-                    HStack {
-                        Button {
-                            selectedBottles = bottle.minValue
-                        } label: {
-                            if bottle.minValue == 5 {
-                                Text("\(bottle.minValue)병 이상")
-                                    .foregroundStyle(Color.primary)
-                            } else {
-                                Text("\(bottle.minValue)~\(bottle.maxValue) 병")
-                                    .foregroundStyle(Color.primary)
+                    if bottle.maxValue != 0 {
+                        HStack {
+                            Button {
+                                selectedBottles = bottle.maxValue
+                            } label: {
+                                if bottle.maxValue == 5 {
+                                    Text("\(bottle.maxValue)병 이상")
+                                        .foregroundStyle(Color.primary)
+                                } else if bottle.maxValue == 1 {
+                                    Text("\(bottle.maxValue)병 미만")
+                                        .foregroundStyle(Color.primary)
+                                } else {
+                                    Text("\(bottle.minValue)~\(bottle.maxValue) 병")
+                                        .foregroundStyle(Color.primary)
+                                }
                             }
-                        }
-                        
-                        Spacer()
-                        
-                        if selectedBottles == bottle.minValue {
-                            Image(systemName: "checkmark")
-                                .fontWeight(.bold)
-                                .foregroundStyle(.thoNavy)
+                            
+                            Spacer()
+                            
+                            if selectedBottles == bottle.minValue {
+                                Image(systemName: "checkmark")
+                                    .fontWeight(.bold)
+                                    .foregroundStyle(.thoNavy)
+                            }
                         }
                     }
                 }
