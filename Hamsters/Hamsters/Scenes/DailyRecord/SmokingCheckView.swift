@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SmokingCheckView: View {
     @Binding var pageNumber: Int
-    @State private var selectedPieces = 0   // 최솟값 기준으로 Int 값 저장
+    @Binding var selectedPieces: Int // 최솟값 기준으로 Int 값 저장
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -21,20 +21,22 @@ struct SmokingCheckView: View {
             
             List {
                 ForEach(SmokingAmount.allCases, id: \.self) { pcs in
-                    HStack {
-                        Button {
-                            selectedPieces = pcs.minValue
-                        } label: {
-                            Text("\(pcs.minValue)~\(pcs.maxValue) 개피")
-                                .foregroundStyle(Color.primary)
-                        }
-                        
-                        Spacer()
-                        
-                        if selectedPieces == pcs.minValue {
-                            Image(systemName: "checkmark")
-                                .fontWeight(.bold)
-                                .foregroundStyle(.thoNavy)
+                    if pcs.minValue != 0 {
+                        HStack {
+                            Button {
+                                selectedPieces = pcs.minValue
+                            } label: {
+                                Text("\(pcs.minValue)~\(pcs.maxValue) 개피")
+                                    .foregroundStyle(Color.primary)
+                            }
+                            
+                            Spacer()
+                            
+                            if selectedPieces == pcs.minValue {
+                                Image(systemName: "checkmark")
+                                    .fontWeight(.bold)
+                                    .foregroundStyle(.thoNavy)
+                            }
                         }
                     }
                 }
@@ -52,5 +54,5 @@ struct SmokingCheckView: View {
 }
 
 #Preview {
-    SmokingCheckView(pageNumber: .constant(7))
+    SmokingCheckView(pageNumber: .constant(7), selectedPieces: .constant(0))
 }

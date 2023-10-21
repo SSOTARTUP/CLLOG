@@ -50,7 +50,7 @@ struct DailyRecordView: View {
                     VStack(spacing: 12) {
                         DailyRecordProgressBar(pageNumber: $pageNumber)
                         
-                        DrinkCheckView(pageNumber: $pageNumber)
+                        DrinkCheckView(pageNumber: $pageNumber, selectedBottles: $selectedBottles)
                     }
                     
                 default:

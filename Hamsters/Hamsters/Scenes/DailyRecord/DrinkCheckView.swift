@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DrinkCheckView: View {
     @Binding var pageNumber: Int
-    @State private var selectedBottles = 0   // 최솟값 기준으로 Int 값 저장
+    @Binding var selectedBottles: Int // 최솟값 기준으로 Int 값 저장
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -57,5 +57,5 @@ struct DrinkCheckView: View {
 }
 
 #Preview {
-    DrinkCheckView(pageNumber: .constant(9))
+    DrinkCheckView(pageNumber: .constant(9), selectedBottles: .constant(0))
 }
