@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DailyRecordView: View {
     @Environment(\.dismiss) private var dismiss
-    @State private var pageNumber = 1
+    @State private var pageNumber = 7
     @State private var conditionValues: [Double] = Array(repeating: 0.0, count: Condition.allCases.count)
     @State private var moodValues: [Double] = Array(repeating: 0.0, count: Mood.allCases.count)
     
@@ -18,16 +18,22 @@ struct DailyRecordView: View {
             ZStack {
                 switch pageNumber {
                 case 1: // ADHD 컨디션 기록
-                    VStack(alignment: .leading, spacing: 12) {
+                    VStack(spacing: 12) {
                         DailyRecordProgressBar(pageNumber: $pageNumber)
                         
                         ConditionCheckView(pageNumber: $pageNumber, userValues: $conditionValues)
                     }
                 case 2: // 감정 기록
-                    VStack(alignment: .leading, spacing: 12) {
+                    VStack(spacing: 12) {
                         DailyRecordProgressBar(pageNumber: $pageNumber)
                         
                         MoodCheckView(pageNumber: $pageNumber, userValues: $moodValues)
+                    }
+                case 7: //  흡연량
+                    VStack(spacing: 12) {
+                        DailyRecordProgressBar(pageNumber: $pageNumber)
+                        
+                        SmokingCheckView(pageNumber: $pageNumber)
                     }
                     
                 default:
