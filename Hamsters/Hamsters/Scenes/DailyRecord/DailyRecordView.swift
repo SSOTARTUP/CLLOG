@@ -9,9 +9,12 @@ import SwiftUI
 
 struct DailyRecordView: View {
     @Environment(\.dismiss) private var dismiss
-    @State private var pageNumber = 9
+    @State private var pageNumber = 1
     @State private var conditionValues: [Double] = Array(repeating: 0.0, count: Condition.allCases.count)
     @State private var moodValues: [Double] = Array(repeating: 0.0, count: Mood.allCases.count)
+    @State private var selectedPieces = 0
+    @State private var selectedBottles = 0
+    @State private var selectedCaffeine = 0
     
     var body: some View {
         NavigationStack {
@@ -33,7 +36,14 @@ struct DailyRecordView: View {
                     VStack(spacing: 12) {
                         DailyRecordProgressBar(pageNumber: $pageNumber)
                         
-                        SmokingCheckView(pageNumber: $pageNumber)
+                        SmokingCheckView(pageNumber: $pageNumber, selectedPieces: $selectedPieces)
+                    }
+                    
+                case 8: // 카페인
+                    VStack(spacing: 12) {
+                        DailyRecordProgressBar(pageNumber: $pageNumber)
+                        
+                        CaffeineCheckView(pageNumber: $pageNumber, selectedCaffeine: $selectedCaffeine)
                     }
                     
                 case 9: // 음주량
