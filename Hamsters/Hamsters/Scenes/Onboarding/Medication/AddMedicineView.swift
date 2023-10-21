@@ -12,7 +12,8 @@ struct AddMedicineView: View {
     
     @FocusState private var isInputFocused: Bool  // 포커스 상태를 추적합니다.
     
-    @StateObject private var medicineViewModel = MedicineViewModel()
+//    @StateObject private var medicineViewModel = MedicineViewModel()
+    @EnvironmentObject var medicineViewModel: MedicineViewModel
     @StateObject private var alarmModel = AlarmViewModel()
     
     @State var medicineName = ""
@@ -75,7 +76,7 @@ struct AddMedicineView: View {
     private func updateFullCapacityText() {
         if selectedMediIndex < mediCapacity.count {
             let unit = mediCapacity[selectedMediIndex]  // 선택된 단위.
-            fullCapacityText = "\(capacity) \(unit)"  // 용량과 단위를 결합합니다.
+            fullCapacityText = "\(capacity)\(unit)"  // 용량과 단위를 결합합니다.
         }
     }
     
@@ -258,7 +259,7 @@ struct AddMedicineView: View {
                             return
                         }
                         
-                        medicineViewModel.addMedicine(name: medicineName, capacity: capacity, frequency: selectedDays, unit: mediCapacity[selectedMediIndex], startDay: startDay, alarms: alarmModel.alarms)
+                        medicineViewModel.addMedicine(name: medicineName, capacity: capacity, frequency: selectedDays, unit: mediCapacity[selectedMediIndex], startDay: startDay, alarms: alarmModel.alarms, sortedDays: sortedDaysString)
                         // 용량 + unit = fullycapacityText
                         print(medicineViewModel.medicines)
                         dismiss()

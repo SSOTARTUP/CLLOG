@@ -9,10 +9,14 @@ import SwiftUI
 
 @main
 struct HamstersApp: App {
+    // 앱 전체에서 사용하기 위해 MedicineViewModel 인스턴스 생성
+    @StateObject private var medicineViewModel = MedicineViewModel()
+
     var body: some Scene {
         WindowGroup {
-//            StartView()
-            AddMedicineView()
+            MedicationView()
+                .environmentObject(medicineViewModel)
+
         }
     }
 }

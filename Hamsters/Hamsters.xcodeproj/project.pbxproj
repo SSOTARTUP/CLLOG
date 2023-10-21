@@ -16,6 +16,10 @@
 		B571E1F02ADD1D8700969755 /* AlarmItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B571E1EF2ADD1D8600969755 /* AlarmItem.swift */; };
 		B571E1F32ADD1DDA00969755 /* AlarmViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B571E1F22ADD1DDA00969755 /* AlarmViewModel.swift */; };
 		B571E1F52ADD253600969755 /* AlarmRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B571E1F42ADD253600969755 /* AlarmRow.swift */; };
+		B5DB8E912AE020C200191384 /* MedicineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DB8E902AE020C200191384 /* MedicineViewModel.swift */; };
+		B5DB8E942AE0894600191384 /* MedicineRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DB8E932AE0894600191384 /* MedicineRow.swift */; };
+		B5E912162ADE52A800084B0F /* AlarmFrequencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E912152ADE52A800084B0F /* AlarmFrequencyView.swift */; };
+		B5E9121B2ADF6A0900084B0F /* MedicineModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E9121A2ADF6A0900084B0F /* MedicineModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,9 +30,13 @@
 		304180D72ADA8E39002AD2E3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B571E1E82ADCB3FE00969755 /* MedicationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicationView.swift; sourceTree = "<group>"; };
 		B571E1ED2ADCC8DF00969755 /* AddMedicineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMedicineView.swift; sourceTree = "<group>"; };
-		B571E1EF2ADD1D8600969755 /* AlarmItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AlarmItem.swift; path = Hamsters/Scenes/Onboarding/Medication/AlarmItem.swift; sourceTree = SOURCE_ROOT; };
+		B571E1EF2ADD1D8600969755 /* AlarmItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AlarmItem.swift; path = Hamsters/Models/Medicine/AlarmItem.swift; sourceTree = SOURCE_ROOT; };
 		B571E1F22ADD1DDA00969755 /* AlarmViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmViewModel.swift; sourceTree = "<group>"; };
 		B571E1F42ADD253600969755 /* AlarmRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmRow.swift; sourceTree = "<group>"; };
+		B5DB8E902AE020C200191384 /* MedicineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicineViewModel.swift; sourceTree = "<group>"; };
+		B5DB8E932AE0894600191384 /* MedicineRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicineRow.swift; sourceTree = "<group>"; };
+		B5E912152ADE52A800084B0F /* AlarmFrequencyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmFrequencyView.swift; sourceTree = "<group>"; };
+		B5E9121A2ADF6A0900084B0F /* MedicineModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicineModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,7 +53,6 @@
 		304180C42ADA8E37002AD2E3 = {
 			isa = PBXGroup;
 			children = (
-				B571E1F12ADD1DBE00969755 /* ViewModel */,
 				304180CF2ADA8E37002AD2E3 /* Hamsters */,
 				304180CE2ADA8E37002AD2E3 /* Products */,
 			);
@@ -66,6 +73,7 @@
 				304180DF2ADAACF1002AD2E3 /* Models */,
 				304180DE2ADAACE2002AD2E3 /* Scenes */,
 				304180D42ADA8E39002AD2E3 /* Assets.xcassets */,
+				B571E1F12ADD1DBE00969755 /* ViewModel */,
 				304180D62ADA8E39002AD2E3 /* Preview Content */,
 			);
 			path = Hamsters;
@@ -90,7 +98,7 @@
 		304180DF2ADAACF1002AD2E3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				B571E1EF2ADD1D8600969755 /* AlarmItem.swift */,
+				B5DB8E922AE021E300191384 /* Medicine */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -109,7 +117,9 @@
 			children = (
 				B571E1E82ADCB3FE00969755 /* MedicationView.swift */,
 				B571E1ED2ADCC8DF00969755 /* AddMedicineView.swift */,
+				B5E912152ADE52A800084B0F /* AlarmFrequencyView.swift */,
 				B571E1F42ADD253600969755 /* AlarmRow.swift */,
+				B5DB8E932AE0894600191384 /* MedicineRow.swift */,
 			);
 			path = Medication;
 			sourceTree = "<group>";
@@ -118,8 +128,18 @@
 			isa = PBXGroup;
 			children = (
 				B571E1F22ADD1DDA00969755 /* AlarmViewModel.swift */,
+				B5DB8E902AE020C200191384 /* MedicineViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		B5DB8E922AE021E300191384 /* Medicine */ = {
+			isa = PBXGroup;
+			children = (
+				B571E1EF2ADD1D8600969755 /* AlarmItem.swift */,
+				B5E9121A2ADF6A0900084B0F /* MedicineModel.swift */,
+			);
+			path = Medicine;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -197,7 +217,11 @@
 				304180D32ADA8E37002AD2E3 /* StartView.swift in Sources */,
 				B571E1EE2ADCC8DF00969755 /* AddMedicineView.swift in Sources */,
 				B571E1E92ADCB3FE00969755 /* MedicationView.swift in Sources */,
+				B5E912162ADE52A800084B0F /* AlarmFrequencyView.swift in Sources */,
+				B5DB8E912AE020C200191384 /* MedicineViewModel.swift in Sources */,
+				B5DB8E942AE0894600191384 /* MedicineRow.swift in Sources */,
 				304180D12ADA8E37002AD2E3 /* HamstersApp.swift in Sources */,
+				B5E9121B2ADF6A0900084B0F /* MedicineModel.swift in Sources */,
 				B571E1F52ADD253600969755 /* AlarmRow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
