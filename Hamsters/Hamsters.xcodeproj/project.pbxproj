@@ -11,6 +11,7 @@
 		30151F452AE3AE850036B60D /* DrinkCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30151F442AE3AE850036B60D /* DrinkCheckView.swift */; };
 		30151F472AE3AF060036B60D /* DrinkAmount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30151F462AE3AF060036B60D /* DrinkAmount.swift */; };
 		30151F492AE4007B0036B60D /* CaffeineCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30151F482AE4007B0036B60D /* CaffeineCheckView.swift */; };
+		301971542AE4F00600728D16 /* DailyCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301971532AE4F00600728D16 /* DailyCompleteView.swift */; };
 		304180D12ADA8E37002AD2E3 /* HamstersApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304180D02ADA8E37002AD2E3 /* HamstersApp.swift */; };
 		304180D32ADA8E37002AD2E3 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304180D22ADA8E37002AD2E3 /* StartView.swift */; };
 		304180D52ADA8E39002AD2E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 304180D42ADA8E39002AD2E3 /* Assets.xcassets */; };
@@ -61,6 +62,7 @@
 		30151F442AE3AE850036B60D /* DrinkCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkCheckView.swift; sourceTree = "<group>"; };
 		30151F462AE3AF060036B60D /* DrinkAmount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkAmount.swift; sourceTree = "<group>"; };
 		30151F482AE4007B0036B60D /* CaffeineCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaffeineCheckView.swift; sourceTree = "<group>"; };
+		301971532AE4F00600728D16 /* DailyCompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyCompleteView.swift; sourceTree = "<group>"; };
 		304180CD2ADA8E37002AD2E3 /* Hamsters.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hamsters.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		304180D02ADA8E37002AD2E3 /* HamstersApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HamstersApp.swift; sourceTree = "<group>"; };
 		304180D22ADA8E37002AD2E3 /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
@@ -234,6 +236,7 @@
 				30151F482AE4007B0036B60D /* CaffeineCheckView.swift */,
 				30151F442AE3AE850036B60D /* DrinkCheckView.swift */,
 				307B7D892AE4E0B1007CB7F5 /* AdditionalMemoView.swift */,
+				301971532AE4F00600728D16 /* DailyCompleteView.swift */,
 			);
 			path = DailyRecord;
 			sourceTree = "<group>";
@@ -444,6 +447,7 @@
 				30151F492AE4007B0036B60D /* CaffeineCheckView.swift in Sources */,
 				30151F472AE3AF060036B60D /* DrinkAmount.swift in Sources */,
 				305240162ADD73EB008FCD14 /* UserDefaultsKey.swift in Sources */,
+				301971542AE4F00600728D16 /* DailyCompleteView.swift in Sources */,
 				30BB50C92AE395F80050CF69 /* SmokingCheckView.swift in Sources */,
 				307B7D7D2AE43092007CB7F5 /* TabItem.swift in Sources */,
 				304180D12ADA8E37002AD2E3 /* HamstersApp.swift in Sources */,

@@ -43,6 +43,9 @@ struct DailyRecordView: View {
                     case 10: // 추가 메모
                             AdditionalMemoView(pageNumber: $pageNumber, memo: $memo)
                         
+                    case 11: // 완료 페이지
+                        DailyCompleteView(pageNumber: $pageNumber)
+                        
                     default:
                         EmptyView()
                     }
