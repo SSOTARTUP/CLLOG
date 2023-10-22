@@ -9,13 +9,14 @@ import SwiftUI
 
 struct DailyRecordView: View {
     @Environment(\.dismiss) private var dismiss
-    @State private var pageNumber = 7
+    @State private var pageNumber = 10
     @State private var conditionValues: [Double] = Array(repeating: 0.0, count: Condition.allCases.count)
     @State private var moodValues: [Double] = Array(repeating: 0.0, count: Mood.allCases.count)
     @State private var amountOfSmoking = 0
     @State private var amountOfCaffein = 0
     @State private var selectedCaffeine: [Bool] = Array(repeating: false, count: 10)
     @State private var amountOfAlcohol = 0
+    @State private var memo = ""
     
     var body: some View {
         NavigationStack {
@@ -38,6 +39,12 @@ struct DailyRecordView: View {
                         
                     case 9: // 음주량
                         DrinkCheckView(pageNumber: $pageNumber, amountOfAlcohol: $amountOfAlcohol)
+                        
+                    case 10: // 추가 메모
+                            AdditionalMemoView(pageNumber: $pageNumber, memo: $memo)
+                        
+                    case 11: // 완료 페이지
+                        DailyCompleteView(pageNumber: $pageNumber)
                         
                     default:
                         EmptyView()

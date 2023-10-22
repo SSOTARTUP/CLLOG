@@ -11,7 +11,7 @@ struct DailyRecordProgressBar: View {
     @Binding var pageNumber: Int
     
     var body: some View {
-        ProgressView(value: Double(pageNumber), total: 12)
+        ProgressView(value: Double(pageNumber), total: 11)
             .tint(.thoNavy)
             .padding(.vertical, 16)
             .padding(.horizontal, 16)
