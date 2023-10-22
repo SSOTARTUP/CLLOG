@@ -11,6 +11,7 @@
 		30151F452AE3AE850036B60D /* DrinkCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30151F442AE3AE850036B60D /* DrinkCheckView.swift */; };
 		30151F472AE3AF060036B60D /* DrinkAmount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30151F462AE3AF060036B60D /* DrinkAmount.swift */; };
 		30151F492AE4007B0036B60D /* CaffeineCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30151F482AE4007B0036B60D /* CaffeineCheckView.swift */; };
+		301971542AE4F00600728D16 /* DailyCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301971532AE4F00600728D16 /* DailyCompleteView.swift */; };
 		304180D12ADA8E37002AD2E3 /* HamstersApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304180D02ADA8E37002AD2E3 /* HamstersApp.swift */; };
 		304180D32ADA8E37002AD2E3 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304180D22ADA8E37002AD2E3 /* StartView.swift */; };
 		304180D52ADA8E39002AD2E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 304180D42ADA8E39002AD2E3 /* Assets.xcassets */; };
@@ -45,6 +46,7 @@
 		307B7D812AE432A2007CB7F5 /* DiaryMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307B7D802AE432A2007CB7F5 /* DiaryMainView.swift */; };
 		307B7D842AE432EF007CB7F5 /* StatisticsMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307B7D832AE432EF007CB7F5 /* StatisticsMainView.swift */; };
 		307B7D872AE43322007CB7F5 /* MyInfoMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307B7D862AE43322007CB7F5 /* MyInfoMainView.swift */; };
+		307B7D8A2AE4E0B1007CB7F5 /* AdditionalMemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307B7D892AE4E0B1007CB7F5 /* AdditionalMemoView.swift */; };
 		30BB50B92ADFABBC0050CF69 /* ConditionSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BB50B82ADFABBC0050CF69 /* ConditionSlider.swift */; };
 		30BB50BC2ADFABDB0050CF69 /* Sliders in Frameworks */ = {isa = PBXBuildFile; productRef = 30BB50BB2ADFABDB0050CF69 /* Sliders */; };
 		30BB50BE2ADFFAE00050CF69 /* ConditionCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BB50BD2ADFFAE00050CF69 /* ConditionCheckView.swift */; };
@@ -64,6 +66,7 @@
 		30151F442AE3AE850036B60D /* DrinkCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkCheckView.swift; sourceTree = "<group>"; };
 		30151F462AE3AF060036B60D /* DrinkAmount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkAmount.swift; sourceTree = "<group>"; };
 		30151F482AE4007B0036B60D /* CaffeineCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaffeineCheckView.swift; sourceTree = "<group>"; };
+		301971532AE4F00600728D16 /* DailyCompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyCompleteView.swift; sourceTree = "<group>"; };
 		304180CD2ADA8E37002AD2E3 /* Hamsters.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hamsters.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		304180D02ADA8E37002AD2E3 /* HamstersApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HamstersApp.swift; sourceTree = "<group>"; };
 		304180D22ADA8E37002AD2E3 /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
@@ -99,6 +102,7 @@
 		307B7D802AE432A2007CB7F5 /* DiaryMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryMainView.swift; sourceTree = "<group>"; };
 		307B7D832AE432EF007CB7F5 /* StatisticsMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsMainView.swift; sourceTree = "<group>"; };
 		307B7D862AE43322007CB7F5 /* MyInfoMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoMainView.swift; sourceTree = "<group>"; };
+		307B7D892AE4E0B1007CB7F5 /* AdditionalMemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalMemoView.swift; sourceTree = "<group>"; };
 		30BB50B82ADFABBC0050CF69 /* ConditionSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionSlider.swift; sourceTree = "<group>"; };
 		30BB50BD2ADFFAE00050CF69 /* ConditionCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionCheckView.swift; sourceTree = "<group>"; };
 		30BB50BF2ADFFB710050CF69 /* DailyRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyRecordView.swift; sourceTree = "<group>"; };
@@ -241,6 +245,8 @@
 				30151F482AE4007B0036B60D /* CaffeineCheckView.swift */,
 				30151F442AE3AE850036B60D /* DrinkCheckView.swift */,
 				B5F904C62AE4E0DA00FDE4CB /* SideEffectCheckView.swift */,
+				307B7D892AE4E0B1007CB7F5 /* AdditionalMemoView.swift */,
+				301971532AE4F00600728D16 /* DailyCompleteView.swift */,
 			);
 			path = DailyRecord;
 			sourceTree = "<group>";
@@ -380,11 +386,12 @@
 			};
 			buildConfigurationList = 304180C82ADA8E37002AD2E3 /* Build configuration list for PBXProject "Hamsters" */;
 			compatibilityVersion = "Xcode 14.0";
-			developmentRegion = en;
+			developmentRegion = ko;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
+				ko,
 			);
 			mainGroup = 304180C42ADA8E37002AD2E3;
 			packageReferences = (
@@ -427,6 +434,7 @@
 				307B7D772AE424BC007CB7F5 /* AlarmViewModel.swift in Sources */,
 				307B7D842AE432EF007CB7F5 /* StatisticsMainView.swift in Sources */,
 				304180FA2ADCC740002AD2E3 /* SmokingSetView.swift in Sources */,
+				307B7D8A2AE4E0B1007CB7F5 /* AdditionalMemoView.swift in Sources */,
 				30151F432AE3AD590036B60D /* SmokingAmount.swift in Sources */,
 				305240172ADD73EB008FCD14 /* SmokingStatus.swift in Sources */,
 				307B7D662AE42480007CB7F5 /* MedicineModel.swift in Sources */,
@@ -455,6 +463,7 @@
 				30151F492AE4007B0036B60D /* CaffeineCheckView.swift in Sources */,
 				30151F472AE3AF060036B60D /* DrinkAmount.swift in Sources */,
 				305240162ADD73EB008FCD14 /* UserDefaultsKey.swift in Sources */,
+				301971542AE4F00600728D16 /* DailyCompleteView.swift in Sources */,
 				30BB50C92AE395F80050CF69 /* SmokingCheckView.swift in Sources */,
 				307B7D7D2AE43092007CB7F5 /* TabItem.swift in Sources */,
 				304180D12ADA8E37002AD2E3 /* HamstersApp.swift in Sources */,
@@ -600,6 +609,7 @@
 				DEVELOPMENT_TEAM = FJ72KV3U2A;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Clue;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -612,12 +622,15 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ThotartUp.Hamsters;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ThotartUp.Clue;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -633,6 +646,7 @@
 				DEVELOPMENT_TEAM = FJ72KV3U2A;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Clue;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -645,12 +659,15 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ThotartUp.Hamsters;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ThotartUp.Clue;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

@@ -11,11 +11,13 @@ struct DailyRecordNextButton: View {
 //    @Binding var isActive: Bool
     @Binding var pageNumber: Int
     
+    let title: String
+    
     var body: some View {
         Button {
             pageNumber += 1
         } label: {
-            Text("다음")
+            Text(title)
                 .font(.headline)
                 .fontWeight(.semibold)
                 .foregroundStyle(.white)
@@ -30,5 +32,5 @@ struct DailyRecordNextButton: View {
 }
 
 #Preview {
-    DailyRecordNextButton(pageNumber: .constant(1))
+    DailyRecordNextButton(pageNumber: .constant(1), title: "다음")
 }
