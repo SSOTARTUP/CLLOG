@@ -32,11 +32,11 @@ struct SideEffectCheckView: View {
                     }
                 }
             }
-            .padding(.top, 20)
+
+            Spacer()
             
-            DailyRecordNextButton(pageNumber: $pageNumber)
-                .padding(.top, 90)
-            
+            DailyRecordNextButton(pageNumber: $pageNumber, title: "다음")
+                .padding(.bottom, 30)
             
         }
         .padding(.horizontal, 16)
