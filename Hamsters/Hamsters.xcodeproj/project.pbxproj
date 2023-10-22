@@ -55,6 +55,10 @@
 		30BB50C42AE1FCA80050CF69 /* MoodCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BB50C32AE1FCA80050CF69 /* MoodCheckView.swift */; };
 		30BB50C92AE395F80050CF69 /* SmokingCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BB50C82AE395F80050CF69 /* SmokingCheckView.swift */; };
 		30BB50CB2AE3A4C30050CF69 /* DailyRecordNextTwoButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BB50CA2AE3A4C30050CF69 /* DailyRecordNextTwoButtons.swift */; };
+		B5F904C72AE4E0DA00FDE4CB /* SideEffectCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F904C62AE4E0DA00FDE4CB /* SideEffectCheckView.swift */; };
+		B5F904CA2AE4E13500FDE4CB /* WrappingHStack in Frameworks */ = {isa = PBXBuildFile; productRef = B5F904C92AE4E13500FDE4CB /* WrappingHStack */; };
+		B5F904CE2AE4E4DF00FDE4CB /* SideEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F904CD2AE4E4DF00FDE4CB /* SideEffects.swift */; };
+		B5F904D02AE4E61200FDE4CB /* CapsuleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F904CF2AE4E61200FDE4CB /* CapsuleView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -106,6 +110,9 @@
 		30BB50C32AE1FCA80050CF69 /* MoodCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodCheckView.swift; sourceTree = "<group>"; };
 		30BB50C82AE395F80050CF69 /* SmokingCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmokingCheckView.swift; sourceTree = "<group>"; };
 		30BB50CA2AE3A4C30050CF69 /* DailyRecordNextTwoButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyRecordNextTwoButtons.swift; sourceTree = "<group>"; };
+		B5F904C62AE4E0DA00FDE4CB /* SideEffectCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideEffectCheckView.swift; sourceTree = "<group>"; };
+		B5F904CD2AE4E4DF00FDE4CB /* SideEffects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideEffects.swift; sourceTree = "<group>"; };
+		B5F904CF2AE4E61200FDE4CB /* CapsuleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsuleView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +120,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5F904CA2AE4E13500FDE4CB /* WrappingHStack in Frameworks */,
 				30BB50BC2ADFABDB0050CF69 /* Sliders in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -220,6 +228,7 @@
 				30151F422AE3AD590036B60D /* SmokingAmount.swift */,
 				30151F462AE3AF060036B60D /* DrinkAmount.swift */,
 				307B7D7C2AE43092007CB7F5 /* TabItem.swift */,
+				B5F904CD2AE4E4DF00FDE4CB /* SideEffects.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -235,6 +244,7 @@
 				30BB50C82AE395F80050CF69 /* SmokingCheckView.swift */,
 				30151F482AE4007B0036B60D /* CaffeineCheckView.swift */,
 				30151F442AE3AE850036B60D /* DrinkCheckView.swift */,
+				B5F904C62AE4E0DA00FDE4CB /* SideEffectCheckView.swift */,
 				307B7D892AE4E0B1007CB7F5 /* AdditionalMemoView.swift */,
 				301971532AE4F00600728D16 /* DailyCompleteView.swift */,
 			);
@@ -248,6 +258,7 @@
 				30BB50C12AE0C0680050CF69 /* DailyRecordNextButton.swift */,
 				30BB50CA2AE3A4C30050CF69 /* DailyRecordNextTwoButtons.swift */,
 				30BB50B82ADFABBC0050CF69 /* ConditionSlider.swift */,
+				B5F904CF2AE4E61200FDE4CB /* CapsuleView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -352,6 +363,7 @@
 			name = Hamsters;
 			packageProductDependencies = (
 				30BB50BB2ADFABDB0050CF69 /* Sliders */,
+				B5F904C92AE4E13500FDE4CB /* WrappingHStack */,
 			);
 			productName = Hamsters;
 			productReference = 304180CD2ADA8E37002AD2E3 /* Hamsters.app */;
@@ -384,6 +396,7 @@
 			mainGroup = 304180C42ADA8E37002AD2E3;
 			packageReferences = (
 				30BB50BA2ADFABDB0050CF69 /* XCRemoteSwiftPackageReference "swiftui-sliders" */,
+				B5F904C82AE4E13500FDE4CB /* XCRemoteSwiftPackageReference "WrappingHStack" */,
 			);
 			productRefGroup = 304180CE2ADA8E37002AD2E3 /* Products */;
 			projectDirPath = "";
@@ -427,11 +440,14 @@
 				307B7D662AE42480007CB7F5 /* MedicineModel.swift in Sources */,
 				307B7D722AE424A2007CB7F5 /* AddMedicineView.swift in Sources */,
 				307B7D672AE42480007CB7F5 /* AlarmItem.swift in Sources */,
+				B5F904CE2AE4E4DF00FDE4CB /* SideEffects.swift in Sources */,
+				B5F904C72AE4E0DA00FDE4CB /* SideEffectCheckView.swift in Sources */,
 				30BB50B92ADFABBC0050CF69 /* ConditionSlider.swift in Sources */,
 				304180D32ADA8E37002AD2E3 /* StartView.swift in Sources */,
 				304180E52ADAC730002AD2E3 /* AgreementView.swift in Sources */,
 				307B7D702AE424A2007CB7F5 /* AlarmFrequencyView.swift in Sources */,
 				307B7D872AE43322007CB7F5 /* MyInfoMainView.swift in Sources */,
+				B5F904D02AE4E61200FDE4CB /* CapsuleView.swift in Sources */,
 				304180F12ADBCA6E002AD2E3 /* OnboardingProgressBar.swift in Sources */,
 				30BB50C42AE1FCA80050CF69 /* MoodCheckView.swift in Sources */,
 				30BB50BE2ADFFAE00050CF69 /* ConditionCheckView.swift in Sources */,
@@ -687,6 +703,14 @@
 				minimumVersion = 2.1.0;
 			};
 		};
+		B5F904C82AE4E13500FDE4CB /* XCRemoteSwiftPackageReference "WrappingHStack" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ksemianov/WrappingHStack";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.3;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -694,6 +718,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 30BB50BA2ADFABDB0050CF69 /* XCRemoteSwiftPackageReference "swiftui-sliders" */;
 			productName = Sliders;
+		};
+		B5F904C92AE4E13500FDE4CB /* WrappingHStack */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B5F904C82AE4E13500FDE4CB /* XCRemoteSwiftPackageReference "WrappingHStack" */;
+			productName = WrappingHStack;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
