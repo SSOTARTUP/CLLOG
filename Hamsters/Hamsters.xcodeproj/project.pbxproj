@@ -45,6 +45,7 @@
 		307B7D812AE432A2007CB7F5 /* DiaryMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307B7D802AE432A2007CB7F5 /* DiaryMainView.swift */; };
 		307B7D842AE432EF007CB7F5 /* StatisticsMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307B7D832AE432EF007CB7F5 /* StatisticsMainView.swift */; };
 		307B7D872AE43322007CB7F5 /* MyInfoMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307B7D862AE43322007CB7F5 /* MyInfoMainView.swift */; };
+		307B7D8A2AE4E0B1007CB7F5 /* AdditionalMemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307B7D892AE4E0B1007CB7F5 /* AdditionalMemoView.swift */; };
 		30BB50B92ADFABBC0050CF69 /* ConditionSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BB50B82ADFABBC0050CF69 /* ConditionSlider.swift */; };
 		30BB50BC2ADFABDB0050CF69 /* Sliders in Frameworks */ = {isa = PBXBuildFile; productRef = 30BB50BB2ADFABDB0050CF69 /* Sliders */; };
 		30BB50BE2ADFFAE00050CF69 /* ConditionCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BB50BD2ADFFAE00050CF69 /* ConditionCheckView.swift */; };
@@ -95,6 +96,7 @@
 		307B7D802AE432A2007CB7F5 /* DiaryMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryMainView.swift; sourceTree = "<group>"; };
 		307B7D832AE432EF007CB7F5 /* StatisticsMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsMainView.swift; sourceTree = "<group>"; };
 		307B7D862AE43322007CB7F5 /* MyInfoMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoMainView.swift; sourceTree = "<group>"; };
+		307B7D892AE4E0B1007CB7F5 /* AdditionalMemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalMemoView.swift; sourceTree = "<group>"; };
 		30BB50B82ADFABBC0050CF69 /* ConditionSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionSlider.swift; sourceTree = "<group>"; };
 		30BB50BD2ADFFAE00050CF69 /* ConditionCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionCheckView.swift; sourceTree = "<group>"; };
 		30BB50BF2ADFFB710050CF69 /* DailyRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyRecordView.swift; sourceTree = "<group>"; };
@@ -231,6 +233,7 @@
 				30BB50C82AE395F80050CF69 /* SmokingCheckView.swift */,
 				30151F482AE4007B0036B60D /* CaffeineCheckView.swift */,
 				30151F442AE3AE850036B60D /* DrinkCheckView.swift */,
+				307B7D892AE4E0B1007CB7F5 /* AdditionalMemoView.swift */,
 			);
 			path = DailyRecord;
 			sourceTree = "<group>";
@@ -415,6 +418,7 @@
 				307B7D772AE424BC007CB7F5 /* AlarmViewModel.swift in Sources */,
 				307B7D842AE432EF007CB7F5 /* StatisticsMainView.swift in Sources */,
 				304180FA2ADCC740002AD2E3 /* SmokingSetView.swift in Sources */,
+				307B7D8A2AE4E0B1007CB7F5 /* AdditionalMemoView.swift in Sources */,
 				30151F432AE3AD590036B60D /* SmokingAmount.swift in Sources */,
 				305240172ADD73EB008FCD14 /* SmokingStatus.swift in Sources */,
 				307B7D662AE42480007CB7F5 /* MedicineModel.swift in Sources */,
