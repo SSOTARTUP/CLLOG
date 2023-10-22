@@ -27,7 +27,7 @@ struct MoodCheckView: View {
                         ConditionSlider(title: title, userValue: $userValues[index])
                     }
                     
-                    DailyRecordNextButton(pageNumber: $pageNumber)
+                    DailyRecordNextButton(pageNumber: $pageNumber, title: "다음")
                         .padding(.bottom, 30)
                         .padding(.top, 12)
                 }
