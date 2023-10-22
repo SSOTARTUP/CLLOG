@@ -33,6 +33,7 @@ struct DailyCompleteView: View {
             Spacer()
             
             DailyRecordNextButton(pageNumber: $pageNumber, title: "완료")
+                .padding(.bottom, 30)
             
         }
     }
