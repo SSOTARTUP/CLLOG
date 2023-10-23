@@ -58,6 +58,7 @@
 		30BB50C92AE395F80050CF69 /* SmokingCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BB50C82AE395F80050CF69 /* SmokingCheckView.swift */; };
 		30BB50CB2AE3A4C30050CF69 /* DailyRecordNextTwoButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BB50CA2AE3A4C30050CF69 /* DailyRecordNextTwoButtons.swift */; };
 		B597462A2AE504220074D5CC /* MenstruationCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59746292AE504220074D5CC /* MenstruationCheckView.swift */; };
+		B597462C2AE5D7190074D5CC /* SleepingTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B597462B2AE5D7190074D5CC /* SleepingTimeView.swift */; };
 		B5F904C72AE4E0DA00FDE4CB /* SideEffectCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F904C62AE4E0DA00FDE4CB /* SideEffectCheckView.swift */; };
 		B5F904CA2AE4E13500FDE4CB /* WrappingHStack in Frameworks */ = {isa = PBXBuildFile; productRef = B5F904C92AE4E13500FDE4CB /* WrappingHStack */; };
 		B5F904CE2AE4E4DF00FDE4CB /* SideEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F904CD2AE4E4DF00FDE4CB /* SideEffects.swift */; };
@@ -117,6 +118,7 @@
 		30BB50C82AE395F80050CF69 /* SmokingCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmokingCheckView.swift; sourceTree = "<group>"; };
 		30BB50CA2AE3A4C30050CF69 /* DailyRecordNextTwoButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyRecordNextTwoButtons.swift; sourceTree = "<group>"; };
 		B59746292AE504220074D5CC /* MenstruationCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenstruationCheckView.swift; sourceTree = "<group>"; };
+		B597462B2AE5D7190074D5CC /* SleepingTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepingTimeView.swift; sourceTree = "<group>"; };
 		B5F904C62AE4E0DA00FDE4CB /* SideEffectCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideEffectCheckView.swift; sourceTree = "<group>"; };
 		B5F904CD2AE4E4DF00FDE4CB /* SideEffects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideEffects.swift; sourceTree = "<group>"; };
 		B5F904CF2AE4E61200FDE4CB /* CapsuleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsuleView.swift; sourceTree = "<group>"; };
@@ -256,6 +258,7 @@
 				307B7D892AE4E0B1007CB7F5 /* AdditionalMemoView.swift */,
 				301971532AE4F00600728D16 /* DailyCompleteView.swift */,
 				B5F904D12AE4F98F00FDE4CB /* WeightCheckView.swift */,
+				B597462B2AE5D7190074D5CC /* SleepingTimeView.swift */,
 				B59746292AE504220074D5CC /* MenstruationCheckView.swift */,
 			);
 			path = DailyRecord;
@@ -476,6 +479,7 @@
 				301971582AE50A0800728D16 /* DailyMedicationList.swift in Sources */,
 				304180F82ADC15A9002AD2E3 /* SexSetView.swift in Sources */,
 				30151F492AE4007B0036B60D /* CaffeineCheckView.swift in Sources */,
+				B597462C2AE5D7190074D5CC /* SleepingTimeView.swift in Sources */,
 				30151F472AE3AF060036B60D /* DrinkAmount.swift in Sources */,
 				305240162ADD73EB008FCD14 /* UserDefaultsKey.swift in Sources */,
 				301971542AE4F00600728D16 /* DailyCompleteView.swift in Sources */,
