@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DailyRecordView: View {
     @Environment(\.dismiss) private var dismiss
-    @State private var pageNumber = 10
+    @State private var pageNumber = 1
     @State private var conditionValues: [Double] = Array(repeating: 0.0, count: Condition.allCases.count)
     @State private var moodValues: [Double] = Array(repeating: 0.0, count: Mood.allCases.count)
     @State private var amountOfSmoking = 0

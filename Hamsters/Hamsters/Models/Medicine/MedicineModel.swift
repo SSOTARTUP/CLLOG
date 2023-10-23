@@ -32,3 +32,14 @@ struct Medicine: Identifiable {
     }
     
 }
+
+#if DEBUG
+extension Medicine {
+    static var sampleData : [Medicine] = [
+        Medicine(name: "콘서타", capacity: "18", unit: "mg", frequency: [.monday, .thursday], startTime: Date.now, alarms: [AlarmItem(date: Date.now, isEnabled: false)], sortedDays: "월, 목"),
+        Medicine(name: "메디키넷", capacity: "10", unit: "mg", frequency: [.sunday, .saturday], startTime: Date.now, alarms: [AlarmItem(date: Date(timeIntervalSinceNow: 1800), isEnabled: true)], sortedDays: "토, 일"),
+        Medicine(name: "아빌리파이", capacity: "1", unit: "정", frequency: [.monday, .tuesday, .wednesday, .thursday, .friday, .saturday, .sunday], startTime: Date.now, alarms: [AlarmItem(date: Date(timeIntervalSinceNow: 3600), isEnabled: true)], sortedDays: "매일"),
+        Medicine(name: "우울약", capacity: "2", unit: "정", frequency: [.monday, .tuesday, .wednesday, .thursday, .friday, .saturday, .sunday], startTime: Date.now, alarms: [AlarmItem(date: Date(timeIntervalSinceNow: 4800), isEnabled: true)], sortedDays: "매일")
+    ]
+}
+#endif
