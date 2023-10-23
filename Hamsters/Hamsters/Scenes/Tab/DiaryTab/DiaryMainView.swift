@@ -9,7 +9,10 @@ import SwiftUI
 
 struct DiaryMainView: View {
     var body: some View {
-        Text("기록 확인 뷰 메인")
+        ScrollView {
+            Image("DiaryPrototype")
+        }
+        .ignoresSafeArea()
     }
 }
 

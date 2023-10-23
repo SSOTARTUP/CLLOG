@@ -9,7 +9,10 @@ import SwiftUI
 
 struct StatisticsMainView: View {
     var body: some View {
-        Text("통계뷰 메인")
+        ScrollView {
+            Image("StatisticsPrototype")
+        }
+        .ignoresSafeArea()
     }
 }
 
