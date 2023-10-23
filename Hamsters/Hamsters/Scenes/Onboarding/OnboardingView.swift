@@ -37,7 +37,7 @@ struct OnboardingView: View {
                     }
             case 3:
                 // 투여 약물 등록 페이지(임시)
-                MedicationView(pageNumber: $pageNumber)
+                MedicationView(pageNumber: $pageNumber, nickname: $nickname)
                     .environmentObject(medicineViewModel)
             case 4:
                 SmokingSetView(pageNumber: $pageNumber, status: $status)

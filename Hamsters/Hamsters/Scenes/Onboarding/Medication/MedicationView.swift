@@ -11,6 +11,7 @@ struct MedicationView: View {
     //    @StateObject private var medicineViewModel = MedicineViewModel()
     @EnvironmentObject var medicineViewModel: MedicineViewModel
     @Binding var pageNumber: Int
+    @Binding var nickname: String
     @State private var isActiveNext = false
     @State private var showingSheet = false
     
@@ -25,7 +26,7 @@ struct MedicationView: View {
                         .fontWeight(.bold)
                         .padding(.bottom, 14)
                     
-                    Text("[앱이름]을 조금 더 Username에게 딱 맞게\n관리할 수 있어요!")
+                    Text("Clue가 \(nickname)님을 더 잘 케어할 수 있어요!")
                         .font(.body)
                         .foregroundStyle(.secondary)
                         .padding(.bottom, 44)
@@ -119,5 +120,6 @@ struct MedicationView: View {
 }
 
 #Preview {
-    MedicationView(pageNumber: .constant(3)).environmentObject(MedicineViewModel())
+    MedicationView(pageNumber: .constant(3), nickname: .constant("Hamm"))
+        .environmentObject(MedicineViewModel())
 }
