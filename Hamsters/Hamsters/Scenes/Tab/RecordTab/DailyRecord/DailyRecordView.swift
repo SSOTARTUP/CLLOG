@@ -9,6 +9,7 @@ import SwiftUI
 
 struct DailyRecordView: View {
     @Environment(\.dismiss) private var dismiss
+    @Binding var isActiveRecord: Bool
     @State private var pageNumber = 1
     @State private var conditionValues: [Double] = Array(repeating: 0.0, count: Condition.allCases.count)
     @State private var moodValues: [Double] = Array(repeating: 0.0, count: Mood.allCases.count)
@@ -56,7 +57,7 @@ struct DailyRecordView: View {
                             AdditionalMemoView(pageNumber: $pageNumber, memo: $memo)
                         
                     case 11: // 완료 페이지
-                        DailyCompleteView(pageNumber: $pageNumber)
+                        DailyCompleteView(pageNumber: $pageNumber, isActiveRecord: $isActiveRecord)
                         
                     default:
                         EmptyView()
@@ -99,5 +100,5 @@ struct DailyRecordView: View {
 }
 
 #Preview {
-    DailyRecordView()
+    DailyRecordView(isActiveRecord: .constant(true))
 }

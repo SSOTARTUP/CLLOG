@@ -34,7 +34,7 @@ struct RecordMainView: View {
                     .padding(.bottom, 20)
                 
                 Button {
-                    isActiveSheet.toggle()
+                    isActiveSheet = true
                 } label: {
                     Text("오늘의 상태 추가하기")
                         .font(.headline)
@@ -71,7 +71,7 @@ struct RecordMainView: View {
             }
         }
         .fullScreenCover(isPresented: $isActiveSheet) {
-            DailyRecordView()
+            DailyRecordView(isActiveRecord: $isActiveSheet)
         }
     }
 }

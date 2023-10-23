@@ -29,8 +29,7 @@ struct ConditionCheckView: View {
                     ForEach(Array(zip(0..<Condition.allCases.count, Condition.allCases)), id: \.0) { index, title in
                         ConditionSlider(title: title.rawValue, userValue: $userValues[index])
                     }
-                    DailyRecordNextButton(pageNumber: $pageNumber, title: "다음")
-                        .padding(.bottom, 30)
+                    DailyRecordNextButton(pageNumber: $pageNumber, isActiveRecord:.constant(true), title: "다음")
                         .padding(.top, 12)
                 }
                 .padding(.top, 78)  // title 영역만큼

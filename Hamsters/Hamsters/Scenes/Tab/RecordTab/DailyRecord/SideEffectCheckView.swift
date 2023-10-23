@@ -37,8 +37,7 @@ struct SideEffectCheckView: View {
 
             Spacer()
             
-            DailyRecordNextButton(pageNumber: $pageNumber, title: "다음")
-                .padding(.bottom, 30)
+            DailyRecordNextButton(pageNumber: $pageNumber, isActiveRecord:.constant(true), title: "다음")
             
         }
     }
