@@ -12,3 +12,9 @@ extension View {
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }
+
+extension View {
+    func screenBounds()->CGRect {
+        return UIScreen.main.bounds
+    }
+}
