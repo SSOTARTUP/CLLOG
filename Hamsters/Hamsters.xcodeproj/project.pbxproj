@@ -251,15 +251,15 @@
 				30BB50BF2ADFFB710050CF69 /* DailyRecordView.swift */,
 				30BB50BD2ADFFAE00050CF69 /* ConditionCheckView.swift */,
 				30BB50C32AE1FCA80050CF69 /* MoodCheckView.swift */,
+				B597462B2AE5D7190074D5CC /* SleepingTimeView.swift */,
+				B5F904C62AE4E0DA00FDE4CB /* SideEffectCheckView.swift */,
+				B5F904D12AE4F98F00FDE4CB /* WeightCheckView.swift */,
+				B59746292AE504220074D5CC /* MenstruationCheckView.swift */,
 				30BB50C82AE395F80050CF69 /* SmokingCheckView.swift */,
 				30151F482AE4007B0036B60D /* CaffeineCheckView.swift */,
 				30151F442AE3AE850036B60D /* DrinkCheckView.swift */,
-				B5F904C62AE4E0DA00FDE4CB /* SideEffectCheckView.swift */,
 				307B7D892AE4E0B1007CB7F5 /* AdditionalMemoView.swift */,
 				301971532AE4F00600728D16 /* DailyCompleteView.swift */,
-				B5F904D12AE4F98F00FDE4CB /* WeightCheckView.swift */,
-				B597462B2AE5D7190074D5CC /* SleepingTimeView.swift */,
-				B59746292AE504220074D5CC /* MenstruationCheckView.swift */,
 			);
 			path = DailyRecord;
 			sourceTree = "<group>";
