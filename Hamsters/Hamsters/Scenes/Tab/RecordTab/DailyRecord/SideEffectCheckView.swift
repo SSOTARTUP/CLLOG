@@ -14,24 +14,26 @@ struct SideEffectCheckView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            
-            Text("불편한 증상이 있었나요?")
-                .font(.largeTitle)
-                .fontWeight(.bold)
-                .padding(.bottom, 16)
-            
-            WrappingHStack(alignment: .leading, horizontalSpacing: 8, verticalSpacing: 10) {
+            VStack(alignment: .leading, spacing: 0) {
+                Text("불편한 증상이 있었나요?")
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                    .padding(.bottom, 16)
                 
-                ForEach(SideEffects.allCases, id: \.self) { effect in
-                    CapsuleView(text: effect.rawValue, isSelected: selectedEffect.contains(effect)) {
-                        if let index = selectedEffect.firstIndex(of: effect) {
-                            self.selectedEffect.remove(at: index)
-                        } else {
-                            self.selectedEffect.append(effect)
+                WrappingHStack(alignment: .leading, horizontalSpacing: 8, verticalSpacing: 10) {
+                    
+                    ForEach(SideEffects.allCases, id: \.self) { effect in
+                        CapsuleView(text: effect.rawValue, isSelected: selectedEffect.contains(effect)) {
+                            if let index = selectedEffect.firstIndex(of: effect) {
+                                self.selectedEffect.remove(at: index)
+                            } else {
+                                self.selectedEffect.append(effect)
+                            }
                         }
                     }
                 }
             }
+            .padding(.horizontal, 16)
 
             Spacer()
             
@@ -39,7 +41,6 @@ struct SideEffectCheckView: View {
                 .padding(.bottom, 30)
             
         }
-        .padding(.horizontal, 16)
     }
 }
 
