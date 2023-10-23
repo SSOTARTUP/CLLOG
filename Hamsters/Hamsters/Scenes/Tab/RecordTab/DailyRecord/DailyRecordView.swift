@@ -31,6 +31,18 @@ struct DailyRecordView: View {
                     case 2: // 감정 기록
                         MoodCheckView(pageNumber: $pageNumber, userValues: $moodValues)
                         
+                    case 3: // 수면 기록
+                        SleepingTimeView(pageNumber: $pageNumber)
+                        
+                    case 4: // 부작용 기록
+                        SideEffectCheckView(pageNumber: $pageNumber)
+                        
+                    case 5: // 체중 기록
+                        WeightCheckView(pageNumber: $pageNumber)
+                        
+                    case 6: // 월경 여부
+                        MenstruationCheckView(pageNumber: $pageNumber)
+                        
                     case 7: //  흡연량
                         SmokingCheckView(pageNumber: $pageNumber, amountOfSmoking: $amountOfSmoking)
                         

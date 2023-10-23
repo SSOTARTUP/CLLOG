@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SleepingTimeView: View {
     @Binding var pageNumber: Int
-
+    
     @State var startAngle: Double = 0
     @State var toAngle: Double = 180
     
@@ -27,7 +27,7 @@ struct SleepingTimeView: View {
     }()
     
     var body: some View {
-        VStack(spacing: 0) {
+        VStack(alignment: .leading, spacing: 0) {
             
             HStack {
                 Text("얼마나 주무셨나요?")
@@ -35,9 +35,10 @@ struct SleepingTimeView: View {
                     .fontWeight(.bold)
                     .padding(.bottom, 37)
                 
-                
                 Spacer()
             }
+            .padding(.horizontal, 16)
+            
             
             HStack(spacing: 0) {
                 VStack {
@@ -52,7 +53,6 @@ struct SleepingTimeView: View {
                     
                     
                 }
-                .frame(maxWidth: .infinity)
                 
                 Spacer()
                 
@@ -65,42 +65,40 @@ struct SleepingTimeView: View {
                         .bold()
                         .foregroundStyle(.thoNavy)
                         .frame(minWidth: 0, maxWidth: .infinity) // 이 줄이 추가되었습니다.
-                    
-                    
-                    
                 }
-                .frame(maxWidth: .infinity)
                 
             }
-            .padding(.horizontal, 60)
-            .frame(maxWidth: .infinity)
+            .padding(.horizontal, 48)
             
             VStack(alignment: .center) {
                 SleepTimeSlider()
                     .padding(.top, 60)
                 
-                VStack(alignment: .center, spacing: 0) {
-                    
-                    Text("총 수면시간")
-                        .font(.footnote)
-                        .foregroundStyle(.white)
-                    Text("\(getTimeDifference().0)시간 \(getTimeDifference().1)분" )
-                        .font(.title2)
-                        .bold()
-                        .foregroundColor(.thoGreen)  // 텍스트의 색상을 지정합니다. 이 경우 흰색을 사용했습니다.
-                    
+                VStack(alignment: .leading, spacing: 0) {
+                    VStack(alignment: .leading, spacing: 0) {
+                        Text("총 수면시간")
+                            .font(.footnote)
+                            .foregroundStyle(.white)
+                        Text("\(getTimeDifference().0)시간 \(getTimeDifference().1)분" )
+                            .font(.title2)
+                            .bold()
+                            .foregroundColor(.thoGreen)  // 텍스트의 색상을 지정합니다. 이 경우 흰색을 사용했습니다.
+                        
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 10)  // 텍스트 주변에 패딩을 추가합니다.
+                    .background(Capsule()  // 캡슐 형태의 배경을 추가합니다.
+                        .foregroundColor(.thoNavy)  // 캡슐의 색상을 지정합니다. 여기서는 원하는 색상을 선택하세요.
+                    )
+                    .padding(.top, 50)
                 }
-                .frame(maxWidth: .infinity)
-                .padding(.vertical, 10)  // 텍스트 주변에 패딩을 추가합니다.
-                .background(Capsule()  // 캡슐 형태의 배경을 추가합니다.
-                    .foregroundColor(.thoNavy)  // 캡슐의 색상을 지정합니다. 여기서는 원하는 색상을 선택하세요.
-                )
-                .padding(.top, 50)
+                .padding(.horizontal, 80)
+                
+                Spacer()
             }
-            .padding(.horizontal, 80)
+            .padding(.horizontal, 16)
             
-            Spacer()
-
+            
             Button {
                 sleepingTime = getTimeDifference().0 + getTimeDifference().1
                 pageNumber += 1
@@ -115,10 +113,8 @@ struct SleepingTimeView: View {
                     .cornerRadius(15)
                     .padding(.horizontal, 16)
             }
-                .padding(.bottom, 30)
-            
+            .padding(.bottom, 30)
         }
-        .padding(.horizontal, 16)
     }
     
     // MARK: - SleepTimeCircluarSlider
