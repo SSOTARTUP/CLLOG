@@ -11,6 +11,8 @@ struct DiaryMainView: View {
     var body: some View {
         ScrollView {
             Image("DiaryPrototype")
+                .resizable()
+                .scaledToFit()
         }
         .ignoresSafeArea()
     }

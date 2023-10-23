@@ -11,6 +11,8 @@ struct StatisticsMainView: View {
     var body: some View {
         ScrollView {
             Image("StatisticsPrototype")
+                .resizable()
+                .scaledToFit()
         }
         .ignoresSafeArea()
     }
