@@ -18,6 +18,7 @@ struct DailyRecordView: View {
     @State private var selectedCaffeine: [Bool] = Array(repeating: false, count: 10)
     @State private var amountOfAlcohol = 0
     @State private var memo = ""
+    @State private var closeAlert = false
     
     var body: some View {
         NavigationStack {
@@ -77,6 +78,16 @@ struct DailyRecordView: View {
                 }
             }
         }
+        .alert("기록 중단", isPresented: $closeAlert) {
+            Button("취소", role: .cancel) {
+                
+            }
+            Button("그만하기", role: .destructive) {
+                dismiss()
+            }
+        } message: {
+            Text("지금 종료하면 작성한 기록이\n저장되지 않습니다")
+        }
     }
     
     private var backButton: some View {
@@ -91,7 +102,7 @@ struct DailyRecordView: View {
     
     private var closeButton: some View {
         Button {
-            dismiss()
+            closeAlert = true
         } label: {
             Image(systemName: "xmark.circle.fill")
                 .foregroundStyle(.thoNavy)
