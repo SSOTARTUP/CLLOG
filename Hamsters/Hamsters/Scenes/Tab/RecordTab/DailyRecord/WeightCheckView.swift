@@ -10,24 +10,26 @@ import SwiftUI
 struct WeightCheckView: View {
     @Binding var pageNumber: Int
     
-    @State private var selectedKg: Int = 50
-    @State private var selectedGr: Int = 0
+    @Binding var selectedKg: Int
+    @Binding var selectedGr: Int
     
     var kgRange: [Int] = Array(1...200)
     var grRange: [Int] = Array(0...9)
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            VStack(alignment: .leading, spacing: 0) {
-                Text("체중을 알려주세요")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                    .padding(.bottom, 12)
-                
-                Text("약물 복용으로 인한 체중변화가 있을 수 있습니다.")
-                    .font(.body)
-                    .foregroundStyle(.secondary)
-                    .padding(.bottom, 16)
+                Group {
+                    Text("체중을 알려주세요")
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                        .padding(.bottom, 12)
+                    
+                    Text("약물 복용으로 인한 체중변화가 있을 수 있습니다.")
+                        .font(.body)
+                        .foregroundStyle(.secondary)
+                        .padding(.bottom, 16)
+                }
+                .padding(.horizontal, 16)
                 
                 // .tag picker 에 값 동기화를 위함, 이유 더 찾아보기
                 HStack {
@@ -56,10 +58,11 @@ struct WeightCheckView: View {
                         .bold()
                 }
                 .padding(.horizontal, 16)
+                .padding(.top, 24)
                 
                 Spacer()
                 
-                HStack(alignment: .center) {
+                HStack {
                     Text("\(selectedKg)" + "." + "\(selectedGr)" + "kg")
                         .font(.title)
                         .foregroundStyle(Color.secondary)
@@ -71,8 +74,6 @@ struct WeightCheckView: View {
                 .frame(maxWidth: .infinity)
                 
                 Spacer()
-            }
-            .padding(.horizontal, 16)
             
             DailyRecordNextButton(pageNumber: $pageNumber, isActiveRecord:.constant(true), title: "다음")
             
@@ -81,5 +82,5 @@ struct WeightCheckView: View {
 }
 
 #Preview {
-    WeightCheckView(pageNumber: .constant(11))
+    WeightCheckView(pageNumber: .constant(11), selectedKg: .constant(50), selectedGr: .constant(0))
 }
