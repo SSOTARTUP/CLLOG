@@ -12,6 +12,8 @@
 		30151F472AE3AF060036B60D /* DrinkAmount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30151F462AE3AF060036B60D /* DrinkAmount.swift */; };
 		30151F492AE4007B0036B60D /* CaffeineCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30151F482AE4007B0036B60D /* CaffeineCheckView.swift */; };
 		301971542AE4F00600728D16 /* DailyCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301971532AE4F00600728D16 /* DailyCompleteView.swift */; };
+		301971562AE4FECE00728D16 /* WeeklyMedicationCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301971552AE4FECE00728D16 /* WeeklyMedicationCalendar.swift */; };
+		301971582AE50A0800728D16 /* DailyMedicationList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301971572AE50A0800728D16 /* DailyMedicationList.swift */; };
 		304180D12ADA8E37002AD2E3 /* HamstersApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304180D02ADA8E37002AD2E3 /* HamstersApp.swift */; };
 		304180D32ADA8E37002AD2E3 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304180D22ADA8E37002AD2E3 /* StartView.swift */; };
 		304180D52ADA8E39002AD2E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 304180D42ADA8E39002AD2E3 /* Assets.xcassets */; };
@@ -69,6 +71,8 @@
 		30151F462AE3AF060036B60D /* DrinkAmount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkAmount.swift; sourceTree = "<group>"; };
 		30151F482AE4007B0036B60D /* CaffeineCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaffeineCheckView.swift; sourceTree = "<group>"; };
 		301971532AE4F00600728D16 /* DailyCompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyCompleteView.swift; sourceTree = "<group>"; };
+		301971552AE4FECE00728D16 /* WeeklyMedicationCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyMedicationCalendar.swift; sourceTree = "<group>"; };
+		301971572AE50A0800728D16 /* DailyMedicationList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyMedicationList.swift; sourceTree = "<group>"; };
 		304180CD2ADA8E37002AD2E3 /* Hamsters.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hamsters.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		304180D02ADA8E37002AD2E3 /* HamstersApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HamstersApp.swift; sourceTree = "<group>"; };
 		304180D22ADA8E37002AD2E3 /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
@@ -315,6 +319,8 @@
 			isa = PBXGroup;
 			children = (
 				307B7D7E2AE43254007CB7F5 /* RecordMainView.swift */,
+				301971552AE4FECE00728D16 /* WeeklyMedicationCalendar.swift */,
+				301971572AE50A0800728D16 /* DailyMedicationList.swift */,
 				305240422ADFA766008FCD14 /* DailyRecord */,
 			);
 			path = RecordTab;
@@ -450,6 +456,7 @@
 				B5F904CE2AE4E4DF00FDE4CB /* SideEffects.swift in Sources */,
 				B5F904C72AE4E0DA00FDE4CB /* SideEffectCheckView.swift in Sources */,
 				30BB50B92ADFABBC0050CF69 /* ConditionSlider.swift in Sources */,
+				301971562AE4FECE00728D16 /* WeeklyMedicationCalendar.swift in Sources */,
 				304180D32ADA8E37002AD2E3 /* StartView.swift in Sources */,
 				304180E52ADAC730002AD2E3 /* AgreementView.swift in Sources */,
 				307B7D702AE424A2007CB7F5 /* AlarmFrequencyView.swift in Sources */,
@@ -466,6 +473,7 @@
 				307B7D762AE424BC007CB7F5 /* MedicineViewModel.swift in Sources */,
 				304180F32ADC0C3F002AD2E3 /* OnboardingView.swift in Sources */,
 				304180EF2ADBB37B002AD2E3 /* View+.swift in Sources */,
+				301971582AE50A0800728D16 /* DailyMedicationList.swift in Sources */,
 				304180F82ADC15A9002AD2E3 /* SexSetView.swift in Sources */,
 				30151F492AE4007B0036B60D /* CaffeineCheckView.swift in Sources */,
 				30151F472AE3AF060036B60D /* DrinkAmount.swift in Sources */,
@@ -618,7 +626,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = Clue;
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.medical";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -655,7 +663,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = Clue;
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.medical";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
