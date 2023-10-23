@@ -13,37 +13,40 @@ struct MenstruationCheckView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            Text("월경중이신가요?")
-                .font(.largeTitle)
-                .fontWeight(.bold)
-                .padding(.bottom, 37)
-            
-            HStack(spacing: 13) {
-                Button(action: {
-                    selectedMt = true
-                }, label: {
-                    Text("예")
-                        .font(.headline)
-                        .padding(.vertical, 15)
-                        .frame(maxWidth: .infinity)
-                        .background(selectedMt == true ? Color.thoNavy : Color.thoDisabled)
-                        .foregroundColor(selectedMt == true ? Color.white : Color.thoNavy)
-                        .cornerRadius(15)
-                })
+            VStack(alignment: .leading, spacing: 0) {
+                Text("월경중이신가요?")
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                    .padding(.bottom, 37)
                 
-                Button(action: {
-                    selectedMt = false
-                }, label: {
-                    Text("아니오")
-                        .font(.headline)
-                        .padding(.vertical, 15)
-                        .frame(maxWidth: .infinity)
-                        .background(selectedMt == false ? Color.thoNavy : Color.thoDisabled)
-                        .foregroundColor(selectedMt == false ? Color.white : Color.thoNavy)
-                        .cornerRadius(15)
-                })
+                HStack(spacing: 13) {
+                    Button(action: {
+                        selectedMt = true
+                    }, label: {
+                        Text("예")
+                            .font(.headline)
+                            .padding(.vertical, 15)
+                            .frame(maxWidth: .infinity)
+                            .background(selectedMt == true ? Color.thoNavy : Color.thoDisabled)
+                            .foregroundColor(selectedMt == true ? Color.white : Color.thoNavy)
+                            .cornerRadius(15)
+                    })
+                    
+                    Button(action: {
+                        selectedMt = false
+                    }, label: {
+                        Text("아니오")
+                            .font(.headline)
+                            .padding(.vertical, 15)
+                            .frame(maxWidth: .infinity)
+                            .background(selectedMt == false ? Color.thoNavy : Color.thoDisabled)
+                            .foregroundColor(selectedMt == false ? Color.white : Color.thoNavy)
+                            .cornerRadius(15)
+                    })
+                }
+                .padding(.horizontal, 8)
             }
-            .padding(.horizontal, 8)
+            .padding(.horizontal, 16)
             
             Spacer()
             
@@ -51,7 +54,6 @@ struct MenstruationCheckView: View {
                 .padding(.bottom, 30)
             
         }
-        .padding(.horizontal, 16)
     }
 }
 
