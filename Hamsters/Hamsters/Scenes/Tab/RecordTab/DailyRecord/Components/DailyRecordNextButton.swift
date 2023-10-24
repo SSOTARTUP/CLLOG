@@ -8,14 +8,18 @@
 import SwiftUI
 
 struct DailyRecordNextButton: View {
-//    @Binding var isActive: Bool
     @Binding var pageNumber: Int
+    @Binding var isActiveRecord: Bool
     
     let title: String
     
     var body: some View {
         Button {
-            pageNumber += 1
+            if pageNumber == 11 {
+                isActiveRecord = false
+            } else {
+                pageNumber += 1
+            }
         } label: {
             Text(title)
                 .font(.headline)
@@ -26,11 +30,11 @@ struct DailyRecordNextButton: View {
                 .background(.thoNavy)
                 .cornerRadius(15)
                 .padding(.horizontal, 16)
+                .padding(.bottom, 30)
         }
-//        .disabled(!isActive)
     }
 }
 
 #Preview {
-    DailyRecordNextButton(pageNumber: .constant(1), title: "다음")
+    DailyRecordNextButton(pageNumber: .constant(1), isActiveRecord: .constant(true), title: "다음")
 }

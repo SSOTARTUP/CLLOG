@@ -17,7 +17,8 @@ struct AgreementView: View {
                 .frame(minHeight: 30, maxHeight: 64)
             
             // 로고 이미지 자리
-            Rectangle()
+            Image("HamLogo")
+                .resizable()
                 .frame(width: 100, height: 100)
                 .padding(.leading)
                 .foregroundColor(.gray)

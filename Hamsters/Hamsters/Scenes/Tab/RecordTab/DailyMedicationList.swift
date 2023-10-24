@@ -73,7 +73,7 @@ extension DailyMedicationList {
     
     static let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.dateFormat = "hh:mm"
+        formatter.dateFormat = "HH:mm"
         return formatter
     }()
 }

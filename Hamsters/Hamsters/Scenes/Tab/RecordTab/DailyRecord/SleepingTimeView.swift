@@ -9,14 +9,13 @@ import SwiftUI
 
 struct SleepingTimeView: View {
     @Binding var pageNumber: Int
+    @Binding var sleepingTime: Int
     
     @State var startAngle: Double = 0
     @State var toAngle: Double = 180
     
     @State var startProgress: CGFloat = 0
     @State var toProgress: CGFloat = 0.5
-    
-    @State var sleepingTime: Int = 0
     
     let timeFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -27,77 +26,72 @@ struct SleepingTimeView: View {
     }()
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
-            
+        VStack(alignment: .leading, spacing: 20) {
+            Text("얼마나 주무셨나요?")
+                .font(.largeTitle)
+                .fontWeight(.bold)
+                .padding(.bottom, 16)
+                .padding(.horizontal, 16)
+
             HStack {
-                Text("얼마나 주무셨나요?")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                    .padding(.bottom, 37)
-                
-                Spacer()
-            }
-            .padding(.horizontal, 16)
-            
-            
-            HStack(spacing: 0) {
-                VStack {
+                VStack(spacing: 0) {
                     Text("취침 시간")
                         .font(.footnote)
                         .foregroundStyle(.secondary)
+                    
                     Text(timeFormatter.string(from: getTime(angle: startAngle)))
                         .font(.title2)
                         .bold()
                         .foregroundStyle(.thoNavy)
-                        .frame(minWidth: 0, maxWidth: .infinity) // 이 줄이 추가되었습니다.
-                    
-                    
+                        .monospacedDigit()
+                        .frame(maxWidth: .infinity)
                 }
                 
                 Spacer()
                 
-                VStack {
+                VStack(spacing: 0) {
                     Text("기상 시간")
                         .font(.footnote)
                         .foregroundStyle(.secondary)
+                    
                     Text(timeFormatter.string(from: getTime(angle: toAngle)))
                         .font(.title2)
                         .bold()
                         .foregroundStyle(.thoNavy)
-                        .frame(minWidth: 0, maxWidth: .infinity) // 이 줄이 추가되었습니다.
+                        .monospacedDigit()
+                        .frame(maxWidth: .infinity) // 이 줄이 추가되었습니다.
                 }
-                
+               
             }
             .padding(.horizontal, 48)
             
-            VStack(alignment: .center) {
+            VStack {
                 SleepTimeSlider()
-                    .padding(.top, 60)
+                    .padding(.vertical, 20)
+                    .padding(.bottom, 16)
                 
-                VStack(alignment: .leading, spacing: 0) {
-                    VStack(alignment: .leading, spacing: 0) {
-                        Text("총 수면시간")
-                            .font(.footnote)
-                            .foregroundStyle(.white)
-                        Text("\(getTimeDifference().0)시간 \(getTimeDifference().1)분" )
-                            .font(.title2)
-                            .bold()
-                            .foregroundColor(.thoGreen)  // 텍스트의 색상을 지정합니다. 이 경우 흰색을 사용했습니다.
-                        
-                    }
-                    .frame(maxWidth: .infinity)
-                    .padding(.vertical, 10)  // 텍스트 주변에 패딩을 추가합니다.
-                    .background(Capsule()  // 캡슐 형태의 배경을 추가합니다.
-                        .foregroundColor(.thoNavy)  // 캡슐의 색상을 지정합니다. 여기서는 원하는 색상을 선택하세요.
-                    )
-                    .padding(.top, 50)
+
+                VStack(spacing: 0) {
+                    Text("총 수면시간")
+                        .font(.footnote)
+                        .foregroundStyle(.white)
+                    
+                    Text("\(getTimeDifference().0)시간 \(getTimeDifference().1)분" )
+                        .font(.title2)
+                        .bold()
+                        .foregroundStyle(.thoGreen)  // 텍스트의 색상을 지정합니다. 이 경우 흰색을 사용했습니다.
+                    
                 }
-                .padding(.horizontal, 80)
-                
-                Spacer()
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, 8)  // 텍스트 주변에 패딩을 추가합니다.
+                .background {
+                    Capsule()  // 캡슐 형태의 배경을 추가합니다.
+                        .foregroundStyle(.thoNavy)  // 캡슐의 색상을 지정합니다. 여기서는 원하는 색상을 선택하세요.
+                }
+                .padding(.horizontal, 104)
             }
-            .padding(.horizontal, 16)
             
+            Spacer()
             
             Button {
                 sleepingTime = getTimeDifference().0 + getTimeDifference().1
@@ -126,9 +120,7 @@ struct SleepingTimeView: View {
             let height = proxy.size.height
             
             ZStack {
-                
                 ZStack {
-                    
                     ForEach(1...60, id: \.self) { index in
                         Rectangle()
                             .fill(.black)
@@ -136,9 +128,6 @@ struct SleepingTimeView: View {
                             .offset(y: (width - 60) / 2)
                             .rotationEffect(.init(degrees: Double(index) * 6))
                     }
-                    
-                    
-                    
                     
                     let texts = ["12PM", "6PM", "12AM", "6AM"]
                     ForEach(texts.indices, id: \.self) { index in
@@ -152,7 +141,6 @@ struct SleepingTimeView: View {
                         let xPosition = CGFloat(width / 2.0 - 60.0) * cos(CGFloat(angleRadian)) // 적절한 값을 조정하여 위치 변경 가능
                         let yPosition = CGFloat(width / 2.0 - 60.0) * sin(CGFloat(angleRadian)) // 적절한 값을 조정하여 위치 변경 가능
                         
-                        
                         // 계산된 위치에 텍스트 레이블을 배치합니다.
                         Text("\(texts[index])")
                             .font(.footnote)
@@ -164,7 +152,6 @@ struct SleepingTimeView: View {
                 Circle()
                     .stroke(Color.thoDisabled, style: StrokeStyle(lineWidth: width / 4.5, lineCap: .round, lineJoin: .round))
                     .shadow(radius: 5)
-                
                 
                 let reverseRotation = (startProgress > toProgress) ? -Double((1 - startProgress) * 360) : 0
                 
@@ -296,5 +283,5 @@ struct SleepingTimeView: View {
 }
 
 #Preview {
-    SleepingTimeView(pageNumber: .constant(13))
+    SleepingTimeView(pageNumber: .constant(13), sleepingTime: .constant(0))
 }

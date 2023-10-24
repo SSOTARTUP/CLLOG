@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MyInfoMainView: View {
     var body: some View {
-        Text("설정 혹은 내정보 메인 뷰")
+        Text("MyInfoView")
     }
 }
 

@@ -35,8 +35,7 @@ struct AdditionalMemoView: View {
                 
             Spacer()
             
-            DailyRecordNextButton(pageNumber: $pageNumber, title: "입력 완료")
-                .padding(.bottom, 30)
+            DailyRecordNextButton(pageNumber: $pageNumber, isActiveRecord:.constant(true), title: "입력 완료")
         }
     }
 }

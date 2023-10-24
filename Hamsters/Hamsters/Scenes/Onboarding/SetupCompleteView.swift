@@ -12,28 +12,33 @@ struct SetupCompleteView: View {
     @Binding var pageNumber: Int
     @AppStorage(UserDefaultsKey.complete.rawValue) private var setupComplete: Bool = false
     // 저장 확인용
-    @AppStorage(UserDefaultsKey.nickname.rawValue) private var storedNickname: String?
-    @AppStorage(UserDefaultsKey.sex.rawValue) private var storedSex: String?
-    @AppStorage(UserDefaultsKey.smoking.rawValue) private var storedSmoking: Bool?
+//    @AppStorage(UserDefaultsKey.nickname.rawValue) private var storedNickname: String?
+//    @AppStorage(UserDefaultsKey.sex.rawValue) private var storedSex: String?
+//    @AppStorage(UserDefaultsKey.smoking.rawValue) private var storedSmoking: Bool?
     
     var body: some View {
         NavigationStack {
-            VStack(spacing: 30) {
+            VStack(spacing: 0) {
                 OnboardingProgressBar(pageNumber: $pageNumber)
+                
+                Spacer()
                 
                 Image("HamsterV")
                     .resizable()
                     .scaledToFit()
+                    .padding(.horizontal, 124)
+                    .padding(.bottom, 32)
                 
-                Text("설정 확인")
+                Text("준비 완료!")
                     .font(.title)
                     .fontWeight(.semibold)
+                    .padding(.bottom, 12)
                 
-                Text("닉네임 : \(storedNickname ?? "저장 내용 없음")")
+                Text("일상을 변화시킬 나를 위한 단서,\nClue가 도와줄게요!")
+                    .multilineTextAlignment(.center)
+                    .foregroundStyle(.secondary)
                 
-                Text("성별 : \(storedSex ?? "저장 내용 없음")")
-                
-                Text("흡연 여부 : \(storedSmoking?.description ?? "저장 내용 없음")")
+                Spacer()
 
                 Button {
                     setupComplete = true
