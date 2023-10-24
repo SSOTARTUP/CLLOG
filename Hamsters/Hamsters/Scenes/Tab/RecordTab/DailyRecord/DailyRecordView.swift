@@ -78,7 +78,9 @@ struct DailyRecordView: View {
                     }
                 }
                 ToolbarItem(placement: .topBarTrailing) {
-                    closeButton
+                    if pageNumber < 11 {
+                        closeButton
+                    }
                 }
             }
         }
