@@ -75,8 +75,8 @@ struct MedicationView: View {
                         // 로우 삭제 및 편집 추가 필요
     //                    .onDelete(perform: medicineViewModel.deleteMedicine)
                         
-                        // 예시 로우
-                        MedicineRow(medicine: Medicine(name: "콘서타", capacity: "60", unit: "정", frequency: [.saturday], startTime: Date.now, alarms: [.init(date: Date.now)], sortedDays: "토"))
+//                        // 예시 로우
+//                        MedicineRow(medicine: Medicine(name: "콘서타", capacity: "60", unit: "정", frequency: [.saturday], startTime: Date.now, alarms: [.init(date: Date.now)], sortedDays: "토"))
                     }
                     
                     Spacer()
