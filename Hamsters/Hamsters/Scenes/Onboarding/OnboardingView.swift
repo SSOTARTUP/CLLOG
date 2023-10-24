@@ -13,7 +13,8 @@ struct OnboardingView: View {
     @AppStorage(UserDefaultsKey.nickname.rawValue) private var storedNickname: String = ""
     @AppStorage(UserDefaultsKey.sex.rawValue) private var storedSex: String = ""
     @AppStorage(UserDefaultsKey.smoking.rawValue) private var storedSmoking: Bool = false
-    @AppStorage(UserDefaultsKey.complete.rawValue) private var setupComplete: Bool = false
+//    @AppStorage(UserDefaultsKey.complete.rawValue) private var setupComplete: Bool = false
+    @Binding var setupComplete: Bool
     @State private var pageNumber = 0
     @State private var nickname = ""
     @State private var selectedSex: SexClassification?
@@ -45,7 +46,7 @@ struct OnboardingView: View {
                         storedSmoking = status?.rawValue ?? false
                     }
             case 5:
-                SetupCompleteView(pageNumber: $pageNumber)
+                SetupCompleteView(pageNumber: $pageNumber, setupComplete: $setupComplete)
             default:
                 EmptyView()
                     .onAppear {
@@ -59,5 +60,5 @@ struct OnboardingView: View {
 }
 
 #Preview {
-    OnboardingView()
+    OnboardingView(setupComplete: .constant(false))
 }
