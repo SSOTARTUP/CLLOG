@@ -8,14 +8,15 @@
 import SwiftUI
 
 struct StartView: View {
-    @AppStorage(UserDefaultsKey.complete.rawValue) private var setupComplete: Bool = false
+//    @AppStorage(UserDefaultsKey.complete.rawValue) private var setupComplete: Bool = false
+    @State private var setupComplete = false
     
     var body: some View {
         ZStack {
             if setupComplete {
                 MainTabView()
             } else {
-                OnboardingView()
+                OnboardingView(setupComplete: $setupComplete)
             }
         }
     }
