@@ -70,7 +70,7 @@ struct SexSetView: View {
                                 .font(.title)
                                 .foregroundStyle(isMemopause ? .thoNavy : Color.secondary)
                             
-                            Text("페경 여부")
+                            Text("저는 월경을 하지 않아요!")
                                 .font(.body)
                                 .foregroundStyle(Color.primary)
                         }
