@@ -91,8 +91,7 @@ struct TermsView:View{
                 Button{
                     isPresentedBottomSheet = false
                 }label: {
-                    Image(systemName: "xmark.circle.fill")
-                        .foregroundStyle(.gray)
+                    Image("close")
                 }
                 .padding(.trailing,16)
             }.frame(height: 42)
@@ -105,39 +104,43 @@ struct TermsView:View{
             
             Text("원활한 서비스 이용을 위해\n먼저 이용약관 제공에 동의해 주세요.")
                 .multilineTextAlignment(.center)
-                .font(.subheadline)
+                .font(.headline)
                 .bold()
                 .padding(.top,16)
             
-            Link(destination: URL(string: "https://cooperative-coast-cf5.notion.site/f8a0eee2711e4613a70400bd7ae40132?pvs=4")!, label: {
-                HStack{
-                    Text("개인 정보 처리 방침(필수)")
-                        .font(.body)
-                        .foregroundStyle(.gray)
-                        .fixedSize()
-                    Spacer()
+            HStack{
+                Text("개인 정보 처리 방침(필수)")
+                    .font(.body)
+                    .foregroundStyle(.secondary)
+                    .fixedSize()
+                
+                Spacer()
+                
+                Link(destination: URL(string: "https://cooperative-coast-cf5.notion.site/f8a0eee2711e4613a70400bd7ae40132?pvs=4")!) {
                     Image(systemName: "chevron.forward")
                         .font(.body)
                         .fontWeight(.semibold)
                         .foregroundStyle(Color.secondary)
                 }
-            })
+            }
             .padding(.horizontal,24)
             .padding(.top,40)
             
-            Link(destination: URL(string: "https://cooperative-coast-cf5.notion.site/8dec0150593b404a9071bacbc066c3e0?pvs=4")!, label: {
-                HStack{
-                    Text("개인 정보 처리 방침(필수)")
-                        .font(.body)
-                        .foregroundStyle(.gray)
-                        .fixedSize()
-                    Spacer()
+            HStack{
+                Text("이용 약관 동의(필수)")
+                    .font(.body)
+                    .foregroundStyle(.secondary)
+                    .fixedSize()
+                
+                Spacer()
+                
+                Link(destination: URL(string: "https://cooperative-coast-cf5.notion.site/8dec0150593b404a9071bacbc066c3e0?pvs=4")!) {
                     Image(systemName: "chevron.forward")
                         .font(.body)
                         .fontWeight(.semibold)
                         .foregroundStyle(Color.secondary)
                 }
-            })
+            }
             .padding(.horizontal,24)
             .padding(.top,12)
             
@@ -146,10 +149,7 @@ struct TermsView:View{
             }label: {
                 NextButton(title:"전체 동의 및 다음")
             }
-            .padding(EdgeInsets(top: 50, leading: 24, bottom: 30, trailing: 24))
-            .padding(safeAreaInsets)
-            
-
+            .padding(EdgeInsets(top: 50, leading: 24, bottom: 30 + safeAreaInsets.bottom, trailing: 24))
         }
         .background(.white)
         .cornerRadius(10)
@@ -166,9 +166,5 @@ extension WelcomeView{
 }
 
 #Preview{
-    ZStack{
-        WelcomeView()
-     //   TermsView()
-    }
-
+    WelcomeView()
 }
