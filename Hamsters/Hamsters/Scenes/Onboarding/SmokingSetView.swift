@@ -18,7 +18,7 @@ struct SmokingSetView: View {
                 OnboardingProgressBar(pageNumber: $pageNumber)
                 
                 Group {
-                    Text("흡연 중 이신가요?")
+                    Text("흡연중이신가요?")
                         .font(.largeTitle)
                         .fontWeight(.bold)
                         .padding(.bottom, 45)
