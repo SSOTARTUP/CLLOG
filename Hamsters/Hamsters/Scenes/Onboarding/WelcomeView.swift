@@ -42,8 +42,8 @@ struct WelcomeView:View{
                             .padding(.vertical,16)
                             
                         Text(infos[index].sub)
-                            .font(.subheadline)
-                            .foregroundColor(.gray)
+                            .font(.body)
+                            .foregroundColor(.secondary)
                             .multilineTextAlignment(.center)
                         Spacer()
                     }
