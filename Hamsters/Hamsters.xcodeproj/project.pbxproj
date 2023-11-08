@@ -58,6 +58,8 @@
 		30BB50C42AE1FCA80050CF69 /* MoodCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BB50C32AE1FCA80050CF69 /* MoodCheckView.swift */; };
 		30BB50C92AE395F80050CF69 /* SmokingCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BB50C82AE395F80050CF69 /* SmokingCheckView.swift */; };
 		30BB50CB2AE3A4C30050CF69 /* DailyRecordNextTwoButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BB50CA2AE3A4C30050CF69 /* DailyRecordNextTwoButtons.swift */; };
+		769FFF862AFBCBB200B12515 /* PopupView in Frameworks */ = {isa = PBXBuildFile; productRef = 769FFF852AFBCBB200B12515 /* PopupView */; };
+		769FFF882AFBD21200B12515 /* modifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769FFF872AFBD21200B12515 /* modifier.swift */; };
 		76E48DD32AFB8F670065EA65 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E48DD22AFB8F670065EA65 /* WelcomeView.swift */; };
 		B597462A2AE504220074D5CC /* MenstruationCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59746292AE504220074D5CC /* MenstruationCheckView.swift */; };
 		B597462C2AE5D7190074D5CC /* SleepingTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B597462B2AE5D7190074D5CC /* SleepingTimeView.swift */; };
@@ -120,6 +122,7 @@
 		30BB50C32AE1FCA80050CF69 /* MoodCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodCheckView.swift; sourceTree = "<group>"; };
 		30BB50C82AE395F80050CF69 /* SmokingCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmokingCheckView.swift; sourceTree = "<group>"; };
 		30BB50CA2AE3A4C30050CF69 /* DailyRecordNextTwoButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyRecordNextTwoButtons.swift; sourceTree = "<group>"; };
+		769FFF872AFBD21200B12515 /* modifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = modifier.swift; sourceTree = "<group>"; };
 		76E48DD22AFB8F670065EA65 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		B59746292AE504220074D5CC /* MenstruationCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenstruationCheckView.swift; sourceTree = "<group>"; };
 		B597462B2AE5D7190074D5CC /* SleepingTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepingTimeView.swift; sourceTree = "<group>"; };
@@ -134,6 +137,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				769FFF862AFBCBB200B12515 /* PopupView in Frameworks */,
 				B5F904CA2AE4E13500FDE4CB /* WrappingHStack in Frameworks */,
 				30BB50BC2ADFABDB0050CF69 /* Sliders in Frameworks */,
 			);
@@ -167,6 +171,7 @@
 				304180DE2ADAACE2002AD2E3 /* Scenes */,
 				304180D42ADA8E39002AD2E3 /* Assets.xcassets */,
 				304180D62ADA8E39002AD2E3 /* Preview Content */,
+				769FFF872AFBD21200B12515 /* modifier.swift */,
 			);
 			path = Hamsters;
 			sourceTree = "<group>";
@@ -385,6 +390,7 @@
 			packageProductDependencies = (
 				30BB50BB2ADFABDB0050CF69 /* Sliders */,
 				B5F904C92AE4E13500FDE4CB /* WrappingHStack */,
+				769FFF852AFBCBB200B12515 /* PopupView */,
 			);
 			productName = Hamsters;
 			productReference = 304180CD2ADA8E37002AD2E3 /* Hamsters.app */;
@@ -418,6 +424,7 @@
 			packageReferences = (
 				30BB50BA2ADFABDB0050CF69 /* XCRemoteSwiftPackageReference "swiftui-sliders" */,
 				B5F904C82AE4E13500FDE4CB /* XCRemoteSwiftPackageReference "WrappingHStack" */,
+				769FFF842AFBCBB200B12515 /* XCRemoteSwiftPackageReference "PopupView" */,
 			);
 			productRefGroup = 304180CE2ADA8E37002AD2E3 /* Products */;
 			projectDirPath = "";
@@ -445,6 +452,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				769FFF882AFBD21200B12515 /* modifier.swift in Sources */,
 				307B7D812AE432A2007CB7F5 /* DiaryMainView.swift in Sources */,
 				307B7D712AE424A2007CB7F5 /* AlarmRow.swift in Sources */,
 				304180EC2ADAEFFC002AD2E3 /* NicknameSetView.swift in Sources */,
@@ -731,6 +739,14 @@
 				minimumVersion = 2.1.0;
 			};
 		};
+		769FFF842AFBCBB200B12515 /* XCRemoteSwiftPackageReference "PopupView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/exyte/PopupView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.8.2;
+			};
+		};
 		B5F904C82AE4E13500FDE4CB /* XCRemoteSwiftPackageReference "WrappingHStack" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ksemianov/WrappingHStack";
@@ -746,6 +762,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 30BB50BA2ADFABDB0050CF69 /* XCRemoteSwiftPackageReference "swiftui-sliders" */;
 			productName = Sliders;
+		};
+		769FFF852AFBCBB200B12515 /* PopupView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 769FFF842AFBCBB200B12515 /* XCRemoteSwiftPackageReference "PopupView" */;
+			productName = PopupView;
 		};
 		B5F904C92AE4E13500FDE4CB /* WrappingHStack */ = {
 			isa = XCSwiftPackageProductDependency;
