@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		300E8E992AF9D8CA001728FE /* ProgressBarAndTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300E8E982AF9D8CA001728FE /* ProgressBarAndTitle.swift */; };
 		30151F432AE3AD590036B60D /* SmokingAmount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30151F422AE3AD590036B60D /* SmokingAmount.swift */; };
 		30151F452AE3AE850036B60D /* DrinkCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30151F442AE3AE850036B60D /* DrinkCheckView.swift */; };
 		30151F472AE3AF060036B60D /* DrinkAmount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30151F462AE3AF060036B60D /* DrinkAmount.swift */; };
@@ -67,6 +68,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		300E8E982AF9D8CA001728FE /* ProgressBarAndTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarAndTitle.swift; sourceTree = "<group>"; };
 		30151F422AE3AD590036B60D /* SmokingAmount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmokingAmount.swift; sourceTree = "<group>"; };
 		30151F442AE3AE850036B60D /* DrinkCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkCheckView.swift; sourceTree = "<group>"; };
 		30151F462AE3AF060036B60D /* DrinkAmount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkAmount.swift; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 				304180E62ADAC9D7002AD2E3 /* OnboardingNextButton.swift */,
 				304180F42ADC1325002AD2E3 /* OnboardingBackButton.swift */,
 				304180F02ADBCA6E002AD2E3 /* OnboardingProgressBar.swift */,
+				300E8E982AF9D8CA001728FE /* ProgressBarAndTitle.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -492,6 +495,7 @@
 				305240182ADD73EB008FCD14 /* SexClassification.swift in Sources */,
 				307B7D6F2AE424A2007CB7F5 /* MedicationView.swift in Sources */,
 				304180FC2ADCC9ED002AD2E3 /* SetupCompleteView.swift in Sources */,
+				300E8E992AF9D8CA001728FE /* ProgressBarAndTitle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
