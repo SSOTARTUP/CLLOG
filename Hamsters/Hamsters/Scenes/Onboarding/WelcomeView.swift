@@ -57,16 +57,9 @@ struct WelcomeView:View{
 
             Spacer()
             Button(action: {
-                print("시작하기 버튼이 눌렸습니다!")
                 isPresentedBottomSheet.toggle()
             }) {
-                Text("시작하기")
-                    .bold()
-                    .frame(minWidth: 0, maxWidth: .infinity)
-                    .frame(height:52)
-                    .background(.thoNavy)
-                    .foregroundColor(.white)
-                    .cornerRadius(15)
+                NextButton(title: "시작하기")
             }
             .padding(.horizontal,24)
             .padding(.bottom,30)
@@ -74,18 +67,7 @@ struct WelcomeView:View{
             
         }
         .popup(isPresented: $isPresentedBottomSheet) {
-          VStack {
-            HStack {
-              Spacer()
-              Text("This is Bottom Sheet")
-                .padding(.top, 10)
-              Spacer()
-            }
-            Spacer()
-          }
-          .background(Color.white)
-          .frame(height: 150)
-          .cornerRadius(10)
+            TermsView(isPresentedBottomSheet: $isPresentedBottomSheet)
         } customize: {
           $0
             .type(.toast)
@@ -96,38 +78,42 @@ struct WelcomeView:View{
         }
     }
 }
+
 struct TermsView:View{
+    @Binding var isPresentedBottomSheet:Bool
+    @Environment(\.safeAreaInsets) private var safeAreaInsets
+
+
     var body: some View{
         VStack(alignment:.center,spacing: 0){
+            HStack{
+                Spacer()
+                Button{
+                    isPresentedBottomSheet = false
+                }label: {
+                    Image(systemName: "xmark.circle.fill")
+                        .foregroundStyle(.gray)
+                }
+                .padding(.trailing,16)
+            }.frame(height: 42)
+            .padding(.top,14)
+            
             Image("HamLogo")
                 .resizable()
                 .scaledToFit()
                 .frame(width: 100,height:100)
+            
             Text("원활한 서비스 이용을 위해\n먼저 이용약관 제공에 동의해 주세요.")
                 .multilineTextAlignment(.center)
                 .font(.subheadline)
                 .bold()
                 .padding(.top,16)
+            
             Link(destination: URL(string: "https://cooperative-coast-cf5.notion.site/f8a0eee2711e4613a70400bd7ae40132?pvs=4")!, label: {
                 HStack{
                     Text("개인 정보 처리 방침(필수)")
                         .font(.body)
-                        .foregroundStyle(.secondary)
-                        .fixedSize()
-                    Spacer()
-                    Image(systemName: "chevron.forward")
-                        .font(.body)
-                        .fontWeight(.semibold)
-                        .foregroundStyle(Color.secondary)
-                }
-            }).padding(.horizontal,16)
-                .padding(.top,40)
-            
-            Link(destination: URL(string: "https://cooperative-coast-cf5.notion.site/8dec0150593b404a9071bacbc066c3e0?pvs=4")!, label: {
-                HStack{
-                    Text("개인 정보 처리 방침(필수)")
-                        .font(.body)
-                        .foregroundStyle(.secondary)
+                        .foregroundStyle(.gray)
                         .fixedSize()
                     Spacer()
                     Image(systemName: "chevron.forward")
@@ -136,22 +122,53 @@ struct TermsView:View{
                         .foregroundStyle(Color.secondary)
                 }
             })
-            .padding(.horizontal,16)
+            .padding(.horizontal,24)
+            .padding(.top,40)
+            
+            Link(destination: URL(string: "https://cooperative-coast-cf5.notion.site/8dec0150593b404a9071bacbc066c3e0?pvs=4")!, label: {
+                HStack{
+                    Text("개인 정보 처리 방침(필수)")
+                        .font(.body)
+                        .foregroundStyle(.gray)
+                        .fixedSize()
+                    Spacer()
+                    Image(systemName: "chevron.forward")
+                        .font(.body)
+                        .fontWeight(.semibold)
+                        .foregroundStyle(Color.secondary)
+                }
+            })
+            .padding(.horizontal,24)
             .padding(.top,12)
-        }.frame(width:380)
-            .background(.red)
+            
+            Button{
+                
+            }label: {
+                NextButton(title:"전체 동의 및 다음")
+            }
+            .padding(EdgeInsets(top: 50, leading: 24, bottom: 30, trailing: 24))
+            .padding(safeAreaInsets)
+            
+
+        }
+        .background(.white)
+        .cornerRadius(10)
+
+
     }
 }
+
 extension WelcomeView{
     func setUpDot(){
         UIPageControl.appearance().currentPageIndicatorTintColor = UIColor.black
         UIPageControl.appearance().pageIndicatorTintColor = UIColor.gray.withAlphaComponent(0.3)
     }
 }
+
 #Preview{
     ZStack{
         WelcomeView()
-        TermsView()
+     //   TermsView()
     }
 
 }
