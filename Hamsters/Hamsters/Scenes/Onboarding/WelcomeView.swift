@@ -26,55 +26,58 @@ struct WelcomeView:View{
     ]
  
     var body: some View {
-        VStack {
-            Spacer()
-            TabView(selection: $selectedIndex) {
-                ForEach(infos.indices,id:\.self) { index in
-                    VStack(spacing:0) {
-                        Image("HamsterV")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 180, height: 180)
-                        Text(infos[index].title)
-                            .font(.largeTitle)
-                            .bold()
-                            .multilineTextAlignment(.center)
-                            .padding(.vertical,16)
-                            
-                        Text(infos[index].sub)
-                            .font(.body)
-                            .foregroundColor(.secondary)
-                            .multilineTextAlignment(.center)
-                        Spacer()
+        NavigationStack{
+            VStack {
+                Spacer()
+                TabView(selection: $selectedIndex) {
+                    ForEach(infos.indices,id:\.self) { index in
+                        VStack(spacing:0) {
+                            Image("HamsterV")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 180, height: 180)
+                            Text(infos[index].title)
+                                .font(.largeTitle)
+                                .bold()
+                                .multilineTextAlignment(.center)
+                                .padding(.vertical,16)
+                                
+                            Text(infos[index].sub)
+                                .font(.body)
+                                .foregroundColor(.secondary)
+                                .multilineTextAlignment(.center)
+                            Spacer()
+                        }
                     }
                 }
-            }
-            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
-            .onAppear{
-                setUpDot()
-            }
-            .frame(height:400)
+                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
+                .onAppear{
+                    setUpDot()
+                }
+                .frame(height:400)
 
-            Spacer()
-            
-            NextButton(title: "시작하기") {
-                isPresentedBottomSheet.toggle()
-            }
-            .padding(.horizontal,24)
-            .padding(.bottom,30)
+                Spacer()
+                
+                NextButton(title: "시작하기",isActive: .constant(true)) {
+                    isPresentedBottomSheet.toggle()
+                }
+                .padding(.horizontal,24)
+                .padding(.bottom,30)
 
-            
+                
+            }
+            .popup(isPresented: $isPresentedBottomSheet) {
+                TermsView(isPresentedBottomSheet: $isPresentedBottomSheet,pageNumber:$pageNumber)
+            } customize: {
+              $0
+                .type(.toast)
+                .position(.bottom)
+                .dragToDismiss(true)
+                .closeOnTapOutside(true)
+                .backgroundColor(.black.opacity(0.2))
+            }
         }
-        .popup(isPresented: $isPresentedBottomSheet) {
-            TermsView(isPresentedBottomSheet: $isPresentedBottomSheet,pageNumber:$pageNumber)
-        } customize: {
-          $0
-            .type(.toast)
-            .position(.bottom)
-            .dragToDismiss(true)
-            .closeOnTapOutside(true)
-            .backgroundColor(.black.opacity(0.2))
-        }
+
     }
 }
 

@@ -61,6 +61,8 @@
 		30BB50C42AE1FCA80050CF69 /* MoodCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BB50C32AE1FCA80050CF69 /* MoodCheckView.swift */; };
 		30BB50C92AE395F80050CF69 /* SmokingCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BB50C82AE395F80050CF69 /* SmokingCheckView.swift */; };
 		30BB50CB2AE3A4C30050CF69 /* DailyRecordNextTwoButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BB50CA2AE3A4C30050CF69 /* DailyRecordNextTwoButtons.swift */; };
+		768562D92AFC821F00AF5C95 /* ProfileSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768562D82AFC821F00AF5C95 /* ProfileSetView.swift */; };
+		768562DB2AFCC1DB00AF5C95 /* ProfileInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768562DA2AFCC1DB00AF5C95 /* ProfileInput.swift */; };
 		769FFF862AFBCBB200B12515 /* PopupView in Frameworks */ = {isa = PBXBuildFile; productRef = 769FFF852AFBCBB200B12515 /* PopupView */; };
 		769FFF8D2AFBD39100B12515 /* NextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769FFF8C2AFBD39100B12515 /* NextButton.swift */; };
 		769FFF8F2AFBE23700B12515 /* safeAreaInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769FFF8E2AFBE23700B12515 /* safeAreaInsets.swift */; };
@@ -128,6 +130,8 @@
 		30BB50C32AE1FCA80050CF69 /* MoodCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodCheckView.swift; sourceTree = "<group>"; };
 		30BB50C82AE395F80050CF69 /* SmokingCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmokingCheckView.swift; sourceTree = "<group>"; };
 		30BB50CA2AE3A4C30050CF69 /* DailyRecordNextTwoButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyRecordNextTwoButtons.swift; sourceTree = "<group>"; };
+		768562D82AFC821F00AF5C95 /* ProfileSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSetView.swift; sourceTree = "<group>"; };
+		768562DA2AFCC1DB00AF5C95 /* ProfileInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInput.swift; sourceTree = "<group>"; };
 		769FFF8C2AFBD39100B12515 /* NextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButton.swift; sourceTree = "<group>"; };
 		769FFF8E2AFBE23700B12515 /* safeAreaInsets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = safeAreaInsets.swift; sourceTree = "<group>"; };
 		76E48DD22AFB8F670065EA65 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
@@ -233,6 +237,7 @@
 				304180FB2ADCC9ED002AD2E3 /* SetupCompleteView.swift */,
 				76E48DD22AFB8F670065EA65 /* WelcomeView.swift */,
 				300E8E9D2AFB314F001728FE /* LottieConfettiView.swift */,
+				768562D82AFC821F00AF5C95 /* ProfileSetView.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -255,6 +260,7 @@
 				304180F02ADBCA6E002AD2E3 /* OnboardingProgressBar.swift */,
 				300E8E982AF9D8CA001728FE /* ProgressBarAndTitle.swift */,
 				769FFF8C2AFBD39100B12515 /* NextButton.swift */,
+				768562DA2AFCC1DB00AF5C95 /* ProfileInput.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -484,6 +490,7 @@
 				307B7D772AE424BC007CB7F5 /* AlarmViewModel.swift in Sources */,
 				307B7D842AE432EF007CB7F5 /* StatisticsMainView.swift in Sources */,
 				304180FA2ADCC740002AD2E3 /* SmokingSetView.swift in Sources */,
+				768562D92AFC821F00AF5C95 /* ProfileSetView.swift in Sources */,
 				307B7D8A2AE4E0B1007CB7F5 /* AdditionalMemoView.swift in Sources */,
 				30151F432AE3AD590036B60D /* SmokingAmount.swift in Sources */,
 				B597462A2AE504220074D5CC /* MenstruationCheckView.swift in Sources */,
@@ -508,6 +515,7 @@
 				30BB50C02ADFFB710050CF69 /* DailyRecordView.swift in Sources */,
 				30BB50CB2AE3A4C30050CF69 /* DailyRecordNextTwoButtons.swift in Sources */,
 				307B7D7F2AE43254007CB7F5 /* RecordMainView.swift in Sources */,
+				768562DB2AFCC1DB00AF5C95 /* ProfileInput.swift in Sources */,
 				305240462ADFA855008FCD14 /* DailyRecordProgressBar.swift in Sources */,
 				304180E72ADAC9D7002AD2E3 /* OnboardingNextButton.swift in Sources */,
 				307B7D762AE424BC007CB7F5 /* MedicineViewModel.swift in Sources */,
@@ -666,7 +674,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Hamsters/Preview Content\"";
-				DEVELOPMENT_TEAM = FJ72KV3U2A;
+				DEVELOPMENT_TEAM = TAP4M2PF77;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = Clue;
@@ -703,7 +711,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Hamsters/Preview Content\"";
-				DEVELOPMENT_TEAM = FJ72KV3U2A;
+				DEVELOPMENT_TEAM = TAP4M2PF77;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = Clue;
