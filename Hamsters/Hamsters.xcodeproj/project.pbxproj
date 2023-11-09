@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		300E8E992AF9D8CA001728FE /* ProgressBarAndTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300E8E982AF9D8CA001728FE /* ProgressBarAndTitle.swift */; };
+		300E8E9C2AFB30D2001728FE /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 300E8E9B2AFB30D2001728FE /* Lottie */; };
+		300E8E9E2AFB314F001728FE /* LottieConfettiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300E8E9D2AFB314F001728FE /* LottieConfettiView.swift */; };
+		300E8EA32AFC67C3001728FE /* onboardingConfetti.json in Resources */ = {isa = PBXBuildFile; fileRef = 300E8EA22AFC67C3001728FE /* onboardingConfetti.json */; };
 		30151F432AE3AD590036B60D /* SmokingAmount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30151F422AE3AD590036B60D /* SmokingAmount.swift */; };
 		30151F452AE3AE850036B60D /* DrinkCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30151F442AE3AE850036B60D /* DrinkCheckView.swift */; };
 		30151F472AE3AF060036B60D /* DrinkAmount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30151F462AE3AF060036B60D /* DrinkAmount.swift */; };
@@ -69,6 +72,8 @@
 
 /* Begin PBXFileReference section */
 		300E8E982AF9D8CA001728FE /* ProgressBarAndTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarAndTitle.swift; sourceTree = "<group>"; };
+		300E8E9D2AFB314F001728FE /* LottieConfettiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieConfettiView.swift; sourceTree = "<group>"; };
+		300E8EA22AFC67C3001728FE /* onboardingConfetti.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = onboardingConfetti.json; sourceTree = "<group>"; };
 		30151F422AE3AD590036B60D /* SmokingAmount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmokingAmount.swift; sourceTree = "<group>"; };
 		30151F442AE3AE850036B60D /* DrinkCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkCheckView.swift; sourceTree = "<group>"; };
 		30151F462AE3AF060036B60D /* DrinkAmount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkAmount.swift; sourceTree = "<group>"; };
@@ -134,12 +139,22 @@
 			files = (
 				B5F904CA2AE4E13500FDE4CB /* WrappingHStack in Frameworks */,
 				30BB50BC2ADFABDB0050CF69 /* Sliders in Frameworks */,
+				300E8E9C2AFB30D2001728FE /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		300E8E9F2AFB3174001728FE /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				300E8EA22AFC67C3001728FE /* onboardingConfetti.json */,
+				304180D42ADA8E39002AD2E3 /* Assets.xcassets */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
 		304180C42ADA8E37002AD2E3 = {
 			isa = PBXGroup;
 			children = (
@@ -163,7 +178,7 @@
 				304180ED2ADBB36A002AD2E3 /* Extensions */,
 				304180DF2ADAACF1002AD2E3 /* Models */,
 				304180DE2ADAACE2002AD2E3 /* Scenes */,
-				304180D42ADA8E39002AD2E3 /* Assets.xcassets */,
+				300E8E9F2AFB3174001728FE /* Resource */,
 				304180D62ADA8E39002AD2E3 /* Preview Content */,
 			);
 			path = Hamsters;
@@ -208,6 +223,7 @@
 				304180F72ADC15A9002AD2E3 /* SexSetView.swift */,
 				304180F92ADCC740002AD2E3 /* SmokingSetView.swift */,
 				304180FB2ADCC9ED002AD2E3 /* SetupCompleteView.swift */,
+				300E8E9D2AFB314F001728FE /* LottieConfettiView.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -382,6 +398,7 @@
 			packageProductDependencies = (
 				30BB50BB2ADFABDB0050CF69 /* Sliders */,
 				B5F904C92AE4E13500FDE4CB /* WrappingHStack */,
+				300E8E9B2AFB30D2001728FE /* Lottie */,
 			);
 			productName = Hamsters;
 			productReference = 304180CD2ADA8E37002AD2E3 /* Hamsters.app */;
@@ -415,6 +432,7 @@
 			packageReferences = (
 				30BB50BA2ADFABDB0050CF69 /* XCRemoteSwiftPackageReference "swiftui-sliders" */,
 				B5F904C82AE4E13500FDE4CB /* XCRemoteSwiftPackageReference "WrappingHStack" */,
+				300E8E9A2AFB30D2001728FE /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = 304180CE2ADA8E37002AD2E3 /* Products */;
 			projectDirPath = "";
@@ -430,6 +448,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				300E8EA32AFC67C3001728FE /* onboardingConfetti.json in Resources */,
 				304180D82ADA8E39002AD2E3 /* Preview Assets.xcassets in Resources */,
 				304180D52ADA8E39002AD2E3 /* Assets.xcassets in Resources */,
 			);
@@ -471,6 +490,7 @@
 				304180F12ADBCA6E002AD2E3 /* OnboardingProgressBar.swift in Sources */,
 				30BB50C42AE1FCA80050CF69 /* MoodCheckView.swift in Sources */,
 				30BB50BE2ADFFAE00050CF69 /* ConditionCheckView.swift in Sources */,
+				300E8E9E2AFB314F001728FE /* LottieConfettiView.swift in Sources */,
 				30BB50C02ADFFB710050CF69 /* DailyRecordView.swift in Sources */,
 				30BB50CB2AE3A4C30050CF69 /* DailyRecordNextTwoButtons.swift in Sources */,
 				307B7D7F2AE43254007CB7F5 /* RecordMainView.swift in Sources */,
@@ -719,6 +739,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		300E8E9A2AFB30D2001728FE /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.3.3;
+			};
+		};
 		30BB50BA2ADFABDB0050CF69 /* XCRemoteSwiftPackageReference "swiftui-sliders" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/spacenation/swiftui-sliders.git";
@@ -738,6 +766,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		300E8E9B2AFB30D2001728FE /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 300E8E9A2AFB30D2001728FE /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
 		30BB50BB2ADFABDB0050CF69 /* Sliders */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 30BB50BA2ADFABDB0050CF69 /* XCRemoteSwiftPackageReference "swiftui-sliders" */;
