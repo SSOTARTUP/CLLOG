@@ -18,7 +18,7 @@ struct Info:Identifiable{
 struct WelcomeView:View{
     @State private var selectedIndex = 0
     @State var isPresentedBottomSheet: Bool = false
-
+    @Binding var pageNumber:Int
     let infos = [
         Info(title: "새로운 시작을 위한\n첫 걸음", sub: "Clue와 함께 쉽고 간편하게\n나의 증상을 기록하고 관리해요!"),
         Info(title: "나의 증상을\n한눈에 알기 쉽게", sub: "내가 기록한 매일의 기록을\n한 눈에 보기 편하게 알려줘요!"),
@@ -56,10 +56,9 @@ struct WelcomeView:View{
             .frame(height:400)
 
             Spacer()
-            Button(action: {
+            
+            NextButton(title: "시작하기") {
                 isPresentedBottomSheet.toggle()
-            }) {
-                NextButton(title: "시작하기")
             }
             .padding(.horizontal,24)
             .padding(.bottom,30)
@@ -67,7 +66,7 @@ struct WelcomeView:View{
             
         }
         .popup(isPresented: $isPresentedBottomSheet) {
-            TermsView(isPresentedBottomSheet: $isPresentedBottomSheet)
+            TermsView(isPresentedBottomSheet: $isPresentedBottomSheet,pageNumber:$pageNumber)
         } customize: {
           $0
             .type(.toast)
@@ -81,8 +80,11 @@ struct WelcomeView:View{
 
 struct TermsView:View{
     @Binding var isPresentedBottomSheet:Bool
+    @Binding var pageNumber:Int
+    
     @Environment(\.safeAreaInsets) private var safeAreaInsets
 
+    @State private var isActive = true
 
     var body: some View{
         VStack(alignment:.center,spacing: 0){
@@ -144,11 +146,7 @@ struct TermsView:View{
             .padding(.horizontal,24)
             .padding(.top,12)
             
-            Button{
-                
-            }label: {
-                NextButton(title:"전체 동의 및 다음")
-            }
+            OnboardingNextButton(isActive: $isActive, pageNumber: $pageNumber)
             .padding(EdgeInsets(top: 50, leading: 24, bottom: 30 + safeAreaInsets.bottom, trailing: 24))
         }
         .background(.white)
@@ -166,5 +164,5 @@ extension WelcomeView{
 }
 
 #Preview{
-    WelcomeView()
+    WelcomeView(pageNumber:.constant(0))
 }

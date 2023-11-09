@@ -9,15 +9,21 @@ import SwiftUI
 
 struct NextButton: View {
     var title:String
-    
+    var closure:()->Void
+
     var body: some View {
-        Text(title)
-            .bold()
-            .frame(minWidth: 0, maxWidth: .infinity)
-            .frame(height:52)
-            .background(.thoNavy)
-            .foregroundColor(.white)
-            .cornerRadius(15)
+        Button {
+            closure()
+        } label: {
+            Text(title)
+                .font(.headline)
+                .fontWeight(.semibold)
+                .foregroundStyle(.white)
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, 15)
+                .background(.thoNavy)
+                .cornerRadius(15)
+        }
     }
 }
 
