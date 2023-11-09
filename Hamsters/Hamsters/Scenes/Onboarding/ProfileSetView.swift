@@ -28,9 +28,8 @@ struct ProfileSetView: View {
                 Text("안녕하세요! 반가워요:)")
                     .font(.largeTitle)
                     .fontWeight(.bold)
-                    .padding(.horizontal,24)
+                    .padding(EdgeInsets(top: 12, leading: 16, bottom: 16, trailing: 16))
             }
-            .padding(.bottom,16)
             .toolbar{
                 ToolbarItem(placement: .topBarLeading) {
                     OnboardingBackButton(pageNumber: $pageNumber)
@@ -118,7 +117,8 @@ struct ProfileSetView: View {
                                 validate()
                             }
                             .id(2)
-                    }.padding(.horizontal,16)
+                    }
+                    .padding(.horizontal,16)
                         .padding(.bottom,10)
                 }.onAppear{
                     scroll = value
