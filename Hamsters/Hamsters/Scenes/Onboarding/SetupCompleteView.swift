@@ -24,20 +24,27 @@ struct SetupCompleteView: View {
                 
                 Spacer()
                 
-                Image("HamsterV")
-                    .resizable()
-                    .scaledToFit()
-                    .padding(.horizontal, 124)
-                    .padding(.bottom, 32)
-                
-                Text("준비 완료!")
-                    .font(.title)
-                    .fontWeight(.semibold)
-                    .padding(.bottom, 12)
-                
-                Text("일상을 변화시킬 나를 위한 단서,\nClue가 도와줄게요!")
-                    .multilineTextAlignment(.center)
-                    .foregroundStyle(.secondary)
+
+                ZStack {
+                    VStack {
+                        Image("HamsterV")
+                            .resizable()
+                            .scaledToFit()
+                            .padding(.horizontal, 124)
+                            .padding(.bottom, 32)
+                            
+                        Text("준비 완료!")
+                            .font(.title)
+                            .fontWeight(.semibold)
+                            .padding(.bottom, 12)
+                        
+                        Text("일상을 변화시킬 나를 위한 단서,\nClue가 도와줄게요!")
+                            .multilineTextAlignment(.center)
+                            .foregroundStyle(.secondary)
+                    }
+                    
+                    LottieConfettiView(filename: "onboardingConfetti")
+                }
                 
                 Spacer()
 
