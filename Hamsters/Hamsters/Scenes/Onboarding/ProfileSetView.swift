@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct ProfileSetView: View {
-    @State var pageNumber:Int = 0
+    @Binding var pageNumber:Int
     
-    @State private var hamName:String = ""
-    @State private var name:String = ""
+    @Binding var hamName:String
+    @Binding var name:String
+    
     @State private var isActive = false
     @State private var isSelected:selectedHam?
     
@@ -191,5 +192,5 @@ extension ProfileSetView{
 }
 
 #Preview {
-    ProfileSetView()
+    ProfileSetView(pageNumber:.constant(1),hamName: .constant(""),name: .constant(""))
 }
