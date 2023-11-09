@@ -61,6 +61,10 @@
 		30BB50C42AE1FCA80050CF69 /* MoodCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BB50C32AE1FCA80050CF69 /* MoodCheckView.swift */; };
 		30BB50C92AE395F80050CF69 /* SmokingCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BB50C82AE395F80050CF69 /* SmokingCheckView.swift */; };
 		30BB50CB2AE3A4C30050CF69 /* DailyRecordNextTwoButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BB50CA2AE3A4C30050CF69 /* DailyRecordNextTwoButtons.swift */; };
+		769FFF862AFBCBB200B12515 /* PopupView in Frameworks */ = {isa = PBXBuildFile; productRef = 769FFF852AFBCBB200B12515 /* PopupView */; };
+		769FFF8D2AFBD39100B12515 /* NextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769FFF8C2AFBD39100B12515 /* NextButton.swift */; };
+		769FFF8F2AFBE23700B12515 /* safeAreaInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769FFF8E2AFBE23700B12515 /* safeAreaInsets.swift */; };
+		76E48DD32AFB8F670065EA65 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E48DD22AFB8F670065EA65 /* WelcomeView.swift */; };
 		B597462A2AE504220074D5CC /* MenstruationCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59746292AE504220074D5CC /* MenstruationCheckView.swift */; };
 		B597462C2AE5D7190074D5CC /* SleepingTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B597462B2AE5D7190074D5CC /* SleepingTimeView.swift */; };
 		B5F904C72AE4E0DA00FDE4CB /* SideEffectCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F904C62AE4E0DA00FDE4CB /* SideEffectCheckView.swift */; };
@@ -124,6 +128,9 @@
 		30BB50C32AE1FCA80050CF69 /* MoodCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodCheckView.swift; sourceTree = "<group>"; };
 		30BB50C82AE395F80050CF69 /* SmokingCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmokingCheckView.swift; sourceTree = "<group>"; };
 		30BB50CA2AE3A4C30050CF69 /* DailyRecordNextTwoButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyRecordNextTwoButtons.swift; sourceTree = "<group>"; };
+		769FFF8C2AFBD39100B12515 /* NextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButton.swift; sourceTree = "<group>"; };
+		769FFF8E2AFBE23700B12515 /* safeAreaInsets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = safeAreaInsets.swift; sourceTree = "<group>"; };
+		76E48DD22AFB8F670065EA65 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		B59746292AE504220074D5CC /* MenstruationCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenstruationCheckView.swift; sourceTree = "<group>"; };
 		B597462B2AE5D7190074D5CC /* SleepingTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepingTimeView.swift; sourceTree = "<group>"; };
 		B5F904C62AE4E0DA00FDE4CB /* SideEffectCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideEffectCheckView.swift; sourceTree = "<group>"; };
@@ -137,6 +144,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				769FFF862AFBCBB200B12515 /* PopupView in Frameworks */,
 				B5F904CA2AE4E13500FDE4CB /* WrappingHStack in Frameworks */,
 				30BB50BC2ADFABDB0050CF69 /* Sliders in Frameworks */,
 				300E8E9C2AFB30D2001728FE /* Lottie in Frameworks */,
@@ -223,6 +231,7 @@
 				304180F72ADC15A9002AD2E3 /* SexSetView.swift */,
 				304180F92ADCC740002AD2E3 /* SmokingSetView.swift */,
 				304180FB2ADCC9ED002AD2E3 /* SetupCompleteView.swift */,
+				76E48DD22AFB8F670065EA65 /* WelcomeView.swift */,
 				300E8E9D2AFB314F001728FE /* LottieConfettiView.swift */,
 			);
 			path = Onboarding;
@@ -233,6 +242,7 @@
 			children = (
 				304180EE2ADBB37B002AD2E3 /* View+.swift */,
 				305240192ADE1299008FCD14 /* String+.swift */,
+				769FFF8E2AFBE23700B12515 /* safeAreaInsets.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -244,6 +254,7 @@
 				304180F42ADC1325002AD2E3 /* OnboardingBackButton.swift */,
 				304180F02ADBCA6E002AD2E3 /* OnboardingProgressBar.swift */,
 				300E8E982AF9D8CA001728FE /* ProgressBarAndTitle.swift */,
+				769FFF8C2AFBD39100B12515 /* NextButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -398,6 +409,7 @@
 			packageProductDependencies = (
 				30BB50BB2ADFABDB0050CF69 /* Sliders */,
 				B5F904C92AE4E13500FDE4CB /* WrappingHStack */,
+				769FFF852AFBCBB200B12515 /* PopupView */,
 				300E8E9B2AFB30D2001728FE /* Lottie */,
 			);
 			productName = Hamsters;
@@ -432,6 +444,7 @@
 			packageReferences = (
 				30BB50BA2ADFABDB0050CF69 /* XCRemoteSwiftPackageReference "swiftui-sliders" */,
 				B5F904C82AE4E13500FDE4CB /* XCRemoteSwiftPackageReference "WrappingHStack" */,
+				769FFF842AFBCBB200B12515 /* XCRemoteSwiftPackageReference "PopupView" */,
 				300E8E9A2AFB30D2001728FE /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = 304180CE2ADA8E37002AD2E3 /* Products */;
@@ -479,6 +492,7 @@
 				307B7D722AE424A2007CB7F5 /* AddMedicineView.swift in Sources */,
 				307B7D672AE42480007CB7F5 /* AlarmItem.swift in Sources */,
 				B5F904CE2AE4E4DF00FDE4CB /* SideEffects.swift in Sources */,
+				769FFF8F2AFBE23700B12515 /* safeAreaInsets.swift in Sources */,
 				B5F904C72AE4E0DA00FDE4CB /* SideEffectCheckView.swift in Sources */,
 				30BB50B92ADFABBC0050CF69 /* ConditionSlider.swift in Sources */,
 				301971562AE4FECE00728D16 /* WeeklyMedicationCalendar.swift in Sources */,
@@ -506,12 +520,14 @@
 				30151F472AE3AF060036B60D /* DrinkAmount.swift in Sources */,
 				305240162ADD73EB008FCD14 /* UserDefaultsKey.swift in Sources */,
 				301971542AE4F00600728D16 /* DailyCompleteView.swift in Sources */,
+				769FFF8D2AFBD39100B12515 /* NextButton.swift in Sources */,
 				30BB50C92AE395F80050CF69 /* SmokingCheckView.swift in Sources */,
 				307B7D7D2AE43092007CB7F5 /* TabItem.swift in Sources */,
 				304180D12ADA8E37002AD2E3 /* HamstersApp.swift in Sources */,
 				B5F904D22AE4F98F00FDE4CB /* WeightCheckView.swift in Sources */,
 				304180F52ADC1325002AD2E3 /* OnboardingBackButton.swift in Sources */,
 				3052401A2ADE1299008FCD14 /* String+.swift in Sources */,
+				76E48DD32AFB8F670065EA65 /* WelcomeView.swift in Sources */,
 				305240182ADD73EB008FCD14 /* SexClassification.swift in Sources */,
 				307B7D6F2AE424A2007CB7F5 /* MedicationView.swift in Sources */,
 				304180FC2ADCC9ED002AD2E3 /* SetupCompleteView.swift in Sources */,
@@ -755,6 +771,14 @@
 				minimumVersion = 2.1.0;
 			};
 		};
+		769FFF842AFBCBB200B12515 /* XCRemoteSwiftPackageReference "PopupView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/exyte/PopupView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.8.2;
+			};
+		};
 		B5F904C82AE4E13500FDE4CB /* XCRemoteSwiftPackageReference "WrappingHStack" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ksemianov/WrappingHStack";
@@ -775,6 +799,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 30BB50BA2ADFABDB0050CF69 /* XCRemoteSwiftPackageReference "swiftui-sliders" */;
 			productName = Sliders;
+		};
+		769FFF852AFBCBB200B12515 /* PopupView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 769FFF842AFBCBB200B12515 /* XCRemoteSwiftPackageReference "PopupView" */;
+			productName = PopupView;
 		};
 		B5F904C92AE4E13500FDE4CB /* WrappingHStack */ = {
 			isa = XCSwiftPackageProductDependency;
