@@ -9,6 +9,7 @@ import SwiftUI
 
 struct NextButton: View {
     var title:String
+    @Binding var isActive:Bool
     var closure:()->Void
 
     var body: some View {
@@ -18,10 +19,10 @@ struct NextButton: View {
             Text(title)
                 .font(.headline)
                 .fontWeight(.semibold)
-                .foregroundStyle(.white)
+                .foregroundStyle(isActive ? .white : .thoNavy)
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 15)
-                .background(.thoNavy)
+                .background(isActive ? .thoNavy : .thoDisabled)
                 .cornerRadius(15)
         }
     }

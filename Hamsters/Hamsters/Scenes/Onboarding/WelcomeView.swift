@@ -58,7 +58,7 @@ struct WelcomeView:View{
 
                 Spacer()
                 
-                NextButton(title: "시작하기") {
+                NextButton(title: "시작하기",isActive: .constant(true)) {
                     isPresentedBottomSheet.toggle()
                 }
                 .padding(.horizontal,24)
