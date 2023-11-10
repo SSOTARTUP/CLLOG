@@ -11,10 +11,6 @@ struct StartView: View {
 //    @AppStorage(UserDefaultsKey.complete.rawValue) private var setupComplete: Bool = false
     @State private var setupComplete = false
     
-    init() {
-        let healthKitManager = HealthKitManager.shared
-        healthKitManager.requestAuthorization()
-    }
     
     var body: some View {
         ZStack {
