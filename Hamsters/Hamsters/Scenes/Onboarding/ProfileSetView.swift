@@ -23,50 +23,50 @@ struct ProfileSetView: View {
 
     
     var body: some View {
-        NavigationStack{
-            VStack(alignment:.leading){
+        NavigationStack {
+            VStack(alignment:.leading) {
                 OnboardingProgressBar(pageNumber: $pageNumber)
                 Text("안녕하세요! 반가워요:)")
                     .font(.largeTitle)
                     .fontWeight(.bold)
                     .padding(EdgeInsets(top: 12, leading: 16, bottom: 16, trailing: 16))
             }
-            .toolbar{
+            .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     OnboardingBackButton(pageNumber: $pageNumber)
                 }
             }
-            ScrollViewReader{ value in
-                ScrollView{
-                    VStack{
-                        HStack{
+            ScrollViewReader { value in
+                ScrollView {
+                    VStack {
+                        HStack {
                             Text("함께 할 캐릭터를 골라주세요!")
                                 .font(.headline)
                                 .bold()
                                 .foregroundColor(.thoNavy)
                             Spacer()
                         }
-                        HStack{
-                            Button{
+                        HStack {
+                            Button {
                                 isSelected = .gray
                                 focusField = .hamName
                                 validate()
-                            }label: {
+                            } label: {
                                 Image(isSelected == .gray ? "GrayCircleHam_s" : "GrayCircleHam")
                             }
                             Spacer()
-                            Button{
+                            Button {
                                 isSelected = .yellow
                                 focusField = .hamName
                                 validate()
-                            }label: {
+                            } label: {
                                 Image(isSelected == .yellow ? "YellowCircleHam_s" : "YellowCircleHam")                        }
                             Spacer()
-                            Button{
+                            Button {
                                 isSelected = .black
                                 focusField = .hamName
                                 validate()
-                            }label: {
+                            } label: {
                                 Image(isSelected == .black ? "BlackCircleHam_s" : "BlackCircleHam")
                             }
                         }
@@ -74,7 +74,7 @@ struct ProfileSetView: View {
                     .padding(EdgeInsets(top: 20, leading: 24, bottom: 20, trailing: 24))
                     .id(0)
 
-                    Group{
+                    VStack(spacing:0) {
                         ProfileInput(input: $hamName,field:.hamName,focusField:focusField)
                             .onSubmit {
                                 focusField = .name
@@ -97,7 +97,7 @@ struct ProfileSetView: View {
                                 validate()
                             }
 
-                            .padding(.bottom,30)
+                            .padding(.bottom,20)
                             .id(1)
                         ProfileInput(input: $name,field:.name,focusField:focusField)
                             .onSubmit {
@@ -120,8 +120,7 @@ struct ProfileSetView: View {
                             .id(2)
                     }
                     .padding(.horizontal,16)
-                        .padding(.bottom,10)
-                }.onAppear{
+                }.onAppear {
                     scroll = value
                 }
             }
@@ -192,5 +191,5 @@ extension ProfileSetView{
 }
 
 #Preview {
-    ProfileSetView(pageNumber:.constant(1),hamName: .constant(""),name: .constant(""))
+    ProfileSetView(pageNumber: .constant(0), hamName: .constant(""), name: .constant(""))
 }
