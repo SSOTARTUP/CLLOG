@@ -237,16 +237,16 @@
 			children = (
 				307B7D732AE424BC007CB7F5 /* ViewModel */,
 				304180F62ADC1375002AD2E3 /* Components */,
-				307B7D682AE424A2007CB7F5 /* Medication */,
 				304180F22ADC0C3F002AD2E3 /* OnboardingView.swift */,
-				304180E42ADAC730002AD2E3 /* AgreementView.swift */,
-				304180EB2ADAEFFC002AD2E3 /* NicknameSetView.swift */,
+				76E48DD22AFB8F670065EA65 /* WelcomeView.swift */,
+				768562D82AFC821F00AF5C95 /* ProfileSetView.swift */,
 				304180F72ADC15A9002AD2E3 /* SexSetView.swift */,
+				307B7D682AE424A2007CB7F5 /* Medication */,
 				304180F92ADCC740002AD2E3 /* SmokingSetView.swift */,
 				304180FB2ADCC9ED002AD2E3 /* SetupCompleteView.swift */,
-				76E48DD22AFB8F670065EA65 /* WelcomeView.swift */,
+				304180E42ADAC730002AD2E3 /* AgreementView.swift */,
+				304180EB2ADAEFFC002AD2E3 /* NicknameSetView.swift */,
 				300E8E9D2AFB314F001728FE /* LottieConfettiView.swift */,
-				768562D82AFC821F00AF5C95 /* ProfileSetView.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
