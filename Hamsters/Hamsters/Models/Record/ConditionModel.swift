@@ -14,7 +14,6 @@ struct ConditionModel :Identifiable ,Equatable{
     var conditionType:ConditionType?
     var answer:Answer?
     
-    
     enum Sender {
         case computer
         case user
@@ -27,11 +26,4 @@ struct ConditionModel :Identifiable ,Equatable{
         case impulsivity
         case taskPriority
     }
-//    enum Val {
-//        case none
-//        case little
-//        case normal
-//        case lot
-//        case severe
-//    }
 }

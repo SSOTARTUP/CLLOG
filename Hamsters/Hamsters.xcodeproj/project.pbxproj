@@ -70,6 +70,9 @@
 		769FFF862AFBCBB200B12515 /* PopupView in Frameworks */ = {isa = PBXBuildFile; productRef = 769FFF852AFBCBB200B12515 /* PopupView */; };
 		769FFF8D2AFBD39100B12515 /* NextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769FFF8C2AFBD39100B12515 /* NextButton.swift */; };
 		769FFF8F2AFBE23700B12515 /* safeAreaInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769FFF8E2AFBE23700B12515 /* safeAreaInsets.swift */; };
+		76B387102AFF99C80067CDAF /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B3870F2AFF99C80067CDAF /* Answer.swift */; };
+		76B387122AFFAFC60067CDAF /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B387112AFFAFC60067CDAF /* ActivityView.swift */; };
+		76B387142AFFC6D00067CDAF /* ActivityModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B387132AFFC6D00067CDAF /* ActivityModalView.swift */; };
 		76D52F402AFE9B45009A0698 /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D52F3F2AFE9B45009A0698 /* RoundedCorner.swift */; };
 		76D52F422AFE9B86009A0698 /* ComputerChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D52F412AFE9B86009A0698 /* ComputerChat.swift */; };
 		76D52F452AFF2A79009A0698 /* ConditionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D52F442AFF2A79009A0698 /* ConditionModel.swift */; };
@@ -148,6 +151,9 @@
 		768562E52AFE7BCB00AF5C95 /* ConditionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ConditionViewModel.swift; path = Hamsters/Scenes/Tab/RecordTab/DailyRecord/ConditionViewModel.swift; sourceTree = SOURCE_ROOT; };
 		769FFF8C2AFBD39100B12515 /* NextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButton.swift; sourceTree = "<group>"; };
 		769FFF8E2AFBE23700B12515 /* safeAreaInsets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = safeAreaInsets.swift; sourceTree = "<group>"; };
+		76B3870F2AFF99C80067CDAF /* Answer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
+		76B387112AFFAFC60067CDAF /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
+		76B387132AFFC6D00067CDAF /* ActivityModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityModalView.swift; sourceTree = "<group>"; };
 		76D52F3F2AFE9B45009A0698 /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
 		76D52F412AFE9B86009A0698 /* ComputerChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComputerChat.swift; sourceTree = "<group>"; };
 		76D52F442AFF2A79009A0698 /* ConditionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionModel.swift; sourceTree = "<group>"; };
@@ -299,6 +305,7 @@
 				30151F462AE3AF060036B60D /* DrinkAmount.swift */,
 				307B7D7C2AE43092007CB7F5 /* TabItem.swift */,
 				B5F904CD2AE4E4DF00FDE4CB /* SideEffects.swift */,
+				76B3870F2AFF99C80067CDAF /* Answer.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -321,6 +328,8 @@
 				307B7D892AE4E0B1007CB7F5 /* AdditionalMemoView.swift */,
 				301971532AE4F00600728D16 /* DailyCompleteView.swift */,
 				768562E32AFE73A500AF5C95 /* ConditionView.swift */,
+				76B387112AFFAFC60067CDAF /* ActivityView.swift */,
+				76B387132AFFC6D00067CDAF /* ActivityModalView.swift */,
 			);
 			path = DailyRecord;
 			sourceTree = "<group>";
@@ -541,9 +550,11 @@
 				768562DE2AFDCE6F00AF5C95 /* HealthKitManager.swift in Sources */,
 				307B7D7B2AE43053007CB7F5 /* MainTabView.swift in Sources */,
 				307B7D772AE424BC007CB7F5 /* AlarmViewModel.swift in Sources */,
+				76B387102AFF99C80067CDAF /* Answer.swift in Sources */,
 				307B7D842AE432EF007CB7F5 /* StatisticsMainView.swift in Sources */,
 				76D52F422AFE9B86009A0698 /* ComputerChat.swift in Sources */,
 				76D52F402AFE9B45009A0698 /* RoundedCorner.swift in Sources */,
+				76B387142AFFC6D00067CDAF /* ActivityModalView.swift in Sources */,
 				768562E42AFE73A500AF5C95 /* ConditionView.swift in Sources */,
 				304180FA2ADCC740002AD2E3 /* SmokingSetView.swift in Sources */,
 				768562D92AFC821F00AF5C95 /* ProfileSetView.swift in Sources */,
@@ -584,6 +595,7 @@
 				301971582AE50A0800728D16 /* DailyMedicationList.swift in Sources */,
 				304180F82ADC15A9002AD2E3 /* SexSetView.swift in Sources */,
 				30151F492AE4007B0036B60D /* CaffeineCheckView.swift in Sources */,
+				76B387122AFFAFC60067CDAF /* ActivityView.swift in Sources */,
 				B597462C2AE5D7190074D5CC /* SleepingTimeView.swift in Sources */,
 				30151F472AE3AF060036B60D /* DrinkAmount.swift in Sources */,
 				305240162ADD73EB008FCD14 /* UserDefaultsKey.swift in Sources */,

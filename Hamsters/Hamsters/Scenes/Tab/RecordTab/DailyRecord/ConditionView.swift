@@ -7,14 +7,6 @@
 
 import SwiftUI
 
-enum Answer {
-    case none
-    case little
-    case normal
-    case lot
-    case severe
-}
-
 struct ConditionView: View {
     @StateObject var viewModel = ConditionViewModel()
     @State var scroll:ScrollViewProxy?

@@ -10,21 +10,15 @@ import SwiftUI
 
 class ConditionViewModel:ObservableObject {
     
-
-    
     @Published var list:[Conditions] = []
     @Published var answer:ConditionAnswer = [:]
-    
     
     init(){
         self.add()
     }
     
     func add(){
-        guard let item = stack.popLast() else {
-            print("All POP")
-            return
-        }
+        guard let item = stack.popLast() else { return }
         
         switch item.sender {
         case .computer:
@@ -41,8 +35,6 @@ class ConditionViewModel:ObservableObject {
         default:
             list.append([item])
         }
-        
-
     }
     
     var stack:Conditions = [
