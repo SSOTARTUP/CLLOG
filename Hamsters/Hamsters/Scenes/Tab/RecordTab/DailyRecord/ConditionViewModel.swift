@@ -10,11 +10,8 @@ import SwiftUI
 
 class ConditionViewModel:ObservableObject {
     
-
-    
     @Published var list:[Conditions] = []
     @Published var answer:ConditionAnswer = [:]
-    
     
     init(){
         self.add()
@@ -38,8 +35,6 @@ class ConditionViewModel:ObservableObject {
         default:
             list.append([item])
         }
-        
-
     }
     
     var stack:Conditions = [
