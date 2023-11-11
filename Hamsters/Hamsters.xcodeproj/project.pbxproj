@@ -65,9 +65,15 @@
 		768562DB2AFCC1DB00AF5C95 /* ProfileInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768562DA2AFCC1DB00AF5C95 /* ProfileInput.swift */; };
 		768562DE2AFDCE6F00AF5C95 /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768562DD2AFDCE6F00AF5C95 /* HealthKitManager.swift */; };
 		768562E12AFDCF2000AF5C95 /* HKWorkoutActivityType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768562E02AFDCF2000AF5C95 /* HKWorkoutActivityType.swift */; };
+		768562E42AFE73A500AF5C95 /* ConditionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768562E32AFE73A500AF5C95 /* ConditionView.swift */; };
+		768562E62AFE7BCB00AF5C95 /* ConditionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768562E52AFE7BCB00AF5C95 /* ConditionViewModel.swift */; };
 		769FFF862AFBCBB200B12515 /* PopupView in Frameworks */ = {isa = PBXBuildFile; productRef = 769FFF852AFBCBB200B12515 /* PopupView */; };
 		769FFF8D2AFBD39100B12515 /* NextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769FFF8C2AFBD39100B12515 /* NextButton.swift */; };
 		769FFF8F2AFBE23700B12515 /* safeAreaInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769FFF8E2AFBE23700B12515 /* safeAreaInsets.swift */; };
+		76D52F402AFE9B45009A0698 /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D52F3F2AFE9B45009A0698 /* RoundedCorner.swift */; };
+		76D52F422AFE9B86009A0698 /* ComputerChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D52F412AFE9B86009A0698 /* ComputerChat.swift */; };
+		76D52F452AFF2A79009A0698 /* ConditionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D52F442AFF2A79009A0698 /* ConditionModel.swift */; };
+		76D52F472AFF2AD2009A0698 /* UserChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D52F462AFF2AD2009A0698 /* UserChat.swift */; };
 		76E48DD32AFB8F670065EA65 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E48DD22AFB8F670065EA65 /* WelcomeView.swift */; };
 		B597462A2AE504220074D5CC /* MenstruationCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59746292AE504220074D5CC /* MenstruationCheckView.swift */; };
 		B597462C2AE5D7190074D5CC /* SleepingTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B597462B2AE5D7190074D5CC /* SleepingTimeView.swift */; };
@@ -138,8 +144,14 @@
 		768562DF2AFDCEBD00AF5C95 /* Hamsters.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Hamsters.entitlements; sourceTree = "<group>"; };
 		768562E02AFDCF2000AF5C95 /* HKWorkoutActivityType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKWorkoutActivityType.swift; sourceTree = "<group>"; };
 		768562E22AFDD08E00AF5C95 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		768562E32AFE73A500AF5C95 /* ConditionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionView.swift; sourceTree = "<group>"; };
+		768562E52AFE7BCB00AF5C95 /* ConditionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ConditionViewModel.swift; path = Hamsters/Scenes/Tab/RecordTab/DailyRecord/ConditionViewModel.swift; sourceTree = SOURCE_ROOT; };
 		769FFF8C2AFBD39100B12515 /* NextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButton.swift; sourceTree = "<group>"; };
 		769FFF8E2AFBE23700B12515 /* safeAreaInsets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = safeAreaInsets.swift; sourceTree = "<group>"; };
+		76D52F3F2AFE9B45009A0698 /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
+		76D52F412AFE9B86009A0698 /* ComputerChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComputerChat.swift; sourceTree = "<group>"; };
+		76D52F442AFF2A79009A0698 /* ConditionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionModel.swift; sourceTree = "<group>"; };
+		76D52F462AFF2AD2009A0698 /* UserChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserChat.swift; sourceTree = "<group>"; };
 		76E48DD22AFB8F670065EA65 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		B59746292AE504220074D5CC /* MenstruationCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenstruationCheckView.swift; sourceTree = "<group>"; };
 		B597462B2AE5D7190074D5CC /* SleepingTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepingTimeView.swift; sourceTree = "<group>"; };
@@ -192,6 +204,7 @@
 		304180CF2ADA8E37002AD2E3 /* Hamsters */ = {
 			isa = PBXGroup;
 			children = (
+				76D52F3E2AFE9B37009A0698 /* helper */,
 				768562E22AFDD08E00AF5C95 /* Info.plist */,
 				768562DF2AFDCEBD00AF5C95 /* Hamsters.entitlements */,
 				304180D02ADA8E37002AD2E3 /* HamstersApp.swift */,
@@ -225,6 +238,7 @@
 		304180DF2ADAACF1002AD2E3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				76D52F432AFF2A54009A0698 /* Record */,
 				768562DC2AFDCE5800AF5C95 /* Manager */,
 				307B7D632AE42480007CB7F5 /* Medicine */,
 				305240122ADD73EB008FCD14 /* Enums */,
@@ -306,6 +320,7 @@
 				30151F442AE3AE850036B60D /* DrinkCheckView.swift */,
 				307B7D892AE4E0B1007CB7F5 /* AdditionalMemoView.swift */,
 				301971532AE4F00600728D16 /* DailyCompleteView.swift */,
+				768562E32AFE73A500AF5C95 /* ConditionView.swift */,
 			);
 			path = DailyRecord;
 			sourceTree = "<group>";
@@ -316,8 +331,10 @@
 				305240452ADFA855008FCD14 /* DailyRecordProgressBar.swift */,
 				30BB50C12AE0C0680050CF69 /* DailyRecordNextButton.swift */,
 				30BB50CA2AE3A4C30050CF69 /* DailyRecordNextTwoButtons.swift */,
-				30BB50B82ADFABBC0050CF69 /* ConditionSlider.swift */,
 				B5F904CF2AE4E61200FDE4CB /* CapsuleView.swift */,
+				30BB50B82ADFABBC0050CF69 /* ConditionSlider.swift */,
+				76D52F412AFE9B86009A0698 /* ComputerChat.swift */,
+				76D52F462AFF2AD2009A0698 /* UserChat.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -402,6 +419,7 @@
 		30BB50C72AE2CDE90050CF69 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				768562E52AFE7BCB00AF5C95 /* ConditionViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -412,6 +430,22 @@
 				768562DD2AFDCE6F00AF5C95 /* HealthKitManager.swift */,
 			);
 			path = Manager;
+			sourceTree = "<group>";
+		};
+		76D52F3E2AFE9B37009A0698 /* helper */ = {
+			isa = PBXGroup;
+			children = (
+				76D52F3F2AFE9B45009A0698 /* RoundedCorner.swift */,
+			);
+			path = helper;
+			sourceTree = "<group>";
+		};
+		76D52F432AFF2A54009A0698 /* Record */ = {
+			isa = PBXGroup;
+			children = (
+				76D52F442AFF2A79009A0698 /* ConditionModel.swift */,
+			);
+			path = Record;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -508,6 +542,9 @@
 				307B7D7B2AE43053007CB7F5 /* MainTabView.swift in Sources */,
 				307B7D772AE424BC007CB7F5 /* AlarmViewModel.swift in Sources */,
 				307B7D842AE432EF007CB7F5 /* StatisticsMainView.swift in Sources */,
+				76D52F422AFE9B86009A0698 /* ComputerChat.swift in Sources */,
+				76D52F402AFE9B45009A0698 /* RoundedCorner.swift in Sources */,
+				768562E42AFE73A500AF5C95 /* ConditionView.swift in Sources */,
 				304180FA2ADCC740002AD2E3 /* SmokingSetView.swift in Sources */,
 				768562D92AFC821F00AF5C95 /* ProfileSetView.swift in Sources */,
 				307B7D8A2AE4E0B1007CB7F5 /* AdditionalMemoView.swift in Sources */,
@@ -526,6 +563,8 @@
 				304180D32ADA8E37002AD2E3 /* StartView.swift in Sources */,
 				304180E52ADAC730002AD2E3 /* AgreementView.swift in Sources */,
 				307B7D702AE424A2007CB7F5 /* AlarmFrequencyView.swift in Sources */,
+				76D52F452AFF2A79009A0698 /* ConditionModel.swift in Sources */,
+				76D52F472AFF2AD2009A0698 /* UserChat.swift in Sources */,
 				307B7D872AE43322007CB7F5 /* MyInfoMainView.swift in Sources */,
 				B5F904D02AE4E61200FDE4CB /* CapsuleView.swift in Sources */,
 				304180F12ADBCA6E002AD2E3 /* OnboardingProgressBar.swift in Sources */,
@@ -535,6 +574,7 @@
 				30BB50C02ADFFB710050CF69 /* DailyRecordView.swift in Sources */,
 				30BB50CB2AE3A4C30050CF69 /* DailyRecordNextTwoButtons.swift in Sources */,
 				307B7D7F2AE43254007CB7F5 /* RecordMainView.swift in Sources */,
+				768562E62AFE7BCB00AF5C95 /* ConditionViewModel.swift in Sources */,
 				768562DB2AFCC1DB00AF5C95 /* ProfileInput.swift in Sources */,
 				305240462ADFA855008FCD14 /* DailyRecordProgressBar.swift in Sources */,
 				304180E72ADAC9D7002AD2E3 /* OnboardingNextButton.swift in Sources */,
