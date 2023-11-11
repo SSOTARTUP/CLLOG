@@ -21,10 +21,7 @@ class ConditionViewModel:ObservableObject {
     }
     
     func add(){
-        guard let item = stack.popLast() else {
-            print("All POP")
-            return
-        }
+        guard let item = stack.popLast() else { return }
         
         switch item.sender {
         case .computer:
