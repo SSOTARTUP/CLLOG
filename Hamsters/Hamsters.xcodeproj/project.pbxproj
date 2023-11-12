@@ -60,6 +60,7 @@
 		30BB50CB2AE3A4C30050CF69 /* DailyRecordNextTwoButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BB50CA2AE3A4C30050CF69 /* DailyRecordNextTwoButtons.swift */; };
 		30D60C912AFFD048005D5D96 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D60C902AFFD048005D5D96 /* Onboarding.swift */; };
 		30D60C952B00FD1C005D5D96 /* NextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D60C942B00FD1C005D5D96 /* NextButton.swift */; };
+		30E376C72B011FCA00E8A10D /* CheerUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E376C62B011FCA00E8A10D /* CheerUpView.swift */; };
 		768562D92AFC821F00AF5C95 /* ProfileSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768562D82AFC821F00AF5C95 /* ProfileSetView.swift */; };
 		768562DB2AFCC1DB00AF5C95 /* ProfileInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768562DA2AFCC1DB00AF5C95 /* ProfileInput.swift */; };
 		768562DE2AFDCE6F00AF5C95 /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768562DD2AFDCE6F00AF5C95 /* HealthKitManager.swift */; };
@@ -138,6 +139,7 @@
 		30BB50CA2AE3A4C30050CF69 /* DailyRecordNextTwoButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyRecordNextTwoButtons.swift; sourceTree = "<group>"; };
 		30D60C902AFFD048005D5D96 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
 		30D60C942B00FD1C005D5D96 /* NextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButton.swift; sourceTree = "<group>"; };
+		30E376C62B011FCA00E8A10D /* CheerUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheerUpView.swift; sourceTree = "<group>"; };
 		768562D82AFC821F00AF5C95 /* ProfileSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSetView.swift; sourceTree = "<group>"; };
 		768562DA2AFCC1DB00AF5C95 /* ProfileInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInput.swift; sourceTree = "<group>"; };
 		768562DD2AFDCE6F00AF5C95 /* HealthKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
@@ -316,6 +318,7 @@
 				B5F904C62AE4E0DA00FDE4CB /* SideEffectCheckView.swift */,
 				B5F904D12AE4F98F00FDE4CB /* WeightCheckView.swift */,
 				B59746292AE504220074D5CC /* MenstruationCheckView.swift */,
+				30E376C62B011FCA00E8A10D /* CheerUpView.swift */,
 				30BB50C82AE395F80050CF69 /* SmokingCheckView.swift */,
 				30151F482AE4007B0036B60D /* CaffeineCheckView.swift */,
 				30151F442AE3AE850036B60D /* DrinkCheckView.swift */,
@@ -570,6 +573,7 @@
 				76D52F472AFF2AD2009A0698 /* UserChat.swift in Sources */,
 				307B7D872AE43322007CB7F5 /* MyInfoMainView.swift in Sources */,
 				B5F904D02AE4E61200FDE4CB /* CapsuleView.swift in Sources */,
+				30E376C72B011FCA00E8A10D /* CheerUpView.swift in Sources */,
 				30BB50C42AE1FCA80050CF69 /* MoodCheckView.swift in Sources */,
 				30BB50BE2ADFFAE00050CF69 /* ConditionCheckView.swift in Sources */,
 				300E8E9E2AFB314F001728FE /* LottieConfettiView.swift in Sources */,
