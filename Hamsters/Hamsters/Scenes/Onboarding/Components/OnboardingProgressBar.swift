@@ -5,6 +5,9 @@
 //  Created by Chaeeun Shin on 10/15/23.
 //
 
+
+// 삭제 예정
+
 import SwiftUI
 
 struct OnboardingProgressBar: View {

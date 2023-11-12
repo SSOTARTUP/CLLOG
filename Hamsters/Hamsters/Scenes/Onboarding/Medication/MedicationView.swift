@@ -89,7 +89,7 @@ struct MedicationView: View {
                 
                 
                 VStack(spacing: 8) {
-                    OnboardingNextButton(isActive: $isActiveNext, pageNumber: $pageNumber)
+//                    OnboardingNextButton(isActive: $isActiveNext, pageNumber: $pageNumber)
 
                     Button(action: {
                         pageNumber += 1
@@ -110,11 +110,11 @@ struct MedicationView: View {
                     isActiveNext = true
                 }
             }
-            .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    OnboardingBackButton(pageNumber: $pageNumber)
-                }
-            }
+//            .toolbar {
+//                ToolbarItem(placement: .topBarLeading) {
+//                    OnboardingBackButton(pageNumber: $pageNumber)
+//                }
+//            }
         }
     }
 }

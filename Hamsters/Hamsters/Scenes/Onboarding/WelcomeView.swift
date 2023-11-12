@@ -7,7 +7,6 @@
 
 import Foundation
 import SwiftUI
-import PopupView
 
 struct Info:Identifiable{
     let id = UUID()
@@ -15,10 +14,12 @@ struct Info:Identifiable{
     let sub:String
 }
 
-struct WelcomeView:View{
+struct WelcomeView: View {
+    @Binding var onboardingPage: Onboarding
+    
     @State private var selectedIndex = 0
     @State var isPresentedBottomSheet: Bool = false
-    @Binding var pageNumber:Int
+
     let infos = [
         Info(title: "새로운 시작을 위한\n첫 걸음", sub: "Clue와 함께 쉽고 간편하게\n나의 증상을 기록하고 관리해요!"),
         Info(title: "나의 증상을\n한눈에 알기 쉽게", sub: "내가 기록한 매일의 기록을\n한 눈에 보기 편하게 알려줘요!"),
@@ -26,68 +27,52 @@ struct WelcomeView:View{
     ]
  
     var body: some View {
-        NavigationStack{
-            VStack {
-                Spacer()
-                TabView(selection: $selectedIndex) {
-                    ForEach(infos.indices,id:\.self) { index in
-                        VStack(spacing:0) {
-                            Image("HamsterV")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 180, height: 180)
-                            Text(infos[index].title)
-                                .font(.largeTitle)
-                                .bold()
-                                .multilineTextAlignment(.center)
-                                .padding(.vertical,16)
-                                
-                            Text(infos[index].sub)
-                                .font(.body)
-                                .foregroundColor(.secondary)
-                                .multilineTextAlignment(.center)
-                            Spacer()
-                        }
+        VStack {
+            Spacer()
+            TabView(selection: $selectedIndex) {
+                ForEach(infos.indices,id:\.self) { index in
+                    VStack(spacing: 16) {
+                        Image("HamsterV")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 180, height: 180)
+                        
+                        Text(infos[index].title)
+                            .font(.largeTitle)
+                            .bold()
+                            .multilineTextAlignment(.center)
+                            
+                        Text(infos[index].sub)
+                            .font(.body)
+                            .foregroundColor(.secondary)
+                            .multilineTextAlignment(.center)
+                        
+                        Spacer()
                     }
                 }
-                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
-                .onAppear{
-                    setUpDot()
-                }
-                .frame(height:400)
-
-                Spacer()
-                
-                NextButton(title: "시작하기",isActive: .constant(true)) {
-                    isPresentedBottomSheet.toggle()
-                }
-                .padding(.horizontal,24)
-                .padding(.bottom,30)
-
-                
             }
-            .popup(isPresented: $isPresentedBottomSheet) {
-                TermsView(isPresentedBottomSheet: $isPresentedBottomSheet,pageNumber:$pageNumber)
-            } customize: {
-              $0
-                .type(.toast)
-                .position(.bottom)
-                .dragToDismiss(true)
-                .closeOnTapOutside(true)
-                .backgroundColor(.black.opacity(0.2))
+            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
+            .onAppear{
+                setUpDot()
+            }
+            .frame(height:400)
+
+            Spacer()
+            
+            OnboardingNextButton(isActive: .constant(true), title: onboardingPage.nextButtonTitle) {
+                isPresentedBottomSheet.toggle()
             }
         }
-
+        .sheet(isPresented: $isPresentedBottomSheet) {
+            TermsView(isPresentedBottomSheet: $isPresentedBottomSheet, onboardingPage: $onboardingPage)
+                .presentationDetents([.medium])
+        }
     }
 }
 
 struct TermsView:View{
     @Binding var isPresentedBottomSheet:Bool
-    @Binding var pageNumber:Int
-    
-    @Environment(\.safeAreaInsets) private var safeAreaInsets
-
-    @State private var isActive = true
+    @Binding var onboardingPage: Onboarding
 
     var body: some View{
         VStack(alignment:.center,spacing: 0){
@@ -148,14 +133,12 @@ struct TermsView:View{
             }
             .padding(.horizontal,24)
             .padding(.top,12)
+            .padding(.bottom, 50)
             
-            OnboardingNextButton(isActive: $isActive, pageNumber: $pageNumber)
-            .padding(EdgeInsets(top: 50, leading: 24, bottom: 30 + safeAreaInsets.bottom, trailing: 24))
+            OnboardingNextButton(isActive: .constant(true), title: "전체 동의 및 다음") {
+                onboardingPage = Onboarding(rawValue: onboardingPage.rawValue + 1) ?? .profile
+            }
         }
-        .background(.white)
-        .cornerRadius(10)
-
-
     }
 }
 
@@ -167,5 +150,5 @@ extension WelcomeView{
 }
 
 #Preview{
-    WelcomeView(pageNumber:.constant(0))
+    WelcomeView(onboardingPage: .constant(.welcome))
 }
