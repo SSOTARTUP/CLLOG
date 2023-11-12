@@ -23,7 +23,7 @@ struct DailyCompleteView: View {
                         .padding(.horizontal, 125)
                         .padding(.bottom, 33)
                     
-                    Text("수고하셨습니다!")
+                    Text("오늘도 기록 완료!")
                         .font(.largeTitle)
                         .fontWeight(.bold)
                         .padding(.bottom, 12)
