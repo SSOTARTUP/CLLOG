@@ -10,6 +10,15 @@ import Foundation
 class AlarmViewModel: ObservableObject {
     @Published var alarms: [AlarmItem] = [] // 알람 리스트
     
+    // 기본 생성자
+    init() {
+        self.alarms = []
+    }
+    
+    // 특정 알람들로 초기화하는 생성자
+    init(alarms: [AlarmItem]) {
+        self.alarms = alarms
+    }
     
     // 새 알람을 생성하고 리스트에 추가하는 메서드
     func addAlarmTime(date: Date) {
@@ -19,5 +28,9 @@ class AlarmViewModel: ObservableObject {
     
     func removeAlarmTime(at index: Int) {
         alarms.remove(at: index)
+    }
+    
+    func setAlarms(_ alarms: [AlarmItem]) {
+        self.alarms = alarms
     }
 }

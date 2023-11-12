@@ -9,10 +9,21 @@ import SwiftUI
 
 struct AlarmFrequencyView: View {
     @Environment(\.dismiss) private var dismiss
-        
-    @Binding var selectedOption: Option?
+    
+    @Binding var selectedOption: Option
     @Binding var selectedDays: [Day]
-    @Binding var startDay: Date
+    
+    // 초기 값을 저장하는 @State 프로퍼티를 선언합니다.
+      @State private var initialSelectedOption: Option
+      @State private var initialSelectedDays: [Day]
+      
+      // 뷰가 초기화될 때 @State 프로퍼티에 바인딩된 값을 저장합니다.
+      init(selectedOption: Binding<Option>, selectedDays: Binding<[Day]>) {
+          _selectedOption = selectedOption
+          _selectedDays = selectedDays
+          _initialSelectedOption = State(initialValue: selectedOption.wrappedValue)
+          _initialSelectedDays = State(initialValue: selectedDays.wrappedValue)
+      }
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -40,10 +51,10 @@ struct AlarmFrequencyView: View {
                     .contentShape(Rectangle())
                     .onTapGesture {
                         if index == 0 {
-                            selectedOption = option
+                           selectedOption = option
                         } else {
                             selectedOption = option
-                            selectedDays.removeAll()
+                           selectedDays.removeAll()
                         }
                     }
                 }
@@ -54,7 +65,7 @@ struct AlarmFrequencyView: View {
             .padding(.top, 24)
             .padding(.bottom, 44)
             
-            if selectedOption == Option.specificDay || !selectedDays.isEmpty {
+            if selectedOption == Option.specificDay {
                 Text("요일 선택")
                     .font(.headline)
                     .foregroundStyle(.thoNavy)
@@ -88,14 +99,6 @@ struct AlarmFrequencyView: View {
                 .padding(.bottom, 44)
             }
             
-            DatePicker("시작일", selection: $startDay, displayedComponents: .date)
-                .font(.body)
-                .padding(.horizontal, 8)
-                .padding(.vertical, 11)
-                .background(Color(uiColor: .secondarySystemBackground))
-                .cornerRadius(10)
-            
-            
             Spacer()
         }
         .padding(.horizontal, 16)
@@ -105,9 +108,19 @@ struct AlarmFrequencyView: View {
             
             ToolbarItem(placement: .topBarLeading) {
                 Button(action: {
+                    selectedOption = initialSelectedOption
+                    selectedDays = initialSelectedDays
                     dismiss()
                 }, label: {
                     Text("뒤로")
+                })
+            }
+            
+            ToolbarItem(placement: .topBarTrailing) {
+                Button(action: {
+                    dismiss()
+                }, label: {
+                    Text("완료")
                 })
             }
         }
@@ -117,5 +130,7 @@ struct AlarmFrequencyView: View {
 }
 
 #Preview {
-    AlarmFrequencyView(selectedOption: .constant(.specificDay), selectedDays:.constant([.monday, .wednesday]), startDay: .constant(Date()))
+    AlarmFrequencyView(selectedOption: .constant(.specificDay),
+                       selectedDays:.constant([.monday, .wednesday]))
+
 }

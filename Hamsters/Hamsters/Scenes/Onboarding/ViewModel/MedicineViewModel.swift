@@ -15,9 +15,9 @@ class MedicineViewModel: ObservableObject {
     @Published var capacity: String = ""
     @Published var unit: String = "정"
     @Published var frequency: [Day] = []
-    //    @Published var selectedDays: [Day] = []
-    @Published var startDay: Date = Date()
+    @Published var freOption: Option = .everyDay
     @Published var alarms: [AlarmItem] = [] // 알람 아이템의 구조체가 필요합니다.
+    
     
     
     //        // Medicine 객체를 어딘가에 저장하거나 다른 처리를 합니다.
@@ -26,16 +26,16 @@ class MedicineViewModel: ObservableObject {
                      capacity: String,
                      frequency: [Day],
                      unit: String,
-                     startDay: Date,
                      alarms: [AlarmItem],
+                     freOption: Option,
                      sortedDays: String) {
         
         let newMedicine = Medicine(name: name,
                                    capacity: capacity,
                                    unit: unit,
                                    frequency: frequency,
-                                   startTime: startDay,
                                    alarms: alarms,
+                                   freOption: freOption,
                                    sortedDays: sortedDays)
         
         medicines.append(newMedicine)
@@ -43,6 +43,12 @@ class MedicineViewModel: ObservableObject {
     
     func deleteMedicine(at offsets: IndexSet) {
         medicines.remove(atOffsets: offsets)
+    }
+    
+    func updateMedicine(_ medicine: Medicine) {
+        if let index = medicines.firstIndex(where: { $0.id == medicine.id}) {
+            medicines[index] = medicine
+        }
     }
     
 }

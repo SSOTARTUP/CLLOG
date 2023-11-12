@@ -10,10 +10,16 @@ import SwiftUI
 struct MedicationView: View {
     //    @StateObject private var medicineViewModel = MedicineViewModel()
     @EnvironmentObject var medicineViewModel: MedicineViewModel
+    
     @Binding var pageNumber: Int
     @Binding var nickname: String
     @State private var isActiveNext = false
     @State private var showingSheet = false
+    @State private var showingAlert = false
+    @State private var indexSetToDelete: IndexSet?
+    
+    @State private var editingMedicine: Medicine?
+    @State private var showingEditSheet = false
     
     var body: some View {
         NavigationStack {
@@ -21,7 +27,7 @@ struct MedicationView: View {
                 OnboardingProgressBar(pageNumber: $pageNumber)
                 
                 VStack(alignment: .leading, spacing: 0) {
-                    Text("투여하시는 약물이\n있나요?")
+                    Text("드시는 약물이\n있나요?")
                         .font(.largeTitle)
                         .fontWeight(.bold)
                         .padding(.bottom, 14)
@@ -56,68 +62,92 @@ struct MedicationView: View {
                 .padding(.leading, 24)
                 .padding(.trailing, 24)
                 
-                
-                VStack {
-                    VStack (alignment: .leading, spacing: 0){
-                        // medicineViewModel에서 medicines 배열을 순회하며 각 Medicine 객체에 대한 행을 생성
+                VStack (alignment: .leading, spacing: 0){
+                    // medicineViewModel에서 medicines 배열을 순회하며 각 Medicine 객체에 대한 행을 생성
+                    List {
                         ForEach(Array(medicineViewModel.medicines.enumerated()), id: \.1.id) { (index, medicine) in
                             
                             // 각각의 Medicine 객체를 사용하여 MedicineRow 뷰를 생성
                             MedicineRow(medicine: medicine)
                                 .frame(maxWidth: .infinity)
                                 .listRowInsets(EdgeInsets()) // 이를 통해 여백이 제거되고 텍스트가 행의 전체 너비를 차지합니다.
-                
-                            
-                            if index < medicineViewModel.medicines.count - 1 {
-                                Divider()
+                                .swipeActions(allowsFullSwipe: false) {
+                                    Button {
+                                        indexSetToDelete = IndexSet(arrayLiteral: index)
+                                        showingAlert = true
+                                        
+                                    } label: {
+                                        Label("삭제", systemImage: "trash.fill")
+                                    }
+                                    .tint(.red)
+                                    
+                                    Button {
+                                        editingMedicine = medicine
+                                        showingEditSheet.toggle()
+                                    } label: {
+                                        Label("편집", systemImage: "square.and.pencil")
+                                    }
+                                    .tint(.yellow)
+                                }
+                        }
+                    }
+                    .sheet(isPresented: $showingEditSheet) {
+                        if let editingMedicine = editingMedicine {
+                            AddMedicineView(isActiveNext: $isActiveNext, editingMedicine: editingMedicine)
+                        }
+                    }
+                    .confirmationDialog("이 투여약이 삭제됩니다.", isPresented: $showingAlert, titleVisibility: .visible) {
+                        Button("삭제", role: .destructive) {
+                            if let indexSet = indexSetToDelete {
+                                withAnimation {
+                                    medicineViewModel.deleteMedicine(at: indexSet)
+                                }
                             }
                         }
-                        // 로우 삭제 및 편집 추가 필요
-    //                    .onDelete(perform: medicineViewModel.deleteMedicine)
-                        
-//                        // 예시 로우
-//                        MedicineRow(medicine: Medicine(name: "콘서타", capacity: "60", unit: "정", frequency: [.saturday], startTime: Date.now, alarms: [.init(date: Date.now)], sortedDays: "토"))
                     }
-                    
-                    Spacer()
+                    .cornerRadius(10)
+                    .listStyle(.plain)
                 }
                 .cornerRadius(15)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .padding(.bottom, 44)
                 .padding(.horizontal, 24)
-                .scrollContentBackground(.hidden)
-                
-                
-                VStack(spacing: 8) {
-                    OnboardingNextButton(isActive: $isActiveNext, pageNumber: $pageNumber)
-
-                    Button(action: {
-                        pageNumber += 1
-                    }, label: {
-                        Text("지금은 건너뛰기")
-                            .font(.footnote)
-                            .foregroundStyle(Color.secondary)
-                    })
-                    .frame(maxWidth: .infinity)
-                    .disabled(isActiveNext)
-                }
-                .padding(.horizontal, 24)
-                .padding(.bottom, 6)
                 
             }
-            .onAppear {
-                if medicineViewModel.medicines.count > 0 {
-                    isActiveNext = true
-                }
+            
+            Spacer()
+            
+            VStack(spacing: 0) {
+                
+                Button(action: {
+                    pageNumber += 1
+                }, label: {
+                    Text("지금은 건너뛰기")
+                        .font(.footnote)
+                        .foregroundStyle(Color.secondary)
+                })
+                .frame(maxWidth: .infinity)
+                .disabled(isActiveNext)
+                .padding(.bottom, 20)
+                OnboardingNextButton(isActive: $isActiveNext, pageNumber: $pageNumber)
             }
-            .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    OnboardingBackButton(pageNumber: $pageNumber)
-                }
+            .padding(.horizontal, 24)
+            .padding(.bottom, 6)
+            
+        }
+        .onAppear {
+            if medicineViewModel.medicines.count > 0 {
+                isActiveNext = true
+            }
+        }
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                OnboardingBackButton(pageNumber: $pageNumber)
             }
         }
     }
 }
+
 
 #Preview {
     MedicationView(pageNumber: .constant(3), nickname: .constant("Hamm"))
