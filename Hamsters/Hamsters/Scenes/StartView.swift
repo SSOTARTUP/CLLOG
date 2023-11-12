@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct StartView: View {
-//    @AppStorage(UserDefaultsKey.complete.rawValue) private var setupComplete: Bool = false
-    @State private var setupComplete = false
+    @AppStorage(UserDefaultsKey.complete.rawValue) private var setupComplete: Bool = false
     init(){
         let heathKit = HealthKitManager.shared
         heathKit.requestAuthorization()
@@ -20,7 +19,7 @@ struct StartView: View {
             if setupComplete {
                 MainTabView()
             } else {
-                OnboardingView(setupComplete: $setupComplete)
+                OnboardingView()
             }
         }
     }

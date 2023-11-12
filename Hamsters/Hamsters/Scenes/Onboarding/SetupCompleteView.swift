@@ -7,72 +7,49 @@
 
 import SwiftUI
 
-// 임시 구현
 struct SetupCompleteView: View {
-    @Binding var pageNumber: Int
-    @Binding var setupComplete: Bool
-//    @AppStorage(UserDefaultsKey.complete.rawValue) private var setupComplete: Bool = false
-    // 저장 확인용
-//    @AppStorage(UserDefaultsKey.nickname.rawValue) private var storedNickname: String?
-//    @AppStorage(UserDefaultsKey.sex.rawValue) private var storedSex: String?
-//    @AppStorage(UserDefaultsKey.smoking.rawValue) private var storedSmoking: Bool?
+    @AppStorage(UserDefaultsKey.username.rawValue) private var storedUserkname: String = ""
+    @AppStorage(UserDefaultsKey.hamstername.rawValue) private var storedHamsterkname: String = ""
+    @AppStorage(UserDefaultsKey.sex.rawValue) private var storedSex: String = ""
+    @AppStorage(UserDefaultsKey.smoking.rawValue) private var storedSmoking: Bool = false
+    
+    @AppStorage(UserDefaultsKey.complete.rawValue) private var setupComplete: Bool = false
+    
+    @Binding var onboardingPage: Onboarding
     
     var body: some View {
-        NavigationStack {
-            VStack(spacing: 0) {
-                OnboardingProgressBar(pageNumber: $pageNumber)
-                
-                Spacer()
-                
-
-                ZStack {
-                    VStack {
-                        Image("HamsterV")
-                            .resizable()
-                            .scaledToFit()
-                            .padding(.horizontal, 124)
-                            .padding(.bottom, 32)
-                            
-                        Text("준비 완료!")
-                            .font(.title)
-                            .fontWeight(.semibold)
-                            .padding(.bottom, 12)
+        VStack(spacing: 0) {
+            ZStack {                
+                VStack {
+                    Image("HamsterV")
+                        .resizable()
+                        .scaledToFit()
+                        .padding(.horizontal, 124)
+                        .padding(.bottom, 32)
                         
-                        Text("일상을 변화시킬 나를 위한 단서,\nClue가 도와줄게요!")
-                            .multilineTextAlignment(.center)
-                            .foregroundStyle(.secondary)
-                    }
+                    Text("준비 완료!")
+                        .font(.title)
+                        .fontWeight(.semibold)
+                        .padding(.bottom, 12)
                     
-                    LottieConfettiView(filename: "onboardingConfetti")
+                    Text("일상을 변화시킬 나를 위한 단서,\nClue가 도와줄게요!")
+                        .multilineTextAlignment(.center)
+                        .foregroundStyle(.secondary)
                 }
                 
-                Spacer()
-
-                Button {
-                    setupComplete = true
-                    pageNumber += 1
-                } label: {
-                    Text("완료")
-                        .font(.headline)
-                        .fontWeight(.semibold)
-                        .foregroundStyle(.white)
-                        .frame(maxWidth: .infinity)
-                        .padding(.vertical, 15)
-                        .background(.thoNavy)
-                        .cornerRadius(15)
-                }
-                .padding(.horizontal, 24)
-                .padding(.bottom, 30)
+                LottieConfettiView(filename: "onboardingConfetti")
             }
-            .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    OnboardingBackButton(pageNumber: $pageNumber)
-                }
+            
+            Spacer()
+
+            OnboardingNextButton(isActive: .constant(true), title: onboardingPage.nextButtonTitle) {
+                setupComplete = true
+                onboardingPage = Onboarding(rawValue: onboardingPage.rawValue + 1) ?? .end
             }
         }
     }
 }
 
 #Preview {
-    SetupCompleteView(pageNumber: .constant(5), setupComplete: .constant(false))
+    SetupCompleteView(onboardingPage: .constant(.complete))
 }
