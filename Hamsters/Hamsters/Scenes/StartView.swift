@@ -9,6 +9,10 @@ import SwiftUI
 
 struct StartView: View {
     @AppStorage(UserDefaultsKey.complete.rawValue) private var setupComplete: Bool = false
+    init(){
+        let heathKit = HealthKitManager.shared
+        heathKit.requestAuthorization()
+    }
     
     var body: some View {
         ZStack {
