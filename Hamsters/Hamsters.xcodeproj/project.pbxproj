@@ -24,7 +24,6 @@
 		304180D82ADA8E39002AD2E3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 304180D72ADA8E39002AD2E3 /* Preview Assets.xcassets */; };
 		304180E72ADAC9D7002AD2E3 /* OnboardingNextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304180E62ADAC9D7002AD2E3 /* OnboardingNextButton.swift */; };
 		304180EF2ADBB37B002AD2E3 /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304180EE2ADBB37B002AD2E3 /* View+.swift */; };
-		304180F12ADBCA6E002AD2E3 /* OnboardingProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304180F02ADBCA6E002AD2E3 /* OnboardingProgressBar.swift */; };
 		304180F32ADC0C3F002AD2E3 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304180F22ADC0C3F002AD2E3 /* OnboardingView.swift */; };
 		304180F52ADC1325002AD2E3 /* OnboardingBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304180F42ADC1325002AD2E3 /* OnboardingBackButton.swift */; };
 		304180F82ADC15A9002AD2E3 /* SexSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304180F72ADC15A9002AD2E3 /* SexSetView.swift */; };
@@ -104,7 +103,6 @@
 		304180D72ADA8E39002AD2E3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		304180E62ADAC9D7002AD2E3 /* OnboardingNextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingNextButton.swift; sourceTree = "<group>"; };
 		304180EE2ADBB37B002AD2E3 /* View+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+.swift"; sourceTree = "<group>"; };
-		304180F02ADBCA6E002AD2E3 /* OnboardingProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingProgressBar.swift; sourceTree = "<group>"; };
 		304180F22ADC0C3F002AD2E3 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		304180F42ADC1325002AD2E3 /* OnboardingBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingBackButton.swift; sourceTree = "<group>"; };
 		304180F72ADC15A9002AD2E3 /* SexSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SexSetView.swift; sourceTree = "<group>"; };
@@ -284,7 +282,6 @@
 			children = (
 				304180E62ADAC9D7002AD2E3 /* OnboardingNextButton.swift */,
 				304180F42ADC1325002AD2E3 /* OnboardingBackButton.swift */,
-				304180F02ADBCA6E002AD2E3 /* OnboardingProgressBar.swift */,
 				300E8E982AF9D8CA001728FE /* ProgressBarAndTitle.swift */,
 				768562DA2AFCC1DB00AF5C95 /* ProfileInput.swift */,
 			);
@@ -573,7 +570,6 @@
 				76D52F472AFF2AD2009A0698 /* UserChat.swift in Sources */,
 				307B7D872AE43322007CB7F5 /* MyInfoMainView.swift in Sources */,
 				B5F904D02AE4E61200FDE4CB /* CapsuleView.swift in Sources */,
-				304180F12ADBCA6E002AD2E3 /* OnboardingProgressBar.swift in Sources */,
 				30BB50C42AE1FCA80050CF69 /* MoodCheckView.swift in Sources */,
 				30BB50BE2ADFFAE00050CF69 /* ConditionCheckView.swift in Sources */,
 				300E8E9E2AFB314F001728FE /* LottieConfettiView.swift in Sources */,
