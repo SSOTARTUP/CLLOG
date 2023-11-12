@@ -73,6 +73,7 @@
 		76B387102AFF99C80067CDAF /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B3870F2AFF99C80067CDAF /* Answer.swift */; };
 		76B387122AFFAFC60067CDAF /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B387112AFFAFC60067CDAF /* ActivityView.swift */; };
 		76B387142AFFC6D00067CDAF /* ActivityModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B387132AFFC6D00067CDAF /* ActivityModalView.swift */; };
+		76B387162B008A9D0067CDAF /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B387152B008A9D0067CDAF /* Date.swift */; };
 		76D52F402AFE9B45009A0698 /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D52F3F2AFE9B45009A0698 /* RoundedCorner.swift */; };
 		76D52F422AFE9B86009A0698 /* ComputerChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D52F412AFE9B86009A0698 /* ComputerChat.swift */; };
 		76D52F452AFF2A79009A0698 /* ConditionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D52F442AFF2A79009A0698 /* ConditionModel.swift */; };
@@ -154,6 +155,7 @@
 		76B3870F2AFF99C80067CDAF /* Answer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
 		76B387112AFFAFC60067CDAF /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
 		76B387132AFFC6D00067CDAF /* ActivityModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityModalView.swift; sourceTree = "<group>"; };
+		76B387152B008A9D0067CDAF /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		76D52F3F2AFE9B45009A0698 /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
 		76D52F412AFE9B86009A0698 /* ComputerChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComputerChat.swift; sourceTree = "<group>"; };
 		76D52F442AFF2A79009A0698 /* ConditionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionModel.swift; sourceTree = "<group>"; };
@@ -278,6 +280,7 @@
 				305240192ADE1299008FCD14 /* String+.swift */,
 				769FFF8E2AFBE23700B12515 /* safeAreaInsets.swift */,
 				768562E02AFDCF2000AF5C95 /* HKWorkoutActivityType.swift */,
+				76B387152B008A9D0067CDAF /* Date.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -584,6 +587,7 @@
 				300E8E9E2AFB314F001728FE /* LottieConfettiView.swift in Sources */,
 				30BB50C02ADFFB710050CF69 /* DailyRecordView.swift in Sources */,
 				30BB50CB2AE3A4C30050CF69 /* DailyRecordNextTwoButtons.swift in Sources */,
+				76B387162B008A9D0067CDAF /* Date.swift in Sources */,
 				307B7D7F2AE43254007CB7F5 /* RecordMainView.swift in Sources */,
 				768562E62AFE7BCB00AF5C95 /* ConditionViewModel.swift in Sources */,
 				768562DB2AFCC1DB00AF5C95 /* ProfileInput.swift in Sources */,
