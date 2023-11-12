@@ -13,7 +13,7 @@ struct OnboardingView: View {
     
     @AppStorage(UserDefaultsKey.complete.rawValue) private var setupComplete: Bool = false
     
-    @State private var onboardingPage: Onboarding = .welcome
+    @State private var onboardingPage: Onboarding = .medication
     
     var body: some View {
         NavigationStack {
@@ -30,7 +30,7 @@ struct OnboardingView: View {
                 case .sex:
                     SexSetView(onboardingPage: $onboardingPage)
                 case .medication:
-                    TempMediView(onboardingPage: $onboardingPage)
+                    MedicationView(onboardingPage: $onboardingPage)
                         .environmentObject(medicineViewModel)
                 case .smoking:
                     SmokingSetView(onboardingPage: $onboardingPage)

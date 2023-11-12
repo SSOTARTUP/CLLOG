@@ -60,15 +60,13 @@
 		30BB50C92AE395F80050CF69 /* SmokingCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BB50C82AE395F80050CF69 /* SmokingCheckView.swift */; };
 		30BB50CB2AE3A4C30050CF69 /* DailyRecordNextTwoButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BB50CA2AE3A4C30050CF69 /* DailyRecordNextTwoButtons.swift */; };
 		30D60C912AFFD048005D5D96 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D60C902AFFD048005D5D96 /* Onboarding.swift */; };
-		30D60C932AFFD0F5005D5D96 /* TempMediView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D60C922AFFD0F5005D5D96 /* TempMediView.swift */; };
+		30D60C952B00FD1C005D5D96 /* NextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D60C942B00FD1C005D5D96 /* NextButton.swift */; };
 		768562D92AFC821F00AF5C95 /* ProfileSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768562D82AFC821F00AF5C95 /* ProfileSetView.swift */; };
 		768562DB2AFCC1DB00AF5C95 /* ProfileInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768562DA2AFCC1DB00AF5C95 /* ProfileInput.swift */; };
 		768562DE2AFDCE6F00AF5C95 /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768562DD2AFDCE6F00AF5C95 /* HealthKitManager.swift */; };
 		768562E12AFDCF2000AF5C95 /* HKWorkoutActivityType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768562E02AFDCF2000AF5C95 /* HKWorkoutActivityType.swift */; };
 		768562E42AFE73A500AF5C95 /* ConditionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768562E32AFE73A500AF5C95 /* ConditionView.swift */; };
 		768562E62AFE7BCB00AF5C95 /* ConditionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768562E52AFE7BCB00AF5C95 /* ConditionViewModel.swift */; };
-		769FFF862AFBCBB200B12515 /* PopupView in Frameworks */ = {isa = PBXBuildFile; productRef = 769FFF852AFBCBB200B12515 /* PopupView */; };
-		769FFF8D2AFBD39100B12515 /* NextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769FFF8C2AFBD39100B12515 /* NextButton.swift */; };
 		769FFF8F2AFBE23700B12515 /* safeAreaInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769FFF8E2AFBE23700B12515 /* safeAreaInsets.swift */; };
 		76B387102AFF99C80067CDAF /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B3870F2AFF99C80067CDAF /* Answer.swift */; };
 		76B387122AFFAFC60067CDAF /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B387112AFFAFC60067CDAF /* ActivityView.swift */; };
@@ -141,7 +139,7 @@
 		30BB50C82AE395F80050CF69 /* SmokingCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmokingCheckView.swift; sourceTree = "<group>"; };
 		30BB50CA2AE3A4C30050CF69 /* DailyRecordNextTwoButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyRecordNextTwoButtons.swift; sourceTree = "<group>"; };
 		30D60C902AFFD048005D5D96 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
-		30D60C922AFFD0F5005D5D96 /* TempMediView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempMediView.swift; sourceTree = "<group>"; };
+		30D60C942B00FD1C005D5D96 /* NextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButton.swift; sourceTree = "<group>"; };
 		768562D82AFC821F00AF5C95 /* ProfileSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSetView.swift; sourceTree = "<group>"; };
 		768562DA2AFCC1DB00AF5C95 /* ProfileInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInput.swift; sourceTree = "<group>"; };
 		768562DD2AFDCE6F00AF5C95 /* HealthKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
@@ -150,7 +148,6 @@
 		768562E22AFDD08E00AF5C95 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		768562E32AFE73A500AF5C95 /* ConditionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionView.swift; sourceTree = "<group>"; };
 		768562E52AFE7BCB00AF5C95 /* ConditionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ConditionViewModel.swift; path = Hamsters/Scenes/Tab/RecordTab/DailyRecord/ConditionViewModel.swift; sourceTree = SOURCE_ROOT; };
-		769FFF8C2AFBD39100B12515 /* NextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButton.swift; sourceTree = "<group>"; };
 		769FFF8E2AFBE23700B12515 /* safeAreaInsets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = safeAreaInsets.swift; sourceTree = "<group>"; };
 		76B3870F2AFF99C80067CDAF /* Answer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
 		76B387112AFFAFC60067CDAF /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
@@ -344,6 +341,7 @@
 				30BB50B82ADFABBC0050CF69 /* ConditionSlider.swift */,
 				76D52F412AFE9B86009A0698 /* ComputerChat.swift */,
 				76D52F462AFF2AD2009A0698 /* UserChat.swift */,
+				30D60C942B00FD1C005D5D96 /* NextButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -360,7 +358,6 @@
 		307B7D682AE424A2007CB7F5 /* Medication */ = {
 			isa = PBXGroup;
 			children = (
-				30D60C922AFFD0F5005D5D96 /* TempMediView.swift */,
 				307B7D6A2AE424A2007CB7F5 /* MedicationView.swift */,
 				307B7D692AE424A2007CB7F5 /* MedicineRow.swift */,
 				307B7D6D2AE424A2007CB7F5 /* AddMedicineView.swift */,
@@ -570,11 +567,11 @@
 				30BB50B92ADFABBC0050CF69 /* ConditionSlider.swift in Sources */,
 				301971562AE4FECE00728D16 /* WeeklyMedicationCalendar.swift in Sources */,
 				304180D32ADA8E37002AD2E3 /* StartView.swift in Sources */,
+				30D60C952B00FD1C005D5D96 /* NextButton.swift in Sources */,
 				307B7D702AE424A2007CB7F5 /* AlarmFrequencyView.swift in Sources */,
 				76D52F452AFF2A79009A0698 /* ConditionModel.swift in Sources */,
 				76D52F472AFF2AD2009A0698 /* UserChat.swift in Sources */,
 				307B7D872AE43322007CB7F5 /* MyInfoMainView.swift in Sources */,
-				30D60C932AFFD0F5005D5D96 /* TempMediView.swift in Sources */,
 				B5F904D02AE4E61200FDE4CB /* CapsuleView.swift in Sources */,
 				304180F12ADBCA6E002AD2E3 /* OnboardingProgressBar.swift in Sources */,
 				30BB50C42AE1FCA80050CF69 /* MoodCheckView.swift in Sources */,
