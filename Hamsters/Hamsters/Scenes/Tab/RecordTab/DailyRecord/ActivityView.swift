@@ -12,6 +12,7 @@ struct ActivityView: View {
     @State var showingSheet = false
     @State var isActive = true
     @State var list:Activities = []
+    @State var index:Int = -1
     
     var body: some View {
         VStack(spacing:0) {
@@ -21,9 +22,10 @@ struct ActivityView: View {
                     .fontWeight(.bold)
                     .padding(.leading,16)
                 
-                Button(action: {
+                Button {
+                    index = -1
                     showingSheet.toggle()
-                }, label: {
+                } label: {
                     HStack {
                         Image(systemName: "plus.circle.fill")
                             .font(.title3)
@@ -36,22 +38,24 @@ struct ActivityView: View {
                     .padding(.vertical, 15)
                     .background(.thoNavy)
                     .cornerRadius(15)
-                })
+                }
                 .padding(.horizontal,24)
                 .padding(.top,20+16)
                 .sheet(isPresented: $showingSheet) {
-                    ActivityModalView(list:$list)
+                    ActivityModalView(list:$list,index:index)
                 }
             }
-                .padding(.bottom,24)
+            .padding(.bottom,24)
             
             List {
                 Section {
-                    ForEach(list.filter{ $0.from == .user}) { activity in
+                    ForEach(Array(list.filter{$0.from == .user} .enumerated()),id:\.self.offset) { offset,activity in
                         HStack {
                             Text(activity.name)
                                 .font(.body)
+                            
                             Spacer()
+                            
                             Text(activity.dsc)
                                 .font(.body)
                                 .foregroundStyle(.thoNavy)
@@ -60,11 +64,24 @@ struct ActivityView: View {
                         .padding(.horizontal,16)
                         .listRowBackground(Color.thoTextField)
                         .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
-                    }.onDelete { indexSet in
-                        list.remove(atOffsets: indexSet)
+                        .swipeActions(allowsFullSwipe: false) {
+                            Button {
+                                list.remove(at: offset)
+                            } label: {
+                                Label("삭제", systemImage: "trash.fill")
+                            }
+                            .tint(.red)
+                            
+                            Button {
+                                index = offset
+                                showingSheet.toggle()
+                            } label: {
+                                Label("편집", systemImage: "square.and.pencil")
+                            }
+                            .tint(.yellow)
+                        }
                     }
-                    
-                    
+
                 } header: {
                     if list.filter({ $0.from == .user }).count > 0 {
                         HStack {
@@ -72,6 +89,7 @@ struct ActivityView: View {
                                 .font(.headline)
                                 .foregroundStyle(.sectionTitle)
                                 .bold()
+                            
                             Spacer()
                         }
                         .frame(width: screenBounds().width-48)
@@ -83,7 +101,9 @@ struct ActivityView: View {
                         HStack {
                             Text(activity.name)
                                 .font(.body)
+                            
                             Spacer()
+                            
                             Text(activity.dsc)
                                 .font(.body)
                                 .foregroundStyle(.thoNavy)
@@ -100,16 +120,16 @@ struct ActivityView: View {
                                 .font(.headline)
                                 .foregroundStyle(.sectionTitle)
                                 .bold()
+                            
                             Spacer()
                         }
                         .frame(width: screenBounds().width-48)
                     }
                 }
-
             }
             .listRowBackground(Color.blue)
-            .background(.white)
-            .scrollContentBackground(.hidden) //DARK mode
+            .background(.white) //추후에 DARK mode 고려.
+            .scrollContentBackground(.hidden)
             
             Spacer()
             

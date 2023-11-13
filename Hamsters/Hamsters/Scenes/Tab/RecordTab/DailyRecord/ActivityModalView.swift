@@ -14,6 +14,8 @@ struct ActivityModalView: View {
     @Binding var list:ActivityView.Activities
     @Environment(\.dismiss) private var dismiss
     
+    var index:Int
+    
     var body: some View {
         NavigationStack {
             VStack(spacing:0) {
@@ -23,15 +25,21 @@ struct ActivityModalView: View {
                     .toolbar {
                         ToolbarItem(placement: .topBarTrailing) {
                             Button {
+                                guard let item = ActivityView.Activity(from: .user, name: input, time: time) else { return }
                                 
-                                guard let activity = ActivityView.Activity(from: .user, name: input, time: time) else { return }
-                                list.append(activity)
+                                if index != -1 {
+                                    list[index] = item
+                                } else {
+                                    list.append(item)
+                                }
+                                
                                 dismiss()
                             } label: {
                                 Text("완료")
                             }
                         }
                     }
+                
                 Text("운동 추가하기")
                     .font(.largeTitle)
                     .bold()
@@ -55,6 +63,7 @@ struct ActivityModalView: View {
                         .onChange(of: input) { _ in
                             input = input.trim()
                         }
+                    
                     Text("최대 15자까지 입력 가능합니다.")
                         .font(.footnote)
                         .foregroundStyle(input.count > 15 ? .red : .secondary)
@@ -85,8 +94,11 @@ struct ActivityModalView: View {
                                 }
 
                                 Spacer()
+                                
                                 Text("\(time/60) 시간")
+                                
                                 Spacer()
+                                
                                 Button {
                                     timeAdd(.plusHour)
                                 } label: {
@@ -107,9 +119,13 @@ struct ActivityModalView: View {
                                         .padding(.vertical,14)
                                         .foregroundStyle(.black)
                                 }
+                                
                                 Spacer()
+                                
                                 Text("\(time%60) 분")
+                                
                                 Spacer()
+                                
                                 Button {
                                     timeAdd(.plusMinute)
                                 } label: {
@@ -119,7 +135,6 @@ struct ActivityModalView: View {
                                         .foregroundStyle(.black)
                                 }
                             }
-
                         }
                         .frame(height:44)
                         .background(.thoTextField)
@@ -128,16 +143,22 @@ struct ActivityModalView: View {
                 }
                 .padding(.top,28)
                 .padding(.horizontal,16)
+                
                 Image("ActivityModalHam")
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 250,height:250)
+                    .padding(.horizontal,72)
                     .padding(.top,58)
+                
                 Spacer()
                     
             }
+        }.onAppear {
+            if index != -1 {
+                input = list[index].name
+                time = list[index].time
+            }
         }
-
     }
 }
 
@@ -174,5 +195,5 @@ extension ActivityModalView {
     }
 }
 #Preview {
-    ActivityModalView(list:.constant([]))
+    ActivityModalView(list:.constant([]),index:-1)
 }

@@ -35,7 +35,7 @@ struct WelcomeView: View {
                         Image("HamsterV")
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 180, height: 180)
+                            .padding(.horizontal,130)
                         
                         Text(infos[index].title)
                             .font(.largeTitle)
@@ -90,6 +90,7 @@ struct TermsView:View{
             Image("HamLogo")
                 .resizable()
                 .scaledToFit()
+                .padding(.horizontal,106)
                 .frame(width: 100,height:100)
             
             Text("원활한 서비스 이용을 위해\n먼저 이용약관 제공에 동의해 주세요.")
