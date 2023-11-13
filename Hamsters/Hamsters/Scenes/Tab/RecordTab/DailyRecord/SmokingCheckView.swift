@@ -20,13 +20,33 @@ struct SmokingCheckView: View {
                 .padding(.horizontal, 16)
             
             List {
+                Section {
+                    Button {
+                        amountOfSmoking = 0
+                    } label: {
+                        HStack {
+                            Text("오늘은 흡연하지 않았어요!")
+                                .foregroundStyle(Color.primary)
+                            
+                            Spacer()
+                            
+                            if amountOfSmoking == 0 {
+                                Image(systemName: "checkmark")
+                                    .fontWeight(.bold)
+                                    .foregroundStyle(.thoNavy)
+                            }
+                        }
+                    }
+                }
+                .listRowBackground(Color(uiColor: .systemGroupedBackground))
+                
                 ForEach(SmokingAmount.allCases, id: \.self) { pcs in
-                    if pcs.minValue != 0 {
+                    if pcs != .min0 {
                         HStack {
                             Button {
                                 amountOfSmoking = pcs.minValue
                             } label: {
-                                Text("\(pcs.minValue)~\(pcs.maxValue) 개피")
+                                Text(pcs.title)
                                     .foregroundStyle(Color.primary)
                             }
                             
@@ -48,7 +68,7 @@ struct SmokingCheckView: View {
             
             Spacer()
             
-            DailyRecordNextTwoButtons(pageNumber: $pageNumber, selectedValue: $amountOfSmoking)
+            DailyRecordNextButton(pageNumber: $pageNumber, isActiveRecord: .constant(true), title: "다음")
         }
     }
 }

@@ -20,7 +20,6 @@ struct DailyRecordView: View {
     @State private var selectedGr: Int = 0
     @State private var amountOfSmoking = 0
     @State private var amountOfCaffein = 0
-    @State private var selectedCaffeine: [Bool] = Array(repeating: false, count: 10)
     @State private var isPeriod = false
     @State private var amountOfAlcohol = 0
     @State private var memo = ""
@@ -54,7 +53,7 @@ struct DailyRecordView: View {
                     SmokingCheckView(pageNumber: $pageNumber, amountOfSmoking: $amountOfSmoking)
                     
                 case 8: // 카페인
-                    CaffeineCheckView(pageNumber: $pageNumber, amountOfCaffein: $amountOfCaffein, isSelected: $selectedCaffeine)
+                    CaffeineCheckView(pageNumber: $pageNumber, amountOfCaffein: $amountOfCaffein)
                     
                 case 9: // 음주량
                     DrinkCheckView(pageNumber: $pageNumber, amountOfAlcohol: $amountOfAlcohol)

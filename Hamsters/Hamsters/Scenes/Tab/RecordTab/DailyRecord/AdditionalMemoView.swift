@@ -29,14 +29,13 @@ struct AdditionalMemoView: View {
                             .scrollContentBackground(.hidden)
                             .background(Color(uiColor: .secondarySystemBackground))
                     }
-                    .frame(height: screenBounds().height * 0.35)
                     .cornerRadius(10)
                     .padding(.top, 20)
                     .onChange(of: memo) { _ in
                         if memo.count > 500 {
 //                            characterLimitWarning = true
-                            memo = String(memo.prefix(7))
-                        } else if memo.count < 7 {
+                            memo = String(memo.prefix(500))
+                        } else if memo.count < 500 {
 //                            characterLimitWarning = false
                         }
                     }
@@ -49,6 +48,7 @@ struct AdditionalMemoView: View {
                         .foregroundStyle(.secondary)
                 }
                 .padding(.top, 8)
+                .padding(.bottom, 50)
             }
             .padding(.horizontal, 16)
 
