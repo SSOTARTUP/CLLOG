@@ -17,7 +17,6 @@ struct ConditionSlider: View {
         VStack(alignment: .leading, spacing: 4) {
             Text(title)
                 .font(.body)
-                .padding(.horizontal, 12)
             
             ValueSlider(value: $userValue, in: range, step: 1.0)
                 .valueSliderStyle(
@@ -51,14 +50,9 @@ struct ConditionSlider: View {
                 )
                 .frame(height: 56)
                 .clipped()
-                .padding(.horizontal, 8)
-                // 디버깅용
-                .onChange(of: userValue) { _ in
-                    print("\(title) : \(userValue) ")
-                }
             
             HStack {
-                Text("괜찮음")
+                Text("전혀 아님")
                 
                 Spacer()
                 
@@ -76,19 +70,20 @@ struct ConditionSlider: View {
                 
                 Spacer()
                 
-                Text("심했음")
+                Text("매우 자주")
             }
             .font(.footnote)
             .foregroundStyle(.thoNavy)
-            .padding(.horizontal, 18)
+            .padding(.horizontal, 6)
         }
-        .padding(.vertical, 12)
+        .padding(.vertical, 20)
+        .padding(.horizontal, 12)
         .background(Color(uiColor: .secondarySystemBackground))
         .cornerRadius(15)
-        .padding(.horizontal, 16)
+        
     }
 }
 
 #Preview {
-    ConditionSlider(title: "집중하기 어려움", userValue: .constant(0.0))
+    ConditionSlider(title: "집중하기 어려움", userValue: .constant(1.0))
 }

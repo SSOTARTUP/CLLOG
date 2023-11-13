@@ -7,11 +7,24 @@
 
 import SwiftUI
 
-enum Mood: String, CaseIterable {
-    case depression = "우울한"
-    case upswell = "고조된"
-    case anger = "화난"
-    case anxiety = "불안한"
+enum Mood: CaseIterable {
+    case depression
+    case upswell
+    case anger
+    case anxiety
+    
+    var question: String {
+        switch self {
+        case .depression:
+            "자주 울적한 기분이 들었나요?"
+        case .upswell:
+            "평소보다 흥분되거나 들뜬 기분이 들었나요?"
+        case .anger:
+            "자주 화가 났거나 통제하기 어려웠나요?"
+        case .anxiety:
+            "무언가에 대해 불필요하게 걱정하거나\n막연한 불안감이 있었나요?"
+        }
+    }
 }
 
 struct MoodCheckView: View {
@@ -21,10 +34,10 @@ struct MoodCheckView: View {
     var body: some View {
         ZStack(alignment: .top) {
             ScrollView {
-                VStack(spacing: 12) {
+                VStack(spacing: 16) {
                     ForEach(Array(zip(0..<Mood.allCases.count, Mood.allCases)), id: \.0) { index, mood in
-                        let title = "오늘의 가장 " + mood.rawValue + " 정도"
-                        ConditionSlider(title: title, userValue: $userValues[index])
+                        ConditionSlider(title: mood.question, userValue: $userValues[index])
+                            .padding(.horizontal, 16)
                     }
                     
                     DailyRecordNextButton(pageNumber: $pageNumber, isActiveRecord:.constant(true), title: "다음")
