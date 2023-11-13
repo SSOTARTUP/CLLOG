@@ -10,8 +10,8 @@ import SwiftUI
 
 class ConditionViewModel:ObservableObject {
     
-    @Published var list:[Conditions] = []
-    @Published var answer:ConditionAnswer = [:]
+    @Published var list: [Conditions] = []
+    @Published var answer: ConditionAnswer = [:]
     
     init(){
         self.add()
@@ -22,7 +22,7 @@ class ConditionViewModel:ObservableObject {
         
         switch item.sender {
         case .computer:
-            if var last = list.last , last.first?.sender == .computer{
+            if var last = list.last, last.first?.sender == .computer{
                 last.append(item)
                 list[list.count - 1] = last
             }else {
@@ -52,7 +52,6 @@ class ConditionViewModel:ObservableObject {
         ConditionModel(sender: .computer, text: "잘했어요!"),
         ConditionModel(sender: .computer, text: "다음 단계로 가볼까요! 햄!"),
         ConditionModel(sender: .button),
-
     ].reversed()
 }
 
