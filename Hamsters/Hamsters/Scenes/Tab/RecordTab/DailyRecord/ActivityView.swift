@@ -22,10 +22,10 @@ struct ActivityView: View {
                     .fontWeight(.bold)
                     .padding(.leading,16)
                 
-                Button(action: {
+                Button {
                     index = -1
                     showingSheet.toggle()
-                }, label: {
+                } label: {
                     HStack {
                         Image(systemName: "plus.circle.fill")
                             .font(.title3)
@@ -38,14 +38,14 @@ struct ActivityView: View {
                     .padding(.vertical, 15)
                     .background(.thoNavy)
                     .cornerRadius(15)
-                })
+                }
                 .padding(.horizontal,24)
                 .padding(.top,20+16)
                 .sheet(isPresented: $showingSheet) {
                     ActivityModalView(list:$list,index:index)
                 }
             }
-                .padding(.bottom,24)
+            .padding(.bottom,24)
             
             List {
                 Section {
@@ -53,7 +53,9 @@ struct ActivityView: View {
                         HStack {
                             Text(activity.name)
                                 .font(.body)
+                            
                             Spacer()
+                            
                             Text(activity.dsc)
                                 .font(.body)
                                 .foregroundStyle(.thoNavy)
@@ -87,6 +89,7 @@ struct ActivityView: View {
                                 .font(.headline)
                                 .foregroundStyle(.sectionTitle)
                                 .bold()
+                            
                             Spacer()
                         }
                         .frame(width: screenBounds().width-48)
@@ -98,7 +101,9 @@ struct ActivityView: View {
                         HStack {
                             Text(activity.name)
                                 .font(.body)
+                            
                             Spacer()
+                            
                             Text(activity.dsc)
                                 .font(.body)
                                 .foregroundStyle(.thoNavy)
@@ -115,6 +120,7 @@ struct ActivityView: View {
                                 .font(.headline)
                                 .foregroundStyle(.sectionTitle)
                                 .bold()
+                            
                             Spacer()
                         }
                         .frame(width: screenBounds().width-48)
@@ -123,8 +129,8 @@ struct ActivityView: View {
 
             }
             .listRowBackground(Color.blue)
-            .background(.white)
-            .scrollContentBackground(.hidden) //DARK mode
+            .background(.white) //추후에 DARK mode 고려.
+            .scrollContentBackground(.hidden)
             
             Spacer()
             

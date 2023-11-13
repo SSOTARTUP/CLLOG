@@ -32,6 +32,7 @@ struct ActivityModalView: View {
                                 } else {
                                     list.append(item)
                                 }
+                                
                                 dismiss()
                             } label: {
                                 Text("완료")
@@ -134,7 +135,6 @@ struct ActivityModalView: View {
                                         .foregroundStyle(.black)
                                 }
                             }
-
                         }
                         .frame(height:44)
                         .background(.thoTextField)
@@ -147,8 +147,9 @@ struct ActivityModalView: View {
                 Image("ActivityModalHam")
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 250,height:250)
+                    .padding(.horizontal,72)
                     .padding(.top,58)
+                
                 Spacer()
                     
             }
