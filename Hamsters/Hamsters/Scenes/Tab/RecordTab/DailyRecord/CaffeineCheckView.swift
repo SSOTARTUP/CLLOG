@@ -88,7 +88,7 @@ struct CaffeineCheckView: View {
             
             Spacer()
             
-            DailyRecordNextTwoButtons(pageNumber: $pageNumber, selectedValue: $amountOfCaffein)
+            DailyRecordNextButton(pageNumber: $pageNumber, isActiveRecord: .constant(true), title: "다음")
         }
     }
 }

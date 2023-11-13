@@ -70,7 +70,7 @@ struct DrinkCheckView: View {
             
             Spacer()
             
-            DailyRecordNextTwoButtons(pageNumber: $pageNumber, selectedValue: $amountOfAlcohol)
+            DailyRecordNextButton(pageNumber: $pageNumber, isActiveRecord: .constant(true), title: "다음")
         }
     }
 }
