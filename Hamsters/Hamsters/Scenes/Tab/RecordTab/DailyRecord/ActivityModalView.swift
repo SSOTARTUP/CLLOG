@@ -9,12 +9,12 @@ import SwiftUI
 
 struct ActivityModalView: View {
     
-    @State private var input:String = ""
-    @State private var time:Int = 0
-    @Binding var list:ActivityView.Activities
+    @State private var input: String = ""
+    @State private var time: Int = 0
+    @Binding var list: ActivityView.Activities
     @Environment(\.dismiss) private var dismiss
     
-    var index:Int
+    var index: Int
     
     var body: some View {
         NavigationStack {
@@ -50,11 +50,11 @@ struct ActivityModalView: View {
                         .font(.headline)
                         .foregroundColor(.thoNavy)
                         .bold()
-                        .padding(.leading,8)
-                        .padding(.bottom,6)
+                        .padding(.leading, 8)
+                        .padding(.bottom, 6)
 
                     TextField("운동 이름" , text: $input)
-                        .frame(height:44)
+                        .frame(height: 44)
                         .textInputAutocapitalization(.never)
                         .disableAutocorrection(true)
                         .padding(.leading, 8)
@@ -69,18 +69,18 @@ struct ActivityModalView: View {
                         .foregroundStyle(input.count > 15 ? .red : .secondary)
                         .padding(.leading, 8)
                         .padding(.top, 6)
-                }.padding(.top,48)
-                .padding(.horizontal,16)
+                }.padding(.top, 48)
+                .padding(.horizontal, 16)
                 
-                VStack(alignment:.leading,spacing:0) {
+                VStack(alignment:.leading,spacing: 0) {
                     Text("운동 시간")
                         .font(.headline)
                         .foregroundColor(.thoNavy)
                         .bold()
-                        .padding(.leading,8)
-                        .padding(.bottom,6)
+                        .padding(.leading, 8)
+                        .padding(.bottom, 6)
 
-                    HStack(spacing:8) {
+                    HStack(spacing: 8) {
                         Group {
                             HStack {
                                 Button {
@@ -88,14 +88,14 @@ struct ActivityModalView: View {
                                 } label: {
                                     Image(systemName: "minus")
                                         .font(.body)
-                                        .padding(.horizontal,8)
-                                        .padding(.vertical,14)
+                                        .padding(.horizontal, 8)
+                                        .padding(.vertical, 14)
                                         .foregroundStyle(.black)
                                 }
 
                                 Spacer()
                                 
-                                Text("\(time/60) 시간")
+                                Text("\(time / 60) 시간")
                                 
                                 Spacer()
                                 
@@ -115,14 +115,14 @@ struct ActivityModalView: View {
                                 } label: {
                                     Image(systemName: "minus")
                                         .font(.body)
-                                        .padding(.horizontal,8)
-                                        .padding(.vertical,14)
+                                        .padding(.horizontal, 8)
+                                        .padding(.vertical, 14)
                                         .foregroundStyle(.black)
                                 }
                                 
                                 Spacer()
                                 
-                                Text("\(time%60) 분")
+                                Text("\(time % 60) 분")
                                 
                                 Spacer()
                                 
@@ -136,19 +136,19 @@ struct ActivityModalView: View {
                                 }
                             }
                         }
-                        .frame(height:44)
+                        .frame(height: 44)
                         .background(.thoTextField)
                         .cornerRadius(10)
                     }
                 }
-                .padding(.top,28)
-                .padding(.horizontal,16)
+                .padding(.top, 28)
+                .padding(.horizontal, 16)
                 
                 Image("ActivityModalHam")
                     .resizable()
                     .scaledToFit()
-                    .padding(.horizontal,72)
-                    .padding(.top,58)
+                    .padding(.horizontal, 72)
+                    .padding(.top, 58)
                 
                 Spacer()
                     
@@ -164,7 +164,7 @@ struct ActivityModalView: View {
 
 extension ActivityModalView {
     //한 번에 오르고 내리는 '분(minute)' 단위는 60의 약수로 지정해 주세요.
-    enum TimeType:Int{
+    enum TimeType: Int{
         case plusMinute = 5
         case plusHour = 60
         case minusMinute = -5
@@ -176,13 +176,13 @@ extension ActivityModalView {
         case .plusHour:
             time += timeType.rawValue
         case .plusMinute:
-            if time%60 + timeType.rawValue == 60 {
+            if time % 60 + timeType.rawValue == 60 {
                 time -= (60 - timeType.rawValue)
             } else{
                 time += timeType.rawValue
             }
         case .minusMinute:
-            if time%60 + timeType.rawValue < 0 {
+            if time % 60 + timeType.rawValue < 0 {
                 time += (60 + timeType.rawValue)
             } else {
                 time += (timeType.rawValue)
@@ -195,5 +195,5 @@ extension ActivityModalView {
     }
 }
 #Preview {
-    ActivityModalView(list:.constant([]),index:-1)
+    ActivityModalView(list: .constant([]), index: -1)
 }

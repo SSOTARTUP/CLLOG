@@ -11,16 +11,16 @@ struct ActivityView: View {
     
     @State var showingSheet = false
     @State var isActive = true
-    @State var list:Activities = []
-    @State var index:Int = -1
+    @State var list: Activities = []
+    @State var index: Int = -1
     
     var body: some View {
-        VStack(spacing:0) {
+        VStack(spacing: 0) {
             VStack(alignment: .leading, spacing: 0) {
                 Text("운동을 기록해주세요")
                     .font(.largeTitle)
                     .fontWeight(.bold)
-                    .padding(.leading,16)
+                    .padding(.leading, 16)
                 
                 Button {
                     index = -1
@@ -39,17 +39,17 @@ struct ActivityView: View {
                     .background(.thoNavy)
                     .cornerRadius(15)
                 }
-                .padding(.horizontal,24)
-                .padding(.top,20+16)
+                .padding(.horizontal, 24)
+                .padding(.top, 20 + 16)
                 .sheet(isPresented: $showingSheet) {
                     ActivityModalView(list:$list,index:index)
                 }
             }
-            .padding(.bottom,24)
+            .padding(.bottom, 24)
             
             List {
                 Section {
-                    ForEach(Array(list.filter{$0.from == .user} .enumerated()),id:\.self.offset) { offset,activity in
+                    ForEach(Array(list.filter{ $0.from == .user } .enumerated()),id:\.self.offset) { offset,activity in
                         HStack {
                             Text(activity.name)
                                 .font(.body)
@@ -92,12 +92,12 @@ struct ActivityView: View {
                             
                             Spacer()
                         }
-                        .frame(width: screenBounds().width-48)
+                        .frame(width: screenBounds().width - 48)
                     }
                 }
                 
                 Section {
-                    ForEach(list.filter{ $0.from == .healthKit}) { activity in
+                    ForEach(list.filter{ $0.from == .healthKit }) { activity in
                         HStack {
                             Text(activity.name)
                                 .font(.body)
@@ -108,8 +108,8 @@ struct ActivityView: View {
                                 .font(.body)
                                 .foregroundStyle(.thoNavy)
                         }
-                        .frame(height:44)
-                        .padding(.horizontal,16)
+                        .frame(height: 44)
+                        .padding(.horizontal, 16)
                         .listRowBackground(Color.thoTextField)
                         .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
                     }
@@ -123,7 +123,7 @@ struct ActivityView: View {
                             
                             Spacer()
                         }
-                        .frame(width: screenBounds().width-48)
+                        .frame(width: screenBounds().width - 48)
                     }
                 }
             }
@@ -136,8 +136,8 @@ struct ActivityView: View {
             NextButton(title: "다음", isActive: $isActive) {
                 
             }
-            .padding(.horizontal,24)
-            .padding(.bottom,30)
+            .padding(.horizontal, 24)
+            .padding(.bottom, 30)
         }.onAppear{
             HealthKitManager.shared.fetchWorkouts(.yesterday) { sample, error in
                 if error != nil {
@@ -147,8 +147,8 @@ struct ActivityView: View {
                 guard let sample = sample else { return }
                 
                 let healthKitData:Activities = sample
-                    .map{Activity(from: .healthKit, name: $0.workoutActivityType.name, time: Int($0.duration)/60)}
-                    .compactMap{$0}
+                    .map{Activity(from: .healthKit, name: $0.workoutActivityType.name, time: Int($0.duration) / 60)}
+                    .compactMap{ $0 }
                 
                 DispatchQueue.main.async {
                     list.append(contentsOf: healthKitData)
@@ -163,17 +163,17 @@ extension ActivityView {
     
     struct Activity:Identifiable {
         var id = UUID()
-        let from:From
-        var name:String
-        var time:Int
+        let from: From
+        var name: String
+        var time: Int
         
         enum From {
             case user
             case healthKit
         }
         
-        var dsc:String{
-            if time%60 == 0 {
+        var dsc: String{
+            if time % 60 == 0 {
                 return "\(self.time/60)시간"
             } else if time < 60 {
                 return "\(self.time%60)분"
