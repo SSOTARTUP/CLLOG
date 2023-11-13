@@ -138,6 +138,7 @@ struct TermsView:View{
             OnboardingNextButton(isActive: .constant(true), title: "전체 동의 및 다음") {
                 onboardingPage = Onboarding(rawValue: onboardingPage.rawValue + 1) ?? .profile
             }
+            .padding(.bottom,100)
         }
     }
 }

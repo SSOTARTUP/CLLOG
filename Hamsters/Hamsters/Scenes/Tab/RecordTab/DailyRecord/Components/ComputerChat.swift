@@ -29,13 +29,13 @@ struct ComputerChat: View {
                         .cornerRadius(4,corners:[.topLeft])
                         .cornerRadius(10,corners:[.topRight,.bottomLeft,.bottomRight])
                         .padding(.top,8)
-                    if viewModel.list.count == 1 , viewModel.list[0].count == 1 {
-                        Text("빠르게 넘기시려면 화면을 터치해주세요!")
-                            .font(.caption2)
-                            .foregroundColor(.secondary)
-                            .padding(.leading,8)
-                            .padding(.top,4)
-                    }
+//                    if viewModel.list.count == 1 , viewModel.list[0].count == 1 {
+//                        Text("빠르게 넘기시려면 화면을 터치해주세요!")
+//                            .font(.caption2)
+//                            .foregroundColor(.secondary)
+//                            .padding(.leading,8)
+//                            .padding(.top,4)
+//                    }
                 }
             }
             .padding(.trailing,32)

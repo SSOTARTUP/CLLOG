@@ -73,6 +73,7 @@ struct ActivityView: View {
                             .bold()
                         Spacer()
                     }
+                    .frame(width: screenBounds().width-48)
                 }
                 
                 Section {
@@ -89,12 +90,13 @@ struct ActivityView: View {
                             .bold()
                         Spacer()
                     }
+                    .frame(width: screenBounds().width-48)
                 }
 
             }
             .listRowBackground(Color.blue)
             .background(.white)
-            .scrollContentBackground(.hidden)
+            .scrollContentBackground(.hidden) //DARK mode
             
             Spacer()
             
