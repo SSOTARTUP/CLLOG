@@ -8,11 +8,6 @@
 import SwiftUI
 
 struct SetupCompleteView: View {
-    @AppStorage(UserDefaultsKey.username.rawValue) private var storedUserkname: String = ""
-    @AppStorage(UserDefaultsKey.hamstername.rawValue) private var storedHamsterkname: String = ""
-    @AppStorage(UserDefaultsKey.sex.rawValue) private var storedSex: String = ""
-    @AppStorage(UserDefaultsKey.smoking.rawValue) private var storedSmoking: Bool = false
-    
     @AppStorage(UserDefaultsKey.complete.rawValue) private var setupComplete: Bool = false
     
     @Binding var onboardingPage: Onboarding
