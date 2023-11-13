@@ -7,11 +7,16 @@
 
 import SwiftUI
 
+class ActivityViewModel:ObservableObject{
+    @Published var list:ActivityView.Activities = []
+}
+
 struct ActivityView: View {
     
     @State var showingSheet = false
     @State var isActive = true
     @State var list:Activities = []
+    @StateObject var viewModel = ActivityViewModel()
     
     var body: some View {
         VStack(spacing:0) {
@@ -66,31 +71,44 @@ struct ActivityView: View {
                     
                     
                 } header: {
-                    HStack {
-                        Text("내가 추가한 운동")
-                            .font(.headline)
-                            .foregroundStyle(.sectionTitle)
-                            .bold()
-                        Spacer()
+                    if list.filter({ $0.from == .user }).count > 0 {
+                        HStack {
+                            Text("내가 추가한 운동")
+                                .font(.headline)
+                                .foregroundStyle(.sectionTitle)
+                                .bold()
+                            Spacer()
+                        }
+                        .frame(width: screenBounds().width-48)
                     }
-                    .frame(width: screenBounds().width-48)
                 }
                 
                 Section {
-                    HStack {
-                        Text("헬스킷 연동 예정.").padding(0)
-                    }
+                    ForEach(list.filter{ $0.from == .healthKit}) { activity in
+                        HStack {
+                            Text(activity.name)
+                                .font(.body)
+                            Spacer()
+                            Text(activity.dsc)
+                                .font(.body)
+                                .foregroundStyle(.thoNavy)
+                        }
+                        .frame(height:44)
+                        .padding(.horizontal,16)
                         .listRowBackground(Color.thoTextField)
                         .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
-                } header: {
-                    HStack {
-                        Text("연동된 운동 데이터")
-                            .font(.headline)
-                            .foregroundStyle(.sectionTitle)
-                            .bold()
-                        Spacer()
                     }
-                    .frame(width: screenBounds().width-48)
+                } header: {
+                    if list.filter({ $0.from == .healthKit }).count > 0 {
+                        HStack {
+                            Text("연동된 운동 데이터")
+                                .font(.headline)
+                                .foregroundStyle(.sectionTitle)
+                                .bold()
+                            Spacer()
+                        }
+                        .frame(width: screenBounds().width-48)
+                    }
                 }
 
             }
@@ -105,8 +123,22 @@ struct ActivityView: View {
             }
             .padding(.horizontal,24)
             .padding(.bottom,30)
-
-            
+        }.onAppear{
+            HealthKitManager.shared.fetchWorkouts(.yesterday) { sample, error in
+                if error != nil {
+                    return
+                }
+                
+                guard let sample = sample else { return }
+                
+                let healthKitData:Activities = sample
+                    .map{Activity(from: .healthKit, name: $0.workoutActivityType.name, time: Int($0.duration)/60)}
+                    .compactMap{$0}
+                
+                DispatchQueue.main.async {
+                    list.append(contentsOf: healthKitData)
+                }
+            }
         }
     }
 }

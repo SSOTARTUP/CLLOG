@@ -16,6 +16,10 @@ class HealthKitManager {
 
     private init() {}
     
+    enum Predicate{
+        case yesterday
+        case today
+    }
 }
 
 
@@ -43,6 +47,13 @@ extension HealthKitManager {
                 // Handle the error here.
                 print("Authorization to access HealthKit data was denied or an error occurred: \(String(describing: error))")
             }
+            
+            self.fetchWorkouts(.yesterday) { sample,error in
+                sample?.forEach {
+                    print($0.duration)
+                    print($0.workoutActivityType.name)
+                }
+            }
         }
     }
 }
@@ -51,11 +62,21 @@ extension HealthKitManager {
 //MARK: 운동 데이터
 extension HealthKitManager {
     
-    func fetchWorkouts(completion: @escaping ([HKWorkout]?, Error?) -> Void) {
+    func fetchWorkouts(_ predicate:Predicate,completion: @escaping ([HKWorkout]?, Error?) -> Void) {
         let workoutType = HKObjectType.workoutType()
-        let from = Calendar.current.date(byAdding: .day, value: -100, to: Date())
-        let to = Calendar.current.date(byAdding: .day, value: 0, to: Date())
-        let predicate = HKQuery.predicateForSamples(withStart: from, end: to)
+        let calendar = Calendar.current
+
+        let startOfToday = calendar.startOfDay(for: Date())
+        let startOfYesterday = calendar.date(byAdding: .day, value: -1, to: startOfToday)!
+
+        let from = startOfYesterday
+        let to = startOfToday
+        
+        let predicate = switch predicate {
+        case .yesterday: HKQuery.predicateForSamples(withStart: startOfYesterday, end: startOfToday)
+        case .today  : HKQuery.predicateForSamples(withStart: startOfToday, end: Date())
+        }
+
         let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: false)
         
         let query = HKSampleQuery(sampleType: workoutType, predicate: predicate, limit: HKObjectQueryNoLimit, sortDescriptors: [sortDescriptor]) { query, samples, error in
@@ -74,7 +95,7 @@ extension HealthKitManager {
 //MARK: 수면 데이터
 extension HealthKitManager {
     
-    func fetchSleepData(completion: @escaping (Date?, Date?, TimeInterval?) -> Void) {
+    func fetchSleepData(_ predicate:Predicate,completion: @escaping (Date?, Date?, TimeInterval?) -> Void) {
         guard let sleepType = HKObjectType.categoryType(forIdentifier: .sleepAnalysis) else {
             completion(nil, nil, nil)
             return
