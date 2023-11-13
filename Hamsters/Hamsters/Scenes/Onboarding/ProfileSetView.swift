@@ -7,23 +7,25 @@
 
 import SwiftUI
 
+enum selectedHam: String {
+    case gray
+    case yellow
+    case black
+}
+
 struct ProfileSetView: View {
-    @AppStorage(UserDefaultsKey.username.rawValue) private var storedUserkname: String = ""
-    @AppStorage(UserDefaultsKey.hamstername.rawValue) private var storedHamsterkname: String = ""
-    
     @Binding var onboardingPage: Onboarding
     
-    @State private var hamName: String = ""
-    @State private var name: String = ""
+    @Binding var hamName: String
+    @Binding var name: String
+    @Binding var selectedHamster: selectedHam?
     
     @State private var isActive = false
-    @State private var isSelected:selectedHam?
+    
     
     @State var scroll:ScrollViewProxy?
     
     @FocusState private var focusField:ProfileSetView.Field?
-    
-
     
     var body: some View {
         ScrollViewReader { value in
@@ -38,26 +40,26 @@ struct ProfileSetView: View {
                     }
                     HStack {
                         Button {
-                            isSelected = .gray
+                            selectedHamster = .gray
                             focusField = .hamName
                             validate()
                         } label: {
-                            Image(isSelected == .gray ? "GrayCircleHam_s" : "GrayCircleHam")
+                            Image(selectedHamster == .gray ? "GrayCircleHam_s" : "GrayCircleHam")
                         }
                         Spacer()
                         Button {
-                            isSelected = .yellow
+                            selectedHamster = .yellow
                             focusField = .hamName
                             validate()
                         } label: {
-                            Image(isSelected == .yellow ? "YellowCircleHam_s" : "YellowCircleHam")                        }
+                            Image(selectedHamster == .yellow ? "YellowCircleHam_s" : "YellowCircleHam")                        }
                         Spacer()
                         Button {
-                            isSelected = .black
+                            selectedHamster = .black
                             focusField = .hamName
                             validate()
                         } label: {
-                            Image(isSelected == .black ? "BlackCircleHam_s" : "BlackCircleHam")
+                            Image(selectedHamster == .black ? "BlackCircleHam_s" : "BlackCircleHam")
                         }
                     }
                 }
@@ -118,8 +120,6 @@ struct ProfileSetView: View {
         OnboardingNextButton(isActive: $isActive, title: onboardingPage.nextButtonTitle) {
             switch validation{
             case .complete:
-                storedUserkname = name
-                storedHamsterkname = hamName
                 onboardingPage = Onboarding(rawValue: onboardingPage.rawValue + 1) ?? .sex
             case .error(let e):
                 if e == "character"{
@@ -157,7 +157,7 @@ extension ProfileSetView{
     }
     
     var validation:Status{
-        if isSelected == nil{
+        if selectedHamster == nil{
             return .error("character")
         }else if hamName.count == 0 || hamName.count > 7{
             return .error("hamName")
@@ -172,15 +172,8 @@ extension ProfileSetView{
         case name = "내 이름"
         case hamName = "나의 햄스터 이름"
     }
-    
-    enum selectedHam{
-        case gray
-        case yellow
-        case black
-    }
-    
 }
 
 #Preview {
-    ProfileSetView(onboardingPage: .constant(.profile))
+    ProfileSetView(onboardingPage: .constant(.profile), hamName: .constant("햄깅"), name: .constant("홍길동"), selectedHamster: .constant(nil))
 }

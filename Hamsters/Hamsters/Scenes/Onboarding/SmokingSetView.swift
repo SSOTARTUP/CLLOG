@@ -8,10 +8,9 @@
 import SwiftUI
 
 struct SmokingSetView: View {
-    @AppStorage(UserDefaultsKey.smoking.rawValue) private var storedSmoking: Bool = false
-    
     @Binding var onboardingPage: Onboarding
-    @State private var status: SmokingStatus? = nil
+    @Binding var status: SmokingStatus?
+    
     @State private var isActiveNext = false
     
     var body: some View {
@@ -48,7 +47,6 @@ struct SmokingSetView: View {
             Spacer()
             
             OnboardingNextButton(isActive: $isActiveNext, title: onboardingPage.nextButtonTitle) {
-                storedSmoking = status?.rawValue ?? false
                 onboardingPage = Onboarding(rawValue: onboardingPage.rawValue + 1) ?? .complete
             }
         }
@@ -62,5 +60,5 @@ struct SmokingSetView: View {
 }
 
 #Preview {
-    SmokingSetView(onboardingPage: .constant(.smoking))
+    SmokingSetView(onboardingPage: .constant(.smoking), status: .constant(nil))
 }

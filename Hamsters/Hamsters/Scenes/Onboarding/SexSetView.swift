@@ -8,11 +8,9 @@
 import SwiftUI
 
 struct SexSetView: View {
-    @AppStorage(UserDefaultsKey.sex.rawValue) private var storedSex: String = ""
-    
     @Binding var onboardingPage: Onboarding
+    @Binding var selectedSex: SexClassification?
     
-    @State private var selectedSex: SexClassification? = nil
     @State private var isActiveNext = false
     @State private var isMemopause = false
     
@@ -74,7 +72,6 @@ struct SexSetView: View {
             Spacer()
             
             OnboardingNextButton(isActive: $isActiveNext, title: onboardingPage.nextButtonTitle) {
-                storedSex = selectedSex?.rawValue ?? "male"
                 onboardingPage = Onboarding(rawValue: onboardingPage.rawValue + 1) ?? .medication
             }
         }
@@ -88,5 +85,5 @@ struct SexSetView: View {
 }
 
 #Preview {
-    SexSetView(onboardingPage: .constant(.sex))
+    SexSetView(onboardingPage: .constant(.sex), selectedSex: .constant(nil))
 }
