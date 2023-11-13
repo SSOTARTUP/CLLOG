@@ -126,7 +126,6 @@ struct ActivityView: View {
                         .frame(width: screenBounds().width-48)
                     }
                 }
-
             }
             .listRowBackground(Color.blue)
             .background(.white) //추후에 DARK mode 고려.
@@ -162,7 +161,7 @@ struct ActivityView: View {
 extension ActivityView {
     typealias Activities = [Activity]
     
-    struct Activity:Identifiable,Equatable {
+    struct Activity:Identifiable {
         var id = UUID()
         let from:From
         var name:String
@@ -193,10 +192,6 @@ extension ActivityView {
             self.from = from
             self.name = name
             self.time = time
-        }
-        
-        static func ==(lhs:Activity,rhs:Activity)->Bool{
-            return lhs.id == rhs.id
         }
     }
     
