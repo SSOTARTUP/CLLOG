@@ -7,16 +7,11 @@
 
 import SwiftUI
 
-class ActivityViewModel:ObservableObject{
-    @Published var list:ActivityView.Activities = []
-}
-
 struct ActivityView: View {
     
     @State var showingSheet = false
     @State var isActive = true
     @State var list:Activities = []
-    @StateObject var viewModel = ActivityViewModel()
     
     var body: some View {
         VStack(spacing:0) {
@@ -50,7 +45,7 @@ struct ActivityView: View {
             }
                 .padding(.bottom,24)
             
-            List{
+            List {
                 Section {
                     ForEach(list.filter{ $0.from == .user}) { activity in
                         HStack {

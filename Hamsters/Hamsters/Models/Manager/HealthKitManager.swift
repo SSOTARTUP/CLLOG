@@ -47,13 +47,6 @@ extension HealthKitManager {
                 // Handle the error here.
                 print("Authorization to access HealthKit data was denied or an error occurred: \(String(describing: error))")
             }
-            
-            self.fetchWorkouts(.yesterday) { sample,error in
-                sample?.forEach {
-                    print($0.duration)
-                    print($0.workoutActivityType.name)
-                }
-            }
         }
     }
 }
@@ -68,9 +61,6 @@ extension HealthKitManager {
 
         let startOfToday = calendar.startOfDay(for: Date())
         let startOfYesterday = calendar.date(byAdding: .day, value: -1, to: startOfToday)!
-
-        let from = startOfYesterday
-        let to = startOfToday
         
         let predicate = switch predicate {
         case .yesterday: HKQuery.predicateForSamples(withStart: startOfYesterday, end: startOfToday)
