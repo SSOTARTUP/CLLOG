@@ -13,7 +13,7 @@ struct OnboardingView: View {
     
     @AppStorage(UserDefaultsKey.complete.rawValue) private var setupComplete: Bool = false
     
-    @State private var onboardingPage: Onboarding = .medication
+    @State private var onboardingPage: Onboarding = .welcome
     
     var body: some View {
         NavigationStack {
