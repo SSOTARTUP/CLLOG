@@ -1,12 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "GrayCircleHam_s.png",
+      "filename" : "Character Icon.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "GrayCircleHam_s 1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

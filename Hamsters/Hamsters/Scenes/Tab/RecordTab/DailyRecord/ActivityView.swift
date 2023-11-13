@@ -12,6 +12,7 @@ struct ActivityView: View {
     @State var showingSheet = false
     @State var isActive = true
     @State var list:Activities = []
+    @State var index:Int = -1
     
     var body: some View {
         VStack(spacing:0) {
@@ -22,6 +23,7 @@ struct ActivityView: View {
                     .padding(.leading,16)
                 
                 Button(action: {
+                    index = -1
                     showingSheet.toggle()
                 }, label: {
                     HStack {
@@ -40,14 +42,14 @@ struct ActivityView: View {
                 .padding(.horizontal,24)
                 .padding(.top,20+16)
                 .sheet(isPresented: $showingSheet) {
-                    ActivityModalView(list:$list)
+                    ActivityModalView(list:$list,index:index)
                 }
             }
                 .padding(.bottom,24)
             
             List {
                 Section {
-                    ForEach(list.filter{ $0.from == .user}) { activity in
+                    ForEach(Array(list.filter{$0.from == .user} .enumerated()),id:\.self.offset) { offset,activity in
                         HStack {
                             Text(activity.name)
                                 .font(.body)
@@ -60,11 +62,24 @@ struct ActivityView: View {
                         .padding(.horizontal,16)
                         .listRowBackground(Color.thoTextField)
                         .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
-                    }.onDelete { indexSet in
-                        list.remove(atOffsets: indexSet)
+                        .swipeActions(allowsFullSwipe: false) {
+                            Button {
+                                list.remove(at: offset)
+                            } label: {
+                                Label("삭제", systemImage: "trash.fill")
+                            }
+                            .tint(.red)
+                            
+                            Button {
+                                index = offset
+                                showingSheet.toggle()
+                            } label: {
+                                Label("편집", systemImage: "square.and.pencil")
+                            }
+                            .tint(.yellow)
+                        }
                     }
-                    
-                    
+
                 } header: {
                     if list.filter({ $0.from == .user }).count > 0 {
                         HStack {
@@ -141,7 +156,7 @@ struct ActivityView: View {
 extension ActivityView {
     typealias Activities = [Activity]
     
-    struct Activity:Identifiable {
+    struct Activity:Identifiable,Equatable {
         var id = UUID()
         let from:From
         var name:String
@@ -172,6 +187,10 @@ extension ActivityView {
             self.from = from
             self.name = name
             self.time = time
+        }
+        
+        static func ==(lhs:Activity,rhs:Activity)->Bool{
+            return lhs.id == rhs.id
         }
     }
     
