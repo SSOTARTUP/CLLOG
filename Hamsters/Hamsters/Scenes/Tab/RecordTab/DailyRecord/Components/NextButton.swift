@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct NextButton: View {
-    var title:String
-    @Binding var isActive:Bool
-    var closure:()->Void
+    var title: String
+    @Binding var isActive: Bool
+    var closure: () -> Void
 
     var body: some View {
         Button {

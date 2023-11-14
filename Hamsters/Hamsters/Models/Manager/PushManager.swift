@@ -23,20 +23,6 @@ class PushManager {
 
     }
     
-    func checkNotificationAuthorization(completion: @escaping (Bool) -> Void) {
-        UNUserNotificationCenter.current().getNotificationSettings { settings in
-            DispatchQueue.main.async {
-                settings.authorizationStatus
-                switch settings.authorizationStatus {
-                case .authorized, .provisional:
-                    completion(true)
-                default:
-                    completion(false)
-                }
-            }
-        }
-    }
-    
     func noti(pushType:PushType, hour: Int, minute: Int, completion: @escaping (PushManager.pushStatus) -> Void) {
         center.requestAuthorization(options: [.alert, .sound]) { granted, error in
             if granted {

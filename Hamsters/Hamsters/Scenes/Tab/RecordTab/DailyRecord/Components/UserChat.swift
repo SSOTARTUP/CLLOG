@@ -9,8 +9,8 @@ import SwiftUI
 
 struct UserChat: View {
     
-    @ObservedObject var viewModel:ConditionViewModel
-    let conditionModel:ConditionModel?
+    @ObservedObject var viewModel: ConditionViewModel
+    let conditionModel: ConditionModel?
     
     var body: some View {
         HStack {
