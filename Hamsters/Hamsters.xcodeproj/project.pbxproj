@@ -61,6 +61,7 @@
 		30D60C912AFFD048005D5D96 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D60C902AFFD048005D5D96 /* Onboarding.swift */; };
 		30D60C952B00FD1C005D5D96 /* NextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D60C942B00FD1C005D5D96 /* NextButton.swift */; };
 		30E376C72B011FCA00E8A10D /* CheerUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E376C62B011FCA00E8A10D /* CheerUpView.swift */; };
+		7645ABFD2B0306BA007F6139 /* PushManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7645ABFC2B0306BA007F6139 /* PushManager.swift */; };
 		768562D92AFC821F00AF5C95 /* ProfileSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768562D82AFC821F00AF5C95 /* ProfileSetView.swift */; };
 		768562DB2AFCC1DB00AF5C95 /* ProfileInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768562DA2AFCC1DB00AF5C95 /* ProfileInput.swift */; };
 		768562DE2AFDCE6F00AF5C95 /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768562DD2AFDCE6F00AF5C95 /* HealthKitManager.swift */; };
@@ -144,6 +145,7 @@
 		30D60C902AFFD048005D5D96 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
 		30D60C942B00FD1C005D5D96 /* NextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButton.swift; sourceTree = "<group>"; };
 		30E376C62B011FCA00E8A10D /* CheerUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheerUpView.swift; sourceTree = "<group>"; };
+		7645ABFC2B0306BA007F6139 /* PushManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushManager.swift; sourceTree = "<group>"; };
 		768562D82AFC821F00AF5C95 /* ProfileSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSetView.swift; sourceTree = "<group>"; };
 		768562DA2AFCC1DB00AF5C95 /* ProfileInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInput.swift; sourceTree = "<group>"; };
 		768562DD2AFDCE6F00AF5C95 /* HealthKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
@@ -447,6 +449,7 @@
 			isa = PBXGroup;
 			children = (
 				768562DD2AFDCE6F00AF5C95 /* HealthKitManager.swift */,
+				7645ABFC2B0306BA007F6139 /* PushManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -564,6 +567,7 @@
 				76B387142AFFC6D00067CDAF /* ActivityModalView.swift in Sources */,
 				768562E42AFE73A500AF5C95 /* ConditionView.swift in Sources */,
 				304180FA2ADCC740002AD2E3 /* SmokingSetView.swift in Sources */,
+				7645ABFD2B0306BA007F6139 /* PushManager.swift in Sources */,
 				768562D92AFC821F00AF5C95 /* ProfileSetView.swift in Sources */,
 				307B7D8A2AE4E0B1007CB7F5 /* AdditionalMemoView.swift in Sources */,
 				768562E12AFDCF2000AF5C95 /* HKWorkoutActivityType.swift in Sources */,
