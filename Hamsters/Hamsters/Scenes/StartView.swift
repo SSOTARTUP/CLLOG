@@ -12,8 +12,18 @@ struct StartView: View {
     
     init() {
         PushManager.shared.requestNotification()
-//        PushManager.shared.scheduleNotification(hour: 11, minute: 21)
-        PushManager.shared.scheduleDailyNoonNotificationStartingTomorrow()
+    
+        PushManager.shared.noti(pushType: .today, hour: 23, minute: 10) { status in
+            switch status {
+            case .success:
+                print("success")
+            case .authorizedFail:
+                print("권한을 허용해 주세요.")
+            case .error:
+                print("푸시 에러 발생")
+            }
+        }
+ 
     }
     
     var body: some View {
