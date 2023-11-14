@@ -16,8 +16,8 @@ struct CapsuleView: View {
     var body: some View {
         Text(text)
             .font(.body)
-            .padding(.horizontal, 24) 
-            .padding(.vertical, 11)
+            .padding(.horizontal, 20)
+            .padding(.vertical, 8)
             .background(
                 Capsule()
                     .fill(isSelected ? Color.thoNavy : Color.thoDisabled)
