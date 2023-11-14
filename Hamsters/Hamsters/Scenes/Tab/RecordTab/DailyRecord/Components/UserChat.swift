@@ -125,10 +125,14 @@ struct UserChat: View {
 extension UserChat{
     func answerButtonClicked(answer:Answer){
         guard let type = conditionModel?.conditionType else { return }
-        viewModel.answer[type] = answer
-        
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
-            viewModel.add()
+        if viewModel.answer[type] == nil {
+            viewModel.answer[type] = answer
+            
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
+                viewModel.add()
+            }
+        } else {
+            viewModel.answer[type] = answer
         }
     }
 }
