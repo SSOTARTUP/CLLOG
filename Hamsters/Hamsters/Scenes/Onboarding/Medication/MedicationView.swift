@@ -86,7 +86,9 @@ struct MedicationView: View {
                         Button("삭제", role: .destructive) {
                             if let indexSet = indexSetToDelete {
                                 withAnimation {
-                                    medicineViewModel.deleteMedicine(at: indexSet)
+                                    indexSet.map { medicineViewModel.medicines[$0] }.forEach { medicine in
+                                        medicineViewModel.deleteMedicine(medicine)
+                                    }
                                 }
                             }
                         }

@@ -38,17 +38,27 @@ class MedicineViewModel: ObservableObject {
                                    freOption: freOption,
                                    sortedDays: sortedDays)
         
+        CoreDataManager.shared.addMedicine(newMedicine)
         medicines.append(newMedicine)
+        print("Coredata :::: \(CoreDataManager.shared.fetchAllMedicines())")
     }
     
-    func deleteMedicine(at offsets: IndexSet) {
-        medicines.remove(atOffsets: offsets)
+//    func deleteMedicine(at offsets: IndexSet) {
+//        medicines.remove(atOffsets: offsets)
+//    }
+    func deleteMedicine(_ medicine: Medicine) {
+        CoreDataManager.shared.deleteMedicine(medicine)
+        if let index = medicines.firstIndex(where: { $0.id == medicine.id }) {
+            medicines.remove(at: index)
+        }
     }
     
     func updateMedicine(_ medicine: Medicine) {
         if let index = medicines.firstIndex(where: { $0.id == medicine.id}) {
             medicines[index] = medicine
+            CoreDataManager.shared.updateMedicine(medicine)
         }
+        print("UPdate :::: \(CoreDataManager.shared.fetchAllMedicines())")
     }
     
 }

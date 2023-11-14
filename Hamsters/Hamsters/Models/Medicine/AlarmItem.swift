@@ -8,7 +8,7 @@
 import Foundation
 
 // 'AlarmItem'은 알람의 상세 정보를 담기 위한 데이터 모델입니다.
-struct AlarmItem: Identifiable {
+struct AlarmItem: Identifiable, Codable {
     var id = UUID() // 고유 식별자
     var date: Date  // 알람 시간
     var isEnabled: Bool = false // 알람 활성화 상태 (기본값은 true)
@@ -22,7 +22,7 @@ enum Option: String, CaseIterable {
 }
 
 // MARK:- 빈도 설정을 위한
-enum Day: String, CaseIterable, Identifiable, Comparable {
+enum Day: String, CaseIterable, Identifiable, Comparable, Codable {
     
     case monday = "월"
     case tuesday = "화"
