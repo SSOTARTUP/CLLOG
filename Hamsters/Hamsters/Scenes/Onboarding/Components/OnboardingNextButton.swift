@@ -9,13 +9,14 @@ import SwiftUI
 
 struct OnboardingNextButton: View {
     @Binding var isActive: Bool
-    @Binding var pageNumber: Int
+    let title: String
+    var closure: () -> Void
     
     var body: some View {
         Button {
-            pageNumber += 1
+            closure()
         } label: {
-            Text("다음")
+            Text(title)
                 .font(.headline)
                 .fontWeight(.semibold)
                 .foregroundStyle(isActive ? .white : .thoNavy)
@@ -25,9 +26,11 @@ struct OnboardingNextButton: View {
                 .cornerRadius(15)
         }
         .disabled(!isActive)
+        .padding(.horizontal, 24)
+        .padding(.bottom, 30)
     }
 }
 
 #Preview {
-    OnboardingNextButton(isActive: .constant(true), pageNumber: .constant(1))
+    OnboardingNextButton(isActive: .constant(true), title: "시작하기") {}
 }

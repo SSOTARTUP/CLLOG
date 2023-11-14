@@ -7,12 +7,12 @@
 
 import Foundation
 
-struct ConditionModel :Identifiable ,Equatable{
+struct ConditionModel: Identifiable ,Equatable{
     var id = UUID()
-    let sender:Sender
-    var text:String?
-    var conditionType:ConditionType?
-    var answer:Answer?
+    let sender: Sender
+    var text: String?
+    var conditionType: ConditionType?
+    var answer: Answer?
     
     enum Sender {
         case computer

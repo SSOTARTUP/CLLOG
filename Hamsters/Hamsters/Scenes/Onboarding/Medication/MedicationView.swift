@@ -10,9 +10,9 @@ import SwiftUI
 struct MedicationView: View {
     //    @StateObject private var medicineViewModel = MedicineViewModel()
     @EnvironmentObject var medicineViewModel: MedicineViewModel
-  
-    @Binding var pageNumber: Int
-    @Binding var nickname: String
+    
+    @Binding var onboardingPage: Onboarding
+
     @State private var isActiveNext = false
     @State private var showingSheet = false
     @State private var showingAlert = false
@@ -24,40 +24,26 @@ struct MedicationView: View {
     var body: some View {
         NavigationStack {
             VStack(alignment: .leading, spacing: 0) {
-                OnboardingProgressBar(pageNumber: $pageNumber)
-                
-                VStack(alignment: .leading, spacing: 0) {
-                    Text("드시는 약물이\n있나요?")
-                        .font(.largeTitle)
-                        .fontWeight(.bold)
-                        .padding(.bottom, 14)
-                    
-                    Text("Clue가 \(nickname)님을 더 잘 케어할 수 있어요!")
-                        .font(.body)
-                        .foregroundStyle(.secondary)
-                        .padding(.bottom, 44)
-                    
-                    Button(action: {
-                        // 투여약 추가 로직
-                        showingSheet.toggle()
-                    }, label: {
-                        HStack {
-                            Image(systemName: "plus.circle.fill")
-                                .font(.title3)
-                            Text("투여약 추가")
-                                .font(.headline)
-                                .fontWeight(.semibold)
-                        }
-                        .foregroundStyle(.white)
-                        .frame(maxWidth: .infinity)
-                        .padding(.vertical, 15)
-                        .background(.thoNavy)
-                        .cornerRadius(15)
-                    })
-                    .padding(.bottom, 44)
-                    .sheet(isPresented: $showingSheet) {
-                        AddMedicineView(isActiveNext: $isActiveNext)
+                Button(action: {
+                    // 투여약 추가 로직
+                    showingSheet.toggle()
+                }, label: {
+                    HStack {
+                        Image(systemName: "plus.circle.fill")
+                            .font(.title3)
+                        Text("투여약 추가")
+                            .font(.headline)
+                            .fontWeight(.semibold)
                     }
+                    .foregroundStyle(.white)
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 15)
+                    .background(.thoNavy)
+                    .cornerRadius(15)
+                })
+                .padding(.bottom, 44)
+                .sheet(isPresented: $showingSheet) {
+                    AddMedicineView(isActiveNext: $isActiveNext)
                 }
                 .padding(.leading, 24)
                 .padding(.trailing, 24)
@@ -120,9 +106,8 @@ struct MedicationView: View {
             Spacer()
             
             VStack(spacing: 0) {
-                
                 Button(action: {
-                    pageNumber += 1
+                    onboardingPage = Onboarding(rawValue: onboardingPage.rawValue + 1) ?? .smoking
                 }, label: {
                     Text("지금은 건너뛰기")
                         .font(.footnote)
@@ -131,20 +116,15 @@ struct MedicationView: View {
                 .frame(maxWidth: .infinity)
                 .disabled(isActiveNext)
                 .padding(.bottom, 20)
-                OnboardingNextButton(isActive: $isActiveNext, pageNumber: $pageNumber)
+                
+                OnboardingNextButton(isActive: $isActiveNext, title: onboardingPage.nextButtonTitle) {
+                    onboardingPage = Onboarding(rawValue: onboardingPage.rawValue + 1) ?? .smoking
+                }
             }
-            .padding(.horizontal, 24)
-            .padding(.bottom, 6)
-            
         }
         .onAppear {
             if medicineViewModel.medicines.count > 0 {
                 isActiveNext = true
-            }
-        }
-        .toolbar {
-            ToolbarItem(placement: .topBarLeading) {
-                OnboardingBackButton(pageNumber: $pageNumber)
             }
         }
     }
@@ -152,6 +132,6 @@ struct MedicationView: View {
 
 
 #Preview {
-    MedicationView(pageNumber: .constant(3), nickname: .constant("Hamm"))
+    MedicationView(onboardingPage: .constant(.medication))
         .environmentObject(MedicineViewModel())
 }

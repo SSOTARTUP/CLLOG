@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct OnboardingBackButton: View {
-    @Binding var pageNumber: Int
+    @Binding var onboardingPage: Onboarding
+    
     var body: some View {
         Button {
-            pageNumber -= 1
+            onboardingPage = Onboarding(rawValue: onboardingPage.rawValue - 1) ?? .welcome
         } label: {
             Image(systemName: "chevron.backward")
                 .font(.headline)
@@ -22,5 +23,5 @@ struct OnboardingBackButton: View {
 }
 
 #Preview {
-    OnboardingBackButton(pageNumber: .constant(3))
+    OnboardingBackButton(onboardingPage: .constant(.smoking))
 }

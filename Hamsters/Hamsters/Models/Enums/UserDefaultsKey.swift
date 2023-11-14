@@ -8,7 +8,9 @@
 import Foundation
 
 enum UserDefaultsKey: String {
-    case nickname // 닉네임 - String
+    case userName // 이름 - String
+    case hamsterName // 햄스터 별명 - String
+    case hasterImage // 햄스터 이미지 - String
     case sex // 성별 - String(female, male, menopause)
     case smoking    // 흡연여부 - Bool
     case complete   // 설정 완료 - Bool

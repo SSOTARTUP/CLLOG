@@ -11,7 +11,7 @@ struct DailyRecordNextButton: View {
     @Binding var pageNumber: Int
     @Binding var isActiveRecord: Bool
     
-    let title: String
+    let title: LocalizedStringKey
     
     var body: some View {
         Button {

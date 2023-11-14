@@ -10,55 +10,74 @@ import SwiftUI
 struct OnboardingView: View {
     @Environment(\.dismiss) private var dismiss
     @StateObject private var medicineViewModel = MedicineViewModel()
-    @AppStorage(UserDefaultsKey.nickname.rawValue) private var storedNickname: String = ""
+    
+    @AppStorage(UserDefaultsKey.userName.rawValue) private var storedUserkname: String = ""
+    @AppStorage(UserDefaultsKey.hamsterName.rawValue) private var storedHamsterkname: String = ""
+    @AppStorage(UserDefaultsKey.hasterImage.rawValue) private var storedHamsterImage: String = ""
     @AppStorage(UserDefaultsKey.sex.rawValue) private var storedSex: String = ""
     @AppStorage(UserDefaultsKey.smoking.rawValue) private var storedSmoking: Bool = false
-//    @AppStorage(UserDefaultsKey.complete.rawValue) private var setupComplete: Bool = false
-    @Binding var setupComplete: Bool
-    @State private var pageNumber = 0
-    @State private var nickname = ""
-    @State private var selectedSex: SexClassification?
-    @State private var status: SmokingStatus?
+    @AppStorage(UserDefaultsKey.complete.rawValue) private var setupComplete: Bool = false
     
+    @State private var onboardingPage: Onboarding = .welcome
+    
+    @State private var userName: String = ""
+    @State private var hamsterName: String = ""
+    @State private var selectedHamster: selectedHam? = nil
+    @State private var selectedSex: SexClassification? = nil
+    @State private var smokingStatus: SmokingStatus? = nil
     
     var body: some View {
-        ZStack {
-            switch pageNumber {
-            case 0:
-                AgreementView(pageNumber: $pageNumber)
-            case 1:
-                NicknameSetView(pageNumber: $pageNumber, nickname: $nickname)
-                    .onDisappear {
-                        storedNickname = nickname
-                    }
-            case 2:
-                SexSetView(pageNumber: $pageNumber, selectedSex: $selectedSex)
-                    .onDisappear {
-                        storedSex = selectedSex?.rawValue ?? ""
-                    }
-            case 3:
-                // 투여 약물 등록 페이지(임시)
-                MedicationView(pageNumber: $pageNumber, nickname: $nickname)
-                    .environmentObject(medicineViewModel)
-            case 4:
-                SmokingSetView(pageNumber: $pageNumber, status: $status)
-                    .onDisappear {
-                        storedSmoking = status?.rawValue ?? false
-                    }
-            case 5:
-                SetupCompleteView(pageNumber: $pageNumber, setupComplete: $setupComplete)
-            default:
-                EmptyView()
-                    .onAppear {
-                        if setupComplete {
-                            dismiss()
+        NavigationStack {
+            VStack(spacing: 0) {
+                if 0 < onboardingPage.rawValue && onboardingPage.rawValue < 6 {
+                    ProgressBarAndTitle(pageNumber: onboardingPage.rawValue, totalPage: onboardingPage.pageTotal, title: onboardingPage.title, subtitle: onboardingPage.subtitle)
+                }
+                
+                switch onboardingPage {
+                case .welcome:
+                    WelcomeView(onboardingPage: $onboardingPage)
+                case .profile:
+                    ProfileSetView(onboardingPage: $onboardingPage, hamName: $hamsterName, name: $userName, selectedHamster: $selectedHamster)
+                        .onDisappear {
+                            storedUserkname = userName
+                            storedHamsterkname = hamsterName
+                            storedHamsterImage = selectedHamster?.rawValue ?? "gray"
                         }
+                case .sex:
+                    SexSetView(onboardingPage: $onboardingPage, selectedSex: $selectedSex)
+                        .onDisappear {
+                            storedSex = selectedSex?.rawValue ?? "male"
+                        }
+                case .medication:
+                    MedicationView(onboardingPage: $onboardingPage)
+                        .environmentObject(medicineViewModel)
+                case .smoking:
+                    SmokingSetView(onboardingPage: $onboardingPage, status: $smokingStatus)
+                        .onDisappear {
+                            storedSmoking = smokingStatus?.rawValue ?? false
+                        }
+                case .complete:
+                    SetupCompleteView(onboardingPage: $onboardingPage)
+                case .end:
+                    EmptyView()
+                        .onAppear {
+                            if setupComplete {
+                                dismiss()
+                            }
+                        }
+                }
+            }
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    if onboardingPage != .welcome {
+                        OnboardingBackButton(onboardingPage: $onboardingPage)
                     }
+                }
             }
         }
     }
 }
 
 #Preview {
-    OnboardingView(setupComplete: .constant(false))
+    OnboardingView()
 }

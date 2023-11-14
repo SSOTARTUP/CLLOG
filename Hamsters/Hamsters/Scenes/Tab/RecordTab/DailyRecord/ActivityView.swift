@@ -11,19 +11,21 @@ struct ActivityView: View {
     
     @State var showingSheet = false
     @State var isActive = true
-    @State var list:Activities = []
+    @State var list: Activities = []
+    @State var index: Int = -1
     
     var body: some View {
-        VStack(spacing:0) {
+        VStack(spacing: 0) {
             VStack(alignment: .leading, spacing: 0) {
                 Text("운동을 기록해주세요")
                     .font(.largeTitle)
                     .fontWeight(.bold)
-                    .padding(.leading,16)
+                    .padding(.leading, 16)
                 
-                Button(action: {
+                Button {
+                    index = -1
                     showingSheet.toggle()
-                }, label: {
+                } label: {
                     HStack {
                         Image(systemName: "plus.circle.fill")
                             .font(.title3)
@@ -36,22 +38,24 @@ struct ActivityView: View {
                     .padding(.vertical, 15)
                     .background(.thoNavy)
                     .cornerRadius(15)
-                })
-                .padding(.horizontal,24)
-                .padding(.top,20+16)
+                }
+                .padding(.horizontal, 24)
+                .padding(.top, 20 + 16)
                 .sheet(isPresented: $showingSheet) {
-                    ActivityModalView(list:$list)
+                    ActivityModalView(list:$list,index:index)
                 }
             }
-                .padding(.bottom,24)
+            .padding(.bottom, 24)
             
-            List{
+            List {
                 Section {
-                    ForEach(list.filter{ $0.from == .user}) { activity in
+                    ForEach(Array(list.filter{ $0.from == .user } .enumerated()),id:\.self.offset) { offset,activity in
                         HStack {
                             Text(activity.name)
                                 .font(.body)
+                            
                             Spacer()
+                            
                             Text(activity.dsc)
                                 .font(.body)
                                 .foregroundStyle(.thoNavy)
@@ -60,40 +64,71 @@ struct ActivityView: View {
                         .padding(.horizontal,16)
                         .listRowBackground(Color.thoTextField)
                         .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
-                    }.onDelete { indexSet in
-                        list.remove(atOffsets: indexSet)
+                        .swipeActions(allowsFullSwipe: false) {
+                            Button {
+                                list.remove(at: offset)
+                            } label: {
+                                Label("삭제", systemImage: "trash.fill")
+                            }
+                            .tint(.red)
+                            
+                            Button {
+                                index = offset
+                                showingSheet.toggle()
+                            } label: {
+                                Label("편집", systemImage: "square.and.pencil")
+                            }
+                            .tint(.yellow)
+                        }
                     }
-                    
-                    
+
                 } header: {
-                    HStack {
-                        Text("내가 추가한 운동")
-                            .font(.headline)
-                            .foregroundStyle(.sectionTitle)
-                            .bold()
-                        Spacer()
+                    if list.filter({ $0.from == .user }).count > 0 {
+                        HStack {
+                            Text("내가 추가한 운동")
+                                .font(.headline)
+                                .foregroundStyle(.sectionTitle)
+                                .bold()
+                            
+                            Spacer()
+                        }
+                        .frame(width: screenBounds().width - 48)
                     }
                 }
                 
                 Section {
-                    HStack {
-                        Text("헬스킷 연동 예정.").padding(0)
-                    }
+                    ForEach(list.filter{ $0.from == .healthKit }) { activity in
+                        HStack {
+                            Text(activity.name)
+                                .font(.body)
+                            
+                            Spacer()
+                            
+                            Text(activity.dsc)
+                                .font(.body)
+                                .foregroundStyle(.thoNavy)
+                        }
+                        .frame(height: 44)
+                        .padding(.horizontal, 16)
                         .listRowBackground(Color.thoTextField)
                         .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+                    }
                 } header: {
-                    HStack {
-                        Text("연동된 운동 데이터")
-                            .font(.headline)
-                            .foregroundStyle(.sectionTitle)
-                            .bold()
-                        Spacer()
+                    if list.filter({ $0.from == .healthKit }).count > 0 {
+                        HStack {
+                            Text("연동된 운동 데이터")
+                                .font(.headline)
+                                .foregroundStyle(.sectionTitle)
+                                .bold()
+                            
+                            Spacer()
+                        }
+                        .frame(width: screenBounds().width - 48)
                     }
                 }
-
             }
             .listRowBackground(Color.blue)
-            .background(.white)
+            .background(.white) //추후에 DARK mode 고려.
             .scrollContentBackground(.hidden)
             
             Spacer()
@@ -101,10 +136,24 @@ struct ActivityView: View {
             NextButton(title: "다음", isActive: $isActive) {
                 
             }
-            .padding(.horizontal,24)
-            .padding(.bottom,30)
-
-            
+            .padding(.horizontal, 24)
+            .padding(.bottom, 30)
+        }.onAppear{
+            HealthKitManager.shared.fetchWorkouts(.yesterday) { sample, error in
+                if error != nil {
+                    return
+                }
+                
+                guard let sample = sample else { return }
+                
+                let healthKitData:Activities = sample
+                    .map{Activity(from: .healthKit, name: $0.workoutActivityType.name, time: Int($0.duration) / 60)}
+                    .compactMap{ $0 }
+                
+                DispatchQueue.main.async {
+                    list.append(contentsOf: healthKitData)
+                }
+            }
         }
     }
 }
@@ -114,17 +163,17 @@ extension ActivityView {
     
     struct Activity:Identifiable {
         var id = UUID()
-        let from:From
-        var name:String
-        var time:Int
+        let from: From
+        var name: String
+        var time: Int
         
         enum From {
             case user
             case healthKit
         }
         
-        var dsc:String{
-            if time%60 == 0 {
+        var dsc: String{
+            if time % 60 == 0 {
                 return "\(self.time/60)시간"
             } else if time < 60 {
                 return "\(self.time%60)분"
