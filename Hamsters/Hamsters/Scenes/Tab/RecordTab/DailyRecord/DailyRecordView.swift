@@ -15,7 +15,8 @@ struct DailyRecordView: View {
     @State private var conditionValues: [Double] = Array(repeating: 0.0, count: Condition.allCases.count)
     @State private var moodValues: [Double] = Array(repeating: 0.0, count: Mood.allCases.count)
     @State private var sleepingTime: Int = 0
-    @State private var selectedEffect: [SideEffects] = [.none]
+    @State private var popularEffect: [SideEffects.Major] = [.none]
+    @State private var dangerEffect: [SideEffects.Dangerous] = [.none]
     @State private var selectedKg: Int = 50
     @State private var selectedGr: Int = 0
     @State private var amountOfSmoking = 0
@@ -41,7 +42,7 @@ struct DailyRecordView: View {
                     SleepingTimeView(pageNumber: $pageNumber, sleepingTime: $sleepingTime)
                     
                 case 4: // 부작용 기록
-                    SideEffectCheckView(pageNumber: $pageNumber, selectedEffect: $selectedEffect)
+                    SideEffectCheckView(pageNumber: $pageNumber, popularEffect: $popularEffect, dangerEffect: $dangerEffect)
                     
                 case 5: // 체중 기록
                     WeightCheckView(pageNumber: $pageNumber, selectedKg: $selectedKg, selectedGr: $selectedGr)
