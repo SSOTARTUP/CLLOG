@@ -10,7 +10,7 @@ import SwiftUI
 struct MedicationView: View {
     //    @StateObject private var medicineViewModel = MedicineViewModel()
     @EnvironmentObject var medicineViewModel: MedicineViewModel
-    
+  
     @Binding var pageNumber: Int
     @Binding var nickname: String
     @State private var isActiveNext = false
@@ -100,7 +100,9 @@ struct MedicationView: View {
                         Button("삭제", role: .destructive) {
                             if let indexSet = indexSetToDelete {
                                 withAnimation {
-                                    medicineViewModel.deleteMedicine(at: indexSet)
+                                    indexSet.map { medicineViewModel.medicines[$0] }.forEach { medicine in
+                                        medicineViewModel.deleteMedicine(medicine)
+                                    }
                                 }
                             }
                         }

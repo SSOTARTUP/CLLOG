@@ -79,6 +79,10 @@
 		76D52F452AFF2A79009A0698 /* ConditionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D52F442AFF2A79009A0698 /* ConditionModel.swift */; };
 		76D52F472AFF2AD2009A0698 /* UserChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D52F462AFF2AD2009A0698 /* UserChat.swift */; };
 		76E48DD32AFB8F670065EA65 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E48DD22AFB8F670065EA65 /* WelcomeView.swift */; };
+		B59311642B01A77C0092A2E0 /* CoreMedicineModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B59311622B01A77C0092A2E0 /* CoreMedicineModel.xcdatamodeld */; };
+		B593116B2B01B7490092A2E0 /* Medicines+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59311692B01B7490092A2E0 /* Medicines+CoreDataClass.swift */; };
+		B593116C2B01B7490092A2E0 /* Medicines+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B593116A2B01B7490092A2E0 /* Medicines+CoreDataProperties.swift */; };
+		B593116E2B01B8740092A2E0 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B593116D2B01B8740092A2E0 /* CoreDataManager.swift */; };
 		B597462A2AE504220074D5CC /* MenstruationCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59746292AE504220074D5CC /* MenstruationCheckView.swift */; };
 		B597462C2AE5D7190074D5CC /* SleepingTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B597462B2AE5D7190074D5CC /* SleepingTimeView.swift */; };
 		B5F904C72AE4E0DA00FDE4CB /* SideEffectCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F904C62AE4E0DA00FDE4CB /* SideEffectCheckView.swift */; };
@@ -161,6 +165,10 @@
 		76D52F442AFF2A79009A0698 /* ConditionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionModel.swift; sourceTree = "<group>"; };
 		76D52F462AFF2AD2009A0698 /* UserChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserChat.swift; sourceTree = "<group>"; };
 		76E48DD22AFB8F670065EA65 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		B59311632B01A77C0092A2E0 /* CoreMedicineModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreMedicineModel.xcdatamodel; sourceTree = "<group>"; };
+		B59311692B01B7490092A2E0 /* Medicines+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Medicines+CoreDataClass.swift"; sourceTree = "<group>"; };
+		B593116A2B01B7490092A2E0 /* Medicines+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Medicines+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		B593116D2B01B8740092A2E0 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		B59746292AE504220074D5CC /* MenstruationCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenstruationCheckView.swift; sourceTree = "<group>"; };
 		B597462B2AE5D7190074D5CC /* SleepingTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepingTimeView.swift; sourceTree = "<group>"; };
 		B5F904C62AE4E0DA00FDE4CB /* SideEffectCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideEffectCheckView.swift; sourceTree = "<group>"; };
@@ -196,6 +204,10 @@
 		304180C42ADA8E37002AD2E3 = {
 			isa = PBXGroup;
 			children = (
+				B593116D2B01B8740092A2E0 /* CoreDataManager.swift */,
+				B59311692B01B7490092A2E0 /* Medicines+CoreDataClass.swift */,
+				B593116A2B01B7490092A2E0 /* Medicines+CoreDataProperties.swift */,
+				B59311622B01A77C0092A2E0 /* CoreMedicineModel.xcdatamodeld */,
 				304180CF2ADA8E37002AD2E3 /* Hamsters */,
 				304180CE2ADA8E37002AD2E3 /* Products */,
 			);
@@ -565,6 +577,8 @@
 				768562E12AFDCF2000AF5C95 /* HKWorkoutActivityType.swift in Sources */,
 				30151F432AE3AD590036B60D /* SmokingAmount.swift in Sources */,
 				B597462A2AE504220074D5CC /* MenstruationCheckView.swift in Sources */,
+				B59311642B01A77C0092A2E0 /* CoreMedicineModel.xcdatamodeld in Sources */,
+				B593116E2B01B8740092A2E0 /* CoreDataManager.swift in Sources */,
 				305240172ADD73EB008FCD14 /* SmokingStatus.swift in Sources */,
 				307B7D662AE42480007CB7F5 /* MedicineModel.swift in Sources */,
 				307B7D722AE424A2007CB7F5 /* AddMedicineView.swift in Sources */,
@@ -578,8 +592,10 @@
 				304180E52ADAC730002AD2E3 /* AgreementView.swift in Sources */,
 				307B7D702AE424A2007CB7F5 /* AlarmFrequencyView.swift in Sources */,
 				76D52F452AFF2A79009A0698 /* ConditionModel.swift in Sources */,
+				B593116C2B01B7490092A2E0 /* Medicines+CoreDataProperties.swift in Sources */,
 				76D52F472AFF2AD2009A0698 /* UserChat.swift in Sources */,
 				307B7D872AE43322007CB7F5 /* MyInfoMainView.swift in Sources */,
+				B593116B2B01B7490092A2E0 /* Medicines+CoreDataClass.swift in Sources */,
 				B5F904D02AE4E61200FDE4CB /* CapsuleView.swift in Sources */,
 				304180F12ADBCA6E002AD2E3 /* OnboardingProgressBar.swift in Sources */,
 				30BB50C42AE1FCA80050CF69 /* MoodCheckView.swift in Sources */,
@@ -751,7 +767,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Hamsters/Preview Content\"";
-				DEVELOPMENT_TEAM = TAP4M2PF77;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Hamsters/Info.plist;
@@ -793,7 +809,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Hamsters/Preview Content\"";
-				DEVELOPMENT_TEAM = TAP4M2PF77;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Hamsters/Info.plist;
@@ -905,6 +921,19 @@
 			productName = WrappingHStack;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		B59311622B01A77C0092A2E0 /* CoreMedicineModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				B59311632B01A77C0092A2E0 /* CoreMedicineModel.xcdatamodel */,
+			);
+			currentVersion = B59311632B01A77C0092A2E0 /* CoreMedicineModel.xcdatamodel */;
+			path = CoreMedicineModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 304180C52ADA8E37002AD2E3 /* Project object */;
 }
