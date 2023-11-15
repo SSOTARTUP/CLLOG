@@ -26,88 +26,90 @@ struct SleepingTimeView: View {
     }()
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 20) {
-            Text("얼마나 주무셨나요?")
-                .font(.largeTitle)
-                .fontWeight(.bold)
-                .padding(.bottom, 16)
-                .padding(.horizontal, 16)
+        ScrollView {
+            VStack(alignment: .leading, spacing: 20) {
+                Text("얼마나 주무셨나요?")
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                    .padding(.bottom, 16)
+                    .padding(.horizontal, 16)
 
-            HStack {
-                VStack(spacing: 0) {
-                    Text("취침 시간")
-                        .font(.footnote)
-                        .foregroundStyle(.secondary)
+                HStack {
+                    VStack(spacing: 0) {
+                        Text("취침 시간")
+                            .font(.footnote)
+                            .foregroundStyle(.secondary)
+                        
+                        Text(timeFormatter.string(from: getTime(angle: startAngle)))
+                            .font(.title2)
+                            .bold()
+                            .foregroundStyle(.thoNavy)
+                            .monospacedDigit()
+                            .frame(maxWidth: .infinity)
+                    }
                     
-                    Text(timeFormatter.string(from: getTime(angle: startAngle)))
-                        .font(.title2)
-                        .bold()
-                        .foregroundStyle(.thoNavy)
-                        .monospacedDigit()
-                        .frame(maxWidth: .infinity)
+                    Spacer()
+                    
+                    VStack(spacing: 0) {
+                        Text("기상 시간")
+                            .font(.footnote)
+                            .foregroundStyle(.secondary)
+                        
+                        Text(timeFormatter.string(from: getTime(angle: toAngle)))
+                            .font(.title2)
+                            .bold()
+                            .foregroundStyle(.thoNavy)
+                            .monospacedDigit()
+                            .frame(maxWidth: .infinity) // 이 줄이 추가되었습니다.
+                    }
+                   
+                }
+                .padding(.horizontal, 48)
+                
+                VStack {
+                    SleepTimeSlider()
+                        .padding(.vertical, 20)
+                        .padding(.bottom, 16)
+                    
+
+                    VStack(spacing: 0) {
+                        Text("총 수면시간")
+                            .font(.footnote)
+                            .foregroundStyle(.white)
+                        
+                        Text("\(getTimeDifference().0)시간 \(getTimeDifference().1)분" )
+                            .font(.title2)
+                            .bold()
+                            .foregroundStyle(.thoGreen)  // 텍스트의 색상을 지정합니다. 이 경우 흰색을 사용했습니다.
+                        
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 8)  // 텍스트 주변에 패딩을 추가합니다.
+                    .background {
+                        Capsule()  // 캡슐 형태의 배경을 추가합니다.
+                            .foregroundStyle(.thoNavy)  // 캡슐의 색상을 지정합니다. 여기서는 원하는 색상을 선택하세요.
+                    }
+                    .padding(.horizontal, 104)
                 }
                 
                 Spacer()
                 
-                VStack(spacing: 0) {
-                    Text("기상 시간")
-                        .font(.footnote)
-                        .foregroundStyle(.secondary)
-                    
-                    Text(timeFormatter.string(from: getTime(angle: toAngle)))
-                        .font(.title2)
-                        .bold()
-                        .foregroundStyle(.thoNavy)
-                        .monospacedDigit()
-                        .frame(maxWidth: .infinity) // 이 줄이 추가되었습니다.
-                }
-               
-            }
-            .padding(.horizontal, 48)
-            
-            VStack {
-                SleepTimeSlider()
-                    .padding(.vertical, 20)
-                    .padding(.bottom, 16)
-                
-
-                VStack(spacing: 0) {
-                    Text("총 수면시간")
-                        .font(.footnote)
+                Button {
+                    sleepingTime = getTimeDifference().0 + getTimeDifference().1
+                    pageNumber += 1
+                } label: {
+                    Text("다음")
+                        .font(.headline)
+                        .fontWeight(.semibold)
                         .foregroundStyle(.white)
-                    
-                    Text("\(getTimeDifference().0)시간 \(getTimeDifference().1)분" )
-                        .font(.title2)
-                        .bold()
-                        .foregroundStyle(.thoGreen)  // 텍스트의 색상을 지정합니다. 이 경우 흰색을 사용했습니다.
-                    
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 15)
+                        .background(.thoNavy)
+                        .cornerRadius(15)
+                        .padding(.horizontal, 16)
                 }
-                .frame(maxWidth: .infinity)
-                .padding(.vertical, 8)  // 텍스트 주변에 패딩을 추가합니다.
-                .background {
-                    Capsule()  // 캡슐 형태의 배경을 추가합니다.
-                        .foregroundStyle(.thoNavy)  // 캡슐의 색상을 지정합니다. 여기서는 원하는 색상을 선택하세요.
-                }
-                .padding(.horizontal, 104)
+                .padding(.bottom, 30)
             }
-            
-            Spacer()
-            
-            Button {
-                sleepingTime = getTimeDifference().0 + getTimeDifference().1
-                pageNumber += 1
-            } label: {
-                Text("다음")
-                    .font(.headline)
-                    .fontWeight(.semibold)
-                    .foregroundStyle(.white)
-                    .frame(maxWidth: .infinity)
-                    .padding(.vertical, 15)
-                    .background(.thoNavy)
-                    .cornerRadius(15)
-                    .padding(.horizontal, 16)
-            }
-            .padding(.bottom, 30)
         }
     }
     
