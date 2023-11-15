@@ -28,9 +28,9 @@ struct SideEffectCheckView: View {
                             .foregroundStyle(.thoNavy)
                         
                         WrappingHStack(alignment: .leading, horizontalSpacing: 8, verticalSpacing: 10) {
-                            ForEach(SideEffects.Major.allCases, id: \.self) { majorEffect in
-                                CapsuleView(text: majorEffect.rawValue, isSelected: popularEffect.contains(majorEffect)) {
-                                    
+                            ForEach(SideEffects.Major.allCases, id: \.self) { effect in
+                                CapsuleView(text: effect.rawValue, isSelected: popularEffect.contains(effect)) {
+                                    updatePopularEffect(with: effect)
                                 }
                             }
                         }
@@ -82,19 +82,29 @@ struct SideEffectCheckView: View {
     }
     
     private func updatePopularEffect(with effect: SideEffects.Major) {
-        if let index = popularEffect.firstIndex(of: effect) {
-            popularEffect.remove(at: index)
-        } else {
-            popularEffect.append(effect)
-        }
+        if effect == .none {
+                popularEffect = [.none] // '없음'만 선택됨
+            } else {
+                popularEffect.removeAll { $0 == .none } // '없음'을 제거
+                if let index = popularEffect.firstIndex(of: effect) {
+                    popularEffect.remove(at: index)
+                } else {
+                    popularEffect.append(effect)
+                }
+            }
     }
     
     private func updateDangerEffect(with effect: SideEffects.Dangerous) {
-        if let index = dangerEffect.firstIndex(of: effect) {
-            dangerEffect.remove(at: index)
-        } else {
-            dangerEffect.append(effect)
-        }
+        if effect == .none {
+                dangerEffect = [.none] // '없음'만 선택됨
+            } else {
+                dangerEffect.removeAll { $0 == .none } // '없음'을 제거
+                if let index = dangerEffect.firstIndex(of: effect) {
+                    dangerEffect.remove(at: index)
+                } else {
+                    dangerEffect.append(effect)
+                }
+            }
     }
 }
 
