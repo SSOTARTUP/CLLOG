@@ -12,6 +12,9 @@ protocol PushProtocol:AnyObject {}
 extension PushProtocol {
     
     func pushSetting() async -> PushManager.Status {
+        
+        PushManager.shared.center.removeAllPendingNotificationRequests()
+        
         let coreDataManager = CoreDataManager.shared
         let medicines = coreDataManager.fetchAllMedicines()
         var dic:[String:[PushManager.WeekDay]] = [:]
@@ -36,7 +39,7 @@ extension PushProtocol {
                 }
             }
         }
-        var status:PushManager.Status = .success
+
         for (time, weekdays) in dic {
             let components = time.split(separator: ":").compactMap { Int($0) }
             
@@ -56,7 +59,7 @@ extension PushProtocol {
             }
         }
         
-        return status
+        return .success
     }
     
 

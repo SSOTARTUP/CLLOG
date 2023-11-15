@@ -160,6 +160,10 @@ extension PushManager {
         
         return status
     }
+    
+    func removeAllPendingNotifications() {
+        center.removeAllPendingNotificationRequests()
+    }
 }
 
 extension PushManager {
