@@ -118,6 +118,8 @@ struct SleepingTimeView: View {
             
             let width = proxy.size.width
             let height = proxy.size.height
+            let sliderSize = min(width, height) * 0.7 // 슬라이더의 크기를 동적으로 조정
+
             
             ZStack {
                 ZStack {
@@ -129,7 +131,7 @@ struct SleepingTimeView: View {
                             .rotationEffect(.init(degrees: Double(index) * 6))
                     }
                     
-                    let texts = ["12PM", "6PM", "12AM", "6AM"]
+                    let texts = ["6AM", "12PM", "6PM", "12AM"]
                     ForEach(texts.indices, id: \.self) { index in
                         // 각 레이블에 대한 각도를 계산합니다. (360도 / 레이블 개수 * 현재 인덱스)
                         let angleDegree = Double(index) * (360.0 / Double(texts.count))
@@ -150,14 +152,14 @@ struct SleepingTimeView: View {
                 }
                 
                 Circle()
-                    .stroke(Color.thoDisabled, style: StrokeStyle(lineWidth: width / 4.5, lineCap: .round, lineJoin: .round))
+                    .stroke(Color.thoDisabled, style: StrokeStyle(lineWidth: 40, lineCap: .round, lineJoin: .round))
                     .shadow(radius: 5)
                 
                 let reverseRotation = (startProgress > toProgress) ? -Double((1 - startProgress) * 360) : 0
                 
                 Circle()
                     .trim(from: startProgress > toProgress ? 0 : startProgress, to: toProgress + (-reverseRotation / 360))
-                    .stroke(Color.thoNavy, style: StrokeStyle(lineWidth: width / 6.5, lineCap: .round, lineJoin: .round))
+                    .stroke(Color.thoNavy, style: StrokeStyle(lineWidth: 40, lineCap: .round, lineJoin: .round))
                     .rotationEffect(.init(degrees: -90))
                     .rotationEffect(.init(degrees: reverseRotation))
                 
@@ -165,7 +167,6 @@ struct SleepingTimeView: View {
                 Image(systemName: "bed.double.fill")
                     .font(.title)
                     .foregroundStyle(.thoNavy)
-                    .background(.white, in: Circle())
                 
                 // Slider Button
                 Image(systemName: "moon.stars.fill")
@@ -203,7 +204,7 @@ struct SleepingTimeView: View {
                 
             }
         }
-        .frame(width: screenBounds().width / 1.6, height: screenBounds().height / 3.2)
+        .frame(width: screenBounds().width / 1.6, height: screenBounds().width / 1.6)
     }
     
     func onDrag(value: DragGesture.Value, fromSlider: Bool = false) {
