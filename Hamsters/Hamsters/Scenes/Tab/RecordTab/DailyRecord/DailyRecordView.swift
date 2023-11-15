@@ -17,8 +17,7 @@ struct DailyRecordView: View {
     @State private var sleepingTime: Int = 0
     @State private var popularEffect: [SideEffects.Major] = [.none]
     @State private var dangerEffect: [SideEffects.Dangerous] = [.none]
-    @State private var selectedKg: Int = 50
-    @State private var selectedGr: Int = 0
+    @State private var weight: Double = 50.0
     @State private var amountOfSmoking = 0
     @State private var amountOfCaffein = 0
     @State private var isPeriod = false
@@ -45,7 +44,7 @@ struct DailyRecordView: View {
                     SideEffectCheckView(pageNumber: $pageNumber, popularEffect: $popularEffect, dangerEffect: $dangerEffect)
                     
                 case 5: // 체중 기록
-                    WeightCheckView(pageNumber: $pageNumber, selectedKg: $selectedKg, selectedGr: $selectedGr)
+                    WeightCheckView(pageNumber: $pageNumber, weight: $weight)
                     
                 case 6: // 월경 여부
                     MenstruationCheckView(pageNumber: $pageNumber, isPeriod: $isPeriod)
