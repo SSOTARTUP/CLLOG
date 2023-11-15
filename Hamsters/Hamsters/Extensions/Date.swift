@@ -17,4 +17,19 @@ extension Date {
 
         return date.addingTimeInterval(TimeInterval(koreanTimeZone.secondsFromGMT(for: date)))
     }
+    
+    static func isTimeInPast(hour: Int, minute: Int) -> Bool {
+        let calendar = Calendar.current
+        let now = Date()
+
+        var dateComponents = calendar.dateComponents([.year, .month, .day], from: now)
+        dateComponents.hour = hour
+        dateComponents.minute = minute
+
+        guard let specificTime = calendar.date(from: dateComponents) else {
+            fatalError("Invalid date components")
+        }
+
+        return specificTime < now
+    }
 }

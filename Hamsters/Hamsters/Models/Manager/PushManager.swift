@@ -10,9 +10,11 @@ import UserNotifications
 
 class PushManager {
     static let shared = PushManager()
+    
+    private init() {}
+    
     let center = UNUserNotificationCenter.current()
 
-    
     func noti(_ push: Push) async -> Status{
         
         guard await requestNotification() == .success else {
@@ -110,7 +112,6 @@ extension PushManager {
     }
     
     private func pushSpecificDay(_ push: Push) async -> Status {
-        
         
         guard let weekDays = push.weekDays else {
             return .error
