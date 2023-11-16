@@ -85,13 +85,14 @@ struct DailyRecordView: View {
                     
                 case .weightCheck: // 체중 기록
                     WeightCheckView(dailyRecordViewModel: viewModel)
-//                    WeightCheckView(pageNumber: $pageNumber, weight: $weight)
                     
                 case .menstruation: // 월경 여부
-                    MenstruationCheckView(pageNumber: $pageNumber, isPeriod: $isPeriod)
+                    MenstruationCheckView(dailyRecordViewModel: viewModel)
+//                    MenstruationCheckView(pageNumber: $pageNumber, isPeriod: $isPeriod)
                     
                 case .smoking: //  흡연량
-                    SmokingCheckView(pageNumber: $pageNumber, amountOfSmoking: $amountOfSmoking)
+                    SmokingCheckView(dailyRecordViewModel: viewModel)
+//                    SmokingCheckView(pageNumber: $pageNumber, amountOfSmoking: $amountOfSmoking)
                     
                 case .caffein: // 카페인
                     CaffeineCheckView(pageNumber: $pageNumber, amountOfCaffein: $amountOfCaffein)
