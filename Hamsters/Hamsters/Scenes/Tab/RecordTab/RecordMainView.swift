@@ -71,7 +71,7 @@ struct RecordMainView: View {
             }
         }
         .fullScreenCover(isPresented: $isActiveSheet) {
-            DailyRecordView(isActiveRecord: $isActiveSheet)
+            DailyRecordView()
         }
     }
 }

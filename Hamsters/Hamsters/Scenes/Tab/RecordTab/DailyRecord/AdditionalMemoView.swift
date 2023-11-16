@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct AdditionalMemoView: View {
-    @Binding var pageNumber: Int
-    @Binding var memo: String
+    @ObservedObject var dailyRecordViewModel: DailyRecordViewModel
+//    @Binding var pageNumber: Int
+//    @Binding var memo: String
     
     let placeholder = "있다면 자유롭게 입력해 주세요"
     
@@ -21,21 +22,21 @@ struct AdditionalMemoView: View {
                     .fontWeight(.bold)
                     .padding(.bottom, 16)
                 
-                TextEditor(text: $memo)
+                TextEditor(text: $dailyRecordViewModel.memo)
                     .scrollContentBackground(.hidden)
                     .background {
-                        TextEditor(text: .constant(memo.isEmpty ? placeholder : ""))
+                        TextEditor(text: .constant(dailyRecordViewModel.memo.isEmpty ? placeholder : ""))
                             .foregroundStyle(.gray)
                             .scrollContentBackground(.hidden)
                             .background(Color(uiColor: .secondarySystemBackground))
                     }
                     .cornerRadius(10)
                     .padding(.top, 20)
-                    .onChange(of: memo) { _ in
-                        if memo.count > 500 {
+                    .onChange(of: dailyRecordViewModel.memo) { _ in
+                        if dailyRecordViewModel.memo.count > 500 {
 //                            characterLimitWarning = true
-                            memo = String(memo.prefix(500))
-                        } else if memo.count < 500 {
+                            dailyRecordViewModel.memo = String(dailyRecordViewModel.memo.prefix(500))
+                        } else if dailyRecordViewModel.memo.count < 500 {
 //                            characterLimitWarning = false
                         }
                     }
@@ -43,7 +44,7 @@ struct AdditionalMemoView: View {
                 HStack {
                     Spacer()
                     
-                    Text("\(memo.count) / 500")
+                    Text("\(dailyRecordViewModel.memo.count) / 500")
                         .font(.body)
                         .foregroundStyle(.secondary)
                 }
@@ -54,11 +55,15 @@ struct AdditionalMemoView: View {
 
             Spacer()
             
-            DailyRecordNextButton(pageNumber: $pageNumber, isActiveRecord:.constant(true), title: "\(Image(systemName: "checkmark.circle.fill")) 입력 완료")
+            NextButton(title: "다음", isActive: .constant(true)) {
+                dailyRecordViewModel.goToNextPage()
+            }
+            
+//            DailyRecordNextButton(pageNumber: $pageNumber, isActiveRecord:.constant(true), title: "\(Image(systemName: "checkmark.circle.fill")) 입력 완료")
         }
     }
 }
 
 #Preview {
-    AdditionalMemoView(pageNumber: .constant(10), memo: .constant("메모~"))
+    AdditionalMemoView(dailyRecordViewModel: DailyRecordViewModel())
 }
