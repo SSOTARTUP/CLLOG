@@ -7,38 +7,6 @@
 
 import SwiftUI
 
-enum DailyRecordPage: Int, CaseIterable {
-    case condition
-    case mood
-    case sleeping
-    case sideEffect
-    case weightCheck
-    case menstruation
-    case smoking
-    case caffein
-    case drink
-    case memo
-    case complete
-}
-
-
-typealias DailyRecordPages = [DailyRecordPage]
-extension DailyRecordPages {
-    var convertPageToString: String {
-        self.sorted{ $0.rawValue < $1.rawValue }
-            .map { String($0.rawValue) }.joined(separator: " ")
-    }
-}
-
-extension String {
-    var convertStringToPage: [DailyRecordPage] {
-        self.split(separator: " ")
-            .compactMap { Int(String($0)) }
-            .sorted{ $0 < $1 }
-            .compactMap { DailyRecordPage(rawValue: $0) }
-    }
-}
-
 struct DailyRecordView: View {
     @Environment(\.dismiss) private var dismiss
 
@@ -49,7 +17,7 @@ struct DailyRecordView: View {
     var body: some View {
         NavigationStack {
             VStack(spacing: 12){
-        //        DailyRecordProgressBar(pageNumber: $pageNumber)
+                DailyRecordProgressBar(pageNumber: viewModel.pageNumber, total: viewModel.dailyRecordPages.convertStringToPage.count)
 
                 switch viewModel.currentPage {
                 case .condition: // ADHD 컨디션 기록
@@ -111,11 +79,13 @@ struct DailyRecordView: View {
             Text("지금 종료하면 작성한 기록이\n저장되지 않습니다")
         }
     }
-    
+}
+
+//MARK: back&close button
+extension DailyRecordView {
     private var backButton: some View {
         Button {
             viewModel.goToPreviousPage()
-      //      pageNumber -= 1
         } label: {
             Image(systemName: "chevron.backward")
                 .fontWeight(.semibold)

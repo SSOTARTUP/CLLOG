@@ -24,22 +24,6 @@ class DailyRecordViewModel: ObservableObject {
         DailyRecordPage.complete
     ].convertPageToString
     
-    init(){
-        dailyRecordPages = [
-            DailyRecordPage.condition,
-            DailyRecordPage.mood,
-            DailyRecordPage.sleeping,
-            DailyRecordPage.sideEffect,
-            DailyRecordPage.weightCheck,
-            DailyRecordPage.menstruation,
-            DailyRecordPage.smoking,
-            DailyRecordPage.caffein,
-            DailyRecordPage.drink,
-            DailyRecordPage.memo,
-            DailyRecordPage.complete
-        ].convertPageToString
-
-    }
     @Published var currentPage: DailyRecordPage = .condition
     
     @Published var conditionValues: [Double] = Array(repeating: 0.0, count: Condition.allCases.count)
@@ -55,7 +39,7 @@ class DailyRecordViewModel: ObservableObject {
     @Published var memo = ""
     
     
-    var pageNumber = 0
+    @Published var pageNumber = 0
     
     func goToNextPage() {
         pageNumber += pageNumber < dailyRecordPages.convertStringToPage.count - 1 ? 1 : 0

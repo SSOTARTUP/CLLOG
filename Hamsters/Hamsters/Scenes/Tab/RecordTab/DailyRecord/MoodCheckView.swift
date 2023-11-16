@@ -44,7 +44,8 @@ struct MoodCheckView: View {
                     NextButton(title: "다음", isActive: .constant(true)) {
                         dailyRecordViewModel.goToNextPage()
                     }
-                    .padding(.top, 12)
+                    .padding(.top, 24)
+                    .padding(.bottom, 40)
 //                    DailyRecordNextButton(pageNumber: $pageNumber, isActiveRecord:.constant(true), title: "다음")
 //                        .padding(.top, 12)
                 }

@@ -83,6 +83,7 @@ struct WeightCheckView: View {
             NextButton(title: "다음", isActive: .constant(true)) {
                 dailyRecordViewModel.goToNextPage()
             }
+            .padding(.bottom, 40)
 //            DailyRecordNextButton(pageNumber: $pageNumber, isActiveRecord:.constant(true), title: "다음")
             
         }

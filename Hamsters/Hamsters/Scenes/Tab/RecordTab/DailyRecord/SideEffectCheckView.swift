@@ -78,7 +78,10 @@ struct SideEffectCheckView: View {
                 
                 NextButton(title: "다음", isActive: .constant(true)) {
                     dailyRecordViewModel.goToNextPage()
-                }.disabled((dailyRecordViewModel.popularEffect.count < 1 && dailyRecordViewModel.dangerEffect.count < 1))
+                }
+                .padding(.bottom, 40)
+//                .disabled((dailyRecordViewModel.popularEffect.count < 1 && dailyRecordViewModel.dangerEffect.count < 1))
+                
 //                DailyRecordNextButton(pageNumber: $pageNumber, isActiveRecord:.constant(true), title: "다음")
 //                    .disabled(popularEffect.count < 1 && dangerEffect.count < 1)
             }

@@ -112,6 +112,7 @@ struct SleepingTimeView: View {
                 }
                 .padding(.bottom, 30)
             }
+            
         }
     }
     

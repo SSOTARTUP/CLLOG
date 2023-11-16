@@ -58,7 +58,7 @@ struct AdditionalMemoView: View {
             NextButton(title: "다음", isActive: .constant(true)) {
                 dailyRecordViewModel.goToNextPage()
             }
-            
+            .padding(.bottom, 40)
 //            DailyRecordNextButton(pageNumber: $pageNumber, isActiveRecord:.constant(true), title: "\(Image(systemName: "checkmark.circle.fill")) 입력 완료")
         }
     }
