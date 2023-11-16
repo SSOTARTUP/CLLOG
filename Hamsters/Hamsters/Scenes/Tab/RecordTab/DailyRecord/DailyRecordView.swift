@@ -78,7 +78,7 @@ struct DailyRecordView: View {
                     MoodCheckView(dailyRecordViewModel: viewModel)
                     
                 case .sleeping: // 수면 기록
-                    SleepingTimeView(pageNumber: $pageNumber, sleepingTime: $sleepingTime)
+                    SleepingTimeView(dailyRecordViewModel: viewModel)
                     
                 case .sideEffect: // 부작용 기록
                     SideEffectCheckView(pageNumber: $pageNumber, popularEffect: $popularEffect, dangerEffect: $dangerEffect)

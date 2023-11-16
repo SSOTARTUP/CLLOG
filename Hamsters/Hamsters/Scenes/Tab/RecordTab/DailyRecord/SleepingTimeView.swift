@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct SleepingTimeView: View {
-    @Binding var pageNumber: Int
-    @Binding var sleepingTime: Int
+    @ObservedObject var dailyRecordViewModel:DailyRecordViewModel
+    
+//    @Binding var pageNumber: Int
+//    @Binding var sleepingTime: Int
     
     @State var startAngle: Double = 0
     @State var toAngle: Double = 180
@@ -95,8 +97,8 @@ struct SleepingTimeView: View {
                 Spacer()
                 
                 Button {
-                    sleepingTime = getTimeDifference().0 + getTimeDifference().1
-                    pageNumber += 1
+                    dailyRecordViewModel.sleepingTime = getTimeDifference().0 + getTimeDifference().1
+                    dailyRecordViewModel.goToNextPage()
                 } label: {
                     Text("다음")
                         .font(.headline)
@@ -286,5 +288,5 @@ struct SleepingTimeView: View {
 }
 
 #Preview {
-    SleepingTimeView(pageNumber: .constant(13), sleepingTime: .constant(0))
+    SleepingTimeView(dailyRecordViewModel: DailyRecordViewModel())
 }
