@@ -28,20 +28,26 @@ enum Mood: CaseIterable {
 }
 
 struct MoodCheckView: View {
-    @Binding var pageNumber: Int
-    @Binding var userValues: [Double]
+    @ObservedObject var dailyRecordViewModel:DailyRecordViewModel
+    
+//    @Binding var pageNumber: Int
+//    @Binding var userValues: [Double]
     
     var body: some View {
         ZStack(alignment: .top) {
             ScrollView {
                 VStack(spacing: 16) {
                     ForEach(Array(zip(0..<Mood.allCases.count, Mood.allCases)), id: \.0) { index, mood in
-                        ConditionSlider(title: mood.question, userValue: $userValues[index])
+                        ConditionSlider(title: mood.question, userValue: $dailyRecordViewModel.moodValues[index])
                             .padding(.horizontal, 16)
                     }
-                    
-                    DailyRecordNextButton(pageNumber: $pageNumber, isActiveRecord:.constant(true), title: "다음")
-                        .padding(.top, 12)
+                    NextButton(title: "다음", isActive: .constant(true)) {
+                        dailyRecordViewModel.goToNextPage()
+                    }
+                    .padding(.top, 24)
+                    .padding(.bottom, 40)
+//                    DailyRecordNextButton(pageNumber: $pageNumber, isActiveRecord:.constant(true), title: "다음")
+//                        .padding(.top, 12)
                 }
                 .padding(.top, 78)  // title 영역만큼
             }
@@ -67,5 +73,5 @@ struct MoodCheckView: View {
 }
 
 #Preview {
-    MoodCheckView(pageNumber: .constant(2), userValues: .constant([0.0, 0.0, 0.0, 0.0]))
+    MoodCheckView(dailyRecordViewModel: DailyRecordViewModel())
 }

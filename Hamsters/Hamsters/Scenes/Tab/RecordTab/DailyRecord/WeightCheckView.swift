@@ -8,12 +8,13 @@
 import SwiftUI
 
 struct WeightCheckView: View {
-    @Binding var pageNumber: Int
+    @ObservedObject var dailyRecordViewModel: DailyRecordViewModel
+//    @Binding var pageNumber: Int
     
     @State var selectedKg: Int = 50
     @State var selectedGr: Int = 0
     
-    @Binding var weight: Double
+//    @Binding var weight: Double
     
     var kgRange: [Int] = Array(1...200)
     var grRange: [Int] = Array(0...9)
@@ -74,23 +75,25 @@ struct WeightCheckView: View {
             }
             .onChange(of: selectedGr) { _ in
                 updateWeight()
-                print(weight)
             }
             
             
             Spacer()
             
-            
-            DailyRecordNextButton(pageNumber: $pageNumber, isActiveRecord:.constant(true), title: "다음")
+            NextButton(title: "다음", isActive: .constant(true)) {
+                dailyRecordViewModel.goToNextPage()
+            }
+            .padding(.bottom, 40)
+//            DailyRecordNextButton(pageNumber: $pageNumber, isActiveRecord:.constant(true), title: "다음")
             
         }
     }
     
     func updateWeight() {
-        weight = Double(selectedKg) + Double(selectedGr) / 10.0
+        dailyRecordViewModel.weight = Double(selectedKg) + Double(selectedGr) / 10.0
     }
 }
 
 #Preview {
-    WeightCheckView(pageNumber: .constant(11), weight: .constant(50.0))
+    WeightCheckView(dailyRecordViewModel: DailyRecordViewModel())
 }

@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ConditionView: View {
+    @ObservedObject var dailyRecordViewModel:DailyRecordViewModel
+    
     @StateObject var viewModel = ConditionViewModel()
     @State var scroll:ScrollViewProxy?
     @State var repeated:Bool = true
@@ -26,9 +28,8 @@ struct ConditionView: View {
                             .id(offset)
                     case .button:
                         NextButton(title: "다음", isActive: .constant(true)) {
-                            //pageNumber += 1
+                            dailyRecordViewModel.goToNextPage()
                         }
-                        .padding(.horizontal,24)
                         .padding(.top,44)
                         .padding(.bottom,41)
                     case .none:
@@ -51,5 +52,5 @@ struct ConditionView: View {
 
 
 #Preview {
-    ConditionView()
+    ConditionView(dailyRecordViewModel: DailyRecordViewModel())
 }

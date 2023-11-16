@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct SmokingCheckView: View {
-    @Binding var pageNumber: Int
-    @Binding var amountOfSmoking: Int // 최솟값 기준으로 Int 값 저장
+    @ObservedObject var dailyRecordViewModel: DailyRecordViewModel
+    
+//    @Binding var pageNumber: Int
+//    @Binding var amountOfSmoking: Int // 최솟값 기준으로 Int 값 저장
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -22,7 +24,7 @@ struct SmokingCheckView: View {
             List {
                 Section {
                     Button {
-                        amountOfSmoking = 0
+                        dailyRecordViewModel.amountOfSmoking = 0
                     } label: {
                         HStack {
                             Text("오늘은 흡연하지 않았어요!")
@@ -30,7 +32,7 @@ struct SmokingCheckView: View {
                             
                             Spacer()
                             
-                            if amountOfSmoking == 0 {
+                            if dailyRecordViewModel.amountOfSmoking == 0 {
                                 Image(systemName: "checkmark")
                                     .fontWeight(.bold)
                                     .foregroundStyle(.thoNavy)
@@ -44,7 +46,7 @@ struct SmokingCheckView: View {
                     if pcs != .min0 {
                         HStack {
                             Button {
-                                amountOfSmoking = pcs.minValue
+                                dailyRecordViewModel.amountOfSmoking = pcs.minValue
                             } label: {
                                 Text(pcs.title)
                                     .foregroundStyle(Color.primary)
@@ -52,7 +54,7 @@ struct SmokingCheckView: View {
                             
                             Spacer()
                             
-                            if amountOfSmoking == pcs.minValue {
+                            if dailyRecordViewModel.amountOfSmoking == pcs.minValue {
                                 Image(systemName: "checkmark")
                                     .fontWeight(.bold)
                                     .foregroundStyle(.thoNavy)
@@ -68,11 +70,16 @@ struct SmokingCheckView: View {
             
             Spacer()
             
-            DailyRecordNextButton(pageNumber: $pageNumber, isActiveRecord: .constant(true), title: "다음")
+            NextButton(title: "다음", isActive: .constant(true)) {
+                dailyRecordViewModel.goToNextPage()
+            }
+            .padding(.bottom, 40)
+            
+//            DailyRecordNextButton(pageNumber: $pageNumber, isActiveRecord: .constant(true), title: "다음")
         }
     }
 }
 
 #Preview {
-    SmokingCheckView(pageNumber: .constant(7), amountOfSmoking: .constant(0))
+    SmokingCheckView(dailyRecordViewModel: DailyRecordViewModel())
 }

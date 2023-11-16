@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct DailyCompleteView: View {
-    @Binding var pageNumber: Int
-    @Binding var isActiveRecord: Bool
+    @ObservedObject var dailyRecordViewModel: DailyRecordViewModel
+    
+//    @Binding var pageNumber: Int
+//    @Binding var isActiveRecord: Bool
     
     var body: some View {
         VStack(spacing: 0) {
@@ -39,12 +41,16 @@ struct DailyCompleteView: View {
             
             Spacer()
             
-            DailyRecordNextButton(pageNumber: $pageNumber, isActiveRecord: $isActiveRecord, title: "완료")
+            NextButton(title: "다음", isActive: .constant(true)) {
+                dailyRecordViewModel.goToNextPage()
+            }
+            .padding(.bottom, 40)
+//            DailyRecordNextButton(pageNumber: $pageNumber, isActiveRecord: $isActiveRecord, title: "완료")
             
         }
     }
 }
 
-//#Preview {
-//    DailyCompleteView(pageNumber: .constant(11))
-//}
+#Preview {
+    DailyCompleteView(dailyRecordViewModel: DailyRecordViewModel())
+}
