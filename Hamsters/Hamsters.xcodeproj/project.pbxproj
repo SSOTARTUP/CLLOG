@@ -63,6 +63,7 @@
 		30E376C72B011FCA00E8A10D /* CheerUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E376C62B011FCA00E8A10D /* CheerUpView.swift */; };
 		7645ABFD2B0306BA007F6139 /* PushManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7645ABFC2B0306BA007F6139 /* PushManager.swift */; };
 		7645ABFF2B052E5A007F6139 /* PushProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7645ABFE2B052E5A007F6139 /* PushProtocol.swift */; };
+		7645AC012B06587B007F6139 /* DailyRecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7645AC002B06587B007F6139 /* DailyRecordViewModel.swift */; };
 		768562D92AFC821F00AF5C95 /* ProfileSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768562D82AFC821F00AF5C95 /* ProfileSetView.swift */; };
 		768562DB2AFCC1DB00AF5C95 /* ProfileInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768562DA2AFCC1DB00AF5C95 /* ProfileInput.swift */; };
 		768562DE2AFDCE6F00AF5C95 /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768562DD2AFDCE6F00AF5C95 /* HealthKitManager.swift */; };
@@ -148,6 +149,7 @@
 		30E376C62B011FCA00E8A10D /* CheerUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheerUpView.swift; sourceTree = "<group>"; };
 		7645ABFC2B0306BA007F6139 /* PushManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushManager.swift; sourceTree = "<group>"; };
 		7645ABFE2B052E5A007F6139 /* PushProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushProtocol.swift; sourceTree = "<group>"; };
+		7645AC002B06587B007F6139 /* DailyRecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyRecordViewModel.swift; sourceTree = "<group>"; };
 		768562D82AFC821F00AF5C95 /* ProfileSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSetView.swift; sourceTree = "<group>"; };
 		768562DA2AFCC1DB00AF5C95 /* ProfileInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInput.swift; sourceTree = "<group>"; };
 		768562DD2AFDCE6F00AF5C95 /* HealthKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
@@ -443,6 +445,7 @@
 			isa = PBXGroup;
 			children = (
 				768562E52AFE7BCB00AF5C95 /* ConditionViewModel.swift */,
+				7645AC002B06587B007F6139 /* DailyRecordViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -584,6 +587,7 @@
 				307B7D672AE42480007CB7F5 /* AlarmItem.swift in Sources */,
 				B5F904CE2AE4E4DF00FDE4CB /* SideEffects.swift in Sources */,
 				769FFF8F2AFBE23700B12515 /* safeAreaInsets.swift in Sources */,
+				7645AC012B06587B007F6139 /* DailyRecordViewModel.swift in Sources */,
 				B5F904C72AE4E0DA00FDE4CB /* SideEffectCheckView.swift in Sources */,
 				30BB50B92ADFABBC0050CF69 /* ConditionSlider.swift in Sources */,
 				301971562AE4FECE00728D16 /* WeeklyMedicationCalendar.swift in Sources */,

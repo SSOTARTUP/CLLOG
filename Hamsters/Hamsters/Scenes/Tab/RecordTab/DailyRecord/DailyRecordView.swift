@@ -3,9 +3,40 @@
 //  Hamsters
 //
 //  Created by Chaeeun Shin on 10/18/23.
-//
+//  Edited by jaesik Pyeon on 16/11/23
 
 import SwiftUI
+
+enum DailyRecordPage: Int, CaseIterable {
+    case condition
+    case mood
+    case sleeping
+    case sideEffect
+    case weightCheck
+    case menstruation
+    case smoking
+    case caffein
+    case drink
+    case memo
+    case complete
+}
+
+
+typealias DailyRecordPages = [DailyRecordPage]
+extension DailyRecordPages {
+    var convertPageToString: String {
+        self.sorted{ $0.rawValue < $1.rawValue }
+            .map { String($0.rawValue) }.joined()
+    }
+}
+
+extension String {
+    var convertStringToPage: [DailyRecordPage] {
+        self.compactMap { Int(String($0)) }
+            .sorted{ $0 < $1 }
+            .compactMap { DailyRecordPage(rawValue: $0) }
+    }
+}
 
 struct DailyRecordView: View {
     @Environment(\.dismiss) private var dismiss
@@ -25,47 +56,53 @@ struct DailyRecordView: View {
     @State private var memo = ""
     @State private var closeAlert = false
     
+//    @AppStorage("dailyRecordPage") private var dailyRecordPages: String = [
+//        DailyRecordPage.condition,
+//        DailyRecordPage.mood,
+//        DailyRecordPage.sleeping
+//    ].convertPageToString
+
+    @State private var currentPage: DailyRecordPage = .condition
+
+    @StateObject var viewModel = DailyRecordViewModel()
+    
     var body: some View {
         NavigationStack {
             VStack(spacing: 12){
                 DailyRecordProgressBar(pageNumber: $pageNumber)
 
-                switch pageNumber {
-                case 1: // ADHD 컨디션 기록
-                    ConditionCheckView(pageNumber: $pageNumber, userValues: $conditionValues)
+                switch viewModel.currentPage {
+                case .condition: // ADHD 컨디션 기록
+                    ConditionView(dailyRecordViewModel: viewModel)
+                case .mood: // 감정 기록
+                    MoodCheckView(dailyRecordViewModel: viewModel)
                     
-                case 2: // 감정 기록
-                    MoodCheckView(pageNumber: $pageNumber, userValues: $moodValues)
-                    
-                case 3: // 수면 기록
+                case .sleeping: // 수면 기록
                     SleepingTimeView(pageNumber: $pageNumber, sleepingTime: $sleepingTime)
                     
-                case 4: // 부작용 기록
+                case .sideEffect: // 부작용 기록
                     SideEffectCheckView(pageNumber: $pageNumber, popularEffect: $popularEffect, dangerEffect: $dangerEffect)
                     
-                case 5: // 체중 기록
+                case .weightCheck: // 체중 기록
                     WeightCheckView(pageNumber: $pageNumber, weight: $weight)
                     
-                case 6: // 월경 여부
+                case .menstruation: // 월경 여부
                     MenstruationCheckView(pageNumber: $pageNumber, isPeriod: $isPeriod)
                     
-                case 7: //  흡연량
+                case .smoking: //  흡연량
                     SmokingCheckView(pageNumber: $pageNumber, amountOfSmoking: $amountOfSmoking)
                     
-                case 8: // 카페인
+                case .caffein: // 카페인
                     CaffeineCheckView(pageNumber: $pageNumber, amountOfCaffein: $amountOfCaffein)
                     
-                case 9: // 음주량
+                case .drink: // 음주량
                     DrinkCheckView(pageNumber: $pageNumber, amountOfAlcohol: $amountOfAlcohol)
                     
-                case 10: // 추가 메모
+                case .memo: // 추가 메모
                         AdditionalMemoView(pageNumber: $pageNumber, memo: $memo)
                     
-                case 11: // 완료 페이지
+                case .complete: // 완료 페이지
                     DailyCompleteView(pageNumber: $pageNumber, isActiveRecord: $isActiveRecord)
-                    
-                default:
-                    EmptyView()
                 }
             }
             .navigationTitle("오늘의 상태 기록하기")
