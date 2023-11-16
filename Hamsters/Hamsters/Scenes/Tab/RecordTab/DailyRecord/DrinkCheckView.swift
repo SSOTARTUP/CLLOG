@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct DrinkCheckView: View {
-    @Binding var pageNumber: Int
-    @Binding var amountOfAlcohol: Int // 최댓값 기준으로 Int 값 저장
+    @ObservedObject var dailyRecordViewModel: DailyRecordViewModel
+//    @Binding var pageNumber: Int
+//    @Binding var amountOfAlcohol: Int // 최댓값 기준으로 Int 값 저장
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -22,7 +23,7 @@ struct DrinkCheckView: View {
             List {
                 Section {
                     Button {
-                        amountOfAlcohol = 0
+                        dailyRecordViewModel.amountOfAlcohol = 0
                     } label: {
                         HStack {
                             Text("오늘은 마시지 않았어요!")
@@ -30,7 +31,7 @@ struct DrinkCheckView: View {
                             
                             Spacer()
                             
-                            if amountOfAlcohol == 0 {
+                            if dailyRecordViewModel.amountOfAlcohol == 0 {
                                 Image(systemName: "checkmark")
                                     .fontWeight(.bold)
                                     .foregroundStyle(.thoNavy)
@@ -45,7 +46,7 @@ struct DrinkCheckView: View {
                         if bottle != .max0 {
                             HStack {
                                 Button {
-                                    amountOfAlcohol = bottle.maxValue
+                                    dailyRecordViewModel.amountOfAlcohol = bottle.maxValue
                                 } label: {
                                     Text(bottle.title)
                                         .foregroundStyle(Color.primary)
@@ -53,7 +54,7 @@ struct DrinkCheckView: View {
                                 
                                 Spacer()
                                 
-                                if amountOfAlcohol == bottle.maxValue {
+                                if dailyRecordViewModel.amountOfAlcohol == bottle.maxValue {
                                     Image(systemName: "checkmark")
                                         .fontWeight(.bold)
                                         .foregroundStyle(.thoNavy)
@@ -70,11 +71,15 @@ struct DrinkCheckView: View {
             
             Spacer()
             
-            DailyRecordNextButton(pageNumber: $pageNumber, isActiveRecord: .constant(true), title: "다음")
+            NextButton(title: "다음", isActive: .constant(true)) {
+                dailyRecordViewModel.goToNextPage()
+            }
+            
+//            DailyRecordNextButton(pageNumber: $pageNumber, isActiveRecord: .constant(true), title: "다음")
         }
     }
 }
 
 #Preview {
-    DrinkCheckView(pageNumber: .constant(9), amountOfAlcohol: .constant(0))
+    DrinkCheckView(dailyRecordViewModel: DailyRecordViewModel())
 }

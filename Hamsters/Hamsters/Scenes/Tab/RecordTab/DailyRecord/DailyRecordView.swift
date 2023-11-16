@@ -95,10 +95,10 @@ struct DailyRecordView: View {
                     
                 case .caffein: // 카페인
                     CaffeineCheckView(dailyRecordViewModel: viewModel)
-//                    CaffeineCheckView(pageNumber: $pageNumber, amountOfCaffein: $amountOfCaffein)
                     
                 case .drink: // 음주량
-                    DrinkCheckView(pageNumber: $pageNumber, amountOfAlcohol: $amountOfAlcohol)
+                    DrinkCheckView(dailyRecordViewModel: viewModel)
+//                    DrinkCheckView(pageNumber: $pageNumber, amountOfAlcohol: $amountOfAlcohol)
                     
                 case .memo: // 추가 메모
                         AdditionalMemoView(pageNumber: $pageNumber, memo: $memo)
