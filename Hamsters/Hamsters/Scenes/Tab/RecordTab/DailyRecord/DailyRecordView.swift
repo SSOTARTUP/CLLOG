@@ -81,10 +81,11 @@ struct DailyRecordView: View {
                     SleepingTimeView(dailyRecordViewModel: viewModel)
                     
                 case .sideEffect: // 부작용 기록
-                    SideEffectCheckView(pageNumber: $pageNumber, popularEffect: $popularEffect, dangerEffect: $dangerEffect)
+                    SideEffectCheckView(dailyRecordViewModel: viewModel)
                     
                 case .weightCheck: // 체중 기록
-                    WeightCheckView(pageNumber: $pageNumber, weight: $weight)
+                    WeightCheckView(dailyRecordViewModel: viewModel)
+//                    WeightCheckView(pageNumber: $pageNumber, weight: $weight)
                     
                 case .menstruation: // 월경 여부
                     MenstruationCheckView(pageNumber: $pageNumber, isPeriod: $isPeriod)
