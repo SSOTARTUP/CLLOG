@@ -13,8 +13,10 @@ enum CaffeineIntake {
 }
 
 struct CaffeineCheckView: View {
-    @Binding var pageNumber: Int
-    @Binding var amountOfCaffein: Int
+    @ObservedObject var dailyRecordViewModel: DailyRecordViewModel
+    
+//    @Binding var pageNumber: Int
+//    @Binding var amountOfCaffein: Int
     
     @State private var isSelected: [Bool] = Array(repeating: false, count: 10)
     @State private var isTaken: CaffeineIntake?
@@ -42,7 +44,7 @@ struct CaffeineCheckView: View {
                 
                 Button {
                     isTaken = .not
-                    amountOfCaffein = 0
+                    dailyRecordViewModel.amountOfCaffein = 0
                 } label: {
                     Text("안마심")
                         .font(.headline)
@@ -68,13 +70,13 @@ struct CaffeineCheckView: View {
                                 if isSelected[index] {
                                     isSelected = Array(repeating: false, count: 10)
                                 }
-                                if amountOfCaffein == (index + 1) {
-                                    amountOfCaffein = 0
+                                if dailyRecordViewModel.amountOfCaffein == (index + 1) {
+                                    dailyRecordViewModel.amountOfCaffein = 0
                                 } else {
                                     for i in 0...index {
                                         isSelected[i] = true
                                     }
-                                    amountOfCaffein = index + 1
+                                    dailyRecordViewModel.amountOfCaffein = index + 1
                                 }
                             } label: {
                                 Image(isSelected[index] ? "CaffeineSelected" : "CaffeineUnselected")
@@ -88,11 +90,14 @@ struct CaffeineCheckView: View {
             
             Spacer()
             
-            DailyRecordNextButton(pageNumber: $pageNumber, isActiveRecord: .constant(true), title: "다음")
+            NextButton(title: "다음", isActive: .constant(true)) {
+                dailyRecordViewModel.goToNextPage()
+            }
+//            DailyRecordNextButton(pageNumber: $pageNumber, isActiveRecord: .constant(true), title: "다음")
         }
     }
 }
 
 #Preview {
-    CaffeineCheckView(pageNumber: .constant(8), amountOfCaffein: .constant(0))
+    CaffeineCheckView(dailyRecordViewModel: DailyRecordViewModel())
 }

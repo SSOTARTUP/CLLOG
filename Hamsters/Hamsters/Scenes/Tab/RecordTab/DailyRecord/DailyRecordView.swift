@@ -92,10 +92,10 @@ struct DailyRecordView: View {
                     
                 case .smoking: //  흡연량
                     SmokingCheckView(dailyRecordViewModel: viewModel)
-//                    SmokingCheckView(pageNumber: $pageNumber, amountOfSmoking: $amountOfSmoking)
                     
                 case .caffein: // 카페인
-                    CaffeineCheckView(pageNumber: $pageNumber, amountOfCaffein: $amountOfCaffein)
+                    CaffeineCheckView(dailyRecordViewModel: viewModel)
+//                    CaffeineCheckView(pageNumber: $pageNumber, amountOfCaffein: $amountOfCaffein)
                     
                 case .drink: // 음주량
                     DrinkCheckView(pageNumber: $pageNumber, amountOfAlcohol: $amountOfAlcohol)
