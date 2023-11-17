@@ -41,6 +41,6 @@ struct ComputerChat: View {
             .padding(.trailing, 32)
             Spacer()
         }
-        .padding(.top, 20)
+        .padding(.bottom, 20)
     }
 }

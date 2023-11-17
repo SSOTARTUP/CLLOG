@@ -26,6 +26,8 @@ struct AdditionalMemoView: View {
                     .scrollContentBackground(.hidden)
                     .background {
                         TextEditor(text: .constant(dailyRecordViewModel.memo.isEmpty ? placeholder : ""))
+                            .padding(.horizontal, 8)
+                            .padding(.vertical, 10)
                             .foregroundStyle(.gray)
                             .scrollContentBackground(.hidden)
                             .background(Color(uiColor: .secondarySystemBackground))

@@ -24,6 +24,8 @@ class DailyRecordViewModel: ObservableObject {
         DailyRecordPage.complete
     ].convertPageToString
     
+    @Published var closeAlert: Bool = false
+    
     @Published var currentPage: DailyRecordPage = .condition
     
     @Published var answer: ConditionViewModel.ConditionAnswer = [:]
@@ -67,5 +69,9 @@ class DailyRecordViewModel: ObservableObject {
     func goToPreviousPage() {
         pageNumber -= pageNumber > 0 ? 1 :0
         currentPage = dailyRecordPages.convertStringToPage[pageNumber]
+    }
+    
+    func saveRecord() {
+        // 데이터 모델 연동.
     }
 }
