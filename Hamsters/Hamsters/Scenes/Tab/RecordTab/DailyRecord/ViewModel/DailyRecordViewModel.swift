@@ -10,7 +10,7 @@ import SwiftUI
 
 class DailyRecordViewModel: ObservableObject {
     
-    @AppStorage("dailyRecordPage") var dailyRecordPages: String = [
+    @AppStorage(UserDefaultsKey.dailyRecordPage.rawValue) var dailyRecordPages: String = [
         DailyRecordPage.condition,
         DailyRecordPage.mood,
         DailyRecordPage.sleeping,
