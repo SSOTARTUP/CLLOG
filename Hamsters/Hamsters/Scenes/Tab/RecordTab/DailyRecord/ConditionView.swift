@@ -28,6 +28,7 @@ struct ConditionView: View {
                             .id(offset)
                     case .button:
                         NextButton(title: "다음", isActive: .constant(true)) {
+                            dailyRecordViewModel.answer = viewModel.answer
                             dailyRecordViewModel.goToNextPage()
                         }
                         .padding(.top,44)

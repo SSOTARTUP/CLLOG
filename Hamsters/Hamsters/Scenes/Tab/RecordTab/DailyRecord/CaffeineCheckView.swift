@@ -18,8 +18,8 @@ struct CaffeineCheckView: View {
 //    @Binding var pageNumber: Int
 //    @Binding var amountOfCaffein: Int
     
-    @State private var isSelected: [Bool] = Array(repeating: false, count: 10)
-    @State private var isTaken: CaffeineIntake?
+//    @State private var isSelected: [Bool] = Array(repeating: false, count: 10)
+//    @State private var isTaken: CaffeineIntake?
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -31,34 +31,34 @@ struct CaffeineCheckView: View {
             
             HStack(spacing: 13) {
                 Button {
-                    isTaken = .intake
+                    dailyRecordViewModel.isTaken = .intake
                 } label: {
                     Text("마심")
                         .font(.headline)
-                        .foregroundStyle(isTaken == .intake ? .white : .thoNavy)
+                        .foregroundStyle(dailyRecordViewModel.isTaken == .intake ? .white : .thoNavy)
                         .padding(.vertical, 15)
                         .frame(maxWidth: .infinity)
-                        .background(isTaken == .intake ? .thoNavy : .thoDisabled)
+                        .background(dailyRecordViewModel.isTaken == .intake ? .thoNavy : .thoDisabled)
                         .cornerRadius(15)
                 }
                 
                 Button {
-                    isTaken = .not
+                    dailyRecordViewModel.isTaken = .not
                     dailyRecordViewModel.amountOfCaffein = 0
                 } label: {
                     Text("안마심")
                         .font(.headline)
-                        .foregroundStyle(isTaken == .not ? .white : .thoNavy)
+                        .foregroundStyle(dailyRecordViewModel.isTaken == .not ? .white : .thoNavy)
                         .padding(.vertical, 15)
                         .frame(maxWidth: .infinity)
-                        .background(isTaken == .not ? .thoNavy : .thoDisabled)
+                        .background(dailyRecordViewModel.isTaken == .not ? .thoNavy : .thoDisabled)
                         .cornerRadius(15)
                 }
             }
             .padding(.horizontal, 24)
             .padding(.vertical, 32)
 
-            if isTaken == .intake {
+            if dailyRecordViewModel.isTaken == .intake {
                 VStack(alignment: .leading, spacing: 16) {
                     Text("얼마나 드셨나요?")
                         .font(.headline)
@@ -67,20 +67,20 @@ struct CaffeineCheckView: View {
                     LazyVGrid(columns: Array(repeating: .init(.flexible()), count: 5)) {
                         ForEach(0..<10, id: \.self) { index in
                             Button {
-                                if isSelected[index] {
-                                    isSelected = Array(repeating: false, count: 10)
+                                if dailyRecordViewModel.isSelected[index] {
+                                    dailyRecordViewModel.isSelected = Array(repeating: false, count: 10)
                                 }
                                 if dailyRecordViewModel.amountOfCaffein == (index + 1) {
                                     dailyRecordViewModel.amountOfCaffein = 0
                                 } else {
                                     for i in 0...index {
-                                        isSelected[i] = true
+                                        dailyRecordViewModel.isSelected[i] = true
                                     }
                                     dailyRecordViewModel.amountOfCaffein = index + 1
                                 }
                             } label: {
-                                Image(isSelected[index] ? "CaffeineSelected" : "CaffeineUnselected")
-                                    .opacity(isSelected[index] ? 1 : 0.5)
+                                Image(dailyRecordViewModel.isSelected[index] ? "CaffeineSelected" : "CaffeineUnselected")
+                                    .opacity(dailyRecordViewModel.isSelected[index] ? 1 : 0.5)
                             }
                         }
                     }
