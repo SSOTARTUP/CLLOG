@@ -9,8 +9,8 @@ import SwiftUI
 
 struct DailyRecordView: View {
     @Environment(\.dismiss) private var dismiss
-
-    @State private var closeAlert = false
+    
+    @Binding var isActiveSheet:Bool
     
     @StateObject var viewModel = DailyRecordViewModel()
     
@@ -50,7 +50,7 @@ struct DailyRecordView: View {
                     AdditionalMemoView(dailyRecordViewModel: viewModel)
 
                 case .complete: // 완료 페이지
-                    DailyCompleteView(dailyRecordViewModel: viewModel)
+                    DailyCompleteView(dailyRecordViewModel: viewModel, isActiveSheet: $isActiveSheet)
                 }
             }
             .navigationTitle("오늘의 상태 기록하기")
@@ -68,7 +68,7 @@ struct DailyRecordView: View {
                 }
             }
         }
-        .alert("기록 중단", isPresented: $closeAlert) {
+        .alert("기록 중단", isPresented: $viewModel.closeAlert) {
             Button("취소", role: .cancel) {
                 
             }
@@ -95,7 +95,7 @@ extension DailyRecordView {
     
     private var closeButton: some View {
         Button {
-            closeAlert = true
+            viewModel.closeAlert = true
         } label: {
             Image(systemName: "xmark.circle.fill")
                 .foregroundStyle(.thoNavy)
@@ -104,5 +104,5 @@ extension DailyRecordView {
 }
 
 #Preview {
-    DailyRecordView()
+    DailyRecordView(isActiveSheet: .constant(true))
 }

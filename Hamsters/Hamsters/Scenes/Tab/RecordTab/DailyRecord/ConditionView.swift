@@ -18,6 +18,14 @@ struct ConditionView: View {
         // progressbar 추가
         ScrollViewReader { value in
             ScrollView {
+                HStack {
+                    Text("오늘의 컨디션")
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                        .padding(.leading, 16)
+                        .padding(.bottom, 16)
+                    Spacer()
+                }
                 ForEach(Array(viewModel.list.enumerated()),id: \.self.offset) { (offset,element) in
                     switch element.first?.sender {
                     case .computer:
@@ -28,9 +36,10 @@ struct ConditionView: View {
                             .id(offset)
                     case .button:
                         NextButton(title: "다음", isActive: .constant(true)) {
+                            dailyRecordViewModel.answer = viewModel.answer
                             dailyRecordViewModel.goToNextPage()
                         }
-                        .padding(.top,44)
+                        .padding(.top,24)
                         .padding(.bottom,41)
                     case .none:
                         let _ = print("nil")
