@@ -51,7 +51,7 @@ struct DailyRecordView: View {
                     AdditionalMemoView(dailyRecordViewModel: viewModel)
 
                 case .complete: // 완료 페이지
-                    DailyCompleteView(dailyRecordViewModel: viewModel, isActiveSheet: $isActiveSheet)
+                    DailyCompleteView(dailyRecordViewModel: viewModel)
                 }
             }
             .navigationTitle("오늘의 상태 기록하기")
