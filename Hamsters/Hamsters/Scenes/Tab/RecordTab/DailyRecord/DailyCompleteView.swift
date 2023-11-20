@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct DailyCompleteView: View {
+
     @ObservedObject var dailyRecordViewModel: DailyRecordViewModel
     @Binding var isActiveSheet:Bool
 
-    
+
     var body: some View {
         VStack(spacing: 0) {
             Spacer()
@@ -40,6 +41,7 @@ struct DailyCompleteView: View {
             
             Spacer()
             
+
             NextButton(title: "다음", isActive: .constant(true)) {
                 isActiveSheet = false
                 dailyRecordViewModel.saveRecord()
@@ -47,6 +49,7 @@ struct DailyCompleteView: View {
             }
             .padding(.bottom, 40)
 //            DailyRecordNextButton(pageNumber: $pageNumber, isActiveRecord: $isActiveRecord, title: "완료")
+
             
         }
     }

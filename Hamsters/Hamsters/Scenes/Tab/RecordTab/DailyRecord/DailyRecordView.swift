@@ -13,11 +13,12 @@ struct DailyRecordView: View {
     @Binding var isActiveSheet:Bool
     
     @StateObject var viewModel = DailyRecordViewModel()
-    
+
     var body: some View {
         NavigationStack {
             VStack(spacing: 12){
                 DailyRecordProgressBar(pageNumber: viewModel.pageNumber, total: viewModel.dailyRecordPages.convertStringToPage.count)
+
 
                 switch viewModel.currentPage {
                 case .condition: // ADHD 컨디션 기록

@@ -97,8 +97,10 @@ struct SleepingTimeView: View {
                 Spacer()
                 
                 Button {
-                    dailyRecordViewModel.sleepingTime = getTimeDifference().0 + getTimeDifference().1
+
+                    dailyRecordViewModel.sleepingTime = (getTimeDifference().0 * 60) + getTimeDifference().1
                     dailyRecordViewModel.goToNextPage()
+
                 } label: {
                     Text("다음")
                         .font(.headline)
@@ -123,8 +125,6 @@ struct SleepingTimeView: View {
             
             let width = proxy.size.width
             let height = proxy.size.height
-            let sliderSize = min(width, height) * 0.7 // 슬라이더의 크기를 동적으로 조정
-
             
             ZStack {
                 ZStack {

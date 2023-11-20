@@ -10,13 +10,15 @@ import SwiftUI
 struct DailyRecordNextButton: View {
     @Binding var pageNumber: Int
     @Binding var isActiveRecord: Bool
-    
+    var onComplete: (() -> Void)? = nil
+
     let title: LocalizedStringKey
     
     var body: some View {
         Button {
             if pageNumber == 11 {
                 isActiveRecord = false
+                onComplete?()  // 완료 액션 실행
             } else {
                 pageNumber += 1
             }
