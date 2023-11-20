@@ -13,7 +13,7 @@ struct OnboardingView: View {
     
     @AppStorage(UserDefaultsKey.userName.rawValue) private var storedUserkname: String = ""
     @AppStorage(UserDefaultsKey.hamsterName.rawValue) private var storedHamsterkname: String = ""
-    @AppStorage(UserDefaultsKey.hasterImage.rawValue) private var storedHamsterImage: String = ""
+    @AppStorage(UserDefaultsKey.hamsterImage.rawValue) private var storedHamsterImage: String = ""
     @AppStorage(UserDefaultsKey.sex.rawValue) private var storedSex: String = ""
     @AppStorage(UserDefaultsKey.smoking.rawValue) private var storedSmoking: Bool = false
     @AppStorage(UserDefaultsKey.complete.rawValue) private var setupComplete: Bool = false
