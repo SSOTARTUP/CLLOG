@@ -7,12 +7,11 @@
 
 import SwiftUI
 
-struct ConditionView: View {
-    @ObservedObject var dailyRecordViewModel:DailyRecordViewModel
+struct ConditionView<T:ObservableObject>: View {
+    @ObservedObject var dailyRecordViewModel:T
     
     @StateObject var viewModel = ConditionViewModel()
     @State var scroll:ScrollViewProxy?
-    @State var repeated:Bool = true
     
     var body: some View {
         // progressbar 추가
@@ -36,8 +35,9 @@ struct ConditionView: View {
                             .id(offset)
                     case .button:
                         NextButton(title: "다음", isActive: .constant(true)) {
-                            dailyRecordViewModel.answer = viewModel.answer
-                            dailyRecordViewModel.goToNextPage()
+                            var z = dailyRecordViewModel as! DailyRecordViewModel
+                            z.answer = viewModel.answer
+                            z.goToNextPage()
                         }
                         .padding(.top,24)
                         .padding(.bottom,41)

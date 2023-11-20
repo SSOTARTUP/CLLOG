@@ -61,6 +61,8 @@
 		30D60C912AFFD048005D5D96 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D60C902AFFD048005D5D96 /* Onboarding.swift */; };
 		30D60C952B00FD1C005D5D96 /* NextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D60C942B00FD1C005D5D96 /* NextButton.swift */; };
 		30E376C72B011FCA00E8A10D /* CheerUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E376C62B011FCA00E8A10D /* CheerUpView.swift */; };
+		7622B5D42B0AE37C00FA970B /* DiaryMainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7622B5D32B0AE37C00FA970B /* DiaryMainViewModel.swift */; };
+		7622B5D62B0AFDB100FA970B /* DiaryUpdateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7622B5D52B0AFDB100FA970B /* DiaryUpdateView.swift */; };
 		7645ABFD2B0306BA007F6139 /* PushManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7645ABFC2B0306BA007F6139 /* PushManager.swift */; };
 		7645ABFF2B052E5A007F6139 /* PushProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7645ABFE2B052E5A007F6139 /* PushProtocol.swift */; };
 		7645AC012B06587B007F6139 /* DailyRecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7645AC002B06587B007F6139 /* DailyRecordViewModel.swift */; };
@@ -148,6 +150,8 @@
 		30D60C902AFFD048005D5D96 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
 		30D60C942B00FD1C005D5D96 /* NextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButton.swift; sourceTree = "<group>"; };
 		30E376C62B011FCA00E8A10D /* CheerUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheerUpView.swift; sourceTree = "<group>"; };
+		7622B5D32B0AE37C00FA970B /* DiaryMainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryMainViewModel.swift; sourceTree = "<group>"; };
+		7622B5D52B0AFDB100FA970B /* DiaryUpdateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryUpdateView.swift; sourceTree = "<group>"; };
 		7645ABFC2B0306BA007F6139 /* PushManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushManager.swift; sourceTree = "<group>"; };
 		7645ABFE2B052E5A007F6139 /* PushProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushProtocol.swift; sourceTree = "<group>"; };
 		7645AC002B06587B007F6139 /* DailyRecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyRecordViewModel.swift; sourceTree = "<group>"; };
@@ -423,7 +427,9 @@
 		307B7D822AE432D0007CB7F5 /* DiaryTab */ = {
 			isa = PBXGroup;
 			children = (
+				7622B5D22B0AE35000FA970B /* viewModel */,
 				307B7D802AE432A2007CB7F5 /* DiaryMainView.swift */,
+				7622B5D52B0AFDB100FA970B /* DiaryUpdateView.swift */,
 			);
 			path = DiaryTab;
 			sourceTree = "<group>";
@@ -451,6 +457,14 @@
 				7645AC002B06587B007F6139 /* DailyRecordViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		7622B5D22B0AE35000FA970B /* viewModel */ = {
+			isa = PBXGroup;
+			children = (
+				7622B5D32B0AE37C00FA970B /* DiaryMainViewModel.swift */,
+			);
+			path = viewModel;
 			sourceTree = "<group>";
 		};
 		768562DC2AFDCE5800AF5C95 /* Manager */ = {
@@ -574,6 +588,7 @@
 				76D52F422AFE9B86009A0698 /* ComputerChat.swift in Sources */,
 				76D52F402AFE9B45009A0698 /* RoundedCorner.swift in Sources */,
 				76B387142AFFC6D00067CDAF /* ActivityModalView.swift in Sources */,
+				7622B5D42B0AE37C00FA970B /* DiaryMainViewModel.swift in Sources */,
 				768562E42AFE73A500AF5C95 /* ConditionView.swift in Sources */,
 				304180FA2ADCC740002AD2E3 /* SmokingSetView.swift in Sources */,
 				7645ABFD2B0306BA007F6139 /* PushManager.swift in Sources */,
@@ -598,6 +613,7 @@
 				30D60C952B00FD1C005D5D96 /* NextButton.swift in Sources */,
 				307B7D702AE424A2007CB7F5 /* AlarmFrequencyView.swift in Sources */,
 				76D52F452AFF2A79009A0698 /* ConditionModel.swift in Sources */,
+				7622B5D62B0AFDB100FA970B /* DiaryUpdateView.swift in Sources */,
 				7645AC032B0684FF007F6139 /* DailyRecordPage.swift in Sources */,
 				B593116C2B01B7490092A2E0 /* Medicines+CoreDataProperties.swift in Sources */,
 				76D52F472AFF2AD2009A0698 /* UserChat.swift in Sources */,

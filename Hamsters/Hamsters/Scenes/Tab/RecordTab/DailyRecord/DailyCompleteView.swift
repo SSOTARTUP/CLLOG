@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DailyCompleteView: View {
     @ObservedObject var dailyRecordViewModel: DailyRecordViewModel
-    @Binding var isActiveSheet:Bool
+    @Environment(\.dismiss) private var dismiss
 
     
     var body: some View {
@@ -41,7 +41,7 @@ struct DailyCompleteView: View {
             Spacer()
             
             NextButton(title: "다음", isActive: .constant(true)) {
-                isActiveSheet = false
+                dismiss()
                 dailyRecordViewModel.saveRecord()
                 
             }
@@ -53,5 +53,5 @@ struct DailyCompleteView: View {
 }
 
 #Preview {
-    DailyCompleteView(dailyRecordViewModel: DailyRecordViewModel(), isActiveSheet: .constant(true))
+    DailyCompleteView(dailyRecordViewModel: DailyRecordViewModel())
 }
