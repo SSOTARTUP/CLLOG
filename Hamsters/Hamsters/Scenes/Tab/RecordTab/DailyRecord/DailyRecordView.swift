@@ -30,7 +30,7 @@ struct DailyRecordView: View {
                     SleepingTimeView(viewModel: viewModel)
                     
                 case .sideEffect: // 부작용 기록
-                    SideEffectCheckView(dailyRecordViewModel: viewModel)
+                    SideEffectCheckView(viewModel: viewModel)
                     
                 case .weightCheck: // 체중 기록
                     WeightCheckView(dailyRecordViewModel: viewModel)
