@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct ProfileEditView: View {
-    @Environment(\.dismiss) private var dismiss
-    
     @AppStorage(UserDefaultsKey.userName.rawValue) private var storedUserkname: String?
     @AppStorage(UserDefaultsKey.hamsterName.rawValue) private var storedHamsterkname: String?
     @AppStorage(UserDefaultsKey.hamsterImage.rawValue) private var storedHamsterImage: String?
