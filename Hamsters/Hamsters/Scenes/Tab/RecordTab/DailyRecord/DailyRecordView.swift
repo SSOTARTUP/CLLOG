@@ -33,25 +33,25 @@ struct DailyRecordView: View {
                     SideEffectCheckView(viewModel: viewModel)
                     
                 case .weightCheck: // 체중 기록
-                    WeightCheckView(dailyRecordViewModel: viewModel)
+                    WeightCheckView(viewModel: viewModel)
                     
                 case .menstruation: // 월경 여부
-                    MenstruationCheckView(dailyRecordViewModel: viewModel)
+                    MenstruationCheckView(viewModel: viewModel)
                     
                 case .smoking: //  흡연량
-                    SmokingCheckView(dailyRecordViewModel: viewModel)
+                    SmokingCheckView(viewModel: viewModel)
                     
                 case .caffein: // 카페인
-                    CaffeineCheckView(dailyRecordViewModel: viewModel)
+                    CaffeineCheckView(viewModel: viewModel)
                     
                 case .drink: // 음주량
-                    DrinkCheckView(dailyRecordViewModel: viewModel)
+                    DrinkCheckView(viewModel: viewModel)
                     
                 case .memo: // 추가 메모
-                    AdditionalMemoView(dailyRecordViewModel: viewModel)
+                    AdditionalMemoView(viewModel: viewModel)
 
                 case .complete: // 완료 페이지
-                    DailyCompleteView(dailyRecordViewModel: viewModel)
+                    DailyCompleteView(viewModel: viewModel)
                 }
             }
             .navigationTitle("오늘의 상태 기록하기")

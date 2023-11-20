@@ -7,10 +7,8 @@
 
 import SwiftUI
 
-struct DrinkCheckView: View {
-    @ObservedObject var dailyRecordViewModel: DailyRecordViewModel
-//    @Binding var pageNumber: Int
-//    @Binding var amountOfAlcohol: Int // 최댓값 기준으로 Int 값 저장
+struct DrinkCheckView<T: RecordProtocol>: View {
+    @ObservedObject var viewModel: T
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -23,7 +21,7 @@ struct DrinkCheckView: View {
             List {
                 Section {
                     Button {
-                        dailyRecordViewModel.amountOfAlcohol = 0
+                        viewModel.amountOfAlcohol = 0
                     } label: {
                         HStack {
                             Text("오늘은 마시지 않았어요!")
@@ -31,7 +29,7 @@ struct DrinkCheckView: View {
                             
                             Spacer()
                             
-                            if dailyRecordViewModel.amountOfAlcohol == 0 {
+                            if viewModel.amountOfAlcohol == 0 {
                                 Image(systemName: "checkmark")
                                     .fontWeight(.bold)
                                     .foregroundStyle(.thoNavy)
@@ -46,7 +44,7 @@ struct DrinkCheckView: View {
                         if bottle != .max0 {
                             HStack {
                                 Button {
-                                    dailyRecordViewModel.amountOfAlcohol = bottle.maxValue
+                                    viewModel.amountOfAlcohol = bottle.maxValue
                                 } label: {
                                     Text(bottle.title)
                                         .foregroundStyle(Color.primary)
@@ -54,7 +52,7 @@ struct DrinkCheckView: View {
                                 
                                 Spacer()
                                 
-                                if dailyRecordViewModel.amountOfAlcohol == bottle.maxValue {
+                                if viewModel.amountOfAlcohol == bottle.maxValue {
                                     Image(systemName: "checkmark")
                                         .fontWeight(.bold)
                                         .foregroundStyle(.thoNavy)
@@ -72,7 +70,9 @@ struct DrinkCheckView: View {
             Spacer()
             
             NextButton(title: "다음", isActive: .constant(true)) {
-                dailyRecordViewModel.goToNextPage()
+                if let vm = viewModel as? DailyRecordViewModel {
+                    vm.goToNextPage()
+                }
             }
             .padding(.bottom, 40)
             
@@ -82,5 +82,5 @@ struct DrinkCheckView: View {
 }
 
 #Preview {
-    DrinkCheckView(dailyRecordViewModel: DailyRecordViewModel())
+    DrinkCheckView(viewModel: DailyRecordViewModel())
 }

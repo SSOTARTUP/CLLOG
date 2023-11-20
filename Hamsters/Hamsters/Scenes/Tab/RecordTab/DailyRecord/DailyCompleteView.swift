@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct DailyCompleteView: View {
+struct DailyCompleteView<T: RecordProtocol>: View {
 
-    @ObservedObject var dailyRecordViewModel: DailyRecordViewModel
+    @ObservedObject var viewModel: T
     @Environment(\.dismiss) private var dismiss
 
 
@@ -43,9 +43,10 @@ struct DailyCompleteView: View {
             
 
             NextButton(title: "다음", isActive: .constant(true)) {
-                dismiss()
-                dailyRecordViewModel.saveRecord()
-                
+                if let vm = viewModel as? DailyRecordViewModel {
+                    dismiss()
+                    vm.saveRecord()
+                }
             }
             .padding(.bottom, 40)
 //            DailyRecordNextButton(pageNumber: $pageNumber, isActiveRecord: $isActiveRecord, title: "완료")
@@ -56,5 +57,5 @@ struct DailyCompleteView: View {
 }
 
 #Preview {
-    DailyCompleteView(dailyRecordViewModel: DailyRecordViewModel())
+    DailyCompleteView(viewModel: DailyRecordViewModel())
 }

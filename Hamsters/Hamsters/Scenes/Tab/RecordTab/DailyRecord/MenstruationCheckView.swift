@@ -7,10 +7,8 @@
 
 import SwiftUI
 
-struct MenstruationCheckView: View {
-    @ObservedObject var dailyRecordViewModel: DailyRecordViewModel
-//    @Binding var pageNumber: Int
-//    @Binding var isPeriod: Bool
+struct MenstruationCheckView<T: RecordProtocol>: View {
+    @ObservedObject var viewModel: T
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -22,26 +20,26 @@ struct MenstruationCheckView: View {
                 
                 HStack(spacing: 13) {
                     Button(action: {
-                        dailyRecordViewModel.isPeriod = true
+                        viewModel.isPeriod = true
                     }, label: {
                         Text("예")
                             .font(.headline)
                             .padding(.vertical, 15)
                             .frame(maxWidth: .infinity)
-                            .background(dailyRecordViewModel.isPeriod == true ? Color.thoNavy : Color.thoDisabled)
-                            .foregroundColor(dailyRecordViewModel.isPeriod == true ? Color.white : Color.thoNavy)
+                            .background(viewModel.isPeriod == true ? Color.thoNavy : Color.thoDisabled)
+                            .foregroundColor(viewModel.isPeriod == true ? Color.white : Color.thoNavy)
                             .cornerRadius(15)
                     })
                     
                     Button(action: {
-                        dailyRecordViewModel.isPeriod = false
+                        viewModel.isPeriod = false
                     }, label: {
                         Text("아니오")
                             .font(.headline)
                             .padding(.vertical, 15)
                             .frame(maxWidth: .infinity)
-                            .background(dailyRecordViewModel.isPeriod == false ? Color.thoNavy : Color.thoDisabled)
-                            .foregroundColor(dailyRecordViewModel.isPeriod == false ? Color.white : Color.thoNavy)
+                            .background(viewModel.isPeriod == false ? Color.thoNavy : Color.thoDisabled)
+                            .foregroundColor(viewModel.isPeriod == false ? Color.white : Color.thoNavy)
                             .cornerRadius(15)
                     })
                 }
@@ -52,7 +50,9 @@ struct MenstruationCheckView: View {
             Spacer()
             
             NextButton(title: "다음", isActive: .constant(true)) {
-                dailyRecordViewModel.goToNextPage()
+                if let vm = viewModel as? DailyRecordViewModel {
+                    vm.goToNextPage()
+                }
             }
             .padding(.bottom, 40)
 //            DailyRecordNextButton(pageNumber: $pageNumber, isActiveRecord:.constant(true), title: "다음")
@@ -62,5 +62,5 @@ struct MenstruationCheckView: View {
 }
 
 #Preview {
-    MenstruationCheckView(dailyRecordViewModel: DailyRecordViewModel())
+    MenstruationCheckView(viewModel: DailyRecordViewModel())
 }
