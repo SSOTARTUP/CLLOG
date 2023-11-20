@@ -80,7 +80,7 @@ struct RecordMainView: View {
                         .padding(.horizontal, 22)
                         .frame(height: 80)
                         
-                        WeeklyCalendarVeiw(selectedDate: $selectedDate, calendarHeight: $weeklyHeight, existLog: .constant(["2023-11-16", "2023-11-15", "2023-11-13", "2023-11-11", "2023-11-9"]), isToday: $isToday)
+                        WeeklyCalendarView(selectedDate: $selectedDate, calendarHeight: $weeklyHeight, existLog: .constant(["2023-11-16", "2023-11-15", "2023-11-13", "2023-11-11", "2023-11-9"]), isToday: $isToday)
                             .frame(width: screenBounds().width - 38, height: weeklyHeight)
                     }
                     .padding(.top)
