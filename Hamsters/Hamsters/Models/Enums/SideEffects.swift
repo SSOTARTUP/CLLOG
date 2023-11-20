@@ -8,7 +8,7 @@
 import Foundation
 
 enum SideEffects {
-    enum Major: String, CaseIterable {
+    enum Major: String, CaseIterable, Codable {
         case none = "없음"
         case insomnia = "불면증"
         case dizzy = "어지러움"
@@ -28,7 +28,7 @@ enum SideEffects {
         case mouthDry = "입마름"
     }
     
-    enum Dangerous: String, CaseIterable {
+    enum Dangerous: String, CaseIterable, Codable {
         case none = "없음"
         case chestPain = "흉통"
         case shortnessOfBreath = "호흡곤란"

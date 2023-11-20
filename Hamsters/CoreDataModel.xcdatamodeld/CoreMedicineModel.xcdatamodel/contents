@@ -4,13 +4,14 @@
         <attribute name="amountOfAlcohol" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="amountOfCaffein" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="amountOfSmoking" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="conditionValues" optional="YES" attributeType="String"/>
-        <attribute name="dangerEffect" optional="YES" attributeType="String"/>
+        <attribute name="conditionValues" optional="YES" attributeType="Binary"/>
+        <attribute name="dangerEffect" optional="YES" attributeType="Binary"/>
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="isPeriod" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="memo" optional="YES" attributeType="String"/>
-        <attribute name="moodValues" optional="YES" attributeType="String"/>
-        <attribute name="popularEffect" optional="YES" attributeType="String"/>
+        <attribute name="moodValues" optional="YES" attributeType="Binary"/>
+        <attribute name="popularEffect" optional="YES" attributeType="Binary"/>
         <attribute name="sleepingTime" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="weight" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
     </entity>
