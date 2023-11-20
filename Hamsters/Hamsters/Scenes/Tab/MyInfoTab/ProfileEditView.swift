@@ -27,7 +27,7 @@ struct ProfileEditView: View {
                     .foregroundStyle(.thoNavy)
                     .padding(.bottom, 16)
                 
-                HStack {
+                HStack(spacing: 20) {
                     ForEach(selectedHam.allCases, id: \.self) { hamster in
                         Button {
                             hamsterImage = hamster
