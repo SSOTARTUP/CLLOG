@@ -9,9 +9,10 @@ import SwiftUI
 import WrappingHStack
 
 struct SideEffectCheckView: View {
-    @Binding var pageNumber: Int
-    @Binding var popularEffect: [SideEffects.Major]
-    @Binding var dangerEffect: [SideEffects.Dangerous]
+    @ObservedObject var dailyRecordViewModel = DailyRecordViewModel()
+//    @Binding var pageNumber: Int
+//    @Binding var popularEffect: [SideEffects.Major]
+//    @Binding var dangerEffect: [SideEffects.Dangerous]
     
     var body: some View {
         ScrollView {
@@ -29,7 +30,7 @@ struct SideEffectCheckView: View {
                         
                         WrappingHStack(alignment: .leading, horizontalSpacing: 8, verticalSpacing: 10) {
                             ForEach(SideEffects.Major.allCases, id: \.self) { effect in
-                                CapsuleView(text: effect.rawValue, isSelected: popularEffect.contains(effect)) {
+                                CapsuleView(text: effect.rawValue, isSelected: dailyRecordViewModel.popularEffect.contains(effect)) {
                                     updatePopularEffect(with: effect)
                                 }
                             }
@@ -52,7 +53,7 @@ struct SideEffectCheckView: View {
                         }
                         WrappingHStack(alignment: .leading, horizontalSpacing: 8, verticalSpacing: 10) {
                             ForEach(SideEffects.Dangerous.allCases, id: \.self) { effect in
-                                CapsuleView(text: effect.rawValue, isSelected: dangerEffect.contains(effect)) {
+                                CapsuleView(text: effect.rawValue, isSelected: dailyRecordViewModel.dangerEffect.contains(effect)) {
                                     updateDangerEffect(with: effect)
                                 }
                             }
@@ -75,39 +76,45 @@ struct SideEffectCheckView: View {
                 
                 Spacer()
                 
-                DailyRecordNextButton(pageNumber: $pageNumber, isActiveRecord:.constant(true), title: "다음")
-                    .disabled(popularEffect.count < 1 && dangerEffect.count < 1)
+                NextButton(title: "다음", isActive: .constant(true)) {
+                    dailyRecordViewModel.goToNextPage()
+                }
+                .padding(.bottom, 40)
+//                .disabled((dailyRecordViewModel.popularEffect.count < 1 && dailyRecordViewModel.dangerEffect.count < 1))
+                
+//                DailyRecordNextButton(pageNumber: $pageNumber, isActiveRecord:.constant(true), title: "다음")
+//                    .disabled(popularEffect.count < 1 && dangerEffect.count < 1)
             }
         }
     }
     
     private func updatePopularEffect(with effect: SideEffects.Major) {
         if effect == .none {
-                popularEffect = [.none] // '없음'만 선택됨
+            dailyRecordViewModel.popularEffect = [.none] // '없음'만 선택됨
+        } else {
+            dailyRecordViewModel.popularEffect.removeAll { $0 == .none } // '없음'을 제거
+            if let index = dailyRecordViewModel.popularEffect.firstIndex(of: effect) {
+                dailyRecordViewModel.popularEffect.remove(at: index)
             } else {
-                popularEffect.removeAll { $0 == .none } // '없음'을 제거
-                if let index = popularEffect.firstIndex(of: effect) {
-                    popularEffect.remove(at: index)
-                } else {
-                    popularEffect.append(effect)
-                }
+                dailyRecordViewModel.popularEffect.append(effect)
             }
+        }
     }
     
     private func updateDangerEffect(with effect: SideEffects.Dangerous) {
         if effect == .none {
-                dangerEffect = [.none] // '없음'만 선택됨
+            dailyRecordViewModel.dangerEffect = [.none] // '없음'만 선택됨
+        } else {
+            dailyRecordViewModel.dangerEffect.removeAll { $0 == .none } // '없음'을 제거
+            if let index = dailyRecordViewModel.dangerEffect.firstIndex(of: effect) {
+                dailyRecordViewModel.dangerEffect.remove(at: index)
             } else {
-                dangerEffect.removeAll { $0 == .none } // '없음'을 제거
-                if let index = dangerEffect.firstIndex(of: effect) {
-                    dangerEffect.remove(at: index)
-                } else {
-                    dangerEffect.append(effect)
-                }
+                dailyRecordViewModel.dangerEffect.append(effect)
             }
+        }
     }
 }
 
 #Preview {
-    SideEffectCheckView(pageNumber: .constant(10), popularEffect: .constant([.none]), dangerEffect: .constant([.none]))
+    SideEffectCheckView(dailyRecordViewModel: DailyRecordViewModel())
 }

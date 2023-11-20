@@ -40,7 +40,7 @@ struct Medicine: Identifiable {
 extension Medicine {
     static var sampleData : [Medicine] = [
         Medicine(name: "콘서타", capacity: "18", unit: "정", frequency: [.monday, .thursday], alarms: [AlarmItem(date: Date.now, isEnabled: false)], freOption: .specificDay, sortedDays: "월, 목"),
-        Medicine(name: "메디키넷", capacity: "10", unit: "mg", frequency: [.sunday, .saturday], alarms: [AlarmItem(date: Date(timeIntervalSinceNow: 1800), isEnabled: true)], freOption: .everyDay, sortedDays: "토, 일"),
+        Medicine(name: "메틸페니데이트", capacity: "10", unit: "mg", frequency: [.sunday, .saturday], alarms: [AlarmItem(date: Date(timeIntervalSinceNow: 1800), isEnabled: true)], freOption: .everyDay, sortedDays: "토, 일"),
         Medicine(name: "아빌리파이", capacity: "1", unit: "정", frequency: [.monday, .tuesday, .wednesday, .thursday, .friday, .saturday, .sunday], alarms: [AlarmItem(date: Date(timeIntervalSinceNow: 3600), isEnabled: true)], freOption: .asNeeded, sortedDays: "매일"),
         Medicine(name: "우울약", capacity: "2", unit: "정", frequency: [.monday, .tuesday, .wednesday, .thursday, .friday, .saturday, .sunday], alarms: [AlarmItem(date: Date(timeIntervalSinceNow: 4800), isEnabled: true)], freOption: .specificDay, sortedDays: "매일")
     ]

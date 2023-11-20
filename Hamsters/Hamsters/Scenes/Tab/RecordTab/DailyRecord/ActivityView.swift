@@ -87,7 +87,7 @@ struct ActivityView: View {
                         HStack {
                             Text("내가 추가한 운동")
                                 .font(.headline)
-                                .foregroundStyle(.sectionTitle)
+                                .foregroundStyle(.thoNavy)
                                 .bold()
                             
                             Spacer()
@@ -118,7 +118,7 @@ struct ActivityView: View {
                         HStack {
                             Text("연동된 운동 데이터")
                                 .font(.headline)
-                                .foregroundStyle(.sectionTitle)
+                                .foregroundStyle(.thoNavy)
                                 .bold()
                             
                             Spacer()

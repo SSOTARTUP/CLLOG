@@ -51,4 +51,16 @@ enum Day: String, CaseIterable, Identifiable, Comparable, Codable {
     static func < (lhs: Day, rhs: Day) -> Bool {
         return lhs.order < rhs.order
     }
+    
+    var weekday:PushManager.WeekDay {
+        switch self {
+        case .sunday: .sunday
+        case .monday: .monday
+        case .tuesday: .tuesday
+        case .wednesday: .wednesday
+        case .thursday: .thursday
+        case .friday: .friday
+        case .saturday: .saturday
+        }
+    }
 }

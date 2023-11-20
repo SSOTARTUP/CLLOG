@@ -117,7 +117,7 @@ struct UserChat: View {
         .cornerRadius(10,corners:[.topRight,.bottomLeft,.topLeft])
         .padding(.leading,48)
         .padding(.trailing,16)
-        .padding(.top,20)
+        .padding(.bottom,20)
     }
 }
 

@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct DailyRecordProgressBar: View {
-    @Binding var pageNumber: Int
+    var pageNumber: Int
+    var total:Int
     
     var body: some View {
-        ProgressView(value: Double(pageNumber), total: 11)
+        ProgressView(value: Double(pageNumber+1), total: Double(total))
             .tint(.thoNavy)
             .padding(.vertical, 16)
             .padding(.horizontal, 16)
@@ -19,5 +20,5 @@ struct DailyRecordProgressBar: View {
 }
 
 #Preview {
-    DailyRecordProgressBar(pageNumber: .constant(1))
+    DailyRecordProgressBar(pageNumber: 1, total: 11)
 }

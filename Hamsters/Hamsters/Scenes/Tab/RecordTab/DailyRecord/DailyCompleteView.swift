@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct DailyCompleteView: View {
-    @Binding var pageNumber: Int
-    @Binding var isActiveRecord: Bool
-    @ObservedObject var dailyViewModel: DailyViewModel
+
+    @ObservedObject var dailyRecordViewModel: DailyRecordViewModel
+    @Binding var isActiveSheet:Bool
+
 
     var body: some View {
         VStack(spacing: 0) {
@@ -40,15 +41,20 @@ struct DailyCompleteView: View {
             
             Spacer()
             
-            DailyRecordNextButton(pageNumber: $pageNumber, isActiveRecord: $isActiveRecord, onComplete:  {
-                dailyViewModel.saveRecord()
-                print("CoreData:::" + "\(CoreDataManager.shared.fetchAllDayRecords())")
-            }, title: "완료")
+
+            NextButton(title: "다음", isActive: .constant(true)) {
+                isActiveSheet = false
+                dailyRecordViewModel.saveRecord()
+                
+            }
+            .padding(.bottom, 40)
+//            DailyRecordNextButton(pageNumber: $pageNumber, isActiveRecord: $isActiveRecord, title: "완료")
+
             
         }
     }
 }
 
-//#Preview {
-//    DailyCompleteView(pageNumber: .constant(11))
-//}
+#Preview {
+    DailyCompleteView(dailyRecordViewModel: DailyRecordViewModel(), isActiveSheet: .constant(true))
+}

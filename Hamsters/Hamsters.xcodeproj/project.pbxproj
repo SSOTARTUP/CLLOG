@@ -16,7 +16,6 @@
 		30151F472AE3AF060036B60D /* DrinkAmount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30151F462AE3AF060036B60D /* DrinkAmount.swift */; };
 		30151F492AE4007B0036B60D /* CaffeineCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30151F482AE4007B0036B60D /* CaffeineCheckView.swift */; };
 		301971542AE4F00600728D16 /* DailyCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301971532AE4F00600728D16 /* DailyCompleteView.swift */; };
-		301971562AE4FECE00728D16 /* WeeklyMedicationCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301971552AE4FECE00728D16 /* WeeklyMedicationCalendar.swift */; };
 		301971582AE50A0800728D16 /* DailyMedicationList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301971572AE50A0800728D16 /* DailyMedicationList.swift */; };
 		304180D12ADA8E37002AD2E3 /* HamstersApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304180D02ADA8E37002AD2E3 /* HamstersApp.swift */; };
 		304180D32ADA8E37002AD2E3 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304180D22ADA8E37002AD2E3 /* StartView.swift */; };
@@ -50,6 +49,8 @@
 		307B7D842AE432EF007CB7F5 /* StatisticsMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307B7D832AE432EF007CB7F5 /* StatisticsMainView.swift */; };
 		307B7D872AE43322007CB7F5 /* MyInfoMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307B7D862AE43322007CB7F5 /* MyInfoMainView.swift */; };
 		307B7D8A2AE4E0B1007CB7F5 /* AdditionalMemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307B7D892AE4E0B1007CB7F5 /* AdditionalMemoView.swift */; };
+		30A0B2382B06594D00F51AE1 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 30A0B2372B06594D00F51AE1 /* FSCalendar */; };
+		30A0B23A2B065A1D00F51AE1 /* RecordWeeklyCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A0B2392B065A1D00F51AE1 /* RecordWeeklyCalendar.swift */; };
 		30BB50B92ADFABBC0050CF69 /* ConditionSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BB50B82ADFABBC0050CF69 /* ConditionSlider.swift */; };
 		30BB50BC2ADFABDB0050CF69 /* Sliders in Frameworks */ = {isa = PBXBuildFile; productRef = 30BB50BB2ADFABDB0050CF69 /* Sliders */; };
 		30BB50BE2ADFFAE00050CF69 /* ConditionCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BB50BD2ADFFAE00050CF69 /* ConditionCheckView.swift */; };
@@ -62,6 +63,9 @@
 		30D60C952B00FD1C005D5D96 /* NextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D60C942B00FD1C005D5D96 /* NextButton.swift */; };
 		30E376C72B011FCA00E8A10D /* CheerUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E376C62B011FCA00E8A10D /* CheerUpView.swift */; };
 		7645ABFD2B0306BA007F6139 /* PushManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7645ABFC2B0306BA007F6139 /* PushManager.swift */; };
+		7645ABFF2B052E5A007F6139 /* PushProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7645ABFE2B052E5A007F6139 /* PushProtocol.swift */; };
+		7645AC012B06587B007F6139 /* DailyRecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7645AC002B06587B007F6139 /* DailyRecordViewModel.swift */; };
+		7645AC032B0684FF007F6139 /* DailyRecordPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7645AC022B0684FF007F6139 /* DailyRecordPage.swift */; };
 		768562D92AFC821F00AF5C95 /* ProfileSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768562D82AFC821F00AF5C95 /* ProfileSetView.swift */; };
 		768562DB2AFCC1DB00AF5C95 /* ProfileInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768562DA2AFCC1DB00AF5C95 /* ProfileInput.swift */; };
 		768562DE2AFDCE6F00AF5C95 /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768562DD2AFDCE6F00AF5C95 /* HealthKitManager.swift */; };
@@ -104,7 +108,6 @@
 		30151F462AE3AF060036B60D /* DrinkAmount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkAmount.swift; sourceTree = "<group>"; };
 		30151F482AE4007B0036B60D /* CaffeineCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaffeineCheckView.swift; sourceTree = "<group>"; };
 		301971532AE4F00600728D16 /* DailyCompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyCompleteView.swift; sourceTree = "<group>"; };
-		301971552AE4FECE00728D16 /* WeeklyMedicationCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyMedicationCalendar.swift; sourceTree = "<group>"; };
 		301971572AE50A0800728D16 /* DailyMedicationList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyMedicationList.swift; sourceTree = "<group>"; };
 		304180CD2ADA8E37002AD2E3 /* Hamsters.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hamsters.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		304180D02ADA8E37002AD2E3 /* HamstersApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HamstersApp.swift; sourceTree = "<group>"; };
@@ -139,6 +142,7 @@
 		307B7D832AE432EF007CB7F5 /* StatisticsMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsMainView.swift; sourceTree = "<group>"; };
 		307B7D862AE43322007CB7F5 /* MyInfoMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoMainView.swift; sourceTree = "<group>"; };
 		307B7D892AE4E0B1007CB7F5 /* AdditionalMemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalMemoView.swift; sourceTree = "<group>"; };
+		30A0B2392B065A1D00F51AE1 /* RecordWeeklyCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordWeeklyCalendar.swift; sourceTree = "<group>"; };
 		30BB50B82ADFABBC0050CF69 /* ConditionSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionSlider.swift; sourceTree = "<group>"; };
 		30BB50BD2ADFFAE00050CF69 /* ConditionCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionCheckView.swift; sourceTree = "<group>"; };
 		30BB50BF2ADFFB710050CF69 /* DailyRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyRecordView.swift; sourceTree = "<group>"; };
@@ -150,6 +154,9 @@
 		30D60C942B00FD1C005D5D96 /* NextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButton.swift; sourceTree = "<group>"; };
 		30E376C62B011FCA00E8A10D /* CheerUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheerUpView.swift; sourceTree = "<group>"; };
 		7645ABFC2B0306BA007F6139 /* PushManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushManager.swift; sourceTree = "<group>"; };
+		7645ABFE2B052E5A007F6139 /* PushProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushProtocol.swift; sourceTree = "<group>"; };
+		7645AC002B06587B007F6139 /* DailyRecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyRecordViewModel.swift; sourceTree = "<group>"; };
+		7645AC022B0684FF007F6139 /* DailyRecordPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyRecordPage.swift; sourceTree = "<group>"; };
 		768562D82AFC821F00AF5C95 /* ProfileSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSetView.swift; sourceTree = "<group>"; };
 		768562DA2AFCC1DB00AF5C95 /* ProfileInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInput.swift; sourceTree = "<group>"; };
 		768562DD2AFDCE6F00AF5C95 /* HealthKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
@@ -190,6 +197,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5F904CA2AE4E13500FDE4CB /* WrappingHStack in Frameworks */,
+				30A0B2382B06594D00F51AE1 /* FSCalendar in Frameworks */,
 				30BB50BC2ADFABDB0050CF69 /* Sliders in Frameworks */,
 				300E8E9C2AFB30D2001728FE /* Lottie in Frameworks */,
 			);
@@ -326,6 +334,7 @@
 				307B7D7C2AE43092007CB7F5 /* TabItem.swift */,
 				B5F904CD2AE4E4DF00FDE4CB /* SideEffects.swift */,
 				76B3870F2AFF99C80067CDAF /* Answer.swift */,
+				7645AC022B0684FF007F6139 /* DailyRecordPage.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -336,6 +345,7 @@
 				30BB50C72AE2CDE90050CF69 /* ViewModel */,
 				305240432ADFA78C008FCD14 /* Components */,
 				30BB50BF2ADFFB710050CF69 /* DailyRecordView.swift */,
+				768562E32AFE73A500AF5C95 /* ConditionView.swift */,
 				30BB50BD2ADFFAE00050CF69 /* ConditionCheckView.swift */,
 				30BB50C32AE1FCA80050CF69 /* MoodCheckView.swift */,
 				B597462B2AE5D7190074D5CC /* SleepingTimeView.swift */,
@@ -348,7 +358,6 @@
 				30151F442AE3AE850036B60D /* DrinkCheckView.swift */,
 				307B7D892AE4E0B1007CB7F5 /* AdditionalMemoView.swift */,
 				301971532AE4F00600728D16 /* DailyCompleteView.swift */,
-				768562E32AFE73A500AF5C95 /* ConditionView.swift */,
 				76B387112AFFAFC60067CDAF /* ActivityView.swift */,
 				76B387132AFFC6D00067CDAF /* ActivityModalView.swift */,
 			);
@@ -416,7 +425,7 @@
 			isa = PBXGroup;
 			children = (
 				307B7D7E2AE43254007CB7F5 /* RecordMainView.swift */,
-				301971552AE4FECE00728D16 /* WeeklyMedicationCalendar.swift */,
+				30A0B2392B065A1D00F51AE1 /* RecordWeeklyCalendar.swift */,
 				301971572AE50A0800728D16 /* DailyMedicationList.swift */,
 				305240422ADFA766008FCD14 /* DailyRecord */,
 			);
@@ -452,6 +461,7 @@
 			children = (
 				B5BDEC272B0AADAD0018D1C9 /* DailyViewModel.swift */,
 				768562E52AFE7BCB00AF5C95 /* ConditionViewModel.swift */,
+				7645AC002B06587B007F6139 /* DailyRecordViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -461,6 +471,7 @@
 			children = (
 				768562DD2AFDCE6F00AF5C95 /* HealthKitManager.swift */,
 				7645ABFC2B0306BA007F6139 /* PushManager.swift */,
+				7645ABFE2B052E5A007F6139 /* PushProtocol.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -502,6 +513,7 @@
 				30BB50BB2ADFABDB0050CF69 /* Sliders */,
 				B5F904C92AE4E13500FDE4CB /* WrappingHStack */,
 				300E8E9B2AFB30D2001728FE /* Lottie */,
+				30A0B2372B06594D00F51AE1 /* FSCalendar */,
 			);
 			productName = Hamsters;
 			productReference = 304180CD2ADA8E37002AD2E3 /* Hamsters.app */;
@@ -536,6 +548,7 @@
 				30BB50BA2ADFABDB0050CF69 /* XCRemoteSwiftPackageReference "swiftui-sliders" */,
 				B5F904C82AE4E13500FDE4CB /* XCRemoteSwiftPackageReference "WrappingHStack" */,
 				300E8E9A2AFB30D2001728FE /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				30A0B2362B06594D00F51AE1 /* XCRemoteSwiftPackageReference "FSCalendar" */,
 			);
 			productRefGroup = 304180CE2ADA8E37002AD2E3 /* Products */;
 			projectDirPath = "";
@@ -594,17 +607,19 @@
 				B51663CE2B05B5BB00241491 /* DayRecords+CoreDataProperties.swift in Sources */,
 				B5F904CE2AE4E4DF00FDE4CB /* SideEffects.swift in Sources */,
 				769FFF8F2AFBE23700B12515 /* safeAreaInsets.swift in Sources */,
+				7645AC012B06587B007F6139 /* DailyRecordViewModel.swift in Sources */,
 				B5F904C72AE4E0DA00FDE4CB /* SideEffectCheckView.swift in Sources */,
 				B51663CD2B05B5BB00241491 /* DayRecords+CoreDataClass.swift in Sources */,
 				30BB50B92ADFABBC0050CF69 /* ConditionSlider.swift in Sources */,
-				301971562AE4FECE00728D16 /* WeeklyMedicationCalendar.swift in Sources */,
 				304180D32ADA8E37002AD2E3 /* StartView.swift in Sources */,
 				30D60C952B00FD1C005D5D96 /* NextButton.swift in Sources */,
 				307B7D702AE424A2007CB7F5 /* AlarmFrequencyView.swift in Sources */,
 				76D52F452AFF2A79009A0698 /* ConditionModel.swift in Sources */,
+				7645AC032B0684FF007F6139 /* DailyRecordPage.swift in Sources */,
 				B593116C2B01B7490092A2E0 /* Medicines+CoreDataProperties.swift in Sources */,
 				76D52F472AFF2AD2009A0698 /* UserChat.swift in Sources */,
 				307B7D872AE43322007CB7F5 /* MyInfoMainView.swift in Sources */,
+				30A0B23A2B065A1D00F51AE1 /* RecordWeeklyCalendar.swift in Sources */,
 				B593116B2B01B7490092A2E0 /* Medicines+CoreDataClass.swift in Sources */,
 				B5F904D02AE4E61200FDE4CB /* CapsuleView.swift in Sources */,
 				30E376C72B011FCA00E8A10D /* CheerUpView.swift in Sources */,
@@ -636,6 +651,7 @@
 				307B7D7D2AE43092007CB7F5 /* TabItem.swift in Sources */,
 				304180D12ADA8E37002AD2E3 /* HamstersApp.swift in Sources */,
 				B5F904D22AE4F98F00FDE4CB /* WeightCheckView.swift in Sources */,
+				7645ABFF2B052E5A007F6139 /* PushProtocol.swift in Sources */,
 				304180F52ADC1325002AD2E3 /* OnboardingBackButton.swift in Sources */,
 				3052401A2ADE1299008FCD14 /* String+.swift in Sources */,
 				76E48DD32AFB8F670065EA65 /* WelcomeView.swift in Sources */,
@@ -779,7 +795,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Hamsters/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = TAP4M2PF77;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Hamsters/Info.plist;
@@ -821,7 +837,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Hamsters/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = TAP4M2PF77;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Hamsters/Info.plist;
@@ -885,6 +901,14 @@
 				minimumVersion = 4.3.3;
 			};
 		};
+		30A0B2362B06594D00F51AE1 /* XCRemoteSwiftPackageReference "FSCalendar" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/WenchaoD/FSCalendar.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.8.4;
+			};
+		};
 		30BB50BA2ADFABDB0050CF69 /* XCRemoteSwiftPackageReference "swiftui-sliders" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/spacenation/swiftui-sliders.git";
@@ -908,6 +932,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 300E8E9A2AFB30D2001728FE /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
+		};
+		30A0B2372B06594D00F51AE1 /* FSCalendar */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 30A0B2362B06594D00F51AE1 /* XCRemoteSwiftPackageReference "FSCalendar" */;
+			productName = FSCalendar;
 		};
 		30BB50BB2ADFABDB0050CF69 /* Sliders */ = {
 			isa = XCSwiftPackageProductDependency;

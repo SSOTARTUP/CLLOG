@@ -14,4 +14,5 @@ enum UserDefaultsKey: String {
     case sex // 성별 - String(female, male, menopause)
     case smoking    // 흡연여부 - Bool
     case complete   // 설정 완료 - Bool
+    case dailyRecordPage
 }

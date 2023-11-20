@@ -8,13 +8,12 @@
 import SwiftUI
 
 struct WeightCheckView: View {
-    @Binding var pageNumber: Int
+    @ObservedObject var dailyRecordViewModel: DailyRecordViewModel
+//    @Binding var pageNumber: Int
     
-    @State var selectedKg: Int = 50
-    @State var selectedGr: Int = 0
-    
-    @Binding var weight: Double
-    
+//    @State var selectedKg: Int = 50
+//    @State var selectedGr: Int = 0
+        
     var kgRange: [Int] = Array(1...200)
     var grRange: [Int] = Array(0...9)
     
@@ -34,7 +33,7 @@ struct WeightCheckView: View {
             .padding(.horizontal, 16)
             
             HStack {
-                Text("\(selectedKg)" + "." + "\(selectedGr)" + " kg")
+                Text("\(dailyRecordViewModel.selectedKg)" + "." + "\(dailyRecordViewModel.selectedGr)" + " kg")
                     .font(.largeTitle)
                     .foregroundStyle(Color.thoGreen)
                     .padding(.vertical, 12)
@@ -46,7 +45,7 @@ struct WeightCheckView: View {
             
             // .tag picker 에 값 동기화를 위함, 이유 더 찾아보기
             HStack {
-                Picker(selection: $selectedKg, label: Text("Kilograms")) {
+                Picker(selection: $dailyRecordViewModel.selectedKg, label: Text("Kilograms")) {
                     ForEach(kgRange, id: \.self) { kg in
                         Text("\(kg)").tag(kg)
                             .font(.title3)
@@ -56,7 +55,7 @@ struct WeightCheckView: View {
                 
                 Text(".") // 구분점
                 
-                Picker(selection: $selectedGr, label: Text("Grams")) {
+                Picker(selection: $dailyRecordViewModel.selectedGr, label: Text("Grams")) {
                     ForEach(grRange, id: \.self) { gram in
                         Text("\(gram)").tag(gram)
                             .font(.title3)
@@ -69,28 +68,30 @@ struct WeightCheckView: View {
             }
             .padding(.horizontal, 68)
             .padding(.top, 34)
-            .onChange(of: selectedKg) { _ in
+            .onChange(of: dailyRecordViewModel.selectedKg) { _ in
                 updateWeight()
             }
-            .onChange(of: selectedGr) { _ in
+            .onChange(of: dailyRecordViewModel.selectedGr) { _ in
                 updateWeight()
-                print(weight)
             }
             
             
             Spacer()
             
-            
-            DailyRecordNextButton(pageNumber: $pageNumber, isActiveRecord:.constant(true), title: "다음")
+            NextButton(title: "다음", isActive: .constant(true)) {
+                dailyRecordViewModel.goToNextPage()
+            }
+            .padding(.bottom, 40)
+//            DailyRecordNextButton(pageNumber: $pageNumber, isActiveRecord:.constant(true), title: "다음")
             
         }
     }
     
     func updateWeight() {
-        weight = Double(selectedKg) + Double(selectedGr) / 10.0
+        dailyRecordViewModel.weight = Double(dailyRecordViewModel.selectedKg) + Double(dailyRecordViewModel.selectedGr) / 10.0
     }
 }
 
 #Preview {
-    WeightCheckView(pageNumber: .constant(11), weight: .constant(50.0))
+    WeightCheckView(dailyRecordViewModel: DailyRecordViewModel())
 }

@@ -1,16 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Character Icon (2).png",
+      "filename" : "goldenHamster.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Character Icon.png",
+      "filename" : "goldenHamster@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "goldenHamster@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
