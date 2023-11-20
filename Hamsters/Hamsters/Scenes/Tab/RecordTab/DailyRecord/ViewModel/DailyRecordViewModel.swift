@@ -8,8 +8,8 @@
 import Foundation
 import SwiftUI
 
-class DailyRecordViewModel: ObservableObject {
-    
+class DailyRecordViewModel: RecordProtocol {
+        
     @AppStorage(UserDefaultsKey.dailyRecordPage.rawValue) var dailyRecordPages: String = [
         DailyRecordPage.condition,
         DailyRecordPage.mood,
@@ -23,6 +23,7 @@ class DailyRecordViewModel: ObservableObject {
         DailyRecordPage.memo,
         DailyRecordPage.complete
     ].convertPageToString
+    
     
     @Published var closeAlert: Bool = false
     
@@ -61,7 +62,7 @@ class DailyRecordViewModel: ObservableObject {
     
     @Published var pageNumber = 0
     
-    func goToNextPage() {
+    func bottomButtonClicked() {
         pageNumber += pageNumber < dailyRecordPages.convertStringToPage.count - 1 ? 1 : 0
         currentPage = dailyRecordPages.convertStringToPage[pageNumber]
     }

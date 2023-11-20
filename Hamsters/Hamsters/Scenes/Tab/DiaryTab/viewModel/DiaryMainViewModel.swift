@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-class DiaryMainViewModel: ObservableObject {
+class DiaryMainViewModel: RecordProtocol {
     
     @AppStorage(UserDefaultsKey.dailyRecordPage.rawValue) var dailyRecordPages: String = [
         DailyRecordPage.condition,
@@ -62,5 +62,8 @@ class DiaryMainViewModel: ObservableObject {
     @Published var memo = ""
     
     @Published var pageNumber = 0
-    
+ 
+    func bottomButtonClicked() {
+        print("DiaryMainViewModel bottom Button Clicked")
+    }
 }

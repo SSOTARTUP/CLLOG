@@ -27,51 +27,48 @@ enum Mood: CaseIterable {
     }
 }
 
-struct MoodCheckView: View {
-    @ObservedObject var dailyRecordViewModel:DailyRecordViewModel
+struct MoodCheckView<T: RecordProtocol>: View {
+    @ObservedObject var viewModel: T
     
-//    @Binding var pageNumber: Int
-//    @Binding var userValues: [Double]
     
     var body: some View {
         ZStack(alignment: .top) {
             ScrollView {
+                if let _ = viewModel as? DailyRecordViewModel {
+                    HStack {
+                        Text("오늘의 기분은 어땠나요?")
+                            .font(.largeTitle)
+                            .fontWeight(.bold)
+                            .padding(.bottom, 16)
+                        
+                        Spacer()
+                    }
+                    .padding(.leading, 16)
+                    .background {
+                        Rectangle()
+                            .fill(.white)
+                    }
+                }
                 VStack(spacing: 16) {
                     ForEach(Array(zip(0..<Mood.allCases.count, Mood.allCases)), id: \.0) { index, mood in
-                        ConditionSlider(title: mood.question, userValue: $dailyRecordViewModel.moodValues[index])
+                        
+                        ConditionSlider(title: mood.question, userValue: $viewModel.moodValues[index])
                             .padding(.horizontal, 16)
+
                     }
                     NextButton(title: "다음", isActive: .constant(true)) {
-                        dailyRecordViewModel.goToNextPage()
+                        viewModel.bottomButtonClicked()
                     }
                     .padding(.top, 24)
                     .padding(.bottom, 40)
-//                    DailyRecordNextButton(pageNumber: $pageNumber, isActiveRecord:.constant(true), title: "다음")
-//                        .padding(.top, 12)
                 }
-                .padding(.top, 78)  // title 영역만큼
+   //             .padding(.top, 78)  // title 영역만큼
             }
             .scrollIndicators(.never)
-            
-            HStack {
-                Text("오늘의 기분은 어땠나요?")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                    .padding(.bottom, 16)
-                
-                Spacer()
-            }
-            .padding(.leading, 16)
-            .background {
-                Rectangle()
-                    .fill(.white)
-//                    .shadow(color: .black.opacity(0.15), radius: 6, x: 0, y: 4)
-//                    .mask(Rectangle().padding(.bottom, -16))
-            }
         }
     }
 }
 
 #Preview {
-    MoodCheckView(dailyRecordViewModel: DailyRecordViewModel())
+    MoodCheckView(viewModel: DailyRecordViewModel())
 }

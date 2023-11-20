@@ -15,7 +15,7 @@ extension String {
 
 extension String {
     var convertStringToPage: [DailyRecordPage] {
-        self.split(separator: " ")
+        self.split(separator: "-")
             .compactMap { Int(String($0)) }
             .sorted{ $0 < $1 }
             .compactMap { DailyRecordPage(rawValue: $0) }

@@ -8,21 +8,19 @@
 import SwiftUI
 import WrappingHStack
 
-struct SideEffectCheckView: View {
-    @ObservedObject var dailyRecordViewModel = DailyRecordViewModel()
-//    @Binding var pageNumber: Int
-//    @Binding var popularEffect: [SideEffects.Major]
-//    @Binding var dangerEffect: [SideEffects.Dangerous]
+struct SideEffectCheckView<T: RecordProtocol>: View {
+    @ObservedObject var viewModel: T
     
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
                 Group {
-                    Text("불편한 증상이 있었나요?")
-                        .font(.largeTitle)
-                        .fontWeight(.bold)
-                        .padding(.bottom, 16)
-                    
+                    if let _ = viewModel as? DailyRecordViewModel {
+                        Text("불편한 증상이 있었나요?")
+                            .font(.largeTitle)
+                            .fontWeight(.bold)
+                            .padding(.bottom, 16)
+                    }
                     VStack(alignment: .leading, spacing: 20) {
                         Text("주요 부작용")
                             .font(.headline)
@@ -30,7 +28,7 @@ struct SideEffectCheckView: View {
                         
                         WrappingHStack(alignment: .leading, horizontalSpacing: 8, verticalSpacing: 10) {
                             ForEach(SideEffects.Major.allCases, id: \.self) { effect in
-                                CapsuleView(text: effect.rawValue, isSelected: dailyRecordViewModel.popularEffect.contains(effect)) {
+                                CapsuleView(text: effect.rawValue, isSelected: viewModel.popularEffect.contains(effect)) {
                                     updatePopularEffect(with: effect)
                                 }
                             }
@@ -53,7 +51,7 @@ struct SideEffectCheckView: View {
                         }
                         WrappingHStack(alignment: .leading, horizontalSpacing: 8, verticalSpacing: 10) {
                             ForEach(SideEffects.Dangerous.allCases, id: \.self) { effect in
-                                CapsuleView(text: effect.rawValue, isSelected: dailyRecordViewModel.dangerEffect.contains(effect)) {
+                                CapsuleView(text: effect.rawValue, isSelected: viewModel.dangerEffect.contains(effect)) {
                                     updateDangerEffect(with: effect)
                                 }
                             }
@@ -77,10 +75,10 @@ struct SideEffectCheckView: View {
                 Spacer()
                 
                 NextButton(title: "다음", isActive: .constant(true)) {
-                    dailyRecordViewModel.goToNextPage()
+                    viewModel.bottomButtonClicked()
                 }
                 .padding(.bottom, 40)
-//                .disabled((dailyRecordViewModel.popularEffect.count < 1 && dailyRecordViewModel.dangerEffect.count < 1))
+//                .disabled((viewModel.popularEffect.count < 1 && viewModel.dangerEffect.count < 1))
                 
 //                DailyRecordNextButton(pageNumber: $pageNumber, isActiveRecord:.constant(true), title: "다음")
 //                    .disabled(popularEffect.count < 1 && dangerEffect.count < 1)
@@ -90,31 +88,31 @@ struct SideEffectCheckView: View {
     
     private func updatePopularEffect(with effect: SideEffects.Major) {
         if effect == .none {
-            dailyRecordViewModel.popularEffect = [.none] // '없음'만 선택됨
+            viewModel.popularEffect = [.none] // '없음'만 선택됨
         } else {
-            dailyRecordViewModel.popularEffect.removeAll { $0 == .none } // '없음'을 제거
-            if let index = dailyRecordViewModel.popularEffect.firstIndex(of: effect) {
-                dailyRecordViewModel.popularEffect.remove(at: index)
+            viewModel.popularEffect.removeAll { $0 == .none } // '없음'을 제거
+            if let index = viewModel.popularEffect.firstIndex(of: effect) {
+                viewModel.popularEffect.remove(at: index)
             } else {
-                dailyRecordViewModel.popularEffect.append(effect)
+                viewModel.popularEffect.append(effect)
             }
         }
     }
     
     private func updateDangerEffect(with effect: SideEffects.Dangerous) {
         if effect == .none {
-            dailyRecordViewModel.dangerEffect = [.none] // '없음'만 선택됨
+            viewModel.dangerEffect = [.none] // '없음'만 선택됨
         } else {
-            dailyRecordViewModel.dangerEffect.removeAll { $0 == .none } // '없음'을 제거
-            if let index = dailyRecordViewModel.dangerEffect.firstIndex(of: effect) {
-                dailyRecordViewModel.dangerEffect.remove(at: index)
+            viewModel.dangerEffect.removeAll { $0 == .none } // '없음'을 제거
+            if let index = viewModel.dangerEffect.firstIndex(of: effect) {
+                viewModel.dangerEffect.remove(at: index)
             } else {
-                dailyRecordViewModel.dangerEffect.append(effect)
+                viewModel.dangerEffect.append(effect)
             }
         }
     }
 }
 
 #Preview {
-    SideEffectCheckView(dailyRecordViewModel: DailyRecordViewModel())
+    SideEffectCheckView(viewModel: DailyRecordViewModel())
 }

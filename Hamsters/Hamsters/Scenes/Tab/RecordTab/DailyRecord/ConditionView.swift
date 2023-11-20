@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct ConditionView<T:ObservableObject>: View {
-    @ObservedObject var dailyRecordViewModel:T
+struct ConditionView: View {
+    @ObservedObject var dailyRecordViewModel: DailyRecordViewModel
     
     @StateObject var viewModel = ConditionViewModel()
     @State var scroll:ScrollViewProxy?
@@ -35,9 +35,8 @@ struct ConditionView<T:ObservableObject>: View {
                             .id(offset)
                     case .button:
                         NextButton(title: "다음", isActive: .constant(true)) {
-                            var z = dailyRecordViewModel as! DailyRecordViewModel
-                            z.answer = viewModel.answer
-                            z.goToNextPage()
+                            dailyRecordViewModel.answer = viewModel.answer
+                            dailyRecordViewModel.bottomButtonClicked()
                         }
                         .padding(.top,24)
                         .padding(.bottom,41)
