@@ -27,22 +27,24 @@ enum Mood: CaseIterable {
     }
 }
 
-struct MoodCheckView: View {
-    @ObservedObject var dailyRecordViewModel:DailyRecordViewModel
+struct MoodCheckView<T: RecordProtocol>: View {
+    @ObservedObject var viewModel: T
     
-//    @Binding var pageNumber: Int
-//    @Binding var userValues: [Double]
     
     var body: some View {
         ZStack(alignment: .top) {
             ScrollView {
                 VStack(spacing: 16) {
                     ForEach(Array(zip(0..<Mood.allCases.count, Mood.allCases)), id: \.0) { index, mood in
-                        ConditionSlider(title: mood.question, userValue: $dailyRecordViewModel.moodValues[index])
+                        
+                        ConditionSlider(title: mood.question, userValue: $viewModel.moodValues[index])
                             .padding(.horizontal, 16)
+
                     }
                     NextButton(title: "다음", isActive: .constant(true)) {
-                        dailyRecordViewModel.goToNextPage()
+                        if let vm = viewModel as? DailyRecordViewModel {
+                            vm.goToNextPage()
+                        }
                     }
                     .padding(.top, 24)
                     .padding(.bottom, 40)
@@ -73,5 +75,5 @@ struct MoodCheckView: View {
 }
 
 #Preview {
-    MoodCheckView(dailyRecordViewModel: DailyRecordViewModel())
+    MoodCheckView(viewModel: DailyRecordViewModel())
 }

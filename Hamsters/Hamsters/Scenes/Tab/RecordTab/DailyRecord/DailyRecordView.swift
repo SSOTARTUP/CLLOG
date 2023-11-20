@@ -24,10 +24,10 @@ struct DailyRecordView: View {
                 case .condition: // ADHD 컨디션 기록
                     ConditionView(dailyRecordViewModel: viewModel)
                 case .mood: // 감정 기록
-                    MoodCheckView(dailyRecordViewModel: viewModel)
+                    MoodCheckView(viewModel: viewModel)
                     
                 case .sleeping: // 수면 기록
-                    SleepingTimeView(dailyRecordViewModel: viewModel)
+                    SleepingTimeView(viewModel: viewModel)
                     
                 case .sideEffect: // 부작용 기록
                     SideEffectCheckView(dailyRecordViewModel: viewModel)

@@ -26,6 +26,6 @@ typealias DailyRecordPages = [DailyRecordPage]
 extension DailyRecordPages {
     var convertPageToString: String {
         self.sorted{ $0.rawValue < $1.rawValue }
-            .map { String($0.rawValue) }.joined(separator: " ")
+            .map { String($0.rawValue) }.joined(separator: "-")
     }
 }

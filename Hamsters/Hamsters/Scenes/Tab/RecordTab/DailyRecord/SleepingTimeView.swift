@@ -7,17 +7,8 @@
 
 import SwiftUI
 
-struct SleepingTimeView: View {
-    @ObservedObject var dailyRecordViewModel:DailyRecordViewModel
-    
-//    @Binding var pageNumber: Int
-//    @Binding var sleepingTime: Int
-    
-//    @State var startAngle: Double = 0
-//    @State var toAngle: Double = 180
-//    
-//    @State var startProgress: CGFloat = 0
-//    @State var toProgress: CGFloat = 0.5
+struct SleepingTimeView<T: RecordProtocol>: View {
+    @ObservedObject var viewModel: T
     
     let timeFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -42,7 +33,7 @@ struct SleepingTimeView: View {
                             .font(.footnote)
                             .foregroundStyle(.secondary)
                         
-                        Text(timeFormatter.string(from: getTime(angle: dailyRecordViewModel.startAngle)))
+                        Text(timeFormatter.string(from: getTime(angle: viewModel.startAngle)))
                             .font(.title2)
                             .bold()
                             .foregroundStyle(.thoNavy)
@@ -57,7 +48,7 @@ struct SleepingTimeView: View {
                             .font(.footnote)
                             .foregroundStyle(.secondary)
                         
-                        Text(timeFormatter.string(from: getTime(angle: dailyRecordViewModel.toAngle)))
+                        Text(timeFormatter.string(from: getTime(angle: viewModel.toAngle)))
                             .font(.title2)
                             .bold()
                             .foregroundStyle(.thoNavy)
@@ -97,9 +88,11 @@ struct SleepingTimeView: View {
                 Spacer()
                 
                 Button {
-
-                    dailyRecordViewModel.sleepingTime = (getTimeDifference().0 * 60) + getTimeDifference().1
-                    dailyRecordViewModel.goToNextPage()
+                    viewModel.sleepingTime = (getTimeDifference().0 * 60) + getTimeDifference().1
+                    
+                    if let vm = viewModel as? DailyRecordViewModel {
+                        vm.goToNextPage()
+                    }
 
                 } label: {
                     Text("다음")
@@ -160,10 +153,10 @@ struct SleepingTimeView: View {
                     .stroke(Color.thoDisabled, style: StrokeStyle(lineWidth: 40, lineCap: .round, lineJoin: .round))
                     .shadow(radius: 5)
                 
-                let reverseRotation = (dailyRecordViewModel.startProgress > dailyRecordViewModel.toProgress) ? -Double((1 - dailyRecordViewModel.startProgress) * 360) : 0
+                let reverseRotation = (viewModel.startProgress > viewModel.toProgress) ? -Double((1 - viewModel.startProgress) * 360) : 0
                 
                 Circle()
-                    .trim(from: dailyRecordViewModel.startProgress > dailyRecordViewModel.toProgress ? 0 : dailyRecordViewModel.startProgress, to: dailyRecordViewModel.toProgress + (-reverseRotation / 360))
+                    .trim(from: viewModel.startProgress > viewModel.toProgress ? 0 : viewModel.startProgress, to: viewModel.toProgress + (-reverseRotation / 360))
                     .stroke(Color.thoNavy, style: StrokeStyle(lineWidth: 40, lineCap: .round, lineJoin: .round))
                     .rotationEffect(.init(degrees: -90))
                     .rotationEffect(.init(degrees: reverseRotation))
@@ -178,9 +171,9 @@ struct SleepingTimeView: View {
                     .font(.title2)
                     .foregroundStyle(.white)
                     .rotationEffect(.init(degrees: 90))
-                    .rotationEffect(.init(degrees: -dailyRecordViewModel.startAngle))
+                    .rotationEffect(.init(degrees: -viewModel.startAngle))
                     .offset(x: width / 2)
-                    .rotationEffect(.init(degrees: dailyRecordViewModel.startAngle))
+                    .rotationEffect(.init(degrees: viewModel.startAngle))
                     .gesture(
                         
                         DragGesture()
@@ -195,9 +188,9 @@ struct SleepingTimeView: View {
                     .font(.title2)
                     .foregroundStyle(.yellow)
                     .rotationEffect(.init(degrees: 90))
-                    .rotationEffect(.init(degrees: -dailyRecordViewModel.toAngle))
+                    .rotationEffect(.init(degrees: -viewModel.toAngle))
                     .offset(x: width / 2)
-                    .rotationEffect(.init(degrees: dailyRecordViewModel.toAngle))
+                    .rotationEffect(.init(degrees: viewModel.toAngle))
                     .gesture(
                         
                         DragGesture()
@@ -236,11 +229,11 @@ struct SleepingTimeView: View {
         let progress = roundedAngle / 360
         
         if fromSlider {
-            dailyRecordViewModel.startAngle = roundedAngle
-            dailyRecordViewModel.startProgress = progress
+            viewModel.startAngle = roundedAngle
+            viewModel.startProgress = progress
         } else {
-            dailyRecordViewModel.toAngle = roundedAngle
-            dailyRecordViewModel.toProgress = progress
+            viewModel.toAngle = roundedAngle
+            viewModel.toProgress = progress
         }
     }
     
@@ -263,8 +256,8 @@ struct SleepingTimeView: View {
     }
     
     func getTimeDifference() -> (Int, Int) {
-        let startDate = getTime(angle: dailyRecordViewModel.startAngle)
-        let endDate = getTime(angle: dailyRecordViewModel.toAngle)
+        let startDate = getTime(angle: viewModel.startAngle)
+        let endDate = getTime(angle: viewModel.toAngle)
         
         // 날짜 계산을 위한 캘린더를 사용하여 시간과 분을 추출합니다.
         let components = Calendar.current.dateComponents([.hour, .minute], from: startDate, to: endDate)
@@ -289,5 +282,5 @@ struct SleepingTimeView: View {
 }
 
 #Preview {
-    SleepingTimeView(dailyRecordViewModel: DailyRecordViewModel())
+    SleepingTimeView(viewModel: DailyRecordViewModel())
 }
