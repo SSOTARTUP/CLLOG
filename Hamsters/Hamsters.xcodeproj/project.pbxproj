@@ -33,6 +33,7 @@
 		305240182ADD73EB008FCD14 /* SexClassification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305240152ADD73EB008FCD14 /* SexClassification.swift */; };
 		3052401A2ADE1299008FCD14 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305240192ADE1299008FCD14 /* String+.swift */; };
 		305240462ADFA855008FCD14 /* DailyRecordProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305240452ADFA855008FCD14 /* DailyRecordProgressBar.swift */; };
+		3077DDA42B0B358F00F715EE /* SelectedHamster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3077DDA32B0B358F00F715EE /* SelectedHamster.swift */; };
 		307B7D662AE42480007CB7F5 /* MedicineModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307B7D642AE42480007CB7F5 /* MedicineModel.swift */; };
 		307B7D672AE42480007CB7F5 /* AlarmItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307B7D652AE42480007CB7F5 /* AlarmItem.swift */; };
 		307B7D6E2AE424A2007CB7F5 /* MedicineRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307B7D692AE424A2007CB7F5 /* MedicineRow.swift */; };
@@ -62,6 +63,8 @@
 		30D60C912AFFD048005D5D96 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D60C902AFFD048005D5D96 /* Onboarding.swift */; };
 		30D60C952B00FD1C005D5D96 /* NextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D60C942B00FD1C005D5D96 /* NextButton.swift */; };
 		30E376C72B011FCA00E8A10D /* CheerUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E376C62B011FCA00E8A10D /* CheerUpView.swift */; };
+		30EEFF372B09D13F0016D8BA /* ProfileEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EEFF362B09D13F0016D8BA /* ProfileEditView.swift */; };
+		30EEFF392B09D15C0016D8BA /* QuestionEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EEFF382B09D15C0016D8BA /* QuestionEditView.swift */; };
 		7645ABFD2B0306BA007F6139 /* PushManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7645ABFC2B0306BA007F6139 /* PushManager.swift */; };
 		7645ABFF2B052E5A007F6139 /* PushProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7645ABFE2B052E5A007F6139 /* PushProtocol.swift */; };
 		7645AC012B06587B007F6139 /* DailyRecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7645AC002B06587B007F6139 /* DailyRecordViewModel.swift */; };
@@ -122,6 +125,7 @@
 		305240152ADD73EB008FCD14 /* SexClassification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SexClassification.swift; sourceTree = "<group>"; };
 		305240192ADE1299008FCD14 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		305240452ADFA855008FCD14 /* DailyRecordProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyRecordProgressBar.swift; sourceTree = "<group>"; };
+		3077DDA32B0B358F00F715EE /* SelectedHamster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedHamster.swift; sourceTree = "<group>"; };
 		307B7D642AE42480007CB7F5 /* MedicineModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MedicineModel.swift; sourceTree = "<group>"; };
 		307B7D652AE42480007CB7F5 /* AlarmItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmItem.swift; sourceTree = "<group>"; };
 		307B7D692AE424A2007CB7F5 /* MedicineRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MedicineRow.swift; sourceTree = "<group>"; };
@@ -149,6 +153,8 @@
 		30D60C902AFFD048005D5D96 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
 		30D60C942B00FD1C005D5D96 /* NextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButton.swift; sourceTree = "<group>"; };
 		30E376C62B011FCA00E8A10D /* CheerUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheerUpView.swift; sourceTree = "<group>"; };
+		30EEFF362B09D13F0016D8BA /* ProfileEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditView.swift; sourceTree = "<group>"; };
+		30EEFF382B09D15C0016D8BA /* QuestionEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionEditView.swift; sourceTree = "<group>"; };
 		7645ABFC2B0306BA007F6139 /* PushManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushManager.swift; sourceTree = "<group>"; };
 		7645ABFE2B052E5A007F6139 /* PushProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushProtocol.swift; sourceTree = "<group>"; };
 		7645AC002B06587B007F6139 /* DailyRecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyRecordViewModel.swift; sourceTree = "<group>"; };
@@ -325,6 +331,7 @@
 				B5F904CD2AE4E4DF00FDE4CB /* SideEffects.swift */,
 				76B3870F2AFF99C80067CDAF /* Answer.swift */,
 				7645AC022B0684FF007F6139 /* DailyRecordPage.swift */,
+				3077DDA32B0B358F00F715EE /* SelectedHamster.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -442,6 +449,8 @@
 			isa = PBXGroup;
 			children = (
 				307B7D862AE43322007CB7F5 /* MyInfoMainView.swift */,
+				30EEFF362B09D13F0016D8BA /* ProfileEditView.swift */,
+				30EEFF382B09D15C0016D8BA /* QuestionEditView.swift */,
 			);
 			path = MyInfoTab;
 			sourceTree = "<group>";
@@ -567,9 +576,11 @@
 			files = (
 				307B7D812AE432A2007CB7F5 /* DiaryMainView.swift in Sources */,
 				307B7D712AE424A2007CB7F5 /* AlarmRow.swift in Sources */,
+				30EEFF372B09D13F0016D8BA /* ProfileEditView.swift in Sources */,
 				30BB50C22AE0C0680050CF69 /* DailyRecordNextButton.swift in Sources */,
 				307B7D6E2AE424A2007CB7F5 /* MedicineRow.swift in Sources */,
 				30151F452AE3AE850036B60D /* DrinkCheckView.swift in Sources */,
+				30EEFF392B09D15C0016D8BA /* QuestionEditView.swift in Sources */,
 				768562DE2AFDCE6F00AF5C95 /* HealthKitManager.swift in Sources */,
 				307B7D7B2AE43053007CB7F5 /* MainTabView.swift in Sources */,
 				307B7D772AE424BC007CB7F5 /* AlarmViewModel.swift in Sources */,
@@ -610,6 +621,7 @@
 				B5F904D02AE4E61200FDE4CB /* CapsuleView.swift in Sources */,
 				30E376C72B011FCA00E8A10D /* CheerUpView.swift in Sources */,
 				30BB50C42AE1FCA80050CF69 /* MoodCheckView.swift in Sources */,
+				3077DDA42B0B358F00F715EE /* SelectedHamster.swift in Sources */,
 				30BB50BE2ADFFAE00050CF69 /* ConditionCheckView.swift in Sources */,
 				300E8E9E2AFB314F001728FE /* LottieConfettiView.swift in Sources */,
 				30BB50C02ADFFB710050CF69 /* DailyRecordView.swift in Sources */,
