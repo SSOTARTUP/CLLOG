@@ -11,36 +11,29 @@ struct DiaryMainView: View {
     
     @StateObject var viewModel = DiaryMainViewModel()
     @State var isPresentedBottomSheet: Bool = false
-    @State var currentPage: DailyRecordPage?
     
     var body: some View {
         ScrollView {
             Button {
-                isPresentedBottomSheet.toggle()
+                showModal(.memo)
             } label: {
                 Text("CLICK ME")
             }
         }
         .ignoresSafeArea()
         .sheet(isPresented: $isPresentedBottomSheet) {
-            DiaryUpdateView(currentPage: currentPage)
+            DiaryUpdateView(viewModel: viewModel)
         }
     }
 }
 
-struct modalView: View {
-    var body: some View {
-        GeometryReader { geometry in
-            Text("HI")
-                .frame(width: 300,height:300)
-                .background(.blue)
-                .presentationDetents([.height(geometry.size.height)])
-               // .frame(height: geometry.size.height)
-        }
-
-
+extension DiaryMainView {
+    func showModal(_ currentPage: DailyRecordPage) {
+        isPresentedBottomSheet.toggle()
+        viewModel.currentPage = currentPage
     }
 }
+
 #Preview {
     DiaryMainView()
 }

@@ -47,6 +47,7 @@ struct DailyCompleteView<T: RecordProtocol>: View {
                     dismiss()
                     vm.saveRecord()
                 }
+                
             }
             .padding(.bottom, 40)
 //            DailyRecordNextButton(pageNumber: $pageNumber, isActiveRecord: $isActiveRecord, title: "완료")

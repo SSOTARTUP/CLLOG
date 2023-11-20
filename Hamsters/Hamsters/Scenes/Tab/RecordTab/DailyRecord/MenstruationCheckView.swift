@@ -13,11 +13,12 @@ struct MenstruationCheckView<T: RecordProtocol>: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             VStack(alignment: .leading, spacing: 0) {
-                Text("월경중이신가요?")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                    .padding(.bottom, 37)
-                
+                if let _ = viewModel as? DailyRecordViewModel {
+                    Text("월경중이신가요?")
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                        .padding(.bottom, 37)
+                }
                 HStack(spacing: 13) {
                     Button(action: {
                         viewModel.isPeriod = true
@@ -50,9 +51,7 @@ struct MenstruationCheckView<T: RecordProtocol>: View {
             Spacer()
             
             NextButton(title: "다음", isActive: .constant(true)) {
-                if let vm = viewModel as? DailyRecordViewModel {
-                    vm.goToNextPage()
-                }
+                viewModel.bottomButtonClicked()
             }
             .padding(.bottom, 40)
 //            DailyRecordNextButton(pageNumber: $pageNumber, isActiveRecord:.constant(true), title: "다음")

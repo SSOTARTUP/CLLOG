@@ -15,18 +15,20 @@ struct WeightCheckView<T: RecordProtocol>: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            Group {
-                Text("체중을 알려주세요")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                    .padding(.bottom, 12)
-                
-                Text("약물 복용으로 인한 체중변화가 있을 수 있습니다.")
-                    .font(.body)
-                    .foregroundStyle(.secondary)
-                    .padding(.bottom, 32)
+            if let _ = viewModel as? DailyRecordViewModel {
+                Group {
+                    Text("체중을 알려주세요")
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                        .padding(.bottom, 12)
+                    
+                    Text("약물 복용으로 인한 체중변화가 있을 수 있습니다.")
+                        .font(.body)
+                        .foregroundStyle(.secondary)
+                        .padding(.bottom, 32)
+                }
+                .padding(.horizontal, 16)
             }
-            .padding(.horizontal, 16)
             
             HStack {
                 Text("\(viewModel.selectedKg)" + "." + "\(viewModel.selectedGr)" + " kg")
@@ -75,9 +77,7 @@ struct WeightCheckView<T: RecordProtocol>: View {
             Spacer()
             
             NextButton(title: "다음", isActive: .constant(true)) {
-                if let vm = viewModel as? DailyRecordViewModel {
-                    vm.goToNextPage()
-                }
+                viewModel.bottomButtonClicked()
             }
             .padding(.bottom, 40)
         }

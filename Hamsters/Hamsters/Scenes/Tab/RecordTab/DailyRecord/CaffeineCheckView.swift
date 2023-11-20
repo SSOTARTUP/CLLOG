@@ -15,19 +15,15 @@ enum CaffeineIntake {
 struct CaffeineCheckView<T: RecordProtocol>: View {
     @ObservedObject var viewModel: T
     
-//    @Binding var pageNumber: Int
-//    @Binding var amountOfCaffein: Int
-    
-//    @State private var isSelected: [Bool] = Array(repeating: false, count: 10)
-//    @State private var isTaken: CaffeineIntake?
-    
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            Text("오늘의 카페인 ☕️️")
-                .font(.largeTitle)
-                .fontWeight(.bold)
-                .padding(.bottom, 16)
-                .padding(.horizontal, 16)
+            if let _ = viewModel as? DailyRecordViewModel {
+                Text("오늘의 카페인 ☕️️")
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                    .padding(.bottom, 16)
+                    .padding(.horizontal, 16)
+            }
             
             HStack(spacing: 13) {
                 Button {
@@ -91,9 +87,7 @@ struct CaffeineCheckView<T: RecordProtocol>: View {
             Spacer()
             
             NextButton(title: "다음", isActive: .constant(true)) {
-                if let vm = viewModel as? DailyRecordViewModel {
-                    vm.goToNextPage()
-                }
+                viewModel.bottomButtonClicked()
             }
             .padding(.bottom, 40)
 //            DailyRecordNextButton(pageNumber: $pageNumber, isActiveRecord: .constant(true), title: "다음")

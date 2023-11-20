@@ -36,7 +36,7 @@ struct ConditionView: View {
                     case .button:
                         NextButton(title: "다음", isActive: .constant(true)) {
                             dailyRecordViewModel.answer = viewModel.answer
-                            dailyRecordViewModel.goToNextPage()
+                            dailyRecordViewModel.bottomButtonClicked()
                         }
                         .padding(.top,24)
                         .padding(.bottom,41)

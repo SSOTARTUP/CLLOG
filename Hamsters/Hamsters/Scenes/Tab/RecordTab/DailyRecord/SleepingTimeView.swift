@@ -21,12 +21,13 @@ struct SleepingTimeView<T: RecordProtocol>: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
-                Text("얼마나 주무셨나요?")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                    .padding(.bottom, 16)
-                    .padding(.horizontal, 16)
-
+                if let _ = viewModel as? DailyRecordViewModel {
+                    Text("얼마나 주무셨나요?")
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                        .padding(.bottom, 16)
+                        .padding(.horizontal, 16)
+                }
                 HStack {
                     VStack(spacing: 0) {
                         Text("취침 시간")
@@ -89,10 +90,7 @@ struct SleepingTimeView<T: RecordProtocol>: View {
                 
                 Button {
                     viewModel.sleepingTime = (getTimeDifference().0 * 60) + getTimeDifference().1
-                    
-                    if let vm = viewModel as? DailyRecordViewModel {
-                        vm.goToNextPage()
-                    }
+                    viewModel.bottomButtonClicked()
 
                 } label: {
                     Text("다음")

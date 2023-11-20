@@ -79,6 +79,7 @@
 		76B387122AFFAFC60067CDAF /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B387112AFFAFC60067CDAF /* ActivityView.swift */; };
 		76B387142AFFC6D00067CDAF /* ActivityModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B387132AFFC6D00067CDAF /* ActivityModalView.swift */; };
 		76B387162B008A9D0067CDAF /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B387152B008A9D0067CDAF /* Date.swift */; };
+		76B771132B0B5BA0007EE7EA /* RecordProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B771122B0B5BA0007EE7EA /* RecordProtocol.swift */; };
 		76D52F402AFE9B45009A0698 /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D52F3F2AFE9B45009A0698 /* RoundedCorner.swift */; };
 		76D52F422AFE9B86009A0698 /* ComputerChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D52F412AFE9B86009A0698 /* ComputerChat.swift */; };
 		76D52F452AFF2A79009A0698 /* ConditionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D52F442AFF2A79009A0698 /* ConditionModel.swift */; };
@@ -174,6 +175,7 @@
 		76B387112AFFAFC60067CDAF /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
 		76B387132AFFC6D00067CDAF /* ActivityModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityModalView.swift; sourceTree = "<group>"; };
 		76B387152B008A9D0067CDAF /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		76B771122B0B5BA0007EE7EA /* RecordProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordProtocol.swift; sourceTree = "<group>"; };
 		76D52F3F2AFE9B45009A0698 /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
 		76D52F412AFE9B86009A0698 /* ComputerChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComputerChat.swift; sourceTree = "<group>"; };
 		76D52F442AFF2A79009A0698 /* ConditionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionModel.swift; sourceTree = "<group>"; };
@@ -278,6 +280,7 @@
 		304180DF2ADAACF1002AD2E3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				76B771112B0B5B70007EE7EA /* protocol */,
 				76D52F432AFF2A54009A0698 /* Record */,
 				768562DC2AFDCE5800AF5C95 /* Manager */,
 				307B7D632AE42480007CB7F5 /* Medicine */,
@@ -485,9 +488,17 @@
 			children = (
 				768562DD2AFDCE6F00AF5C95 /* HealthKitManager.swift */,
 				7645ABFC2B0306BA007F6139 /* PushManager.swift */,
-				7645ABFE2B052E5A007F6139 /* PushProtocol.swift */,
 			);
 			path = Manager;
+			sourceTree = "<group>";
+		};
+		76B771112B0B5B70007EE7EA /* protocol */ = {
+			isa = PBXGroup;
+			children = (
+				7645ABFE2B052E5A007F6139 /* PushProtocol.swift */,
+				76B771122B0B5BA0007EE7EA /* RecordProtocol.swift */,
+			);
+			path = protocol;
 			sourceTree = "<group>";
 		};
 		76D52F3E2AFE9B37009A0698 /* helper */ = {
@@ -613,6 +624,7 @@
 				768562E12AFDCF2000AF5C95 /* HKWorkoutActivityType.swift in Sources */,
 				30151F432AE3AD590036B60D /* SmokingAmount.swift in Sources */,
 				B597462A2AE504220074D5CC /* MenstruationCheckView.swift in Sources */,
+				76B771132B0B5BA0007EE7EA /* RecordProtocol.swift in Sources */,
 				B59311642B01A77C0092A2E0 /* CoreDataModel.xcdatamodeld in Sources */,
 				B593116E2B01B8740092A2E0 /* CoreDataManager.swift in Sources */,
 				305240172ADD73EB008FCD14 /* SmokingStatus.swift in Sources */,

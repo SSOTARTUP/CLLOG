@@ -15,11 +15,12 @@ struct SideEffectCheckView<T: RecordProtocol>: View {
         ScrollView {
             VStack(alignment: .leading) {
                 Group {
-                    Text("불편한 증상이 있었나요?")
-                        .font(.largeTitle)
-                        .fontWeight(.bold)
-                        .padding(.bottom, 16)
-                    
+                    if let _ = viewModel as? DailyRecordViewModel {
+                        Text("불편한 증상이 있었나요?")
+                            .font(.largeTitle)
+                            .fontWeight(.bold)
+                            .padding(.bottom, 16)
+                    }
                     VStack(alignment: .leading, spacing: 20) {
                         Text("주요 부작용")
                             .font(.headline)
@@ -74,9 +75,7 @@ struct SideEffectCheckView<T: RecordProtocol>: View {
                 Spacer()
                 
                 NextButton(title: "다음", isActive: .constant(true)) {
-                    if let vm = viewModel as? DailyRecordViewModel {
-                        vm.goToNextPage()
-                    }
+                    viewModel.bottomButtonClicked()
                 }
                 .padding(.bottom, 40)
 //                .disabled((viewModel.popularEffect.count < 1 && viewModel.dangerEffect.count < 1))

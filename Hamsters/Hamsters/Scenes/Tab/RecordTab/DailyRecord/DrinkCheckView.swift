@@ -12,11 +12,13 @@ struct DrinkCheckView<T: RecordProtocol>: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            Text("오늘의 음주량 🍻")
-                .font(.largeTitle)
-                .fontWeight(.bold)
-                .padding(.bottom, 16)
-                .padding(.horizontal, 16)
+            if let _ = viewModel as? DailyRecordViewModel {
+                Text("오늘의 음주량 🍻")
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                    .padding(.bottom, 16)
+                    .padding(.horizontal, 16)
+            }
             
             List {
                 Section {
@@ -70,9 +72,7 @@ struct DrinkCheckView<T: RecordProtocol>: View {
             Spacer()
             
             NextButton(title: "다음", isActive: .constant(true)) {
-                if let vm = viewModel as? DailyRecordViewModel {
-                    vm.goToNextPage()
-                }
+                viewModel.bottomButtonClicked()
             }
             .padding(.bottom, 40)
             
