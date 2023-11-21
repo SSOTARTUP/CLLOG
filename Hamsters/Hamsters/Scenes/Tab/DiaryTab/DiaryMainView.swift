@@ -17,6 +17,7 @@ struct DiaryMainView: View {
             Button {
 //                //viewModel.initialize(date: Date())
 //                viewModel.selectedDate = Date()
+                
             } label: {
                 Text("CLICK ME")
             }

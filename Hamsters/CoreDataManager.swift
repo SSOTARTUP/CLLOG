@@ -322,15 +322,15 @@ extension CoreDataManager {
             
             return DayRecord(
                 date: date,
-                conditionValues: conditionValues, //
-                moodValues: moodValues, //
-                sleepingTime: Int(entity.sleepingTime), //
-                popularEffect: popularEffect, //
-                dangerEffect: dangerEffect, //
+                conditionValues: conditionValues,
+                moodValues: moodValues,
+                sleepingTime: Int(entity.sleepingTime),
+                popularEffect: popularEffect,
+                dangerEffect: dangerEffect,
                 weight: entity.weight,
-                amountOfSmoking: Int(entity.amountOfSmoking), //
-                amountOfCaffein: Int(entity.amountOfCaffein), //
-                isPeriod: entity.isPeriod, //
+                amountOfSmoking: Int(entity.amountOfSmoking),
+                amountOfCaffein: Int(entity.amountOfCaffein),
+                isPeriod: entity.isPeriod, 
                 amountOfAlcohol: Int(entity.amountOfAlcohol),
                 memo: entity.memo ?? ""
             )

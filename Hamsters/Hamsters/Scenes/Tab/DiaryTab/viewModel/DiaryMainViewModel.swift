@@ -13,12 +13,13 @@ class DiaryMainViewModel: RecordProtocol {
     private let coreDataManager = CoreDataManager.shared
     
     init() {
-        status = initialize(date: selectedDate)
+  //      status = initialize()
+        //calendar view 로직에 따라 주석이 해제될 수 있음.
     }
     
     var selectedDate: Date = Date(){
         didSet{
-            status = initialize(date: selectedDate)
+            status = initialize()
         }
     }
 
@@ -80,7 +81,7 @@ class DiaryMainViewModel: RecordProtocol {
 extension DiaryMainViewModel {
     func bottomButtonClicked() {
         let dayRecord = DayRecord(
-            date: Calendar.current.startOfDay(for: Date()), // 저장 시 현재 날짜 사용
+            date: Calendar.current.startOfDay(for: selectedDate), // 저장 시 현재 날짜 사용
             conditionValues: answer.map{ $0 }.sorted{ $0.key.rawValue < $1.key.rawValue }.map{ Double($0.value.rawValue) },
             moodValues: moodValues,
             sleepingTime: sleepingTime,
@@ -97,8 +98,8 @@ extension DiaryMainViewModel {
         coreDataManager.updateDayRecord(dayRecord)
     }
     
-    func initialize(date: Date) -> Status{
-        guard let record = coreDataManager.fetchDayRecord(for: date) else {
+    func initialize() -> Status{
+        guard let record = coreDataManager.fetchDayRecord(for: selectedDate) else {
             // 해당 날짜에 데일리 레코드가 없음.
             return .none
         }
