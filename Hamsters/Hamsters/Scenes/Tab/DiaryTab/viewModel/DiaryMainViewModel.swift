@@ -10,6 +10,8 @@ import SwiftUI
 
 class DiaryMainViewModel: RecordProtocol {
     
+    private let coreDataManager = CoreDataManager.shared
+
     @AppStorage(UserDefaultsKey.dailyRecordPage.rawValue) var dailyRecordPages: String = [
         DailyRecordPage.condition,
         DailyRecordPage.mood,
@@ -64,6 +66,21 @@ class DiaryMainViewModel: RecordProtocol {
     @Published var pageNumber = 0
  
     func bottomButtonClicked() {
-        print("DiaryMainViewModel bottom Button Clicked")
+        let dayRecord = DayRecord(
+            date: Calendar.current.startOfDay(for: Date()), // 저장 시 현재 날짜 사용
+            conditionValues: answer.map{ $0 }.sorted{ $0.key.rawValue < $1.key.rawValue }.map{ Double($0.value.rawValue) },
+            moodValues: moodValues,
+            sleepingTime: sleepingTime,
+            popularEffect: popularEffect,
+            dangerEffect: dangerEffect,
+            weight: weight,
+            amountOfSmoking: amountOfSmoking,
+            amountOfCaffein: amountOfCaffein,
+            isPeriod: isPeriod,
+            amountOfAlcohol: amountOfAlcohol,
+            memo: memo
+        )
+
+        coreDataManager.updateDayRecord(dayRecord)
     }
 }
