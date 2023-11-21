@@ -20,7 +20,7 @@ struct ConditionModel: Identifiable ,Equatable{
         case button
     }
     
-    enum ConditionType {
+    enum ConditionType: Int {
         case concentration
         case hyperactivity
         case impulsivity
