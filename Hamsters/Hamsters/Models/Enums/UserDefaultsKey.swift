@@ -15,4 +15,11 @@ enum UserDefaultsKey: String {
     case smoking    // 흡연여부 - Bool
     case complete   // 설정 완료 - Bool
     case dailyRecordPage
+    
+    enum PageControl: String {
+        case period
+        case caffeine
+        case smoking
+        case drink
+    }
 }
