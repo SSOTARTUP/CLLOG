@@ -24,7 +24,7 @@ struct ConditionSlider: View {
                         track:
                             HorizontalValueTrack(
                                 view: Capsule()
-                                        .foregroundStyle(.thoNavy)
+                                    .foregroundStyle(.thoYellow)
                                         .padding(.horizontal, 4)
                             )
                             .background {

@@ -11,6 +11,16 @@ import SwiftUI
 class DiaryMainViewModel: RecordProtocol {
     
     private let coreDataManager = CoreDataManager.shared
+    
+    init() {
+        status = initialize(date: selectedDate)
+    }
+    
+    var selectedDate: Date = Date(){
+        didSet{
+            status = initialize(date: selectedDate)
+        }
+    }
 
     @AppStorage(UserDefaultsKey.dailyRecordPage.rawValue) var dailyRecordPages: String = [
         DailyRecordPage.condition,
@@ -26,14 +36,15 @@ class DiaryMainViewModel: RecordProtocol {
         DailyRecordPage.complete
     ].convertPageToString
     
-    @Published var selectedDate: Date = Date()
+    @Published var status: Status = .none
     
     @Published var closeAlert: Bool = false
     
     @Published var currentPage: DailyRecordPage = .condition
     
     @Published var answer: ConditionViewModel.ConditionAnswer = [:]
-    
+    @Published var userValues: [Double] = [0.0, 0.0, 0.0, 0.0]
+
     @Published var moodValues: [Double] = Array(repeating: 0.0, count: Mood.allCases.count)
     
     @Published var sleepingTime: Int = 0
@@ -64,7 +75,9 @@ class DiaryMainViewModel: RecordProtocol {
     @Published var memo = ""
     
     @Published var pageNumber = 0
- 
+}
+
+extension DiaryMainViewModel {
     func bottomButtonClicked() {
         let dayRecord = DayRecord(
             date: Calendar.current.startOfDay(for: Date()), // 저장 시 현재 날짜 사용
@@ -80,7 +93,42 @@ class DiaryMainViewModel: RecordProtocol {
             amountOfAlcohol: amountOfAlcohol,
             memo: memo
         )
-
+        
         coreDataManager.updateDayRecord(dayRecord)
+    }
+    
+    func initialize(date: Date) -> Status{
+        guard let record = coreDataManager.fetchDayRecord(for: date) else {
+            // 해당 날짜에 데일리 레코드가 없음.
+            return .none
+        }
+        
+        userValues = record.conditionValues
+        moodValues = record.moodValues
+        
+        sleepingTime = record.sleepingTime
+        
+        popularEffect = record.popularEffect
+        dangerEffect = record.dangerEffect
+        
+        weight = record.weight
+        
+        amountOfSmoking = record.amountOfSmoking
+        
+        amountOfCaffein = record.amountOfCaffein
+        isTaken = amountOfCaffein == 0 ? .not : .intake
+        
+        isPeriod = record.isPeriod
+        
+        amountOfAlcohol = record.amountOfAlcohol
+        
+        memo = record.memo
+        
+        return .exist
+    }
+    
+    enum Status {
+        case none
+        case exist
     }
 }

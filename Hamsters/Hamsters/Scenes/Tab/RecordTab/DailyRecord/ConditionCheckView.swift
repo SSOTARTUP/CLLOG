@@ -19,42 +19,29 @@ enum Condition: String, CaseIterable {
 }
 
 struct ConditionCheckView: View {
-    @Binding var pageNumber: Int
-    @Binding var userValues: [Double]
-    
+    @ObservedObject var viewModel: DiaryMainViewModel
+
     var body: some View {
         ZStack(alignment: .top) {
             ScrollView {
-                VStack(spacing: 12) {
-                    ForEach(Array(zip(0..<Condition.allCases.count, Condition.allCases)), id: \.0) { index, title in
-                        ConditionSlider(title: title.rawValue, userValue: $userValues[index])
+                VStack(spacing: 16) {
+                    ForEach(Array(ConditionModel.ConditionType.allCases.enumerated()), id: \.0) { index, title in
+                        ConditionSlider(title: title.name, userValue: $viewModel.userValues[index])
                     }
-                    DailyRecordNextButton(pageNumber: $pageNumber, isActiveRecord:.constant(true), title: "다음")
-                        .padding(.top, 12)
+
+                    NextButton(title: "확인", isActive: .constant(true)) {
+                        viewModel.bottomButtonClicked()
+                    }
+                    .padding(.top, 24)
+                    .padding(.bottom, 40)
                 }
-                .padding(.top, 78)  // title 영역만큼
             }
             .scrollIndicators(.never)
             
-            HStack {
-                Text("오늘의 컨디션은?")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                    .padding(.bottom, 16)
-                
-                Spacer()
-            }
-            .padding(.leading, 16)
-            .background {
-                Rectangle()
-                    .fill(.white)
-//                    .shadow(color: .black.opacity(0.15), radius: 6, x: 0, y: 4)
-//                    .mask(Rectangle().padding(.bottom, -16))
-            }
         }
     }
 }
 
 #Preview {
-    ConditionCheckView(pageNumber: .constant(1), userValues: .constant([0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]))
+    ConditionCheckView(viewModel: DiaryMainViewModel())
 }
