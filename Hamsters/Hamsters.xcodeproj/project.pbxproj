@@ -34,6 +34,7 @@
 		3052401A2ADE1299008FCD14 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305240192ADE1299008FCD14 /* String+.swift */; };
 		305240462ADFA855008FCD14 /* DailyRecordProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305240452ADFA855008FCD14 /* DailyRecordProgressBar.swift */; };
 		3077DDA42B0B358F00F715EE /* SelectedHamster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3077DDA32B0B358F00F715EE /* SelectedHamster.swift */; };
+		3077DDA62B0B79E900F715EE /* MyInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3077DDA52B0B79E900F715EE /* MyInfoViewModel.swift */; };
 		307B7D662AE42480007CB7F5 /* MedicineModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307B7D642AE42480007CB7F5 /* MedicineModel.swift */; };
 		307B7D672AE42480007CB7F5 /* AlarmItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307B7D652AE42480007CB7F5 /* AlarmItem.swift */; };
 		307B7D6E2AE424A2007CB7F5 /* MedicineRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307B7D692AE424A2007CB7F5 /* MedicineRow.swift */; };
@@ -64,7 +65,7 @@
 		30D60C952B00FD1C005D5D96 /* NextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D60C942B00FD1C005D5D96 /* NextButton.swift */; };
 		30E376C72B011FCA00E8A10D /* CheerUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E376C62B011FCA00E8A10D /* CheerUpView.swift */; };
 		30EEFF372B09D13F0016D8BA /* ProfileEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EEFF362B09D13F0016D8BA /* ProfileEditView.swift */; };
-		30EEFF392B09D15C0016D8BA /* QuestionEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EEFF382B09D15C0016D8BA /* QuestionEditView.swift */; };
+		30EEFF392B09D15C0016D8BA /* QuestionItemEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EEFF382B09D15C0016D8BA /* QuestionItemEditView.swift */; };
 		7645ABFD2B0306BA007F6139 /* PushManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7645ABFC2B0306BA007F6139 /* PushManager.swift */; };
 		7645ABFF2B052E5A007F6139 /* PushProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7645ABFE2B052E5A007F6139 /* PushProtocol.swift */; };
 		7645AC012B06587B007F6139 /* DailyRecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7645AC002B06587B007F6139 /* DailyRecordViewModel.swift */; };
@@ -126,6 +127,7 @@
 		305240192ADE1299008FCD14 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		305240452ADFA855008FCD14 /* DailyRecordProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyRecordProgressBar.swift; sourceTree = "<group>"; };
 		3077DDA32B0B358F00F715EE /* SelectedHamster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedHamster.swift; sourceTree = "<group>"; };
+		3077DDA52B0B79E900F715EE /* MyInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoViewModel.swift; sourceTree = "<group>"; };
 		307B7D642AE42480007CB7F5 /* MedicineModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MedicineModel.swift; sourceTree = "<group>"; };
 		307B7D652AE42480007CB7F5 /* AlarmItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmItem.swift; sourceTree = "<group>"; };
 		307B7D692AE424A2007CB7F5 /* MedicineRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MedicineRow.swift; sourceTree = "<group>"; };
@@ -154,7 +156,7 @@
 		30D60C942B00FD1C005D5D96 /* NextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButton.swift; sourceTree = "<group>"; };
 		30E376C62B011FCA00E8A10D /* CheerUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheerUpView.swift; sourceTree = "<group>"; };
 		30EEFF362B09D13F0016D8BA /* ProfileEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditView.swift; sourceTree = "<group>"; };
-		30EEFF382B09D15C0016D8BA /* QuestionEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionEditView.swift; sourceTree = "<group>"; };
+		30EEFF382B09D15C0016D8BA /* QuestionItemEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionItemEditView.swift; sourceTree = "<group>"; };
 		7645ABFC2B0306BA007F6139 /* PushManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushManager.swift; sourceTree = "<group>"; };
 		7645ABFE2B052E5A007F6139 /* PushProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushProtocol.swift; sourceTree = "<group>"; };
 		7645AC002B06587B007F6139 /* DailyRecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyRecordViewModel.swift; sourceTree = "<group>"; };
@@ -450,7 +452,8 @@
 			children = (
 				307B7D862AE43322007CB7F5 /* MyInfoMainView.swift */,
 				30EEFF362B09D13F0016D8BA /* ProfileEditView.swift */,
-				30EEFF382B09D15C0016D8BA /* QuestionEditView.swift */,
+				30EEFF382B09D15C0016D8BA /* QuestionItemEditView.swift */,
+				3077DDA52B0B79E900F715EE /* MyInfoViewModel.swift */,
 			);
 			path = MyInfoTab;
 			sourceTree = "<group>";
@@ -580,11 +583,12 @@
 				30BB50C22AE0C0680050CF69 /* DailyRecordNextButton.swift in Sources */,
 				307B7D6E2AE424A2007CB7F5 /* MedicineRow.swift in Sources */,
 				30151F452AE3AE850036B60D /* DrinkCheckView.swift in Sources */,
-				30EEFF392B09D15C0016D8BA /* QuestionEditView.swift in Sources */,
+				30EEFF392B09D15C0016D8BA /* QuestionItemEditView.swift in Sources */,
 				768562DE2AFDCE6F00AF5C95 /* HealthKitManager.swift in Sources */,
 				307B7D7B2AE43053007CB7F5 /* MainTabView.swift in Sources */,
 				307B7D772AE424BC007CB7F5 /* AlarmViewModel.swift in Sources */,
 				76B387102AFF99C80067CDAF /* Answer.swift in Sources */,
+				3077DDA62B0B79E900F715EE /* MyInfoViewModel.swift in Sources */,
 				307B7D842AE432EF007CB7F5 /* StatisticsMainView.swift in Sources */,
 				76D52F422AFE9B86009A0698 /* ComputerChat.swift in Sources */,
 				76D52F402AFE9B45009A0698 /* RoundedCorner.swift in Sources */,
