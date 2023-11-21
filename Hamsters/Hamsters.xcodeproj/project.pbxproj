@@ -66,6 +66,8 @@
 		30E376C72B011FCA00E8A10D /* CheerUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E376C62B011FCA00E8A10D /* CheerUpView.swift */; };
 		30EEFF372B09D13F0016D8BA /* ProfileEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EEFF362B09D13F0016D8BA /* ProfileEditView.swift */; };
 		30EEFF392B09D15C0016D8BA /* QuestionItemEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EEFF382B09D15C0016D8BA /* QuestionItemEditView.swift */; };
+		7622B5D42B0AE37C00FA970B /* DiaryMainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7622B5D32B0AE37C00FA970B /* DiaryMainViewModel.swift */; };
+		7622B5D62B0AFDB100FA970B /* DiaryUpdateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7622B5D52B0AFDB100FA970B /* DiaryUpdateView.swift */; };
 		7645ABFD2B0306BA007F6139 /* PushManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7645ABFC2B0306BA007F6139 /* PushManager.swift */; };
 		7645ABFF2B052E5A007F6139 /* PushProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7645ABFE2B052E5A007F6139 /* PushProtocol.swift */; };
 		7645AC012B06587B007F6139 /* DailyRecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7645AC002B06587B007F6139 /* DailyRecordViewModel.swift */; };
@@ -81,17 +83,22 @@
 		76B387122AFFAFC60067CDAF /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B387112AFFAFC60067CDAF /* ActivityView.swift */; };
 		76B387142AFFC6D00067CDAF /* ActivityModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B387132AFFC6D00067CDAF /* ActivityModalView.swift */; };
 		76B387162B008A9D0067CDAF /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B387152B008A9D0067CDAF /* Date.swift */; };
+		76B771132B0B5BA0007EE7EA /* RecordProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B771122B0B5BA0007EE7EA /* RecordProtocol.swift */; };
 		76D52F402AFE9B45009A0698 /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D52F3F2AFE9B45009A0698 /* RoundedCorner.swift */; };
 		76D52F422AFE9B86009A0698 /* ComputerChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D52F412AFE9B86009A0698 /* ComputerChat.swift */; };
 		76D52F452AFF2A79009A0698 /* ConditionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D52F442AFF2A79009A0698 /* ConditionModel.swift */; };
 		76D52F472AFF2AD2009A0698 /* UserChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D52F462AFF2AD2009A0698 /* UserChat.swift */; };
 		76E48DD32AFB8F670065EA65 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E48DD22AFB8F670065EA65 /* WelcomeView.swift */; };
-		B59311642B01A77C0092A2E0 /* CoreMedicineModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B59311622B01A77C0092A2E0 /* CoreMedicineModel.xcdatamodeld */; };
+		B51663CD2B05B5BB00241491 /* DayRecords+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51663CB2B05B5BB00241491 /* DayRecords+CoreDataClass.swift */; };
+		B51663CE2B05B5BB00241491 /* DayRecords+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51663CC2B05B5BB00241491 /* DayRecords+CoreDataProperties.swift */; };
+		B51663D02B05B75500241491 /* DayRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51663CF2B05B75500241491 /* DayRecord.swift */; };
+		B59311642B01A77C0092A2E0 /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B59311622B01A77C0092A2E0 /* CoreDataModel.xcdatamodeld */; };
 		B593116B2B01B7490092A2E0 /* Medicines+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59311692B01B7490092A2E0 /* Medicines+CoreDataClass.swift */; };
 		B593116C2B01B7490092A2E0 /* Medicines+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B593116A2B01B7490092A2E0 /* Medicines+CoreDataProperties.swift */; };
 		B593116E2B01B8740092A2E0 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B593116D2B01B8740092A2E0 /* CoreDataManager.swift */; };
 		B597462A2AE504220074D5CC /* MenstruationCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59746292AE504220074D5CC /* MenstruationCheckView.swift */; };
 		B597462C2AE5D7190074D5CC /* SleepingTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B597462B2AE5D7190074D5CC /* SleepingTimeView.swift */; };
+		B5BDEC282B0AADAD0018D1C9 /* DailyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BDEC272B0AADAD0018D1C9 /* DailyViewModel.swift */; };
 		B5F904C72AE4E0DA00FDE4CB /* SideEffectCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F904C62AE4E0DA00FDE4CB /* SideEffectCheckView.swift */; };
 		B5F904CA2AE4E13500FDE4CB /* WrappingHStack in Frameworks */ = {isa = PBXBuildFile; productRef = B5F904C92AE4E13500FDE4CB /* WrappingHStack */; };
 		B5F904CE2AE4E4DF00FDE4CB /* SideEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F904CD2AE4E4DF00FDE4CB /* SideEffects.swift */; };
@@ -157,6 +164,8 @@
 		30E376C62B011FCA00E8A10D /* CheerUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheerUpView.swift; sourceTree = "<group>"; };
 		30EEFF362B09D13F0016D8BA /* ProfileEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditView.swift; sourceTree = "<group>"; };
 		30EEFF382B09D15C0016D8BA /* QuestionItemEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionItemEditView.swift; sourceTree = "<group>"; };
+		7622B5D32B0AE37C00FA970B /* DiaryMainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryMainViewModel.swift; sourceTree = "<group>"; };
+		7622B5D52B0AFDB100FA970B /* DiaryUpdateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryUpdateView.swift; sourceTree = "<group>"; };
 		7645ABFC2B0306BA007F6139 /* PushManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushManager.swift; sourceTree = "<group>"; };
 		7645ABFE2B052E5A007F6139 /* PushProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushProtocol.swift; sourceTree = "<group>"; };
 		7645AC002B06587B007F6139 /* DailyRecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyRecordViewModel.swift; sourceTree = "<group>"; };
@@ -174,17 +183,22 @@
 		76B387112AFFAFC60067CDAF /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
 		76B387132AFFC6D00067CDAF /* ActivityModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityModalView.swift; sourceTree = "<group>"; };
 		76B387152B008A9D0067CDAF /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		76B771122B0B5BA0007EE7EA /* RecordProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordProtocol.swift; sourceTree = "<group>"; };
 		76D52F3F2AFE9B45009A0698 /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
 		76D52F412AFE9B86009A0698 /* ComputerChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComputerChat.swift; sourceTree = "<group>"; };
 		76D52F442AFF2A79009A0698 /* ConditionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionModel.swift; sourceTree = "<group>"; };
 		76D52F462AFF2AD2009A0698 /* UserChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserChat.swift; sourceTree = "<group>"; };
 		76E48DD22AFB8F670065EA65 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		B51663CB2B05B5BB00241491 /* DayRecords+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DayRecords+CoreDataClass.swift"; sourceTree = "<group>"; };
+		B51663CC2B05B5BB00241491 /* DayRecords+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DayRecords+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		B51663CF2B05B75500241491 /* DayRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRecord.swift; sourceTree = "<group>"; };
 		B59311632B01A77C0092A2E0 /* CoreMedicineModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreMedicineModel.xcdatamodel; sourceTree = "<group>"; };
 		B59311692B01B7490092A2E0 /* Medicines+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Medicines+CoreDataClass.swift"; sourceTree = "<group>"; };
 		B593116A2B01B7490092A2E0 /* Medicines+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Medicines+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		B593116D2B01B8740092A2E0 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		B59746292AE504220074D5CC /* MenstruationCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenstruationCheckView.swift; sourceTree = "<group>"; };
 		B597462B2AE5D7190074D5CC /* SleepingTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepingTimeView.swift; sourceTree = "<group>"; };
+		B5BDEC272B0AADAD0018D1C9 /* DailyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DailyViewModel.swift; path = Hamsters/Models/Record/DailyViewModel.swift; sourceTree = SOURCE_ROOT; };
 		B5F904C62AE4E0DA00FDE4CB /* SideEffectCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideEffectCheckView.swift; sourceTree = "<group>"; };
 		B5F904CD2AE4E4DF00FDE4CB /* SideEffects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideEffects.swift; sourceTree = "<group>"; };
 		B5F904CF2AE4E61200FDE4CB /* CapsuleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsuleView.swift; sourceTree = "<group>"; };
@@ -219,9 +233,11 @@
 			isa = PBXGroup;
 			children = (
 				B593116D2B01B8740092A2E0 /* CoreDataManager.swift */,
+				B51663CB2B05B5BB00241491 /* DayRecords+CoreDataClass.swift */,
+				B51663CC2B05B5BB00241491 /* DayRecords+CoreDataProperties.swift */,
 				B59311692B01B7490092A2E0 /* Medicines+CoreDataClass.swift */,
 				B593116A2B01B7490092A2E0 /* Medicines+CoreDataProperties.swift */,
-				B59311622B01A77C0092A2E0 /* CoreMedicineModel.xcdatamodeld */,
+				B59311622B01A77C0092A2E0 /* CoreDataModel.xcdatamodeld */,
 				304180CF2ADA8E37002AD2E3 /* Hamsters */,
 				304180CE2ADA8E37002AD2E3 /* Products */,
 			);
@@ -272,6 +288,7 @@
 		304180DF2ADAACF1002AD2E3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				76B771112B0B5B70007EE7EA /* protocol */,
 				76D52F432AFF2A54009A0698 /* Record */,
 				768562DC2AFDCE5800AF5C95 /* Manager */,
 				307B7D632AE42480007CB7F5 /* Medicine */,
@@ -434,7 +451,9 @@
 		307B7D822AE432D0007CB7F5 /* DiaryTab */ = {
 			isa = PBXGroup;
 			children = (
+				7622B5D22B0AE35000FA970B /* viewModel */,
 				307B7D802AE432A2007CB7F5 /* DiaryMainView.swift */,
+				7622B5D52B0AFDB100FA970B /* DiaryUpdateView.swift */,
 			);
 			path = DiaryTab;
 			sourceTree = "<group>";
@@ -461,10 +480,19 @@
 		30BB50C72AE2CDE90050CF69 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				B5BDEC272B0AADAD0018D1C9 /* DailyViewModel.swift */,
 				768562E52AFE7BCB00AF5C95 /* ConditionViewModel.swift */,
 				7645AC002B06587B007F6139 /* DailyRecordViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		7622B5D22B0AE35000FA970B /* viewModel */ = {
+			isa = PBXGroup;
+			children = (
+				7622B5D32B0AE37C00FA970B /* DiaryMainViewModel.swift */,
+			);
+			path = viewModel;
 			sourceTree = "<group>";
 		};
 		768562DC2AFDCE5800AF5C95 /* Manager */ = {
@@ -472,9 +500,17 @@
 			children = (
 				768562DD2AFDCE6F00AF5C95 /* HealthKitManager.swift */,
 				7645ABFC2B0306BA007F6139 /* PushManager.swift */,
-				7645ABFE2B052E5A007F6139 /* PushProtocol.swift */,
 			);
 			path = Manager;
+			sourceTree = "<group>";
+		};
+		76B771112B0B5B70007EE7EA /* protocol */ = {
+			isa = PBXGroup;
+			children = (
+				7645ABFE2B052E5A007F6139 /* PushProtocol.swift */,
+				76B771122B0B5BA0007EE7EA /* RecordProtocol.swift */,
+			);
+			path = protocol;
 			sourceTree = "<group>";
 		};
 		76D52F3E2AFE9B37009A0698 /* helper */ = {
@@ -489,6 +525,7 @@
 			isa = PBXGroup;
 			children = (
 				76D52F442AFF2A79009A0698 /* ConditionModel.swift */,
+				B51663CF2B05B75500241491 /* DayRecord.swift */,
 			);
 			path = Record;
 			sourceTree = "<group>";
@@ -593,6 +630,7 @@
 				76D52F422AFE9B86009A0698 /* ComputerChat.swift in Sources */,
 				76D52F402AFE9B45009A0698 /* RoundedCorner.swift in Sources */,
 				76B387142AFFC6D00067CDAF /* ActivityModalView.swift in Sources */,
+				7622B5D42B0AE37C00FA970B /* DiaryMainViewModel.swift in Sources */,
 				768562E42AFE73A500AF5C95 /* ConditionView.swift in Sources */,
 				304180FA2ADCC740002AD2E3 /* SmokingSetView.swift in Sources */,
 				7645ABFD2B0306BA007F6139 /* PushManager.swift in Sources */,
@@ -601,21 +639,25 @@
 				768562E12AFDCF2000AF5C95 /* HKWorkoutActivityType.swift in Sources */,
 				30151F432AE3AD590036B60D /* SmokingAmount.swift in Sources */,
 				B597462A2AE504220074D5CC /* MenstruationCheckView.swift in Sources */,
-				B59311642B01A77C0092A2E0 /* CoreMedicineModel.xcdatamodeld in Sources */,
+				76B771132B0B5BA0007EE7EA /* RecordProtocol.swift in Sources */,
+				B59311642B01A77C0092A2E0 /* CoreDataModel.xcdatamodeld in Sources */,
 				B593116E2B01B8740092A2E0 /* CoreDataManager.swift in Sources */,
 				305240172ADD73EB008FCD14 /* SmokingStatus.swift in Sources */,
 				307B7D662AE42480007CB7F5 /* MedicineModel.swift in Sources */,
 				307B7D722AE424A2007CB7F5 /* AddMedicineView.swift in Sources */,
 				307B7D672AE42480007CB7F5 /* AlarmItem.swift in Sources */,
+				B51663CE2B05B5BB00241491 /* DayRecords+CoreDataProperties.swift in Sources */,
 				B5F904CE2AE4E4DF00FDE4CB /* SideEffects.swift in Sources */,
 				769FFF8F2AFBE23700B12515 /* safeAreaInsets.swift in Sources */,
 				7645AC012B06587B007F6139 /* DailyRecordViewModel.swift in Sources */,
 				B5F904C72AE4E0DA00FDE4CB /* SideEffectCheckView.swift in Sources */,
+				B51663CD2B05B5BB00241491 /* DayRecords+CoreDataClass.swift in Sources */,
 				30BB50B92ADFABBC0050CF69 /* ConditionSlider.swift in Sources */,
 				304180D32ADA8E37002AD2E3 /* StartView.swift in Sources */,
 				30D60C952B00FD1C005D5D96 /* NextButton.swift in Sources */,
 				307B7D702AE424A2007CB7F5 /* AlarmFrequencyView.swift in Sources */,
 				76D52F452AFF2A79009A0698 /* ConditionModel.swift in Sources */,
+				7622B5D62B0AFDB100FA970B /* DiaryUpdateView.swift in Sources */,
 				7645AC032B0684FF007F6139 /* DailyRecordPage.swift in Sources */,
 				B593116C2B01B7490092A2E0 /* Medicines+CoreDataProperties.swift in Sources */,
 				76D52F472AFF2AD2009A0698 /* UserChat.swift in Sources */,
@@ -627,6 +669,7 @@
 				30BB50C42AE1FCA80050CF69 /* MoodCheckView.swift in Sources */,
 				3077DDA42B0B358F00F715EE /* SelectedHamster.swift in Sources */,
 				30BB50BE2ADFFAE00050CF69 /* ConditionCheckView.swift in Sources */,
+				B5BDEC282B0AADAD0018D1C9 /* DailyViewModel.swift in Sources */,
 				300E8E9E2AFB314F001728FE /* LottieConfettiView.swift in Sources */,
 				30BB50C02ADFFB710050CF69 /* DailyRecordView.swift in Sources */,
 				30BB50CB2AE3A4C30050CF69 /* DailyRecordNextTwoButtons.swift in Sources */,
@@ -659,6 +702,7 @@
 				305240182ADD73EB008FCD14 /* SexClassification.swift in Sources */,
 				307B7D6F2AE424A2007CB7F5 /* MedicationView.swift in Sources */,
 				304180FC2ADCC9ED002AD2E3 /* SetupCompleteView.swift in Sources */,
+				B51663D02B05B75500241491 /* DayRecord.swift in Sources */,
 				300E8E992AF9D8CA001728FE /* ProgressBarAndTitle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -951,13 +995,13 @@
 /* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
-		B59311622B01A77C0092A2E0 /* CoreMedicineModel.xcdatamodeld */ = {
+		B59311622B01A77C0092A2E0 /* CoreDataModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				B59311632B01A77C0092A2E0 /* CoreMedicineModel.xcdatamodel */,
 			);
 			currentVersion = B59311632B01A77C0092A2E0 /* CoreMedicineModel.xcdatamodel */;
-			path = CoreMedicineModel.xcdatamodeld;
+			path = CoreDataModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

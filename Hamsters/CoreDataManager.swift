@@ -12,7 +12,7 @@ class CoreDataManager {
     static let shared = CoreDataManager()
     
     let persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "CoreMedicineModel")
+        let container = NSPersistentContainer(name: "CoreDataModel")
         container.loadPersistentStores { description, error in
             if let error = error {
                 fatalError("Coredata erorr: \(error.localizedDescription)")
@@ -33,6 +33,7 @@ class CoreDataManager {
         }
     }
     
+    // MARK: - 약물 설정 관련 코어데이터 CRUD
     func updateMedicine(_ medicine: Medicine) {
         let context = persistentContainer.viewContext
         let fetchRequest: NSFetchRequest<Medicines> = Medicines.fetchRequest()
@@ -73,7 +74,7 @@ class CoreDataManager {
         newMedicine.freOption = medicine.freOption.rawValue
         newMedicine.sortedDays = medicine.sortedDays
         saveContext()
-        print("성공")
+        print("CoreData::: 투여약 저장")
         
     }
     
@@ -117,23 +118,141 @@ class CoreDataManager {
     }
     
     func deleteMedicine(_ medicine: Medicine, completion: (() -> Void)? = nil) {
-            let context = persistentContainer.viewContext
-            let fetchRequest: NSFetchRequest<Medicines> = Medicines.fetchRequest()
-            fetchRequest.predicate = NSPredicate(format: "id == %@", medicine.id as CVarArg)
-            
-            do {
-                let results = try context.fetch(fetchRequest)
-                if let existingMedicine = results.first {
-                    context.delete(existingMedicine)
-                    try context.save()
-                    completion?()
-                    print("삭제 성공")
-                } else {
-                    print("해당하는 약물을 찾을 수 없음")
-                }
-            } catch {
-                print("약물 삭제 실패: \(error)")
+        let context = persistentContainer.viewContext
+        let fetchRequest: NSFetchRequest<Medicines> = Medicines.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "id == %@", medicine.id as CVarArg)
+        
+        do {
+            let results = try context.fetch(fetchRequest)
+            if let existingMedicine = results.first {
+                context.delete(existingMedicine)
+                try context.save()
+                completion?()
+                print("삭제 성공")
+            } else {
+                print("해당하는 약물을 찾을 수 없음")
             }
+        } catch {
+            print("약물 삭제 실패: \(error)")
         }
+    }
+    
+    // MARK: - 하루 기록 코어데이터 CRUD
+    
+    func addDayRecord(_ dayRecord: DayRecord) {
+        let context = persistentContainer.viewContext
+        let newDayRecord = DayRecords(context: context)
+        
+        
+        newDayRecord.date = dayRecord.date
+        newDayRecord.sleepingTime = Int16(dayRecord.sleepingTime)
+        newDayRecord.popularEffect = try? JSONEncoder().encode(dayRecord.popularEffect)
+        newDayRecord.dangerEffect = try? JSONEncoder().encode(dayRecord.dangerEffect)
+        newDayRecord.weight = dayRecord.weight
+        newDayRecord.amountOfSmoking = Int16(dayRecord.amountOfSmoking)
+        newDayRecord.amountOfCaffein = Int16(dayRecord.amountOfCaffein)
+        newDayRecord.isPeriod = dayRecord.isPeriod
+        newDayRecord.amountOfAlcohol = Int16(dayRecord.amountOfAlcohol)
+        newDayRecord.memo = dayRecord.memo
+        newDayRecord.conditionValues = try? JSONEncoder().encode(dayRecord.conditionValues)
+        newDayRecord.moodValues = try? JSONEncoder().encode(dayRecord.moodValues)
+        
+        saveContext()
+        print("CoreData::: 데일리 기록 저장")
+    }
+    
+    func fetchAllDayRecords() -> [DayRecord] {
+        let context = persistentContainer.viewContext
+        let fetchRequest: NSFetchRequest<DayRecords> = DayRecords.fetchRequest()
+        
+        do {
+            let dayRecordsEntities = try context.fetch(fetchRequest)
+            return dayRecordsEntities.compactMap { entity -> DayRecord? in
+                guard let date = entity.date,
+                      let popularEffectData = entity.popularEffect,
+                      let dangerEffectData = entity.dangerEffect,
+                      let conditionValuesData = entity.conditionValues,
+                      let moodValuesData = entity.moodValues,
+                      let popularEffect = try? JSONDecoder().decode([SideEffects.Major].self, from: popularEffectData),
+                      let dangerEffect = try? JSONDecoder().decode([SideEffects.Dangerous].self, from: dangerEffectData),
+                      let conditionValues = try? JSONDecoder().decode([Double].self, from: conditionValuesData),
+                      let moodValues = try? JSONDecoder().decode([Double].self, from: moodValuesData) else {
+                    return nil
+                }
+                
+                return DayRecord(
+                    date: date,
+                    conditionValues: conditionValues,
+                    moodValues: moodValues,
+                    sleepingTime: Int(entity.sleepingTime),
+                    popularEffect: popularEffect,
+                    dangerEffect: dangerEffect,
+                    weight: entity.weight,
+                    amountOfSmoking: Int(entity.amountOfSmoking),
+                    amountOfCaffein: Int(entity.amountOfCaffein),
+                    isPeriod: entity.isPeriod,
+                    amountOfAlcohol: Int(entity.amountOfAlcohol),
+                    memo: entity.memo ?? ""
+                )
+            }
+        } catch {
+            print("Failed to fetch day records: \(error.localizedDescription)")
+            return []
+        }
+    }
+    
+    // dayrecord 각각 수정
+    func updateSpecificDayRecord(date: Date, fieldKey: String, newValue: Any) {
+        let dayStart = startOfDay(for: date)
+        let fetchRequest: NSFetchRequest<DayRecords> = DayRecords.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "date == %@", dayStart as NSDate)
+        
+        do {
+            let context = persistentContainer.viewContext
+            let results = try context.fetch(fetchRequest)
+            if let existingRecord = results.first {
+                existingRecord.setValue(newValue, forKey: fieldKey)
+                saveContext()
+            }
+        } catch {
+            print("Core Data 업데이트 실패: \(error)")
+        }
+    }
+    
+    // 전체 수정
+    func updateDayRecord(_ dayRecord: DayRecord) {
+        let context = persistentContainer.viewContext
+        let fetchRequest: NSFetchRequest<DayRecords> = DayRecords.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "date == %@", dayRecord.date as NSDate)
+        
+        do {
+            let results = try context.fetch(fetchRequest)
+            if let existingRecord = results.first {
+                existingRecord.conditionValues = try? JSONEncoder().encode(dayRecord.conditionValues)
+                existingRecord.moodValues = try? JSONEncoder().encode(dayRecord.moodValues)
+                existingRecord.sleepingTime = Int16(dayRecord.sleepingTime)
+                existingRecord.popularEffect = try? JSONEncoder().encode(dayRecord.popularEffect)
+                existingRecord.dangerEffect = try? JSONEncoder().encode(dayRecord.dangerEffect)
+                existingRecord.weight = dayRecord.weight
+                existingRecord.amountOfSmoking = Int16(dayRecord.amountOfSmoking)
+                existingRecord.amountOfCaffein = Int16(dayRecord.amountOfCaffein)
+                existingRecord.isPeriod = dayRecord.isPeriod
+                existingRecord.amountOfAlcohol = Int16(dayRecord.amountOfAlcohol)
+                existingRecord.memo = dayRecord.memo
+                // 기타 필요한 속성 업데이트
+                
+                saveContext()
+                print("업데이트 성공")
+            } else {
+                print("업데이트할 레코드를 찾을 수 없음")
+            }
+        } catch {
+            print("레코드 업데이트 실패: \(error)")
+        }
+    }
+    
+    func startOfDay(for date: Date) -> Date {
+        return Calendar.current.startOfDay(for: date)
+    }
 }
 

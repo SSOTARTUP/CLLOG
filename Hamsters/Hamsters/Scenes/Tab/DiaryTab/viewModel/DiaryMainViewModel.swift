@@ -1,15 +1,15 @@
 //
-//  DailyRecordViewModel.swift
+//  DiaryMainViewModel.swift
 //  Hamsters
 //
-//  Created by jaesik pyeon on 11/16/23.
+//  Created by jaesik pyeon on 11/20/23.
 //
 
 import Foundation
 import SwiftUI
 
-class DailyRecordViewModel: RecordProtocol {
-        
+class DiaryMainViewModel: RecordProtocol {
+    
     @AppStorage(UserDefaultsKey.dailyRecordPage.rawValue) var dailyRecordPages: String = [
         DailyRecordPage.condition,
         DailyRecordPage.mood,
@@ -24,6 +24,7 @@ class DailyRecordViewModel: RecordProtocol {
         DailyRecordPage.complete
     ].convertPageToString
     
+    @Published var selectedDate: Date = Date()
     
     @Published var closeAlert: Bool = false
     
@@ -61,18 +62,8 @@ class DailyRecordViewModel: RecordProtocol {
     @Published var memo = ""
     
     @Published var pageNumber = 0
-    
+ 
     func bottomButtonClicked() {
-        pageNumber += pageNumber < dailyRecordPages.convertStringToPage.count - 1 ? 1 : 0
-        currentPage = dailyRecordPages.convertStringToPage[pageNumber]
-    }
-    
-    func goToPreviousPage() {
-        pageNumber -= pageNumber > 0 ? 1 :0
-        currentPage = dailyRecordPages.convertStringToPage[pageNumber]
-    }
-    
-    func saveRecord() {
-        // 데이터 모델 연동.
+        print("DiaryMainViewModel bottom Button Clicked")
     }
 }

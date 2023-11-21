@@ -13,44 +13,45 @@ struct DailyRecordView: View {
     @Binding var isActiveSheet:Bool
     
     @StateObject var viewModel = DailyRecordViewModel()
-    
+
     var body: some View {
         NavigationStack {
             VStack(spacing: 12){
                 DailyRecordProgressBar(pageNumber: viewModel.pageNumber, total: viewModel.dailyRecordPages.convertStringToPage.count)
 
+
                 switch viewModel.currentPage {
                 case .condition: // ADHD 컨디션 기록
                     ConditionView(dailyRecordViewModel: viewModel)
                 case .mood: // 감정 기록
-                    MoodCheckView(dailyRecordViewModel: viewModel)
+                    MoodCheckView(viewModel: viewModel)
                     
                 case .sleeping: // 수면 기록
-                    SleepingTimeView(dailyRecordViewModel: viewModel)
+                    SleepingTimeView(viewModel: viewModel)
                     
                 case .sideEffect: // 부작용 기록
-                    SideEffectCheckView(dailyRecordViewModel: viewModel)
+                    SideEffectCheckView(viewModel: viewModel)
                     
                 case .weightCheck: // 체중 기록
-                    WeightCheckView(dailyRecordViewModel: viewModel)
+                    WeightCheckView(viewModel: viewModel)
                     
                 case .menstruation: // 월경 여부
-                    MenstruationCheckView(dailyRecordViewModel: viewModel)
+                    MenstruationCheckView(viewModel: viewModel)
                     
                 case .smoking: //  흡연량
-                    SmokingCheckView(dailyRecordViewModel: viewModel)
+                    SmokingCheckView(viewModel: viewModel)
                     
                 case .caffein: // 카페인
-                    CaffeineCheckView(dailyRecordViewModel: viewModel)
+                    CaffeineCheckView(viewModel: viewModel)
                     
                 case .drink: // 음주량
-                    DrinkCheckView(dailyRecordViewModel: viewModel)
+                    DrinkCheckView(viewModel: viewModel)
                     
                 case .memo: // 추가 메모
-                    AdditionalMemoView(dailyRecordViewModel: viewModel)
+                    AdditionalMemoView(viewModel: viewModel)
 
                 case .complete: // 완료 페이지
-                    DailyCompleteView(dailyRecordViewModel: viewModel, isActiveSheet: $isActiveSheet)
+                    DailyCompleteView(viewModel: viewModel)
                 }
             }
             .navigationTitle("오늘의 상태 기록하기")

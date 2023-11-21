@@ -7,11 +7,12 @@
 
 import SwiftUI
 
-struct DailyCompleteView: View {
-    @ObservedObject var dailyRecordViewModel: DailyRecordViewModel
-    @Binding var isActiveSheet:Bool
+struct DailyCompleteView<T: RecordProtocol>: View {
 
-    
+    @ObservedObject var viewModel: T
+    @Environment(\.dismiss) private var dismiss
+
+
     var body: some View {
         VStack(spacing: 0) {
             Spacer()
@@ -40,18 +41,22 @@ struct DailyCompleteView: View {
             
             Spacer()
             
+
             NextButton(title: "다음", isActive: .constant(true)) {
-                isActiveSheet = false
-                dailyRecordViewModel.saveRecord()
+                if let vm = viewModel as? DailyRecordViewModel {
+                    dismiss()
+                    vm.saveRecord()
+                }
                 
             }
             .padding(.bottom, 40)
 //            DailyRecordNextButton(pageNumber: $pageNumber, isActiveRecord: $isActiveRecord, title: "완료")
+
             
         }
     }
 }
 
 #Preview {
-    DailyCompleteView(dailyRecordViewModel: DailyRecordViewModel(), isActiveSheet: .constant(true))
+    DailyCompleteView(viewModel: DailyRecordViewModel())
 }
