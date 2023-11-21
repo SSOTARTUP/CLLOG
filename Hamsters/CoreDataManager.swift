@@ -143,7 +143,6 @@ class CoreDataManager {
         let context = persistentContainer.viewContext
         let newDayRecord = DayRecords(context: context)
         
-        
         newDayRecord.date = dayRecord.date
         newDayRecord.sleepingTime = Int16(dayRecord.sleepingTime)
         newDayRecord.popularEffect = try? JSONEncoder().encode(dayRecord.popularEffect)
@@ -256,3 +255,90 @@ class CoreDataManager {
     }
 }
 
+extension CoreDataManager {
+    func saveDayRecord(_ dayRecord: DayRecord) {
+        let context = persistentContainer.viewContext
+
+        // Fetch request to check if a record with the same date already exists
+        let fetchRequest: NSFetchRequest<DayRecords> = DayRecords.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "date == %@", dayRecord.date as CVarArg)
+
+        do {
+            let existingRecords = try context.fetch(fetchRequest)
+
+            // If an existing record is found, delete it
+            if let existingRecord = existingRecords.first {
+                context.delete(existingRecord)
+                print("CoreData::: 기존 레코드 삭제됨")
+            }
+        } catch {
+            print("CoreData::: 기존 레코드 조회 실패:", error)
+        }
+
+        // Create a new DayRecord
+        let newDayRecord = DayRecords(context: context)
+        
+        newDayRecord.date = dayRecord.date
+        newDayRecord.sleepingTime = Int16(dayRecord.sleepingTime)
+        newDayRecord.popularEffect = try? JSONEncoder().encode(dayRecord.popularEffect)
+        newDayRecord.dangerEffect = try? JSONEncoder().encode(dayRecord.dangerEffect)
+        newDayRecord.weight = dayRecord.weight
+        newDayRecord.amountOfSmoking = Int16(dayRecord.amountOfSmoking)
+        newDayRecord.amountOfCaffein = Int16(dayRecord.amountOfCaffein)
+        newDayRecord.isPeriod = dayRecord.isPeriod
+        newDayRecord.amountOfAlcohol = Int16(dayRecord.amountOfAlcohol)
+        newDayRecord.memo = dayRecord.memo
+        newDayRecord.conditionValues = try? JSONEncoder().encode(dayRecord.conditionValues)
+        newDayRecord.moodValues = try? JSONEncoder().encode(dayRecord.moodValues)
+        
+        saveContext()
+
+        print("CoreData::: 데일리 기록 저장")
+    }
+
+    
+    func fetchDayRecord(for date: Date) -> DayRecord? {
+        
+        let startDate = Calendar.current.startOfDay(for: date)
+        let context = persistentContainer.viewContext
+        let fetchRequest: NSFetchRequest<DayRecords> = DayRecords.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "date == %@", startDate as CVarArg)
+
+        do {
+            let records = try context.fetch(fetchRequest)
+            // Return the first record if found, otherwise nil
+            guard let entity = records.first else { return nil }
+            guard let date = entity.date,
+                  let popularEffectData = entity.popularEffect,
+                  let dangerEffectData = entity.dangerEffect,
+                  let conditionValuesData = entity.conditionValues,
+                  let moodValuesData = entity.moodValues,
+                  let popularEffect = try? JSONDecoder().decode([SideEffects.Major].self, from: popularEffectData),
+                  let dangerEffect = try? JSONDecoder().decode([SideEffects.Dangerous].self, from: dangerEffectData),
+                  let conditionValues = try? JSONDecoder().decode([Double].self, from: conditionValuesData),
+                  let moodValues = try? JSONDecoder().decode([Double].self, from: moodValuesData) else {
+                return nil
+            }
+            
+            return DayRecord(
+                date: date,
+                conditionValues: conditionValues,
+                moodValues: moodValues,
+                sleepingTime: Int(entity.sleepingTime),
+                popularEffect: popularEffect,
+                dangerEffect: dangerEffect,
+                weight: entity.weight,
+                amountOfSmoking: Int(entity.amountOfSmoking),
+                amountOfCaffein: Int(entity.amountOfCaffein),
+                isPeriod: entity.isPeriod, 
+                amountOfAlcohol: Int(entity.amountOfAlcohol),
+                memo: entity.memo ?? ""
+            )
+            
+        } catch {
+            print("CoreData 레코드 조회 실패:", error)
+            return nil
+        }
+    }
+
+}

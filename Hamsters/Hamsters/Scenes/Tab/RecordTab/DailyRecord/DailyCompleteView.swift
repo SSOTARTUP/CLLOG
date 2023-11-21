@@ -50,9 +50,6 @@ struct DailyCompleteView<T: RecordProtocol>: View {
                 
             }
             .padding(.bottom, 40)
-//            DailyRecordNextButton(pageNumber: $pageNumber, isActiveRecord: $isActiveRecord, title: "완료")
-
-            
         }
     }
 }

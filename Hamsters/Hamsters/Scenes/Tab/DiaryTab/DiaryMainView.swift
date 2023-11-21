@@ -15,7 +15,9 @@ struct DiaryMainView: View {
     var body: some View {
         ScrollView {
             Button {
-                showModal(.memo)
+//                //viewModel.initialize(date: Date())
+//                viewModel.selectedDate = Date()
+                
             } label: {
                 Text("CLICK ME")
             }
