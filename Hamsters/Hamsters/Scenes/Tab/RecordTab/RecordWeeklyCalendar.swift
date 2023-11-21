@@ -9,7 +9,7 @@ import SwiftUI
 import UIKit
 import FSCalendar
 
-struct WeeklyCalendarVeiw: UIViewRepresentable {
+struct WeeklyCalendarView: UIViewRepresentable {
     @Binding var selectedDate: Date
     @Binding var calendarHeight: CGFloat
     @Binding var existLog: [String]
@@ -116,7 +116,7 @@ struct WeeklyCalendarVeiw: UIViewRepresentable {
     }
 }
 
-extension WeeklyCalendarVeiw {
+extension WeeklyCalendarView {
     private func configureCalendar() -> FSCalendar {
         let calendar = FSCalendar()
         
@@ -155,6 +155,6 @@ extension WeeklyCalendarVeiw {
 }
 
 #Preview {
-    WeeklyCalendarVeiw(selectedDate: .constant(Date()), calendarHeight: .constant(300), existLog: .constant(["2023-11-16", "2023-11-15", "2023-11-13", "2023-11-11", "2023-11-9"]), isToday: .constant(.today))
+    WeeklyCalendarView(selectedDate: .constant(Date()), calendarHeight: .constant(300), existLog: .constant(["2023-11-16", "2023-11-15", "2023-11-13", "2023-11-11", "2023-11-9"]), isToday: .constant(.today))
         .border(.red)
 }
