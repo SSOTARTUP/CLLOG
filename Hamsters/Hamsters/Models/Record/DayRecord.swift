@@ -8,7 +8,7 @@
 import Foundation
 
 struct DayRecord {
-    var date: Date
+    var date: Date = Calendar.current.startOfDay(for: Date())
     var id = UUID()
     var conditionValues: [Double]
     var moodValues: [Double]

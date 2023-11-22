@@ -66,6 +66,8 @@
 		30E376C72B011FCA00E8A10D /* CheerUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E376C62B011FCA00E8A10D /* CheerUpView.swift */; };
 		30EEFF372B09D13F0016D8BA /* ProfileEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EEFF362B09D13F0016D8BA /* ProfileEditView.swift */; };
 		30EEFF392B09D15C0016D8BA /* QuestionItemEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EEFF382B09D15C0016D8BA /* QuestionItemEditView.swift */; };
+		7622A7D62B0E563200926022 /* TakensManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7622A7D52B0E563200926022 /* TakensManager.swift */; };
+		7622A7D82B0E5A0B00926022 /* HistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7622A7D72B0E5A0B00926022 /* HistoryModel.swift */; };
 		7622B5D42B0AE37C00FA970B /* DiaryMainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7622B5D32B0AE37C00FA970B /* DiaryMainViewModel.swift */; };
 		7622B5D62B0AFDB100FA970B /* DiaryUpdateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7622B5D52B0AFDB100FA970B /* DiaryUpdateView.swift */; };
 		7645ABFD2B0306BA007F6139 /* PushManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7645ABFC2B0306BA007F6139 /* PushManager.swift */; };
@@ -89,8 +91,6 @@
 		76D52F452AFF2A79009A0698 /* ConditionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D52F442AFF2A79009A0698 /* ConditionModel.swift */; };
 		76D52F472AFF2AD2009A0698 /* UserChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D52F462AFF2AD2009A0698 /* UserChat.swift */; };
 		76E48DD32AFB8F670065EA65 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E48DD22AFB8F670065EA65 /* WelcomeView.swift */; };
-		B51663CD2B05B5BB00241491 /* DayRecords+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51663CB2B05B5BB00241491 /* DayRecords+CoreDataClass.swift */; };
-		B51663CE2B05B5BB00241491 /* DayRecords+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51663CC2B05B5BB00241491 /* DayRecords+CoreDataProperties.swift */; };
 		B51663D02B05B75500241491 /* DayRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51663CF2B05B75500241491 /* DayRecord.swift */; };
 		B58CD81F2B0C02D600E12608 /* DailyMedicationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58CD81E2B0C02D500E12608 /* DailyMedicationViewModel.swift */; };
 		B58CD82C2B0C516300E12608 /* TakenMedicine+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58CD8282B0C516300E12608 /* TakenMedicine+CoreDataClass.swift */; };
@@ -98,8 +98,6 @@
 		B58CD82E2B0C516300E12608 /* TakenMedicines+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58CD82A2B0C516300E12608 /* TakenMedicines+CoreDataClass.swift */; };
 		B58CD82F2B0C516300E12608 /* TakenMedicines+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58CD82B2B0C516300E12608 /* TakenMedicines+CoreDataProperties.swift */; };
 		B59311642B01A77C0092A2E0 /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B59311622B01A77C0092A2E0 /* CoreDataModel.xcdatamodeld */; };
-		B593116B2B01B7490092A2E0 /* Medicines+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59311692B01B7490092A2E0 /* Medicines+CoreDataClass.swift */; };
-		B593116C2B01B7490092A2E0 /* Medicines+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B593116A2B01B7490092A2E0 /* Medicines+CoreDataProperties.swift */; };
 		B593116E2B01B8740092A2E0 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B593116D2B01B8740092A2E0 /* CoreDataManager.swift */; };
 		B597462A2AE504220074D5CC /* MenstruationCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59746292AE504220074D5CC /* MenstruationCheckView.swift */; };
 		B597462C2AE5D7190074D5CC /* SleepingTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B597462B2AE5D7190074D5CC /* SleepingTimeView.swift */; };
@@ -169,6 +167,8 @@
 		30E376C62B011FCA00E8A10D /* CheerUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheerUpView.swift; sourceTree = "<group>"; };
 		30EEFF362B09D13F0016D8BA /* ProfileEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditView.swift; sourceTree = "<group>"; };
 		30EEFF382B09D15C0016D8BA /* QuestionItemEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionItemEditView.swift; sourceTree = "<group>"; };
+		7622A7D52B0E563200926022 /* TakensManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakensManager.swift; sourceTree = "<group>"; };
+		7622A7D72B0E5A0B00926022 /* HistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryModel.swift; sourceTree = "<group>"; };
 		7622B5D32B0AE37C00FA970B /* DiaryMainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryMainViewModel.swift; sourceTree = "<group>"; };
 		7622B5D52B0AFDB100FA970B /* DiaryUpdateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryUpdateView.swift; sourceTree = "<group>"; };
 		7645ABFC2B0306BA007F6139 /* PushManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushManager.swift; sourceTree = "<group>"; };
@@ -194,8 +194,6 @@
 		76D52F442AFF2A79009A0698 /* ConditionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionModel.swift; sourceTree = "<group>"; };
 		76D52F462AFF2AD2009A0698 /* UserChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserChat.swift; sourceTree = "<group>"; };
 		76E48DD22AFB8F670065EA65 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
-		B51663CB2B05B5BB00241491 /* DayRecords+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DayRecords+CoreDataClass.swift"; sourceTree = "<group>"; };
-		B51663CC2B05B5BB00241491 /* DayRecords+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DayRecords+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		B51663CF2B05B75500241491 /* DayRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRecord.swift; sourceTree = "<group>"; };
 		B58CD81E2B0C02D500E12608 /* DailyMedicationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DailyMedicationViewModel.swift; path = Hamsters/Models/Record/DailyMedicationViewModel.swift; sourceTree = SOURCE_ROOT; };
 		B58CD8282B0C516300E12608 /* TakenMedicine+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TakenMedicine+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -203,8 +201,6 @@
 		B58CD82A2B0C516300E12608 /* TakenMedicines+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TakenMedicines+CoreDataClass.swift"; sourceTree = "<group>"; };
 		B58CD82B2B0C516300E12608 /* TakenMedicines+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TakenMedicines+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		B59311632B01A77C0092A2E0 /* CoreMedicineModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreMedicineModel.xcdatamodel; sourceTree = "<group>"; };
-		B59311692B01B7490092A2E0 /* Medicines+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Medicines+CoreDataClass.swift"; sourceTree = "<group>"; };
-		B593116A2B01B7490092A2E0 /* Medicines+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Medicines+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		B593116D2B01B8740092A2E0 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		B59746292AE504220074D5CC /* MenstruationCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenstruationCheckView.swift; sourceTree = "<group>"; };
 		B597462B2AE5D7190074D5CC /* SleepingTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepingTimeView.swift; sourceTree = "<group>"; };
@@ -242,18 +238,14 @@
 		304180C42ADA8E37002AD2E3 = {
 			isa = PBXGroup;
 			children = (
-				B593116D2B01B8740092A2E0 /* CoreDataManager.swift */,
 				B58CD8282B0C516300E12608 /* TakenMedicine+CoreDataClass.swift */,
 				B58CD8292B0C516300E12608 /* TakenMedicine+CoreDataProperties.swift */,
 				B58CD82A2B0C516300E12608 /* TakenMedicines+CoreDataClass.swift */,
 				B58CD82B2B0C516300E12608 /* TakenMedicines+CoreDataProperties.swift */,
-				B51663CB2B05B5BB00241491 /* DayRecords+CoreDataClass.swift */,
-				B51663CC2B05B5BB00241491 /* DayRecords+CoreDataProperties.swift */,
-				B59311692B01B7490092A2E0 /* Medicines+CoreDataClass.swift */,
-				B593116A2B01B7490092A2E0 /* Medicines+CoreDataProperties.swift */,
 				B59311622B01A77C0092A2E0 /* CoreDataModel.xcdatamodeld */,
 				304180CF2ADA8E37002AD2E3 /* Hamsters */,
 				304180CE2ADA8E37002AD2E3 /* Products */,
+				7622A7D42B0E329900926022 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -414,6 +406,7 @@
 			children = (
 				307B7D642AE42480007CB7F5 /* MedicineModel.swift */,
 				307B7D652AE42480007CB7F5 /* AlarmItem.swift */,
+				7622A7D72B0E5A0B00926022 /* HistoryModel.swift */,
 			);
 			path = Medicine;
 			sourceTree = "<group>";
@@ -496,11 +489,17 @@
 			children = (
 				B5BDEC272B0AADAD0018D1C9 /* DailyViewModel.swift */,
 				768562E52AFE7BCB00AF5C95 /* ConditionViewModel.swift */,
-
 				7645AC002B06587B007F6139 /* DailyRecordViewModel.swift */,
-
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		7622A7D42B0E329900926022 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				B58CD81E2B0C02D500E12608 /* DailyMedicationViewModel.swift */,
+			);
+			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 		7622B5D22B0AE35000FA970B /* viewModel */ = {
@@ -514,8 +513,10 @@
 		768562DC2AFDCE5800AF5C95 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				B593116D2B01B8740092A2E0 /* CoreDataManager.swift */,
 				768562DD2AFDCE6F00AF5C95 /* HealthKitManager.swift */,
 				7645ABFC2B0306BA007F6139 /* PushManager.swift */,
+				7622A7D52B0E563200926022 /* TakensManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -659,16 +660,15 @@
 				B59311642B01A77C0092A2E0 /* CoreDataModel.xcdatamodeld in Sources */,
 				B593116E2B01B8740092A2E0 /* CoreDataManager.swift in Sources */,
 				305240172ADD73EB008FCD14 /* SmokingStatus.swift in Sources */,
+				7622A7D62B0E563200926022 /* TakensManager.swift in Sources */,
 				307B7D662AE42480007CB7F5 /* MedicineModel.swift in Sources */,
 				307B7D722AE424A2007CB7F5 /* AddMedicineView.swift in Sources */,
 				307B7D672AE42480007CB7F5 /* AlarmItem.swift in Sources */,
-				B51663CE2B05B5BB00241491 /* DayRecords+CoreDataProperties.swift in Sources */,
 				B5F904CE2AE4E4DF00FDE4CB /* SideEffects.swift in Sources */,
 				B58CD82F2B0C516300E12608 /* TakenMedicines+CoreDataProperties.swift in Sources */,
 				769FFF8F2AFBE23700B12515 /* safeAreaInsets.swift in Sources */,
 				7645AC012B06587B007F6139 /* DailyRecordViewModel.swift in Sources */,
 				B5F904C72AE4E0DA00FDE4CB /* SideEffectCheckView.swift in Sources */,
-				B51663CD2B05B5BB00241491 /* DayRecords+CoreDataClass.swift in Sources */,
 				30BB50B92ADFABBC0050CF69 /* ConditionSlider.swift in Sources */,
 				304180D32ADA8E37002AD2E3 /* StartView.swift in Sources */,
 				30D60C952B00FD1C005D5D96 /* NextButton.swift in Sources */,
@@ -676,11 +676,9 @@
 				76D52F452AFF2A79009A0698 /* ConditionModel.swift in Sources */,
 				7622B5D62B0AFDB100FA970B /* DiaryUpdateView.swift in Sources */,
 				7645AC032B0684FF007F6139 /* DailyRecordPage.swift in Sources */,
-				B593116C2B01B7490092A2E0 /* Medicines+CoreDataProperties.swift in Sources */,
 				76D52F472AFF2AD2009A0698 /* UserChat.swift in Sources */,
 				307B7D872AE43322007CB7F5 /* MyInfoMainView.swift in Sources */,
 				30A0B23A2B065A1D00F51AE1 /* RecordWeeklyCalendar.swift in Sources */,
-				B593116B2B01B7490092A2E0 /* Medicines+CoreDataClass.swift in Sources */,
 				B5F904D02AE4E61200FDE4CB /* CapsuleView.swift in Sources */,
 				30E376C72B011FCA00E8A10D /* CheerUpView.swift in Sources */,
 				30BB50C42AE1FCA80050CF69 /* MoodCheckView.swift in Sources */,
@@ -693,6 +691,7 @@
 				30BB50CB2AE3A4C30050CF69 /* DailyRecordNextTwoButtons.swift in Sources */,
 				76B387162B008A9D0067CDAF /* Date.swift in Sources */,
 				307B7D7F2AE43254007CB7F5 /* RecordMainView.swift in Sources */,
+				7622A7D82B0E5A0B00926022 /* HistoryModel.swift in Sources */,
 				768562E62AFE7BCB00AF5C95 /* ConditionViewModel.swift in Sources */,
 				768562DB2AFCC1DB00AF5C95 /* ProfileInput.swift in Sources */,
 				305240462ADFA855008FCD14 /* DailyRecordProgressBar.swift in Sources */,

@@ -70,7 +70,7 @@ class CoreDataManager {
         newMedicine.capacity = medicine.capacity
         newMedicine.unit = medicine.unit
         newMedicine.frequency = try? JSONEncoder().encode(medicine.frequency)
-        newMedicine.alarms = try? JSONEncoder().encode(medicine.alarms)
+        newMedicine.alarms = try? JSONEncoder().encode([medicine.alarms])
         newMedicine.freOption = medicine.freOption.rawValue
         newMedicine.sortedDays = medicine.sortedDays
         saveContext()
@@ -178,7 +178,6 @@ class CoreDataManager {
                       let moodValues = try? JSONDecoder().decode([Double].self, from: moodValuesData) else {
                     return nil
                 }
-                
                 return DayRecord(
                     date: date,
                     conditionValues: conditionValues,
@@ -256,6 +255,7 @@ class CoreDataManager {
 }
 
 extension CoreDataManager {
+    
     func saveDayRecord(_ dayRecord: DayRecord) {
         let context = persistentContainer.viewContext
 
