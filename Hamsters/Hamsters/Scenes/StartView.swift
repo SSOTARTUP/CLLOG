@@ -10,6 +10,10 @@ import SwiftUI
 struct StartView: View {
     @AppStorage(UserDefaultsKey.complete.rawValue) private var setupComplete: Bool = false
     
+    init() {
+        print(CoreDataManager.shared.fetchAllDayRecords())
+    }
+    
     var body: some View {
         ZStack {
             if setupComplete {
