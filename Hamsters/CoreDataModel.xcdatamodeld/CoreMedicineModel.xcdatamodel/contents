@@ -25,4 +25,17 @@
         <attribute name="sortedDays" optional="YES" attributeType="String"/>
         <attribute name="unit" optional="YES" attributeType="String"/>
     </entity>
+    <entity name="TakenMedicine" representedClassName="TakenMedicine" syncable="YES">
+        <attribute name="capacity" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="settingTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="timeTaken" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="unit" optional="YES" attributeType="String"/>
+        <relationship name="parentTakenMedicines" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TakenMedicines" inverseName="takenMedicines" inverseEntity="TakenMedicines"/>
+    </entity>
+    <entity name="TakenMedicines" representedClassName="TakenMedicines" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="takenMedicines" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TakenMedicine" inverseName="parentTakenMedicines" inverseEntity="TakenMedicine"/>
+    </entity>
 </model>
