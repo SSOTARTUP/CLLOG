@@ -70,7 +70,7 @@ class CoreDataManager {
         newMedicine.capacity = medicine.capacity
         newMedicine.unit = medicine.unit
         newMedicine.frequency = try? JSONEncoder().encode(medicine.frequency)
-        newMedicine.alarms = try? JSONEncoder().encode(medicine.alarms)
+        newMedicine.alarms = try? JSONEncoder().encode([medicine.alarms])
         newMedicine.freOption = medicine.freOption.rawValue
         newMedicine.sortedDays = medicine.sortedDays
         saveContext()
@@ -255,30 +255,6 @@ class CoreDataManager {
 }
 
 extension CoreDataManager {
-    
-    func createEmptyRecord() {
-        let context = persistentContainer.viewContext
-
-        let startDate = Calendar.current.startOfDay(for: Date())
-        // Fetch request to check if a record with the same date already exists
-        let fetchRequest: NSFetchRequest<DayRecords> = DayRecords.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "date == %@", startDate as CVarArg)
-
-        do {
-            let existingRecords = try context.fetch(fetchRequest)
-
-            guard existingRecords.count == 0 else {
-                print("already record")
-                return
-            }
-            let newDayRecord = DayRecords(context: context)
-            newDayRecord.date = startDate
-            newDayRecord.isRecorded = false
-            saveContext()
-        } catch {
-            print("CoreData::: 기존 레코드 조회 실패:", error)
-        }
-    }
     
     func saveDayRecord(_ dayRecord: DayRecord) {
         let context = persistentContainer.viewContext

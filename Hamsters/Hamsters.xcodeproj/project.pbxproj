@@ -66,6 +66,8 @@
 		30E376C72B011FCA00E8A10D /* CheerUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E376C62B011FCA00E8A10D /* CheerUpView.swift */; };
 		30EEFF372B09D13F0016D8BA /* ProfileEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EEFF362B09D13F0016D8BA /* ProfileEditView.swift */; };
 		30EEFF392B09D15C0016D8BA /* QuestionItemEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EEFF382B09D15C0016D8BA /* QuestionItemEditView.swift */; };
+		7622A7D62B0E563200926022 /* TakensManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7622A7D52B0E563200926022 /* TakensManager.swift */; };
+		7622A7D82B0E5A0B00926022 /* HistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7622A7D72B0E5A0B00926022 /* HistoryModel.swift */; };
 		7622B5D42B0AE37C00FA970B /* DiaryMainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7622B5D32B0AE37C00FA970B /* DiaryMainViewModel.swift */; };
 		7622B5D62B0AFDB100FA970B /* DiaryUpdateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7622B5D52B0AFDB100FA970B /* DiaryUpdateView.swift */; };
 		7645ABFD2B0306BA007F6139 /* PushManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7645ABFC2B0306BA007F6139 /* PushManager.swift */; };
@@ -165,6 +167,8 @@
 		30E376C62B011FCA00E8A10D /* CheerUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheerUpView.swift; sourceTree = "<group>"; };
 		30EEFF362B09D13F0016D8BA /* ProfileEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditView.swift; sourceTree = "<group>"; };
 		30EEFF382B09D15C0016D8BA /* QuestionItemEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionItemEditView.swift; sourceTree = "<group>"; };
+		7622A7D52B0E563200926022 /* TakensManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakensManager.swift; sourceTree = "<group>"; };
+		7622A7D72B0E5A0B00926022 /* HistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryModel.swift; sourceTree = "<group>"; };
 		7622B5D32B0AE37C00FA970B /* DiaryMainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryMainViewModel.swift; sourceTree = "<group>"; };
 		7622B5D52B0AFDB100FA970B /* DiaryUpdateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryUpdateView.swift; sourceTree = "<group>"; };
 		7645ABFC2B0306BA007F6139 /* PushManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushManager.swift; sourceTree = "<group>"; };
@@ -234,7 +238,6 @@
 		304180C42ADA8E37002AD2E3 = {
 			isa = PBXGroup;
 			children = (
-				B593116D2B01B8740092A2E0 /* CoreDataManager.swift */,
 				B58CD8282B0C516300E12608 /* TakenMedicine+CoreDataClass.swift */,
 				B58CD8292B0C516300E12608 /* TakenMedicine+CoreDataProperties.swift */,
 				B58CD82A2B0C516300E12608 /* TakenMedicines+CoreDataClass.swift */,
@@ -403,6 +406,7 @@
 			children = (
 				307B7D642AE42480007CB7F5 /* MedicineModel.swift */,
 				307B7D652AE42480007CB7F5 /* AlarmItem.swift */,
+				7622A7D72B0E5A0B00926022 /* HistoryModel.swift */,
 			);
 			path = Medicine;
 			sourceTree = "<group>";
@@ -509,8 +513,10 @@
 		768562DC2AFDCE5800AF5C95 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				B593116D2B01B8740092A2E0 /* CoreDataManager.swift */,
 				768562DD2AFDCE6F00AF5C95 /* HealthKitManager.swift */,
 				7645ABFC2B0306BA007F6139 /* PushManager.swift */,
+				7622A7D52B0E563200926022 /* TakensManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -654,6 +660,7 @@
 				B59311642B01A77C0092A2E0 /* CoreDataModel.xcdatamodeld in Sources */,
 				B593116E2B01B8740092A2E0 /* CoreDataManager.swift in Sources */,
 				305240172ADD73EB008FCD14 /* SmokingStatus.swift in Sources */,
+				7622A7D62B0E563200926022 /* TakensManager.swift in Sources */,
 				307B7D662AE42480007CB7F5 /* MedicineModel.swift in Sources */,
 				307B7D722AE424A2007CB7F5 /* AddMedicineView.swift in Sources */,
 				307B7D672AE42480007CB7F5 /* AlarmItem.swift in Sources */,
@@ -684,6 +691,7 @@
 				30BB50CB2AE3A4C30050CF69 /* DailyRecordNextTwoButtons.swift in Sources */,
 				76B387162B008A9D0067CDAF /* Date.swift in Sources */,
 				307B7D7F2AE43254007CB7F5 /* RecordMainView.swift in Sources */,
+				7622A7D82B0E5A0B00926022 /* HistoryModel.swift in Sources */,
 				768562E62AFE7BCB00AF5C95 /* ConditionViewModel.swift in Sources */,
 				768562DB2AFCC1DB00AF5C95 /* ProfileInput.swift in Sources */,
 				305240462ADFA855008FCD14 /* DailyRecordProgressBar.swift in Sources */,

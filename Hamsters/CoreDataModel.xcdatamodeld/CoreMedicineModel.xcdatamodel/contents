@@ -9,12 +9,10 @@
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="isPeriod" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="isRecorded" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="memo" optional="YES" attributeType="String"/>
         <attribute name="moodValues" optional="YES" attributeType="Binary"/>
         <attribute name="popularEffect" optional="YES" attributeType="Binary"/>
         <attribute name="sleepingTime" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="takens" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData"/>
         <attribute name="weight" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
     </entity>
     <entity name="Medicines" representedClassName="Medicines" syncable="YES" codeGenerationType="class">
@@ -39,5 +37,10 @@
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <relationship name="takenMedicines" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TakenMedicine" inverseName="parentTakenMedicines" inverseEntity="TakenMedicine"/>
+    </entity>
+    <entity name="Takens" representedClassName="Takens" syncable="YES" codeGenerationType="class">
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="history" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="Data"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
     </entity>
 </model>
