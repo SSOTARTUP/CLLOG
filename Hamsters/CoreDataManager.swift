@@ -178,7 +178,6 @@ class CoreDataManager {
                       let moodValues = try? JSONDecoder().decode([Double].self, from: moodValuesData) else {
                     return nil
                 }
-                
                 return DayRecord(
                     date: date,
                     conditionValues: conditionValues,
@@ -256,6 +255,31 @@ class CoreDataManager {
 }
 
 extension CoreDataManager {
+    
+    func createEmptyRecord() {
+        let context = persistentContainer.viewContext
+
+        let startDate = Calendar.current.startOfDay(for: Date())
+        // Fetch request to check if a record with the same date already exists
+        let fetchRequest: NSFetchRequest<DayRecords> = DayRecords.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "date == %@", startDate as CVarArg)
+
+        do {
+            let existingRecords = try context.fetch(fetchRequest)
+
+            guard existingRecords.count == 0 else {
+                print("already record")
+                return
+            }
+            let newDayRecord = DayRecords(context: context)
+            newDayRecord.date = startDate
+            newDayRecord.isRecorded = false
+            saveContext()
+        } catch {
+            print("CoreData::: 기존 레코드 조회 실패:", error)
+        }
+    }
+    
     func saveDayRecord(_ dayRecord: DayRecord) {
         let context = persistentContainer.viewContext
 

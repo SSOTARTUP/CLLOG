@@ -12,6 +12,7 @@ struct StartView: View {
     
     init() {
         print(CoreDataManager.shared.fetchAllDayRecords())
+        CoreDataManager.shared.createEmptyRecord()
     }
     
     var body: some View {
