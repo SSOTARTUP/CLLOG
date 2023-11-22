@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Answer {
+enum Answer: Int {
     case none
     case little
     case normal

@@ -7,12 +7,6 @@
 
 import SwiftUI
 
-enum selectedHam: String {
-    case gray
-    case yellow
-    case black
-}
-
 struct ProfileSetView: View {
     @Binding var onboardingPage: Onboarding
     

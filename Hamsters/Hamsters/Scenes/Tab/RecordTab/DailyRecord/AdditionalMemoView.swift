@@ -7,35 +7,38 @@
 
 import SwiftUI
 
-struct AdditionalMemoView: View {
-    @Binding var pageNumber: Int
-    @Binding var memo: String
+struct AdditionalMemoView<T: RecordProtocol>: View {
+    @ObservedObject var viewModel: T
     
     let placeholder = "있다면 자유롭게 입력해 주세요"
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             Group {
-                Text("추가로 기록하고싶은\n내용이 있나요? ✍️️")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                    .padding(.bottom, 16)
+                if let _ = viewModel as? DailyRecordViewModel {
+                    Text("추가로 기록하고싶은\n내용이 있나요? ✍️️")
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                        .padding(.bottom, 16)
+                }
                 
-                TextEditor(text: $memo)
+                TextEditor(text: $viewModel.memo)
                     .scrollContentBackground(.hidden)
                     .background {
-                        TextEditor(text: .constant(memo.isEmpty ? placeholder : ""))
+                        TextEditor(text: .constant(viewModel.memo.isEmpty ? placeholder : ""))
+                            .padding(.horizontal, 8)
+                            .padding(.vertical, 10)
                             .foregroundStyle(.gray)
                             .scrollContentBackground(.hidden)
                             .background(Color(uiColor: .secondarySystemBackground))
                     }
                     .cornerRadius(10)
                     .padding(.top, 20)
-                    .onChange(of: memo) { _ in
-                        if memo.count > 500 {
+                    .onChange(of: viewModel.memo) { _ in
+                        if viewModel.memo.count > 500 {
 //                            characterLimitWarning = true
-                            memo = String(memo.prefix(500))
-                        } else if memo.count < 500 {
+                            viewModel.memo = String(viewModel.memo.prefix(500))
+                        } else if viewModel.memo.count < 500 {
 //                            characterLimitWarning = false
                         }
                     }
@@ -43,7 +46,7 @@ struct AdditionalMemoView: View {
                 HStack {
                     Spacer()
                     
-                    Text("\(memo.count) / 500")
+                    Text("\(viewModel.memo.count) / 500")
                         .font(.body)
                         .foregroundStyle(.secondary)
                 }
@@ -54,11 +57,14 @@ struct AdditionalMemoView: View {
 
             Spacer()
             
-            DailyRecordNextButton(pageNumber: $pageNumber, isActiveRecord:.constant(true), title: "\(Image(systemName: "checkmark.circle.fill")) 입력 완료")
+            NextButton(title: "다음", isActive: .constant(true)) {
+                viewModel.bottomButtonClicked()
+            }
+            .padding(.bottom, 40)
         }
     }
 }
 
 #Preview {
-    AdditionalMemoView(pageNumber: .constant(10), memo: .constant("메모~"))
+    AdditionalMemoView(viewModel: DailyRecordViewModel())
 }

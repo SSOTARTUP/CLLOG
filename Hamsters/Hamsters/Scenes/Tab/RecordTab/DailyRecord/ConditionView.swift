@@ -8,14 +8,23 @@
 import SwiftUI
 
 struct ConditionView: View {
+    @ObservedObject var dailyRecordViewModel: DailyRecordViewModel
+    
     @StateObject var viewModel = ConditionViewModel()
     @State var scroll:ScrollViewProxy?
-    @State var repeated:Bool = true
     
     var body: some View {
         // progressbar 추가
         ScrollViewReader { value in
             ScrollView {
+                HStack {
+                    Text("오늘의 컨디션")
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                        .padding(.leading, 16)
+                        .padding(.bottom, 16)
+                    Spacer()
+                }
                 ForEach(Array(viewModel.list.enumerated()),id: \.self.offset) { (offset,element) in
                     switch element.first?.sender {
                     case .computer:
@@ -26,10 +35,10 @@ struct ConditionView: View {
                             .id(offset)
                     case .button:
                         NextButton(title: "다음", isActive: .constant(true)) {
-                            //pageNumber += 1
+                            dailyRecordViewModel.answer = viewModel.answer
+                            dailyRecordViewModel.bottomButtonClicked()
                         }
-                        .padding(.horizontal,24)
-                        .padding(.top,44)
+                        .padding(.top,24)
                         .padding(.bottom,41)
                     case .none:
                         let _ = print("nil")
@@ -51,5 +60,5 @@ struct ConditionView: View {
 
 
 #Preview {
-    ConditionView()
+    ConditionView(dailyRecordViewModel: DailyRecordViewModel())
 }

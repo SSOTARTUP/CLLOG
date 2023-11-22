@@ -7,10 +7,11 @@
 
 import SwiftUI
 
-struct DailyCompleteView: View {
-    @Binding var pageNumber: Int
-    @Binding var isActiveRecord: Bool
-    @ObservedObject var dailyViewModel: DailyViewModel
+struct DailyCompleteView<T: RecordProtocol>: View {
+
+    @ObservedObject var viewModel: T
+    @Environment(\.dismiss) private var dismiss
+
 
     var body: some View {
         VStack(spacing: 0) {
@@ -40,15 +41,19 @@ struct DailyCompleteView: View {
             
             Spacer()
             
-            DailyRecordNextButton(pageNumber: $pageNumber, isActiveRecord: $isActiveRecord, onComplete:  {
-                dailyViewModel.saveRecord()
-                print("CoreData:::" + "\(CoreDataManager.shared.fetchAllDayRecords())")
-            }, title: "완료")
-            
+
+            NextButton(title: "다음", isActive: .constant(true)) {
+                if let vm = viewModel as? DailyRecordViewModel {
+                    dismiss()
+                    vm.saveRecord()
+                }
+                
+            }
+            .padding(.bottom, 40)
         }
     }
 }
 
-//#Preview {
-//    DailyCompleteView(pageNumber: .constant(11))
-//}
+#Preview {
+    DailyCompleteView(viewModel: DailyRecordViewModel())
+}

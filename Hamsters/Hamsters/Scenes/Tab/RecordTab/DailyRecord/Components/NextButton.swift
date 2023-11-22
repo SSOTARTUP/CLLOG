@@ -24,6 +24,7 @@ struct NextButton: View {
                 .padding(.vertical, 15)
                 .background(isActive ? .thoNavy : .thoDisabled)
                 .cornerRadius(15)
+                .padding(.horizontal,24)
         }
     }
 }
