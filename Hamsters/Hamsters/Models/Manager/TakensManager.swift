@@ -34,7 +34,6 @@ extension TakensManager {
 
             guard existingRecords.count == 0 else {
                 print("coredata:: takens already exist")
-                print(existingRecords)
                 return
             }
             let newDayRecord = Takens(context: context)
@@ -64,7 +63,6 @@ extension TakensManager {
 
         do {
             let results = try context.fetch(fetchRequest)
-
             guard let result = results.first,
                   let historyData = result.history,
                   var history = try? JSONDecoder().decode([HistoryModel].self, from: historyData)
@@ -80,6 +78,35 @@ extension TakensManager {
             return Result.failure(.fail)
         }
     }
+    
+    // 테스트 필요.
+    func fetch(from startDate: Date, to endDate: Date) -> Result<[Date: [HistoryModel]], Status> {
+        let context = coreDataManager.persistentContainer.viewContext
+        let fetchRequest: NSFetchRequest<Takens> = Takens.fetchRequest()
+        
+        let startOfDay = Calendar.current.startOfDay(for: startDate)
+        let endOfDay = Calendar.current.startOfDay(for: endDate).addingTimeInterval(24*60*60)
+        fetchRequest.predicate = NSPredicate(format: "date >= %@ AND date < %@", startOfDay as CVarArg, endOfDay as CVarArg)
+
+        do {
+            let results = try context.fetch(fetchRequest)
+
+            var historyByDate = [Date: [HistoryModel]]()
+            for takens in results {
+                guard let date = takens.date, let historyData = takens.history else { continue }
+                if let historyModels = try? JSONDecoder().decode([HistoryModel].self, from: historyData) {
+                    historyByDate[date] = historyModels
+                }
+            }
+            
+            return .success(historyByDate)
+        } catch {
+            print("CoreData::: Takens 조회 실패:", error)
+            return .failure(.fail)
+        }
+    }
+
+
 }
 
 //MARK: UPDATE
@@ -92,23 +119,26 @@ extension TakensManager {
         do {
             let context = coreDataManager.persistentContainer.viewContext
             let results = try context.fetch(fetchRequest)
-            
             guard
                 let result = results.first,
                 let historyData = result.history,
                 var history = try? JSONDecoder().decode([HistoryModel].self, from: historyData)
             else {
+                print("fail")
                 return .fail
             }
             
             if let index = history.firstIndex(where: { $0.id == historyModel.id }) {
                 history.remove(at: index)
-
+                print("TakensManager:: check disabled")
             } else {
                 history.append(historyModel)
+                print("TakensManager:: check activated")
             }
-                
-            result.setValue(history, forKey: "history")
+            guard let encodedHistory =  try? JSONEncoder().encode(history) else {
+                return .fail
+            }
+            result.setValue(encodedHistory, forKey: "history")
             coreDataManager.saveContext()
             
             return .success
