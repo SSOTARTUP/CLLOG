@@ -11,6 +11,8 @@
 		300E8E9C2AFB30D2001728FE /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 300E8E9B2AFB30D2001728FE /* Lottie */; };
 		300E8E9E2AFB314F001728FE /* LottieConfettiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300E8E9D2AFB314F001728FE /* LottieConfettiView.swift */; };
 		300E8EA32AFC67C3001728FE /* onboardingConfetti.json in Resources */ = {isa = PBXBuildFile; fileRef = 300E8EA22AFC67C3001728FE /* onboardingConfetti.json */; };
+		3014AC272B0DAFDB00B52B12 /* DiaryMonthlyCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3014AC262B0DAFDB00B52B12 /* DiaryMonthlyCalendar.swift */; };
+		3014AC292B0DCCB400B52B12 /* DiaryExpandedCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3014AC282B0DCCB400B52B12 /* DiaryExpandedCalendarView.swift */; };
 		30151F432AE3AD590036B60D /* SmokingAmount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30151F422AE3AD590036B60D /* SmokingAmount.swift */; };
 		30151F452AE3AE850036B60D /* DrinkCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30151F442AE3AE850036B60D /* DrinkCheckView.swift */; };
 		30151F472AE3AF060036B60D /* DrinkAmount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30151F462AE3AF060036B60D /* DrinkAmount.swift */; };
@@ -110,6 +112,8 @@
 		300E8E982AF9D8CA001728FE /* ProgressBarAndTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarAndTitle.swift; sourceTree = "<group>"; };
 		300E8E9D2AFB314F001728FE /* LottieConfettiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieConfettiView.swift; sourceTree = "<group>"; };
 		300E8EA22AFC67C3001728FE /* onboardingConfetti.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = onboardingConfetti.json; sourceTree = "<group>"; };
+		3014AC262B0DAFDB00B52B12 /* DiaryMonthlyCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryMonthlyCalendar.swift; sourceTree = "<group>"; };
+		3014AC282B0DCCB400B52B12 /* DiaryExpandedCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryExpandedCalendarView.swift; sourceTree = "<group>"; };
 		30151F422AE3AD590036B60D /* SmokingAmount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmokingAmount.swift; sourceTree = "<group>"; };
 		30151F442AE3AE850036B60D /* DrinkCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkCheckView.swift; sourceTree = "<group>"; };
 		30151F462AE3AF060036B60D /* DrinkAmount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkAmount.swift; sourceTree = "<group>"; };
@@ -454,6 +458,8 @@
 				7622B5D22B0AE35000FA970B /* viewModel */,
 				307B7D802AE432A2007CB7F5 /* DiaryMainView.swift */,
 				7622B5D52B0AFDB100FA970B /* DiaryUpdateView.swift */,
+				3014AC282B0DCCB400B52B12 /* DiaryExpandedCalendarView.swift */,
+				3014AC262B0DAFDB00B52B12 /* DiaryMonthlyCalendar.swift */,
 			);
 			path = DiaryTab;
 			sourceTree = "<group>";
@@ -644,6 +650,7 @@
 				B593116E2B01B8740092A2E0 /* CoreDataManager.swift in Sources */,
 				305240172ADD73EB008FCD14 /* SmokingStatus.swift in Sources */,
 				307B7D662AE42480007CB7F5 /* MedicineModel.swift in Sources */,
+				3014AC272B0DAFDB00B52B12 /* DiaryMonthlyCalendar.swift in Sources */,
 				307B7D722AE424A2007CB7F5 /* AddMedicineView.swift in Sources */,
 				307B7D672AE42480007CB7F5 /* AlarmItem.swift in Sources */,
 				B51663CE2B05B5BB00241491 /* DayRecords+CoreDataProperties.swift in Sources */,
@@ -686,6 +693,7 @@
 				304180F82ADC15A9002AD2E3 /* SexSetView.swift in Sources */,
 				30D60C912AFFD048005D5D96 /* Onboarding.swift in Sources */,
 				30151F492AE4007B0036B60D /* CaffeineCheckView.swift in Sources */,
+				3014AC292B0DCCB400B52B12 /* DiaryExpandedCalendarView.swift in Sources */,
 				76B387122AFFAFC60067CDAF /* ActivityView.swift in Sources */,
 				B597462C2AE5D7190074D5CC /* SleepingTimeView.swift in Sources */,
 				30151F472AE3AF060036B60D /* DrinkAmount.swift in Sources */,
