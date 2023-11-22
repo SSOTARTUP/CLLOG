@@ -36,6 +36,21 @@ struct Medicine: Identifiable {
     }
     
 }
+// MARK: - 복용 한 약물 모델
+struct takenMedicines {
+    var id = UUID()
+    var date: Date
+    var takenMedicines: [takenMedicine]
+}
+
+struct takenMedicine {
+    var name: String
+    var settingTime: Date
+    var timeTaken: Date
+    var capacity: String
+    var unit: String
+}
+
 
 extension Medicine {
     static var sampleData : [Medicine] = [

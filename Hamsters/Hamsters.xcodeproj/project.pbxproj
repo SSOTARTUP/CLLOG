@@ -81,6 +81,11 @@
 		B51663CD2B05B5BB00241491 /* DayRecords+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51663CB2B05B5BB00241491 /* DayRecords+CoreDataClass.swift */; };
 		B51663CE2B05B5BB00241491 /* DayRecords+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51663CC2B05B5BB00241491 /* DayRecords+CoreDataProperties.swift */; };
 		B51663D02B05B75500241491 /* DayRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51663CF2B05B75500241491 /* DayRecord.swift */; };
+		B58CD81F2B0C02D600E12608 /* DailyMedicationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58CD81E2B0C02D500E12608 /* DailyMedicationViewModel.swift */; };
+		B58CD82C2B0C516300E12608 /* TakenMedicine+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58CD8282B0C516300E12608 /* TakenMedicine+CoreDataClass.swift */; };
+		B58CD82D2B0C516300E12608 /* TakenMedicine+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58CD8292B0C516300E12608 /* TakenMedicine+CoreDataProperties.swift */; };
+		B58CD82E2B0C516300E12608 /* TakenMedicines+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58CD82A2B0C516300E12608 /* TakenMedicines+CoreDataClass.swift */; };
+		B58CD82F2B0C516300E12608 /* TakenMedicines+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58CD82B2B0C516300E12608 /* TakenMedicines+CoreDataProperties.swift */; };
 		B59311642B01A77C0092A2E0 /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B59311622B01A77C0092A2E0 /* CoreDataModel.xcdatamodeld */; };
 		B593116B2B01B7490092A2E0 /* Medicines+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59311692B01B7490092A2E0 /* Medicines+CoreDataClass.swift */; };
 		B593116C2B01B7490092A2E0 /* Medicines+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B593116A2B01B7490092A2E0 /* Medicines+CoreDataProperties.swift */; };
@@ -171,6 +176,11 @@
 		B51663CB2B05B5BB00241491 /* DayRecords+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DayRecords+CoreDataClass.swift"; sourceTree = "<group>"; };
 		B51663CC2B05B5BB00241491 /* DayRecords+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DayRecords+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		B51663CF2B05B75500241491 /* DayRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRecord.swift; sourceTree = "<group>"; };
+		B58CD81E2B0C02D500E12608 /* DailyMedicationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DailyMedicationViewModel.swift; path = Hamsters/Models/Record/DailyMedicationViewModel.swift; sourceTree = SOURCE_ROOT; };
+		B58CD8282B0C516300E12608 /* TakenMedicine+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TakenMedicine+CoreDataClass.swift"; sourceTree = "<group>"; };
+		B58CD8292B0C516300E12608 /* TakenMedicine+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TakenMedicine+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		B58CD82A2B0C516300E12608 /* TakenMedicines+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TakenMedicines+CoreDataClass.swift"; sourceTree = "<group>"; };
+		B58CD82B2B0C516300E12608 /* TakenMedicines+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TakenMedicines+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		B59311632B01A77C0092A2E0 /* CoreMedicineModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreMedicineModel.xcdatamodel; sourceTree = "<group>"; };
 		B59311692B01B7490092A2E0 /* Medicines+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Medicines+CoreDataClass.swift"; sourceTree = "<group>"; };
 		B593116A2B01B7490092A2E0 /* Medicines+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Medicines+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -211,6 +221,10 @@
 			isa = PBXGroup;
 			children = (
 				B593116D2B01B8740092A2E0 /* CoreDataManager.swift */,
+				B58CD8282B0C516300E12608 /* TakenMedicine+CoreDataClass.swift */,
+				B58CD8292B0C516300E12608 /* TakenMedicine+CoreDataProperties.swift */,
+				B58CD82A2B0C516300E12608 /* TakenMedicines+CoreDataClass.swift */,
+				B58CD82B2B0C516300E12608 /* TakenMedicines+CoreDataProperties.swift */,
 				B51663CB2B05B5BB00241491 /* DayRecords+CoreDataClass.swift */,
 				B51663CC2B05B5BB00241491 /* DayRecords+CoreDataProperties.swift */,
 				B59311692B01B7490092A2E0 /* Medicines+CoreDataClass.swift */,
@@ -403,7 +417,6 @@
 		307B7D782AE42FB5007CB7F5 /* Tab */ = {
 			isa = PBXGroup;
 			children = (
-				307B7D7A2AE43053007CB7F5 /* MainTabView.swift */,
 				307B7D792AE43017007CB7F5 /* RecordTab */,
 				307B7D822AE432D0007CB7F5 /* DiaryTab */,
 				307B7D852AE43304007CB7F5 /* StatisticsTab */,
@@ -418,6 +431,7 @@
 				307B7D7E2AE43254007CB7F5 /* RecordMainView.swift */,
 				301971552AE4FECE00728D16 /* WeeklyMedicationCalendar.swift */,
 				301971572AE50A0800728D16 /* DailyMedicationList.swift */,
+				307B7D7A2AE43053007CB7F5 /* MainTabView.swift */,
 				305240422ADFA766008FCD14 /* DailyRecord */,
 			);
 			path = RecordTab;
@@ -452,6 +466,7 @@
 			children = (
 				B5BDEC272B0AADAD0018D1C9 /* DailyViewModel.swift */,
 				768562E52AFE7BCB00AF5C95 /* ConditionViewModel.swift */,
+				B58CD81E2B0C02D500E12608 /* DailyMedicationViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -593,6 +608,7 @@
 				307B7D672AE42480007CB7F5 /* AlarmItem.swift in Sources */,
 				B51663CE2B05B5BB00241491 /* DayRecords+CoreDataProperties.swift in Sources */,
 				B5F904CE2AE4E4DF00FDE4CB /* SideEffects.swift in Sources */,
+				B58CD82F2B0C516300E12608 /* TakenMedicines+CoreDataProperties.swift in Sources */,
 				769FFF8F2AFBE23700B12515 /* safeAreaInsets.swift in Sources */,
 				B5F904C72AE4E0DA00FDE4CB /* SideEffectCheckView.swift in Sources */,
 				B51663CD2B05B5BB00241491 /* DayRecords+CoreDataClass.swift in Sources */,
@@ -613,6 +629,7 @@
 				B5BDEC282B0AADAD0018D1C9 /* DailyViewModel.swift in Sources */,
 				300E8E9E2AFB314F001728FE /* LottieConfettiView.swift in Sources */,
 				30BB50C02ADFFB710050CF69 /* DailyRecordView.swift in Sources */,
+				B58CD82E2B0C516300E12608 /* TakenMedicines+CoreDataClass.swift in Sources */,
 				30BB50CB2AE3A4C30050CF69 /* DailyRecordNextTwoButtons.swift in Sources */,
 				76B387162B008A9D0067CDAF /* Date.swift in Sources */,
 				307B7D7F2AE43254007CB7F5 /* RecordMainView.swift in Sources */,
@@ -621,8 +638,10 @@
 				305240462ADFA855008FCD14 /* DailyRecordProgressBar.swift in Sources */,
 				304180E72ADAC9D7002AD2E3 /* OnboardingNextButton.swift in Sources */,
 				307B7D762AE424BC007CB7F5 /* MedicineViewModel.swift in Sources */,
+				B58CD82C2B0C516300E12608 /* TakenMedicine+CoreDataClass.swift in Sources */,
 				304180F32ADC0C3F002AD2E3 /* OnboardingView.swift in Sources */,
 				304180EF2ADBB37B002AD2E3 /* View+.swift in Sources */,
+				B58CD82D2B0C516300E12608 /* TakenMedicine+CoreDataProperties.swift in Sources */,
 				301971582AE50A0800728D16 /* DailyMedicationList.swift in Sources */,
 				304180F82ADC15A9002AD2E3 /* SexSetView.swift in Sources */,
 				30D60C912AFFD048005D5D96 /* Onboarding.swift in Sources */,
@@ -633,6 +652,7 @@
 				305240162ADD73EB008FCD14 /* UserDefaultsKey.swift in Sources */,
 				301971542AE4F00600728D16 /* DailyCompleteView.swift in Sources */,
 				30BB50C92AE395F80050CF69 /* SmokingCheckView.swift in Sources */,
+				B58CD81F2B0C02D600E12608 /* DailyMedicationViewModel.swift in Sources */,
 				307B7D7D2AE43092007CB7F5 /* TabItem.swift in Sources */,
 				304180D12ADA8E37002AD2E3 /* HamstersApp.swift in Sources */,
 				B5F904D22AE4F98F00FDE4CB /* WeightCheckView.swift in Sources */,
