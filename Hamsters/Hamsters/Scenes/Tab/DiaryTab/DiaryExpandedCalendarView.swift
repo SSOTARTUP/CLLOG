@@ -10,10 +10,13 @@ import SwiftUI
 struct DiaryExpandedCalendarView: View {
     @Environment(\.dismiss) private var dismiss
     
-    @State private var selectedDate: Date = Date()
+    @Binding var selectedDate: Date
+    @Binding var weeklyReload: Bool
     @State private var goToday: Bool = false
     
-    init() {
+    var tempDate: Date?
+    
+    init(selectedDate: Binding<Date>, weeklyReload: Binding<Bool>) {
         let appearance = UINavigationBarAppearance()
         appearance.shadowColor = .clear
         appearance.backgroundColor = .white
@@ -21,6 +24,9 @@ struct DiaryExpandedCalendarView: View {
         UINavigationBar.appearance().scrollEdgeAppearance = appearance
         UINavigationBar.appearance().compactAppearance = appearance
         UINavigationBar.appearance().compactScrollEdgeAppearance = appearance
+        
+        self._selectedDate = selectedDate
+        self._weeklyReload = weeklyReload
     }
     
     var body: some View {
@@ -39,7 +45,7 @@ struct DiaryExpandedCalendarView: View {
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Button {
-//                        dismiss()
+                        dismiss()
                     } label: {
                         Image(systemName: "xmark.circle.fill")
                     }
@@ -94,7 +100,8 @@ extension DiaryExpandedCalendarView {
                 .foregroundStyle(.thoTextField)
             
             Button {
-//                        dismiss()
+                weeklyReload = true
+                dismiss()
             } label: {
                 Text("선택한 날짜로 이동")
                     .font(.headline)
@@ -110,5 +117,5 @@ extension DiaryExpandedCalendarView {
 }
 
 #Preview {
-    DiaryExpandedCalendarView()
+    DiaryExpandedCalendarView(selectedDate: .constant(Date()), weeklyReload: .constant(true))
 }

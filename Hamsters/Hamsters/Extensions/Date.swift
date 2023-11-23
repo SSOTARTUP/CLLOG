@@ -47,7 +47,7 @@ extension Date {
         return toString("yyyy년 M월 W주")
     }
     public var simple: String {
-        return toString("yyyy년 M월")
+        return toString("yy년 M월")
     }
     public var monthAndDay: String {
         return toString("MM월 d일")

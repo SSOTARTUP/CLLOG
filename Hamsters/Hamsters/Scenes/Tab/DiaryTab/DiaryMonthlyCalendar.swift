@@ -185,8 +185,8 @@ extension DiaryMonthlyCalendar {
         // 해당 달 외의 날짜 지우기
         calendar.placeholderType = .none
         
-        // 선택일을 오늘로
         calendar.select(selectedDate)
+        calendar.setCurrentPage(selectedDate, animated: true)
         
         // 이벤트 서클 색상 설정
         calendar.appearance.eventDefaultColor = .thoDisabled
