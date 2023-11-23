@@ -1,19 +1,17 @@
 //
-//  RecordWeeklyCalendar.swift
+//  DiaryWeeklyCalendar.swift
 //  Hamsters
 //
-//  Created by Chaeeun Shin on 11/16/23.
+//  Created by Chaeeun Shin on 11/22/23.
 //
 
 import SwiftUI
-import UIKit
 import FSCalendar
 
-struct WeeklyCalendarView: UIViewRepresentable {
+struct DiaryWeeklyCalendar: UIViewRepresentable {
     @Binding var selectedDate: Date
     @Binding var calendarHeight: CGFloat
-    @Binding var existLog: [String]
-    @Binding var isToday: IsToday
+    @Binding var weeklyReload: Bool
     @State private var isFirstLoad = true
     
     func makeUIView(context: Context) -> FSCalendar {
@@ -29,24 +27,22 @@ struct WeeklyCalendarView: UIViewRepresentable {
             uiView.reloadData()
             isFirstLoad = false
         }
+        
+        uiView.select(selectedDate)
     }
     
     // 유킷 -> 스유
     func makeCoordinator() -> Coordinator {
-        Coordinator(selectedDate: $selectedDate, calendarHeight: $calendarHeight, existLog: $existLog, isToday: $isToday)
+        Coordinator(selectedDate: $selectedDate, calendarHeight: $calendarHeight)
     }
     
     class Coordinator: NSObject, FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
         @Binding var selectedDate: Date
         @Binding var calendarHeight: CGFloat
-        @Binding var existLog: [String]
-        @Binding var isToday: IsToday
         
-        init(selectedDate: Binding<Date>, calendarHeight: Binding<CGFloat>, existLog: Binding<[String]>, isToday: Binding<IsToday>) {
+        init(selectedDate: Binding<Date>, calendarHeight: Binding<CGFloat>) {
             self._selectedDate = selectedDate
             self._calendarHeight = calendarHeight
-            self._existLog = existLog
-            self._isToday = isToday
         }
         
         func calendar(_ calendar: FSCalendar,
@@ -56,14 +52,7 @@ struct WeeklyCalendarView: UIViewRepresentable {
                 guard let self = self else { return }
                 
                 selectedDate = date
-                
-                if date.basicDash > Date.now.basicDash {
-                    isToday = .future
-                } else if date.basicDash < Date.now.basicDash {
-                    isToday = .past
-                } else {
-                    isToday = .today
-                }
+                calendar.reloadData()
             }
         }
         
@@ -76,46 +65,60 @@ struct WeeklyCalendarView: UIViewRepresentable {
                 calendarHeight = bounds.height
             }
         }
+        
+        func calendar(_ calendar: FSCalendar,
+                      shouldSelect date: Date,
+                      at monthPosition: FSCalendarMonthPosition) -> Bool {
+            if date.basicDash > Date.now.basicDash {
+                false
+            } else {
+                true
+            }
+        }
+        
+        
+        
+        func calendar(_ calendar: FSCalendar,
+                      appearance: FSCalendarAppearance,
+                      titleDefaultColorFor date: Date) -> UIColor? {
+            if date.basicDash > Date.now.basicDash {
+                UIColor(white: 1, alpha: 0.3)
+            } else {
+                UIColor.white
+            }
+        }
 
         func calendar(_ calendar: FSCalendar,
                       willDisplay cell: FSCalendarCell,
                       for date: Date,
                       at monthPosition: FSCalendarMonthPosition) {
-            var iconImage = UIImage()
             
-            if self.existLog.contains(date.basicDash) {
-                iconImage = UIImage(named: "SunflowerSeed")!
+            if date.basicDash == selectedDate.basicDash {
+                let iconImage = UIImage(named: "HamsterWeek")
+                let backgroundView = UIImageView(image: iconImage)
+                
+                backgroundView.contentMode = .scaleAspectFit
+                backgroundView.translatesAutoresizingMaskIntoConstraints = false
+                
+                cell.backgroundView = backgroundView
+                
+                NSLayoutConstraint.activate([
+                    backgroundView.centerXAnchor.constraint(equalTo: cell.centerXAnchor),
+                    backgroundView.bottomAnchor.constraint(equalTo: cell.bottomAnchor, constant: -12)
+                ])
             } else {
-                iconImage = UIImage(named: "SunflowerSeed")!.withTintColor(.thoDisabled)
+                cell.backgroundView = UIImageView(image: UIImage(named: ""))
             }
-            
-            let backgroundView = UIImageView(image: iconImage)
-            backgroundView.contentMode = .scaleAspectFit
-            backgroundView.translatesAutoresizingMaskIntoConstraints = false
-            
-            cell.backgroundView = backgroundView
-            
-            NSLayoutConstraint.activate([
-                backgroundView.centerXAnchor.constraint(equalTo: cell.centerXAnchor),
-                backgroundView.topAnchor.constraint(equalTo: cell.topAnchor)
-            ])
         }
-        
-        func calendar(_ calendar: FSCalendar,
-                      appearance: FSCalendarAppearance,
-                      titleDefaultColorFor date: Date) -> UIColor? {
-            UIColor.clear
-        }
-        
+
         func maximumDate(for calendar: FSCalendar) -> Date {
             Date()
         }
-        
     }
 }
 
-extension WeeklyCalendarView {
-    private func configureCalendar() -> FSCalendar {
+extension DiaryWeeklyCalendar {
+    func configureCalendar() -> FSCalendar {
         let calendar = FSCalendar()
         
         calendar.scope = .week
@@ -129,26 +132,25 @@ extension WeeklyCalendarView {
         
         // 오늘 날짜 표시 지우기
         calendar.appearance.todayColor = .clear
-        calendar.appearance.titleTodayColor = .clear
+        calendar.appearance.titleTodayColor = .white
         
         // 요일 표시 변경
         calendar.appearance.weekdayFont = UIFont.preferredFont(forTextStyle: .body)
-        calendar.appearance.weekdayTextColor = .black
+        calendar.appearance.weekdayTextColor = .white
         
         // 선택일 컬러 설정
         calendar.appearance.selectionColor = .clear
-        calendar.appearance.titleSelectionColor = .clear
-        calendar.appearance.titleDefaultColor = .clear
-        calendar.appearance.titleWeekendColor = .clear
+        calendar.appearance.titleSelectionColor = .thoNavy
+        
+        
+        // 날짜 폰트 설정
+        calendar.appearance.titleFont = UIFont.preferredFont(forTextStyle: .body)
+        calendar.appearance.titleDefaultColor = .white
+        calendar.appearance.titleWeekendColor = .white
         
         // 선택일을 오늘로
-        calendar.select(Date())
+        calendar.select(selectedDate)
         
         return calendar
     }
-}
-
-#Preview {
-    WeeklyCalendarView(selectedDate: .constant(Date()), calendarHeight: .constant(300), existLog: .constant(["2023-11-16", "2023-11-15", "2023-11-13", "2023-11-11", "2023-11-9"]), isToday: .constant(.today))
-        .border(.red)
 }
