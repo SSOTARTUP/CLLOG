@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct RecordMainView: View {
     @Environment(\.safeAreaInsets) private var safeAreaInsets
@@ -14,7 +15,9 @@ struct RecordMainView: View {
     @State private var isActiveSheet = false
     @State private var weeklyHeight: CGFloat = 220.0
     @State private var isToday: IsToday = .today
-
+    
+    @StateObject var viewModel = RecordMainViewModel()
+    
     var body: some View {
             ZStack(alignment: .top) {
                 // MARK: 배경
@@ -175,7 +178,7 @@ struct RecordButton: View {
 }
 
 #Preview {
-//    RecordMainView()
-    RecordButton(status: .today){}
+    RecordMainView()
+    //RecordButton(status: .today){}
 }
 
