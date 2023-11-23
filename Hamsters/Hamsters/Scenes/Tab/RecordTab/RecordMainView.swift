@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct RecordMainView: View {
     @Environment(\.safeAreaInsets) private var safeAreaInsets
@@ -14,8 +15,49 @@ struct RecordMainView: View {
     @State private var isActiveSheet = false
     @State private var weeklyHeight: CGFloat = 220.0
     @State private var isToday: IsToday = .today
-
+    
+  //  @Environment(\.managedObjectContext) var context
+    @StateObject var viewModel = RecordMainViewModel()
+//    @FetchRequest(
+//        entity: Takens.entity(),
+//        sortDescriptors: [NSSortDescriptor(keyPath: \Takens.id, ascending: true)],
+//        predicate: NSPredicate(format: "date == %@", Calendar.current.startOfDay(for: Date()) as CVarArg)
+//    ) var takens: FetchedResults<Takens>
+//    
+//    @FetchRequest(
+//        entity: Medicines.entity(),
+//        sortDescriptors: [NSSortDescriptor(keyPath: \Medicines.name, ascending: true)]
+//    ) var medicines: FetchedResults<Medicines>
+    
+    init() {
+//        let result = TakensManager.shared.fetchHistory(date: Date())
+//        switch result {
+//        case .success(let histories):
+//            print(histories)
+//        case .failure(let error):
+//            print(error)
+//        }
+    }
+    
     var body: some View {
+        var _ = print("@@@@@",viewModel.histories.count)
+        Button{
+         //   TakensManager.shared.createEmptyTakens()
+            let hm = HistoryModel(id: UUID(), capacity: "C", name: "NAME", settingTime: Date(), timeTaken: Date(), unit: "정")
+            
+            TakensManager.shared.check(date: Date(), historyModel: hm)
+//            let result = TakensManager.shared.fetchHistory(date: Date())
+//            switch result {
+//            case .success(let histories):
+//                print(histories)
+//            case .failure(let error):
+//                print(error)
+//            }
+//            var _ = print("@@@@@",takens.count)
+        } label:{
+            Text("CLICK ME")
+                .background(.blue)
+        }
             ZStack(alignment: .top) {
                 // MARK: 배경
                 Color.sky
@@ -175,7 +217,7 @@ struct RecordButton: View {
 }
 
 #Preview {
-//    RecordMainView()
-    RecordButton(status: .today){}
+    RecordMainView()
+    //RecordButton(status: .today){}
 }
 

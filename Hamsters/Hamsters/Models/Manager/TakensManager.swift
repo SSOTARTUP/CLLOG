@@ -53,7 +53,7 @@ extension TakensManager {
 
 //MARK: READ
 extension TakensManager {
-    func fetch(date: Date) -> Result<[HistoryModel],Status> {
+    func fetchHistory(date: Date) -> Result<[HistoryModel],Status> {
         let startDate = Calendar.current.startOfDay(for: date)
 
         let context = coreDataManager.persistentContainer.viewContext
@@ -63,9 +63,10 @@ extension TakensManager {
 
         do {
             let results = try context.fetch(fetchRequest)
+            print("COUNT.",results.count)
             guard let result = results.first,
                   let historyData = result.history,
-                  var history = try? JSONDecoder().decode([HistoryModel].self, from: historyData)
+                  let history = try? JSONDecoder().decode([HistoryModel].self, from: historyData)
             else {
                 return Result.failure(.none)
             }
@@ -80,7 +81,7 @@ extension TakensManager {
     }
     
     // 테스트 필요.
-    func fetch(from startDate: Date, to endDate: Date) -> Result<[Date: [HistoryModel]], Status> {
+    func fetchHistory(from startDate: Date, to endDate: Date) -> Result<[Date: [HistoryModel]], Status> {
         let context = coreDataManager.persistentContainer.viewContext
         let fetchRequest: NSFetchRequest<Takens> = Takens.fetchRequest()
         
@@ -112,6 +113,7 @@ extension TakensManager {
 //MARK: UPDATE
 extension TakensManager {
     func check(date: Date, historyModel: HistoryModel) -> Status {
+        createEmptyTakens()
         let startDate = Calendar.current.startOfDay(for: date)
         let fetchRequest: NSFetchRequest<Takens> = Takens.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "date == %@", startDate as NSDate)
