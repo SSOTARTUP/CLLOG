@@ -14,8 +14,7 @@ struct WeeklyCalendarView: UIViewRepresentable {
     @Binding var calendarHeight: CGFloat
     @Binding var existLog: [String]
     @Binding var isToday: IsToday
-    
-    typealias UIViewType = FSCalendar
+    @State private var isFirstLoad = true
     
     func makeUIView(context: Context) -> FSCalendar {
         configureCalendar()
@@ -25,6 +24,11 @@ struct WeeklyCalendarView: UIViewRepresentable {
     func updateUIView(_ uiView: FSCalendar, context: Context) {
         uiView.delegate = context.coordinator
         uiView.dataSource = context.coordinator
+        
+        if isFirstLoad {
+            uiView.reloadData()
+            isFirstLoad = false
+        }
     }
     
     // 유킷 -> 스유
@@ -72,17 +76,7 @@ struct WeeklyCalendarView: UIViewRepresentable {
                 calendarHeight = bounds.height
             }
         }
-        
-//        func calendar(_ calendar: FSCalendar,
-//                      shouldSelect date: Date,
-//                      at monthPosition: FSCalendarMonthPosition) -> Bool {
-//            if date.basicDash > Date.now.basicDash {
-//                false
-//            } else {
-//                true
-//            }
-//        }
-        
+
         func calendar(_ calendar: FSCalendar,
                       willDisplay cell: FSCalendarCell,
                       for date: Date,
@@ -100,19 +94,23 @@ struct WeeklyCalendarView: UIViewRepresentable {
             backgroundView.translatesAutoresizingMaskIntoConstraints = false
             
             cell.backgroundView = backgroundView
+            
+            NSLayoutConstraint.activate([
+                backgroundView.centerXAnchor.constraint(equalTo: cell.centerXAnchor),
+                backgroundView.topAnchor.constraint(equalTo: cell.topAnchor)
+            ])
         }
-
-//        func calendar(_ calendar: FSCalendar,
-//                      imageFor date: Date) -> UIImage? {
-//            let iconName = "SunflowerSeed"
-//            if self.existLog.contains(date.basicDash) {
-//                return UIImage(named: iconName)
-//
-//            } else {
-//                return UIImage(named: iconName)?.withTintColor(.thoDisabled)
-//
-//            }
-//        }
+        
+        func calendar(_ calendar: FSCalendar,
+                      appearance: FSCalendarAppearance,
+                      titleDefaultColorFor date: Date) -> UIColor? {
+            UIColor.clear
+        }
+        
+        func maximumDate(for calendar: FSCalendar) -> Date {
+            Date()
+        }
+        
     }
 }
 
@@ -143,12 +141,8 @@ extension WeeklyCalendarView {
         calendar.appearance.titleDefaultColor = .clear
         calendar.appearance.titleWeekendColor = .clear
         
-        // 날짜 폰트 설정
-        calendar.appearance.titleFont = UIFont.preferredFont(forTextStyle: .body)
         // 선택일을 오늘로
-        calendar.select(.now)
-        
-        calendar.scrollEnabled = false
+        calendar.select(Date())
         
         return calendar
     }
