@@ -16,10 +16,11 @@ extension PushProtocol {
         PushManager.shared.center.removeAllPendingNotificationRequests()
         
         let coreDataManager = CoreDataManager.shared
-        let medicines = coreDataManager.fetchAllMedicines()
+        let fetchedMedicines = MedicinesManager.shared.fetchAllMedicines()
         var dic:[String:[PushManager.WeekDay]] = [:]
         
         let calendar = Calendar.current
+        guard let medicines = fetchedMedicines else { return .error }
         print(medicines)
         medicines.forEach { medicine in
             for alarm in medicine.alarms {

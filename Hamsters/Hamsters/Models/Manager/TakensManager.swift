@@ -53,7 +53,7 @@ extension TakensManager {
 
 //MARK: READ
 extension TakensManager {
-    func fetchHistory(date: Date) -> Result<[HistoryModel],Status> {
+    func fetchHistory(date: Date) -> [HistoryModel]? {
         let startDate = Calendar.current.startOfDay(for: date)
 
         let context = coreDataManager.persistentContainer.viewContext
@@ -63,20 +63,19 @@ extension TakensManager {
 
         do {
             let results = try context.fetch(fetchRequest)
-            print("COUNT.",results.count)
             guard let result = results.first,
                   let historyData = result.history,
                   let history = try? JSONDecoder().decode([HistoryModel].self, from: historyData)
             else {
-                return Result.failure(.none)
+                return nil
             }
             let successResult = history.map {
                 HistoryModel(id: $0.id, capacity: $0.capacity, name: $0.name, settingTime: $0.settingTime, timeTaken: $0.timeTaken, unit: $0.unit)
             }
-            return Result.success(successResult)
+            return successResult
         } catch {
             print("CoreData::: Takens 조회 실패:", error)
-            return Result.failure(.fail)
+            return nil
         }
     }
     

@@ -38,7 +38,7 @@ extension MedicinesManager {
 
 //MARK: READ
 extension MedicinesManager {
-    func fetchAllMedicines() -> [Medicine] {
+    func fetchAllMedicines() -> [Medicine]? {
         let context = coreDataManager.persistentContainer.viewContext
         let fetchRequest: NSFetchRequest<Medicines> = Medicines.fetchRequest()
         
@@ -73,7 +73,7 @@ extension MedicinesManager {
             }
         } catch {
             print("Failed to fetch medicines: \(error.localizedDescription)")
-            return []
+            return nil
         }
     }
 }

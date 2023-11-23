@@ -10,7 +10,7 @@ import SwiftUI
 import CoreData
 
 class RecordMainViewModel: NSObject, ObservableObject {
-    @Published var histories: [HistoryModel] = []
+    @Published var medicineSchedule: [MedicineSchedule] = []
 
     private let takensController: NSFetchedResultsController<Takens>
     private let medicinesController: NSFetchedResultsController<Medicines>
@@ -38,8 +38,6 @@ class RecordMainViewModel: NSObject, ObservableObject {
             sectionNameKeyPath: nil,
             cacheName: nil)
         
-
-        
         super.init()
         takensController.delegate = self
         medicinesController.delegate = self
@@ -47,7 +45,7 @@ class RecordMainViewModel: NSObject, ObservableObject {
         do {
             try takensController.performFetch()
             try medicinesController.performFetch()
-          //  updateHistories()
+            update()
         } catch {
             print("Failed to fetch items: \(error)")
         }
@@ -55,48 +53,45 @@ class RecordMainViewModel: NSObject, ObservableObject {
 }
 
 extension RecordMainViewModel {
-    
-    private func fetchMedicines() -> [Medicine]? {
-        guard let fetchedMedicines = medicinesController.fetchedObjects else { return nil }
+
+    private func update() {
+        let today = Date()
+
+        guard
+            let fetcheMedicines = MedicinesManager.shared.fetchAllMedicines(),
+            let fetchedHistory = TakensManager.shared.fetchHistory(date: today)
+        else { return }
+        let weekday = Calendar.current.component(.weekday, from: today)
         
-        let result = fetchedMedicines.compactMap { entity -> Medicine? in
-            guard let id = entity.id,
-                  let name = entity.name,
-                  let capacity = entity.capacity,
-                  let unit = entity.unit,
-                  let frequencyData = entity.frequency,
-                  let alarmsData = entity.alarms,
-                  let frequency = try? JSONDecoder().decode([Day].self, from: frequencyData),
-                  let alarms = try? JSONDecoder().decode([AlarmItem].self, from: alarmsData),
-                  let freOptionString = entity.freOption,
-                  let freOption = Option(rawValue: freOptionString),
-                  let sortedDays = entity.sortedDays else {
+        let result = fetcheMedicines
+            .compactMap { medicine -> [MedicineSchedule]? in
+                if let _ = medicine.frequency.firstIndex(where: { $0.num == weekday}), medicine.alarms.count > 0 {
+                    
+                    return medicine.alarms.map { alarm in
+                        let isTaken = fetchedHistory.filter { $0.id == alarm.id }.count > 0 ? true : false
+                        return MedicineSchedule(id: alarm.id, capacity: medicine.capacity, name: medicine.name, unit: medicine.unit, settingTime: alarm.date, isTaken: isTaken)
+                    }
+                }
                 return nil
             }
-            return Medicine(
-                id: id,
-                name: name,
-                capacity: capacity,
-                unit: unit,
-                frequency: frequency,
-                alarms: alarms,
-                freOption: freOption,
-                sortedDays: sortedDays
-            )
-        }
+            .flatMap { $0 }
+            .sorted{ compareTimeOnly(date1: $0.settingTime, date2: $1.settingTime) }
         
-        return result
+        medicineSchedule = result
     }
     
+    func compareTimeOnly(date1: Date, date2: Date) -> Bool{
+        let calendar = Calendar.current
 
-    private func updateHistories() {
-        let fetcheMedicines = fetchMedicines()
-        let history = TakensManager.shared.fetchHistory(date: Date())
-        print(history)
+        let components1 = calendar.dateComponents([.hour, .minute], from: date1)
+        let components2 = calendar.dateComponents([.hour, .minute], from: date2)
+
+        return (components1.hour! * 60 + components1.minute!) < (components2.hour! * 60 + components2.minute!)
     }
 }
+
 extension RecordMainViewModel: NSFetchedResultsControllerDelegate {
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        updateHistories()
+        update()
     }
 }

@@ -22,7 +22,7 @@ class DummyManager {
                                    freOption: .specificDay,
                                    sortedDays: "sortedDays")
         
-        coreDataManager.addMedicine(newMedicine)
+        MedicinesManager.shared.addMedicine(newMedicine)
         
         newMedicine = Medicine(name: "콘서타- 매일",
                                    capacity: "30",
@@ -32,7 +32,7 @@ class DummyManager {
                                     freOption: .everyDay,
                                    sortedDays: "sortedDays")
         
-        coreDataManager.addMedicine(newMedicine)
+        MedicinesManager.shared.addMedicine(newMedicine)
         
         newMedicine = Medicine(name: "콘서타 - 목",
                                    capacity: "30",
@@ -42,7 +42,7 @@ class DummyManager {
                                freOption: .specificDay,
                                    sortedDays: "sortedDays")
         
-        coreDataManager.addMedicine(newMedicine)
+        MedicinesManager.shared.addMedicine(newMedicine)
     }
     
     func insertHistory() {
