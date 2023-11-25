@@ -21,7 +21,7 @@ class RecordMainViewModel: NSObject, ObservableObject {
         let fetchTakensRequest: NSFetchRequest<Takens> = Takens.fetchRequest()
         fetchTakensRequest.sortDescriptors = [NSSortDescriptor(keyPath: \Takens.date, ascending: true)]
         let startDate = Calendar.current.startOfDay(for: Date())
-        fetchTakensRequest.predicate = NSPredicate(format: "date == %@", startDate as CVarArg)
+//        fetchTakensRequest.predicate = NSPredicate(format: "date == %@", startDate as CVarArg)
         
         takensController = NSFetchedResultsController(
             fetchRequest: fetchTakensRequest,
@@ -55,6 +55,7 @@ class RecordMainViewModel: NSObject, ObservableObject {
 extension RecordMainViewModel {
 
     private func update() {
+        print("RecordMainViewModel:: UPDATE")
         let today = Date()
 
         guard

@@ -18,9 +18,9 @@ class DayRecordsManager {
     
 }
 
+
+// MARK: CREATE
 extension DayRecordsManager {
-    // MARK: - 하루 기록 코어데이터 CRUD
-    
     func addDayRecord(_ dayRecord: DayRecord) {
         let context = coreDataManager.persistentContainer.viewContext
         let newDayRecord = DayRecords(context: context)
@@ -41,6 +41,145 @@ extension DayRecordsManager {
         coreDataManager.saveContext()
         print("CoreData::: 데일리 기록 저장")
     }
+        
+    func saveDayRecord(_ dayRecord: DayRecord) {
+        let context = coreDataManager.persistentContainer.viewContext
+
+        // Fetch request to check if a record with the same date already exists
+        let fetchRequest: NSFetchRequest<DayRecords> = DayRecords.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "date == %@", dayRecord.date as CVarArg)
+
+        do {
+            let existingRecords = try context.fetch(fetchRequest)
+
+            // If an existing record is found, delete it
+            if let existingRecord = existingRecords.first {
+                context.delete(existingRecord)
+                print("CoreData::: 기존 레코드 삭제됨")
+            }
+        } catch {
+            print("CoreData::: 기존 레코드 조회 실패:", error)
+        }
+
+        // Create a new DayRecord
+        let newDayRecord = DayRecords(context: context)
+        
+        newDayRecord.date = dayRecord.date
+        newDayRecord.sleepingTime = Int16(dayRecord.sleepingTime)
+        newDayRecord.popularEffect = try? JSONEncoder().encode(dayRecord.popularEffect)
+        newDayRecord.dangerEffect = try? JSONEncoder().encode(dayRecord.dangerEffect)
+        newDayRecord.weight = dayRecord.weight
+        newDayRecord.amountOfSmoking = Int16(dayRecord.amountOfSmoking)
+        newDayRecord.amountOfCaffein = Int16(dayRecord.amountOfCaffein)
+        newDayRecord.isPeriod = dayRecord.isPeriod
+        newDayRecord.amountOfAlcohol = Int16(dayRecord.amountOfAlcohol)
+        newDayRecord.memo = dayRecord.memo
+        newDayRecord.conditionValues = try? JSONEncoder().encode(dayRecord.conditionValues)
+        newDayRecord.moodValues = try? JSONEncoder().encode(dayRecord.moodValues)
+        
+        coreDataManager.saveContext()
+
+        print("CoreData::: 데일리 기록 저장")
+    }
+}
+
+//MARK: READ
+extension DayRecordsManager {
+    func fetchDayRecord(for date: Date) -> DayRecord? {
+        
+        let startDate = Calendar.current.startOfDay(for: date)
+        let context = coreDataManager.persistentContainer.viewContext
+        let fetchRequest: NSFetchRequest<DayRecords> = DayRecords.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "date == %@", startDate as CVarArg)
+
+        do {
+            let records = try context.fetch(fetchRequest)
+            // Return the first record if found, otherwise nil
+            guard let entity = records.first else { return nil }
+            guard let date = entity.date,
+                  let popularEffectData = entity.popularEffect,
+                  let dangerEffectData = entity.dangerEffect,
+                  let conditionValuesData = entity.conditionValues,
+                  let moodValuesData = entity.moodValues,
+                  let popularEffect = try? JSONDecoder().decode([SideEffects.Major].self, from: popularEffectData),
+                  let dangerEffect = try? JSONDecoder().decode([SideEffects.Dangerous].self, from: dangerEffectData),
+                  let conditionValues = try? JSONDecoder().decode([Double].self, from: conditionValuesData),
+                  let moodValues = try? JSONDecoder().decode([Double].self, from: moodValuesData) else {
+                return nil
+            }
+            
+            return DayRecord(
+                date: date,
+                conditionValues: conditionValues,
+                moodValues: moodValues,
+                sleepingTime: Int(entity.sleepingTime),
+                popularEffect: popularEffect,
+                dangerEffect: dangerEffect,
+                weight: entity.weight,
+                amountOfSmoking: Int(entity.amountOfSmoking),
+                amountOfCaffein: Int(entity.amountOfCaffein),
+                isPeriod: entity.isPeriod,
+                amountOfAlcohol: Int(entity.amountOfAlcohol),
+                memo: entity.memo ?? ""
+            )
+            
+        } catch {
+            print("CoreData 레코드 조회 실패:", error)
+            return nil
+        }
+    }
+    
+    func fetchDayRecords(from: Date, to: Date) -> [Date: DayRecord]? {
+        let context = coreDataManager.persistentContainer.viewContext
+        let fetchRequest: NSFetchRequest<DayRecords> = DayRecords.fetchRequest()
+
+        let startOfDay = Calendar.current.startOfDay(for: from)
+        let endOfDay = Calendar.current.startOfDay(for: to)
+        fetchRequest.predicate = NSPredicate(format: "date >= %@ AND date <= %@", startOfDay as CVarArg, endOfDay as CVarArg)
+
+        do {
+            let records = try context.fetch(fetchRequest)
+            var dayRecordsDict = [Date: DayRecord]()
+
+            for entity in records {
+                guard let date = entity.date,
+                      let popularEffectData = entity.popularEffect,
+                      let dangerEffectData = entity.dangerEffect,
+                      let conditionValuesData = entity.conditionValues,
+                      let moodValuesData = entity.moodValues,
+                      let popularEffect = try? JSONDecoder().decode([SideEffects.Major].self, from: popularEffectData),
+                      let dangerEffect = try? JSONDecoder().decode([SideEffects.Dangerous].self, from: dangerEffectData),
+                      let conditionValues = try? JSONDecoder().decode([Double].self, from: conditionValuesData),
+                      let moodValues = try? JSONDecoder().decode([Double].self, from: moodValuesData) else {
+                    continue
+                }
+
+                let dayRecord = DayRecord(
+                    date: date,
+                    conditionValues: conditionValues,
+                    moodValues: moodValues,
+                    sleepingTime: Int(entity.sleepingTime),
+                    popularEffect: popularEffect,
+                    dangerEffect: dangerEffect,
+                    weight: entity.weight,
+                    amountOfSmoking: Int(entity.amountOfSmoking),
+                    amountOfCaffein: Int(entity.amountOfCaffein),
+                    isPeriod: entity.isPeriod,
+                    amountOfAlcohol: Int(entity.amountOfAlcohol),
+                    memo: entity.memo ?? ""
+                )
+
+                dayRecordsDict[date] = dayRecord
+            }
+
+            return dayRecordsDict
+            
+        } catch {
+            print("CoreData 레코드 조회 실패:", error)
+            return nil
+        }
+    }
+
     
     func fetchAllDayRecords() -> [DayRecord] {
         let context = coreDataManager.persistentContainer.viewContext
@@ -80,8 +219,10 @@ extension DayRecordsManager {
             return []
         }
     }
-    
-    // dayrecord 각각 수정
+}
+
+//MARK: UPDATE
+extension DayRecordsManager {
     func updateSpecificDayRecord(date: Date, fieldKey: String, newValue: Any) {
         let dayStart = Calendar.current.startOfDay(for: date)
         let fetchRequest: NSFetchRequest<DayRecords> = DayRecords.fetchRequest()
@@ -128,91 +269,6 @@ extension DayRecordsManager {
             }
         } catch {
             print("레코드 업데이트 실패: \(error)")
-        }
-    }
-    
-    func saveDayRecord(_ dayRecord: DayRecord) {
-        let context = coreDataManager.persistentContainer.viewContext
-
-        // Fetch request to check if a record with the same date already exists
-        let fetchRequest: NSFetchRequest<DayRecords> = DayRecords.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "date == %@", dayRecord.date as CVarArg)
-
-        do {
-            let existingRecords = try context.fetch(fetchRequest)
-
-            // If an existing record is found, delete it
-            if let existingRecord = existingRecords.first {
-                context.delete(existingRecord)
-                print("CoreData::: 기존 레코드 삭제됨")
-            }
-        } catch {
-            print("CoreData::: 기존 레코드 조회 실패:", error)
-        }
-
-        // Create a new DayRecord
-        let newDayRecord = DayRecords(context: context)
-        
-        newDayRecord.date = dayRecord.date
-        newDayRecord.sleepingTime = Int16(dayRecord.sleepingTime)
-        newDayRecord.popularEffect = try? JSONEncoder().encode(dayRecord.popularEffect)
-        newDayRecord.dangerEffect = try? JSONEncoder().encode(dayRecord.dangerEffect)
-        newDayRecord.weight = dayRecord.weight
-        newDayRecord.amountOfSmoking = Int16(dayRecord.amountOfSmoking)
-        newDayRecord.amountOfCaffein = Int16(dayRecord.amountOfCaffein)
-        newDayRecord.isPeriod = dayRecord.isPeriod
-        newDayRecord.amountOfAlcohol = Int16(dayRecord.amountOfAlcohol)
-        newDayRecord.memo = dayRecord.memo
-        newDayRecord.conditionValues = try? JSONEncoder().encode(dayRecord.conditionValues)
-        newDayRecord.moodValues = try? JSONEncoder().encode(dayRecord.moodValues)
-        
-        coreDataManager.saveContext()
-
-        print("CoreData::: 데일리 기록 저장")
-    }
-
-    
-    func fetchDayRecord(for date: Date) -> DayRecord? {
-        
-        let startDate = Calendar.current.startOfDay(for: date)
-        let context = coreDataManager.persistentContainer.viewContext
-        let fetchRequest: NSFetchRequest<DayRecords> = DayRecords.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "date == %@", startDate as CVarArg)
-
-        do {
-            let records = try context.fetch(fetchRequest)
-            // Return the first record if found, otherwise nil
-            guard let entity = records.first else { return nil }
-            guard let date = entity.date,
-                  let popularEffectData = entity.popularEffect,
-                  let dangerEffectData = entity.dangerEffect,
-                  let conditionValuesData = entity.conditionValues,
-                  let moodValuesData = entity.moodValues,
-                  let popularEffect = try? JSONDecoder().decode([SideEffects.Major].self, from: popularEffectData),
-                  let dangerEffect = try? JSONDecoder().decode([SideEffects.Dangerous].self, from: dangerEffectData),
-                  let conditionValues = try? JSONDecoder().decode([Double].self, from: conditionValuesData),
-                  let moodValues = try? JSONDecoder().decode([Double].self, from: moodValuesData) else {
-                return nil
-            }
-            
-            return DayRecord(
-                date: date,
-                conditionValues: conditionValues,
-                moodValues: moodValues,
-                sleepingTime: Int(entity.sleepingTime),
-                popularEffect: popularEffect,
-                dangerEffect: dangerEffect,
-                weight: entity.weight,
-                amountOfSmoking: Int(entity.amountOfSmoking),
-                amountOfCaffein: Int(entity.amountOfCaffein),
-                isPeriod: entity.isPeriod,
-                amountOfAlcohol: Int(entity.amountOfAlcohol),
-                memo: entity.memo ?? ""
-            )
-            
-        } catch {
-            print("CoreData 레코드 조회 실패:", error)
-            return nil
         }
     }
 }

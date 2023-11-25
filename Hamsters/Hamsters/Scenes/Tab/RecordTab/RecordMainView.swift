@@ -21,6 +21,7 @@ struct RecordMainView: View {
     var body: some View {
             ZStack(alignment: .top) {
                 // MARK: 배경
+ 
                 Color.sky
                 
                 VStack {

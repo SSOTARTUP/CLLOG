@@ -19,8 +19,8 @@ class TakensManager {
 
 //MARK: CREATE
 extension TakensManager {
-    func createEmptyTakens() {
-        let startDate = Calendar.current.startOfDay(for: Date())
+    func createEmptyTakens(date: Date) {
+        let startDate = Calendar.current.startOfDay(for: date)
 
         let context = coreDataManager.persistentContainer.viewContext
 
@@ -42,7 +42,6 @@ extension TakensManager {
             let history:[HistoryModel] = []
             newDayRecord.history = try? JSONEncoder().encode(history)
             coreDataManager.saveContext()
-            print("create")
         } catch {
             print("CoreData::: Takens 조회 실패:", error)
         }
@@ -80,13 +79,13 @@ extension TakensManager {
     }
     
     // 테스트 필요.
-    func fetchHistory(from startDate: Date, to endDate: Date) -> Result<[Date: [HistoryModel]], Status> {
+    func fetchHistory(from startDate: Date, to endDate: Date) -> [Date: [HistoryModel]]? {
         let context = coreDataManager.persistentContainer.viewContext
         let fetchRequest: NSFetchRequest<Takens> = Takens.fetchRequest()
         
         let startOfDay = Calendar.current.startOfDay(for: startDate)
-        let endOfDay = Calendar.current.startOfDay(for: endDate).addingTimeInterval(24*60*60)
-        fetchRequest.predicate = NSPredicate(format: "date >= %@ AND date < %@", startOfDay as CVarArg, endOfDay as CVarArg)
+        let endOfDay = Calendar.current.startOfDay(for: endDate)
+        fetchRequest.predicate = NSPredicate(format: "date >= %@ AND date <= %@", startOfDay as CVarArg, endOfDay as CVarArg)
 
         do {
             let results = try context.fetch(fetchRequest)
@@ -99,10 +98,10 @@ extension TakensManager {
                 }
             }
             
-            return .success(historyByDate)
+            return historyByDate
         } catch {
             print("CoreData::: Takens 조회 실패:", error)
-            return .failure(.fail)
+            return nil
         }
     }
 
@@ -111,8 +110,8 @@ extension TakensManager {
 
 //MARK: UPDATE
 extension TakensManager {
-    func check(date: Date, historyModel: HistoryModel) -> Status {
-        createEmptyTakens()
+    func updateHistory(date: Date, historyModel: HistoryModel) -> Status {
+        createEmptyTakens(date: date)
         let startDate = Calendar.current.startOfDay(for: date)
         let fetchRequest: NSFetchRequest<Takens> = Takens.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "date == %@", startDate as NSDate)
