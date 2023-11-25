@@ -90,7 +90,7 @@ class DailyRecordViewModel: RecordProtocol {
             memo: memo
         )
 
-        coreDataManager.saveDayRecord(dayRecord)
+        DayRecordsManager.shared.saveDayRecord(dayRecord)
     }
     
     func startOfDay(for date: Date) -> Date {

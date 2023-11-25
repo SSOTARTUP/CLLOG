@@ -95,11 +95,11 @@ extension DiaryMainViewModel {
             memo: memo
         )
         
-        coreDataManager.updateDayRecord(dayRecord)
+        DayRecordsManager.shared.updateDayRecord(dayRecord)
     }
     
     func initialize() -> Status{
-        guard let record = coreDataManager.fetchDayRecord(for: selectedDate) else {
+        guard let record = DayRecordsManager.shared.fetchDayRecord(for: selectedDate) else {
             // 해당 날짜에 데일리 레코드가 없음.
             return .none
         }

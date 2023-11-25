@@ -94,6 +94,8 @@
 		76B387142AFFC6D00067CDAF /* ActivityModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B387132AFFC6D00067CDAF /* ActivityModalView.swift */; };
 		76B387162B008A9D0067CDAF /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B387152B008A9D0067CDAF /* Date.swift */; };
 		76B771132B0B5BA0007EE7EA /* RecordProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B771122B0B5BA0007EE7EA /* RecordProtocol.swift */; };
+		76BFF2F92B103DE000124280 /* StatisticsMainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BFF2F82B103DE000124280 /* StatisticsMainViewModel.swift */; };
+		76BFF2FB2B1042FF00124280 /* DayRecordsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BFF2FA2B1042FF00124280 /* DayRecordsManager.swift */; };
 		76D52F402AFE9B45009A0698 /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D52F3F2AFE9B45009A0698 /* RoundedCorner.swift */; };
 		76D52F422AFE9B86009A0698 /* ComputerChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D52F412AFE9B86009A0698 /* ComputerChat.swift */; };
 		76D52F452AFF2A79009A0698 /* ConditionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D52F442AFF2A79009A0698 /* ConditionModel.swift */; };
@@ -205,6 +207,8 @@
 		76B387132AFFC6D00067CDAF /* ActivityModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityModalView.swift; sourceTree = "<group>"; };
 		76B387152B008A9D0067CDAF /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		76B771122B0B5BA0007EE7EA /* RecordProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordProtocol.swift; sourceTree = "<group>"; };
+		76BFF2F82B103DE000124280 /* StatisticsMainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsMainViewModel.swift; sourceTree = "<group>"; };
+		76BFF2FA2B1042FF00124280 /* DayRecordsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRecordsManager.swift; sourceTree = "<group>"; };
 		76D52F3F2AFE9B45009A0698 /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
 		76D52F412AFE9B86009A0698 /* ComputerChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComputerChat.swift; sourceTree = "<group>"; };
 		76D52F442AFF2A79009A0698 /* ConditionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionModel.swift; sourceTree = "<group>"; };
@@ -490,6 +494,7 @@
 		307B7D852AE43304007CB7F5 /* StatisticsTab */ = {
 			isa = PBXGroup;
 			children = (
+				76BFF2F72B103DBE00124280 /* viewModel */,
 				307B7D832AE432EF007CB7F5 /* StatisticsMainView.swift */,
 			);
 			path = StatisticsTab;
@@ -549,6 +554,7 @@
 				7622A7D52B0E563200926022 /* TakensManager.swift */,
 				7622A7DD2B0F76BB00926022 /* DummyManager.swift */,
 				7622A7DF2B0F864700926022 /* MedicinesManager.swift */,
+				76BFF2FA2B1042FF00124280 /* DayRecordsManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -560,6 +566,14 @@
 				76B771122B0B5BA0007EE7EA /* RecordProtocol.swift */,
 			);
 			path = protocol;
+			sourceTree = "<group>";
+		};
+		76BFF2F72B103DBE00124280 /* viewModel */ = {
+			isa = PBXGroup;
+			children = (
+				76BFF2F82B103DE000124280 /* StatisticsMainViewModel.swift */,
+			);
+			path = viewModel;
 			sourceTree = "<group>";
 		};
 		76D52F3E2AFE9B37009A0698 /* helper */ = {
@@ -667,6 +681,7 @@
 				307B7D712AE424A2007CB7F5 /* AlarmRow.swift in Sources */,
 				30EEFF372B09D13F0016D8BA /* ProfileEditView.swift in Sources */,
 				30BB50C22AE0C0680050CF69 /* DailyRecordNextButton.swift in Sources */,
+				76BFF2FB2B1042FF00124280 /* DayRecordsManager.swift in Sources */,
 				307B7D6E2AE424A2007CB7F5 /* MedicineRow.swift in Sources */,
 				30151F452AE3AE850036B60D /* DrinkCheckView.swift in Sources */,
 				30EEFF392B09D15C0016D8BA /* QuestionItemEditView.swift in Sources */,
@@ -729,6 +744,7 @@
 				30BB50CB2AE3A4C30050CF69 /* DailyRecordNextTwoButtons.swift in Sources */,
 				76B387162B008A9D0067CDAF /* Date.swift in Sources */,
 				307B7D7F2AE43254007CB7F5 /* RecordMainView.swift in Sources */,
+				76BFF2F92B103DE000124280 /* StatisticsMainViewModel.swift in Sources */,
 				7622A7D82B0E5A0B00926022 /* HistoryModel.swift in Sources */,
 				768562E62AFE7BCB00AF5C95 /* ConditionViewModel.swift in Sources */,
 				768562DB2AFCC1DB00AF5C95 /* ProfileInput.swift in Sources */,
