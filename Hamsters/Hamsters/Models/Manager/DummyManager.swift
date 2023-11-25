@@ -46,7 +46,34 @@ class DummyManager {
     }
     
     func insertHistory() {
-        let hm = HistoryModel(id: UUID(), capacity: "C", name: "NAME", settingTime: Date(), timeTaken: Date(), unit: "정")
-        
+        for i in 0..<10 {
+            guard let date = Calendar.current.date(byAdding: .day, value: -i, to: Date()) else { break }
+            let hm = HistoryModel(id: UUID(), capacity: "C", name: "NAME\(i)", settingTime: date, timeTaken: Date(), unit: "정")
+            TakensManager.shared.updateHistory(date: date, historyModel: hm)
+        }
+
+    }
+    
+    func insertDayRecords() {
+        for i in 0..<10 {
+            guard let date = Calendar.current.date(byAdding: .day, value: -i, to: Date()) else { break }
+            let dayRecord = DayRecord(
+                date: Calendar.current.startOfDay(for: date),
+                conditionValues: [0.0,1.0,2.0,3.0],
+                moodValues: [0.0,1.0,2.0,3.0],
+                sleepingTime: 10,
+                popularEffect: [.constipated,.cough,.cough],
+                dangerEffect: [.auditoryHallucinations,.chestPain,.mania],
+                weight: 50.0,
+                amountOfSmoking: 3,
+                amountOfCaffein: 3,
+                isPeriod: false,
+                amountOfAlcohol: 3,
+                memo: "memo"
+            )
+
+            DayRecordsManager.shared.saveDayRecord(dayRecord)
+        }
+
     }
 }

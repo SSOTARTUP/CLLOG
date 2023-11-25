@@ -8,13 +8,14 @@
 import SwiftUI
 
 struct StatisticsMainView: View {
+    
+    @StateObject var viewModel = StatisticsMainViewModel()
+    
     var body: some View {
-        ScrollView {
-            Image("StatisticsPrototype")
-                .resizable()
-                .scaledToFit()
+        VStack {
+
         }
-        .ignoresSafeArea()
+
     }
 }
 
