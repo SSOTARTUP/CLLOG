@@ -15,6 +15,7 @@
 		3014AC292B0DCCB400B52B12 /* DiaryExpandedCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3014AC282B0DCCB400B52B12 /* DiaryExpandedCalendarView.swift */; };
 		3014AC2B2B0DE67E00B52B12 /* DiaryWeeklyCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3014AC2A2B0DE67E00B52B12 /* DiaryWeeklyCalendar.swift */; };
 		3014AC2D2B0DE71F00B52B12 /* DiaryTempWeeklyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3014AC2C2B0DE71F00B52B12 /* DiaryTempWeeklyView.swift */; };
+		3014AC2F2B0EF44500B52B12 /* DiaryCalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3014AC2E2B0EF44500B52B12 /* DiaryCalendarViewModel.swift */; };
 		30151F432AE3AD590036B60D /* SmokingAmount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30151F422AE3AD590036B60D /* SmokingAmount.swift */; };
 		30151F452AE3AE850036B60D /* DrinkCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30151F442AE3AE850036B60D /* DrinkCheckView.swift */; };
 		30151F472AE3AF060036B60D /* DrinkAmount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30151F462AE3AF060036B60D /* DrinkAmount.swift */; };
@@ -118,6 +119,7 @@
 		3014AC282B0DCCB400B52B12 /* DiaryExpandedCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryExpandedCalendarView.swift; sourceTree = "<group>"; };
 		3014AC2A2B0DE67E00B52B12 /* DiaryWeeklyCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryWeeklyCalendar.swift; sourceTree = "<group>"; };
 		3014AC2C2B0DE71F00B52B12 /* DiaryTempWeeklyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryTempWeeklyView.swift; sourceTree = "<group>"; };
+		3014AC2E2B0EF44500B52B12 /* DiaryCalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryCalendarViewModel.swift; sourceTree = "<group>"; };
 		30151F422AE3AD590036B60D /* SmokingAmount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmokingAmount.swift; sourceTree = "<group>"; };
 		30151F442AE3AE850036B60D /* DrinkCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkCheckView.swift; sourceTree = "<group>"; };
 		30151F462AE3AF060036B60D /* DrinkAmount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkAmount.swift; sourceTree = "<group>"; };
@@ -503,6 +505,7 @@
 			isa = PBXGroup;
 			children = (
 				7622B5D32B0AE37C00FA970B /* DiaryMainViewModel.swift */,
+				3014AC2E2B0EF44500B52B12 /* DiaryCalendarViewModel.swift */,
 			);
 			path = viewModel;
 			sourceTree = "<group>";
@@ -678,6 +681,7 @@
 				76D52F472AFF2AD2009A0698 /* UserChat.swift in Sources */,
 				307B7D872AE43322007CB7F5 /* MyInfoMainView.swift in Sources */,
 				30A0B23A2B065A1D00F51AE1 /* RecordWeeklyCalendar.swift in Sources */,
+				3014AC2F2B0EF44500B52B12 /* DiaryCalendarViewModel.swift in Sources */,
 				B593116B2B01B7490092A2E0 /* Medicines+CoreDataClass.swift in Sources */,
 				B5F904D02AE4E61200FDE4CB /* CapsuleView.swift in Sources */,
 				30E376C72B011FCA00E8A10D /* CheerUpView.swift in Sources */,

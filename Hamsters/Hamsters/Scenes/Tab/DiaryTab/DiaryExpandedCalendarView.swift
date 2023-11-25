@@ -9,9 +9,7 @@ import SwiftUI
 
 struct DiaryExpandedCalendarView: View {
     @Environment(\.dismiss) private var dismiss
-    
-    @Binding var selectedDate: Date
-    @Binding var weeklyReload: Bool
+    @EnvironmentObject var calendarViewModel: DiaryCalendarViewModel
     @State private var goToday: Bool = false
     
     var tempDate: Date?
@@ -34,11 +32,11 @@ struct DiaryExpandedCalendarView: View {
             VStack {
                 headerSection()
                 
-                DiaryMonthlyCalendar(selectedDate: $selectedDate, goToday: $goToday)
+                DiaryMonthlyCalendar(goToday: $goToday)
+                    .environmentObject(calendarViewModel)
                     .padding(.horizontal, 24)
 
                 bottomSection()
-                
             }
             .navigationTitle("날짜 선택")
             .navigationBarTitleDisplayMode(.inline)
@@ -100,7 +98,7 @@ extension DiaryExpandedCalendarView {
                 .foregroundStyle(.thoTextField)
             
             Button {
-                weeklyReload = true
+                calendarViewModel.move()
                 dismiss()
             } label: {
                 Text("선택한 날짜로 이동")
@@ -117,5 +115,5 @@ extension DiaryExpandedCalendarView {
 }
 
 #Preview {
-    DiaryExpandedCalendarView(selectedDate: .constant(Date()), weeklyReload: .constant(true))
+    DiaryExpandedCalendarView()
 }

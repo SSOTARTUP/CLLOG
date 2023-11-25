@@ -9,7 +9,7 @@ import SwiftUI
 import FSCalendar
 
 struct DiaryMonthlyCalendar: UIViewRepresentable {
-    @Binding var selectedDate: Date
+    @EnvironmentObject var calendarViewModel: DiaryCalendarViewModel
     @Binding var goToday: Bool
     @State private var isFirstLoad = true
     
@@ -26,6 +26,8 @@ struct DiaryMonthlyCalendar: UIViewRepresentable {
         
         // 해당 달 이후로 달력 생성 막기 위해
         if isFirstLoad {
+            uiView.select(calendarViewModel.tempDate)
+            uiView.setCurrentPage(calendarViewModel.tempDate, animated: true)
             uiView.reloadData()
             isFirstLoad = false
         }
@@ -33,7 +35,7 @@ struct DiaryMonthlyCalendar: UIViewRepresentable {
         // 오늘로 돌아가는 버튼 동작 위해
         if goToday {
             uiView.select(Date())
-            selectedDate = Date()
+            calendarViewModel.tempDate = Date()
             uiView.reloadData()
             goToday = false
         }
@@ -41,19 +43,18 @@ struct DiaryMonthlyCalendar: UIViewRepresentable {
     
     // 유킷 -> 스유
     func makeCoordinator() -> Coordinator {
-        Coordinator(selectedDate: $selectedDate, goToday: $goToday, isFirstLoad: $isFirstLoad, recordingDates: sampleDate)
+        Coordinator(selectedDate: $calendarViewModel.tempDate, goToday: $goToday, recordingDates: sampleDate)
     }
     
     class Coordinator: NSObject, FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
         @Binding var selectedDate: Date
         @Binding var goToday: Bool
-        @Binding var isFirstLoad: Bool
+
         let recordingDates: [String]
         
-        init(selectedDate: Binding<Date>, goToday: Binding<Bool>, isFirstLoad: Binding<Bool>, recordingDates: [String]) {
+        init(selectedDate: Binding<Date>, goToday: Binding<Bool>, recordingDates: [String]) {
             self._selectedDate = selectedDate
             self._goToday = goToday
-            self._isFirstLoad = isFirstLoad
             self.recordingDates = recordingDates
         }
 
@@ -158,6 +159,8 @@ extension DiaryMonthlyCalendar {
         calendar.scrollDirection = .vertical
         calendar.pagingEnabled = false
         
+        calendar.select(Date())
+        
         // 상단부
         calendar.appearance.headerDateFormat = "M월"
         calendar.appearance.headerTitleFont = UIFont.systemFont(ofSize: 20, weight: .semibold)
@@ -185,14 +188,10 @@ extension DiaryMonthlyCalendar {
         // 해당 달 외의 날짜 지우기
         calendar.placeholderType = .none
         
-        calendar.select(selectedDate)
-        calendar.setCurrentPage(selectedDate, animated: true)
-        
         // 이벤트 서클 색상 설정
         calendar.appearance.eventDefaultColor = .thoDisabled
         calendar.appearance.eventSelectionColor = .thoGreen
         
         return calendar
     }
-    
 }
