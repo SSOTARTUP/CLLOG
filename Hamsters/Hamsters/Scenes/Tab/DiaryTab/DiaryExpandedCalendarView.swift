@@ -12,19 +12,8 @@ struct DiaryExpandedCalendarView: View {
     @EnvironmentObject var calendarViewModel: DiaryCalendarViewModel
     @State private var goToday: Bool = false
     
-    var tempDate: Date?
-    
-    init(selectedDate: Binding<Date>, weeklyReload: Binding<Bool>) {
-        let appearance = UINavigationBarAppearance()
-        appearance.shadowColor = .clear
-        appearance.backgroundColor = .white
-        UINavigationBar.appearance().standardAppearance = appearance
-        UINavigationBar.appearance().scrollEdgeAppearance = appearance
-        UINavigationBar.appearance().compactAppearance = appearance
-        UINavigationBar.appearance().compactScrollEdgeAppearance = appearance
-        
-        self._selectedDate = selectedDate
-        self._weeklyReload = weeklyReload
+    init() {
+        setNavigationBar()
     }
     
     var body: some View {
@@ -63,6 +52,16 @@ struct DiaryExpandedCalendarView: View {
 }
 
 extension DiaryExpandedCalendarView {
+    private func setNavigationBar() {
+        let appearance = UINavigationBarAppearance()
+        appearance.shadowColor = .clear
+        appearance.backgroundColor = .white
+        UINavigationBar.appearance().standardAppearance = appearance
+        UINavigationBar.appearance().scrollEdgeAppearance = appearance
+        UINavigationBar.appearance().compactAppearance = appearance
+        UINavigationBar.appearance().compactScrollEdgeAppearance = appearance
+    }
+    
     private func headerSection() -> some View {
         HStack {
             Text("월")

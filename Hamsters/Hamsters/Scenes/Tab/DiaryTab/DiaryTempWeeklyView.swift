@@ -13,14 +13,7 @@ struct DiaryTempWeeklyView: View {
     @State private var showMonthly = false
     
     init() {
-        let appearance = UINavigationBarAppearance()
-        appearance.shadowColor = .clear
-        appearance.backgroundColor = .thoNavy
-        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-        UINavigationBar.appearance().standardAppearance = appearance
-        UINavigationBar.appearance().scrollEdgeAppearance = appearance
-        UINavigationBar.appearance().compactAppearance = appearance
-        UINavigationBar.appearance().compactScrollEdgeAppearance = appearance
+        setNavigationBar()
     }
     
     var body: some View {
@@ -61,6 +54,19 @@ struct DiaryTempWeeklyView: View {
                     }
             }
         }
+    }
+}
+
+extension DiaryTempWeeklyView {
+    private func setNavigationBar() {
+        let appearance = UINavigationBarAppearance()
+        appearance.shadowColor = .clear
+        appearance.backgroundColor = .thoNavy
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        UINavigationBar.appearance().standardAppearance = appearance
+        UINavigationBar.appearance().scrollEdgeAppearance = appearance
+        UINavigationBar.appearance().compactAppearance = appearance
+        UINavigationBar.appearance().compactScrollEdgeAppearance = appearance
     }
 }
 
