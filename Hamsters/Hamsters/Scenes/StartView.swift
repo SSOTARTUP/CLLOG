@@ -10,6 +10,14 @@ import SwiftUI
 struct StartView: View {
     @AppStorage(UserDefaultsKey.complete.rawValue) private var setupComplete: Bool = false
     
+    init() {
+
+        
+
+
+      //  DummyManager.shared.insertMedicine()
+    }
+    
     var body: some View {
         ZStack {
             if setupComplete {

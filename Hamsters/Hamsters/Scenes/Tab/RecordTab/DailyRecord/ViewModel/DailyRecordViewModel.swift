@@ -10,6 +10,8 @@ import SwiftUI
 
 class DailyRecordViewModel: RecordProtocol {
         
+    private let coreDataManager = CoreDataManager.shared
+
     @AppStorage(UserDefaultsKey.dailyRecordPage.rawValue) var dailyRecordPages: String = [
         DailyRecordPage.condition,
         DailyRecordPage.mood,
@@ -73,6 +75,25 @@ class DailyRecordViewModel: RecordProtocol {
     }
     
     func saveRecord() {
-        // 데이터 모델 연동.
+        let dayRecord = DayRecord(
+            date: startOfDay(for: Date()), // 저장 시 현재 날짜 사용
+            conditionValues: answer.map{ $0 }.sorted{ $0.key.rawValue < $1.key.rawValue }.map{ Double($0.value.rawValue) },
+            moodValues: moodValues,
+            sleepingTime: sleepingTime,
+            popularEffect: popularEffect,
+            dangerEffect: dangerEffect,
+            weight: weight,
+            amountOfSmoking: amountOfSmoking,
+            amountOfCaffein: amountOfCaffein,
+            isPeriod: isPeriod,
+            amountOfAlcohol: amountOfAlcohol,
+            memo: memo
+        )
+
+        DayRecordsManager.shared.saveDayRecord(dayRecord)
+    }
+    
+    func startOfDay(for date: Date) -> Date {
+        return Calendar.current.startOfDay(for: date)
     }
 }

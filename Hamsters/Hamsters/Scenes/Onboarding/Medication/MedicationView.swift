@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct MedicationView: View {
-    //    @StateObject private var medicineViewModel = MedicineViewModel()
     @EnvironmentObject var medicineViewModel: MedicineViewModel
     
     @Binding var onboardingPage: Onboarding

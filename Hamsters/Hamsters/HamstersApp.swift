@@ -11,9 +11,10 @@ import SwiftUI
 
 @main
 struct HamstersApp: App {
+    var context = CoreDataManager.shared.persistentContainer.viewContext
     var body: some Scene {
         WindowGroup {
-            StartView()
+            StartView() .environment(\.managedObjectContext, context)
         }
     }
 }

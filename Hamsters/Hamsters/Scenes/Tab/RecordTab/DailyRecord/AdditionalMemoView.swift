@@ -61,7 +61,6 @@ struct AdditionalMemoView<T: RecordProtocol>: View {
                 viewModel.bottomButtonClicked()
             }
             .padding(.bottom, 40)
-//            DailyRecordNextButton(pageNumber: $pageNumber, isActiveRecord:.constant(true), title: "\(Image(systemName: "checkmark.circle.fill")) 입력 완료")
         }
     }
 }
