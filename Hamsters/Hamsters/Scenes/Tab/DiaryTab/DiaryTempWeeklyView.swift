@@ -8,26 +8,19 @@
 import SwiftUI
 
 struct DiaryTempWeeklyView: View {
-    @State private var selectedDate = Date()
+    @StateObject private var calendarViewModel = DiaryCalendarViewModel()
     @State private var calendarHeight: CGFloat = 300.0
-    @State private var weeklyReload = false
     @State private var showMonthly = false
     
     init() {
-        let appearance = UINavigationBarAppearance()
-        appearance.shadowColor = .clear
-        appearance.backgroundColor = .thoNavy
-        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-        UINavigationBar.appearance().standardAppearance = appearance
-        UINavigationBar.appearance().scrollEdgeAppearance = appearance
-        UINavigationBar.appearance().compactAppearance = appearance
-        UINavigationBar.appearance().compactScrollEdgeAppearance = appearance
+        setNavigationBar()
     }
     
     var body: some View {
         NavigationStack {
             VStack {
-                DiaryWeeklyCalendar(selectedDate: $selectedDate, calendarHeight: $calendarHeight, weeklyReload: $weeklyReload)
+                DiaryWeeklyCalendar(calendarHeight: $calendarHeight)
+                    .environmentObject(calendarViewModel)
                     .background(
                         Color.thoNavy
                             .shadow(color: .black.opacity(0.2), radius: 6, x: 0, y: 4)
@@ -36,12 +29,12 @@ struct DiaryTempWeeklyView: View {
 
                 Spacer()
                 
-                Text(selectedDate.basic)
+                Text(calendarViewModel.selectedDate.basic)
                     .font(.title2)
                 
                 Spacer()
             }
-            .navigationTitle(selectedDate.simple)
+            .navigationTitle(calendarViewModel.selectedDate.simple)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
@@ -54,9 +47,26 @@ struct DiaryTempWeeklyView: View {
                 }
             }
             .fullScreenCover(isPresented: $showMonthly) {
-                DiaryExpandedCalendarView(selectedDate: $selectedDate, weeklyReload: $weeklyReload)
+                DiaryExpandedCalendarView()
+                    .environmentObject(calendarViewModel)
+                    .onAppear {
+                        calendarViewModel.openMonthly()
+                    }
             }
         }
+    }
+}
+
+extension DiaryTempWeeklyView {
+    private func setNavigationBar() {
+        let appearance = UINavigationBarAppearance()
+        appearance.shadowColor = .clear
+        appearance.backgroundColor = .thoNavy
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        UINavigationBar.appearance().standardAppearance = appearance
+        UINavigationBar.appearance().scrollEdgeAppearance = appearance
+        UINavigationBar.appearance().compactAppearance = appearance
+        UINavigationBar.appearance().compactScrollEdgeAppearance = appearance
     }
 }
 

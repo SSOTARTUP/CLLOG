@@ -9,9 +9,8 @@ import SwiftUI
 import FSCalendar
 
 struct DiaryWeeklyCalendar: UIViewRepresentable {
-    @Binding var selectedDate: Date
+    @EnvironmentObject var calendarViewModel: DiaryCalendarViewModel
     @Binding var calendarHeight: CGFloat
-    @Binding var weeklyReload: Bool
     @State private var isFirstLoad = true
     
     func makeUIView(context: Context) -> FSCalendar {
@@ -28,12 +27,12 @@ struct DiaryWeeklyCalendar: UIViewRepresentable {
             isFirstLoad = false
         }
         
-        uiView.select(selectedDate)
+        uiView.select(calendarViewModel.selectedDate)
     }
     
     // 유킷 -> 스유
     func makeCoordinator() -> Coordinator {
-        Coordinator(selectedDate: $selectedDate, calendarHeight: $calendarHeight)
+        Coordinator(selectedDate: $calendarViewModel.selectedDate, calendarHeight: $calendarHeight)
     }
     
     class Coordinator: NSObject, FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
@@ -75,8 +74,6 @@ struct DiaryWeeklyCalendar: UIViewRepresentable {
                 true
             }
         }
-        
-        
         
         func calendar(_ calendar: FSCalendar,
                       appearance: FSCalendarAppearance,
@@ -149,7 +146,7 @@ extension DiaryWeeklyCalendar {
         calendar.appearance.titleWeekendColor = .white
         
         // 선택일을 오늘로
-        calendar.select(selectedDate)
+        calendar.select(calendarViewModel.selectedDate)
         
         return calendar
     }

@@ -9,24 +9,11 @@ import SwiftUI
 
 struct DiaryExpandedCalendarView: View {
     @Environment(\.dismiss) private var dismiss
-    
-    @Binding var selectedDate: Date
-    @Binding var weeklyReload: Bool
+    @EnvironmentObject var calendarViewModel: DiaryCalendarViewModel
     @State private var goToday: Bool = false
     
-    var tempDate: Date?
-    
-    init(selectedDate: Binding<Date>, weeklyReload: Binding<Bool>) {
-        let appearance = UINavigationBarAppearance()
-        appearance.shadowColor = .clear
-        appearance.backgroundColor = .white
-        UINavigationBar.appearance().standardAppearance = appearance
-        UINavigationBar.appearance().scrollEdgeAppearance = appearance
-        UINavigationBar.appearance().compactAppearance = appearance
-        UINavigationBar.appearance().compactScrollEdgeAppearance = appearance
-        
-        self._selectedDate = selectedDate
-        self._weeklyReload = weeklyReload
+    init() {
+        setNavigationBar()
     }
     
     var body: some View {
@@ -34,11 +21,11 @@ struct DiaryExpandedCalendarView: View {
             VStack {
                 headerSection()
                 
-                DiaryMonthlyCalendar(selectedDate: $selectedDate, goToday: $goToday)
+                DiaryMonthlyCalendar(goToday: $goToday)
+                    .environmentObject(calendarViewModel)
                     .padding(.horizontal, 24)
 
                 bottomSection()
-                
             }
             .navigationTitle("날짜 선택")
             .navigationBarTitleDisplayMode(.inline)
@@ -65,6 +52,16 @@ struct DiaryExpandedCalendarView: View {
 }
 
 extension DiaryExpandedCalendarView {
+    private func setNavigationBar() {
+        let appearance = UINavigationBarAppearance()
+        appearance.shadowColor = .clear
+        appearance.backgroundColor = .white
+        UINavigationBar.appearance().standardAppearance = appearance
+        UINavigationBar.appearance().scrollEdgeAppearance = appearance
+        UINavigationBar.appearance().compactAppearance = appearance
+        UINavigationBar.appearance().compactScrollEdgeAppearance = appearance
+    }
+    
     private func headerSection() -> some View {
         HStack {
             Text("월")
@@ -100,7 +97,7 @@ extension DiaryExpandedCalendarView {
                 .foregroundStyle(.thoTextField)
             
             Button {
-                weeklyReload = true
+                calendarViewModel.move()
                 dismiss()
             } label: {
                 Text("선택한 날짜로 이동")
@@ -117,5 +114,5 @@ extension DiaryExpandedCalendarView {
 }
 
 #Preview {
-    DiaryExpandedCalendarView(selectedDate: .constant(Date()), weeklyReload: .constant(true))
+    DiaryExpandedCalendarView()
 }

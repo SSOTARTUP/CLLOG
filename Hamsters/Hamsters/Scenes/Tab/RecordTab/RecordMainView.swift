@@ -13,7 +13,6 @@ struct RecordMainView: View {
         
     @State private var selectedDate = Date()
     @State private var isActiveSheet = false
-    @State private var weeklyHeight: CGFloat = 220.0
     @State private var isToday: IsToday = .today
     
     @StateObject var viewModel = RecordMainViewModel()
@@ -49,45 +48,9 @@ struct RecordMainView: View {
                         }
                     }
                     .padding()
-                    
-                    // ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ ;;; 난감
-                    ZStack {
-                        HStack {
-                            RoundedRectangle(cornerRadius: 40)
-                                .stroke(Color.thoNavy)
-                                .opacity(selectedDate.basicWithDay.suffix(1) == "월" ? 1 : 0)
 
-                            RoundedRectangle(cornerRadius: 40)
-                                .stroke(Color.thoNavy)
-                                .opacity(selectedDate.basicWithDay.suffix(1) == "화" ? 1 : 0)
-                            
-                            RoundedRectangle(cornerRadius: 40)
-                                .stroke(Color.thoNavy)
-                                .opacity(selectedDate.basicWithDay.suffix(1) == "수" ? 1 : 0)
-                            
-                            RoundedRectangle(cornerRadius: 40)
-                                .stroke(Color.thoNavy)
-                                .opacity(selectedDate.basicWithDay.suffix(1) == "목" ? 1 : 0)
-                            
-                            RoundedRectangle(cornerRadius: 40)
-                                .stroke(Color.thoNavy)
-                                .opacity(selectedDate.basicWithDay.suffix(1) == "금" ? 1 : 0)
-                            
-                            RoundedRectangle(cornerRadius: 40)
-                                .stroke(Color.thoNavy)
-                                .opacity(selectedDate.basicWithDay.suffix(1) == "토" ? 1 : 0)
-                            
-                            RoundedRectangle(cornerRadius: 40)
-                                .stroke(Color.thoNavy)
-                                .opacity(selectedDate.basicWithDay.suffix(1) == "일" ? 1 : 0)
-                        }
-                        .padding(.horizontal, 22)
-                        .frame(height: 80)
-                        
-                        WeeklyCalendarView(selectedDate: $selectedDate, calendarHeight: $weeklyHeight, existLog: .constant(["2023-11-16", "2023-11-15", "2023-11-13", "2023-11-11", "2023-11-9"]), isToday: $isToday)
-                            .frame(width: screenBounds().width - 38, height: weeklyHeight)
-                    }
-                    .padding(.top)
+                    RecordWeeklyCalendar(selectedDate: $selectedDate, isToday: $isToday)
+                        .padding(.top)
                         
                     Spacer()
                     
@@ -113,10 +76,82 @@ struct RecordMainView: View {
     }
 }
 
+extension RecordMainView {
+    struct RecordWeeklyCalendar: View {
+        @Binding var selectedDate: Date
+        @Binding var isToday: IsToday
+        @State private var weeklyHeight: CGFloat = 220.0
+       
+        var body: some View {
+            ZStack {
+                HStack {
+                    RoundedRectangle(cornerRadius: 40)
+                        .stroke(Color.thoNavy)
+                        .opacity(selectedDate.basicWithDay.suffix(1) == "월" ? 1 : 0)
+
+                    RoundedRectangle(cornerRadius: 40)
+                        .stroke(Color.thoNavy)
+                        .opacity(selectedDate.basicWithDay.suffix(1) == "화" ? 1 : 0)
+                    
+                    RoundedRectangle(cornerRadius: 40)
+                        .stroke(Color.thoNavy)
+                        .opacity(selectedDate.basicWithDay.suffix(1) == "수" ? 1 : 0)
+                    
+                    RoundedRectangle(cornerRadius: 40)
+                        .stroke(Color.thoNavy)
+                        .opacity(selectedDate.basicWithDay.suffix(1) == "목" ? 1 : 0)
+                    
+                    RoundedRectangle(cornerRadius: 40)
+                        .stroke(Color.thoNavy)
+                        .opacity(selectedDate.basicWithDay.suffix(1) == "금" ? 1 : 0)
+                    
+                    RoundedRectangle(cornerRadius: 40)
+                        .stroke(Color.thoNavy)
+                        .opacity(selectedDate.basicWithDay.suffix(1) == "토" ? 1 : 0)
+                    
+                    RoundedRectangle(cornerRadius: 40)
+                        .stroke(Color.thoNavy)
+                        .opacity(selectedDate.basicWithDay.suffix(1) == "일" ? 1 : 0)
+                }
+                .padding(.horizontal, 22)
+                .frame(height: 80)
+                
+                WeeklyCalendarView(selectedDate: $selectedDate, calendarHeight: $weeklyHeight, existLog: .constant(["2023-11-16", "2023-11-15", "2023-11-13", "2023-11-11", "2023-11-9"]), isToday: $isToday)
+                    .frame(width: screenBounds().width - 38, height: weeklyHeight)
+            }
+        }
+    }
+    
+    
+    
+    struct RecordButton: View {
+        let status: IsToday
+        var action: () -> Void
+        
+        var body: some View {
+            Button {
+                action()
+            } label: {
+                Text(status.buttonTitle)
+                    .font(.headline)
+                    .foregroundStyle(status.buttonTextColor)
+                    .padding(.vertical, 15)
+                    .frame(maxWidth: .infinity)
+                    .background(status.buttonBackgroundColor)
+                    .cornerRadius(12)
+                    .padding(.horizontal, 61)
+                    .shadow(color: .black.opacity(status.buttonShadowOpacity), radius: 2, x: 0, y: 4)
+            }
+            .disabled(status != .today)
+        }
+    }
+}
+
+
 enum IsToday {
-case past
-case today
-case future
+    case past
+    case today
+    case future
         var buttonTitle: String {
             switch self {
             case .past:
@@ -156,30 +191,7 @@ case future
         }
 }
 
-struct RecordButton: View {
-    let status: IsToday
-    var action: () -> Void
-    
-    var body: some View {
-        Button {
-            action()
-        } label: {
-            Text(status.buttonTitle)
-                .font(.headline)
-                .foregroundStyle(status.buttonTextColor)
-                .padding(.vertical, 15)
-                .frame(maxWidth: .infinity)
-                .background(status.buttonBackgroundColor)
-                .cornerRadius(12)
-                .padding(.horizontal, 61)
-                .shadow(color: .black.opacity(status.buttonShadowOpacity), radius: 2, x: 0, y: 4)
-        }
-        .disabled(status != .today)
-    }
-}
-
 #Preview {
     RecordMainView()
-    //RecordButton(status: .today){}
 }
 
