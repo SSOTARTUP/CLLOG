@@ -39,6 +39,11 @@ extension Date {
     public var basic: String {
         return toString("yyyy년 M월 d일")
     }
+    
+    public var basicShortYear: String {
+        return toString("yy년 M월 d일")
+    }
+    
     public var basicDash: String {
         return toString("yyyy-MM-dd")
     }
