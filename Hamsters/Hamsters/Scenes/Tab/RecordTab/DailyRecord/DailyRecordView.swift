@@ -38,6 +38,12 @@ struct DailyRecordView: View {
                 case .menstruation: // 월경 여부
                     MenstruationCheckView(viewModel: viewModel)
                     
+                case .activity:
+                    EmptyView()
+                    ActivityView(viewModel: viewModel)
+                case .encourage:
+                    EmptyView()
+                    
                 case .smoking: //  흡연량
                     SmokingCheckView(viewModel: viewModel)
                     

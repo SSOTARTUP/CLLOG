@@ -11,9 +11,10 @@ struct ActivityView: View {
     
     @State var showingSheet = false
     @State var isActive = true
-    @State var list: Activities = []
+//    @State var list: Activities = []
     @State var index: Int = -1
-    
+    @ObservedObject var viewModel: DailyRecordViewModel
+
     var body: some View {
         VStack(spacing: 0) {
             VStack(alignment: .leading, spacing: 0) {
@@ -42,14 +43,14 @@ struct ActivityView: View {
                 .padding(.horizontal, 24)
                 .padding(.top, 20 + 16)
                 .sheet(isPresented: $showingSheet) {
-                    ActivityModalView(list:$list,index:index)
+                    ActivityModalView(list:$viewModel.list,index:index)
                 }
             }
             .padding(.bottom, 24)
             
             List {
                 Section {
-                    ForEach(Array(list.filter{ $0.from == .user } .enumerated()),id:\.self.offset) { offset,activity in
+                    ForEach(Array(viewModel.list.filter{ $0.from == .user } .enumerated()),id:\.self.offset) { offset,activity in
                         HStack {
                             Text(activity.name)
                                 .font(.body)
@@ -66,7 +67,7 @@ struct ActivityView: View {
                         .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
                         .swipeActions(allowsFullSwipe: false) {
                             Button {
-                                list.remove(at: offset)
+                                viewModel.list.remove(at: offset)
                             } label: {
                                 Label("삭제", systemImage: "trash.fill")
                             }
@@ -83,7 +84,7 @@ struct ActivityView: View {
                     }
 
                 } header: {
-                    if list.filter({ $0.from == .user }).count > 0 {
+                    if viewModel.list.filter({ $0.from == .user }).count > 0 {
                         HStack {
                             Text("내가 추가한 운동")
                                 .font(.headline)
@@ -97,7 +98,7 @@ struct ActivityView: View {
                 }
                 
                 Section {
-                    ForEach(list.filter{ $0.from == .healthKit }) { activity in
+                    ForEach(viewModel.list.filter{ $0.from == .healthKit }) { activity in
                         HStack {
                             Text(activity.name)
                                 .font(.body)
@@ -114,7 +115,7 @@ struct ActivityView: View {
                         .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
                     }
                 } header: {
-                    if list.filter({ $0.from == .healthKit }).count > 0 {
+                    if viewModel.list.filter({ $0.from == .healthKit }).count > 0 {
                         HStack {
                             Text("연동된 운동 데이터")
                                 .font(.headline)
@@ -151,7 +152,7 @@ struct ActivityView: View {
                     .compactMap{ $0 }
                 
                 DispatchQueue.main.async {
-                    list.append(contentsOf: healthKitData)
+                    viewModel.list.append(contentsOf: healthKitData)
                 }
             }
         }
@@ -198,5 +199,5 @@ extension ActivityView {
 }
 
 #Preview {
-    ActivityView()
+    ActivityView(viewModel: DailyRecordViewModel())
 }
