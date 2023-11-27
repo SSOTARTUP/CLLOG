@@ -14,6 +14,8 @@ enum DailyRecordPage: Int {
     case sideEffect
     case weightCheck
     case menstruation
+    case encourage
+    case activity
     case smoking
     case caffein
     case drink

@@ -45,6 +45,9 @@ struct DiaryUpdateView: View {
                 .presentationDetents([.height(UIScreen.main.bounds.height*0.7)])
         case .complete: // 완료 페이지
             DailyCompleteView(viewModel: viewModel)
+            
+        default:
+            EmptyView()
         }
     }
 }

@@ -55,6 +55,8 @@ class DailyRecordViewModel: RecordProtocol {
     
     @Published var isPeriod = false
     
+    @Published var list: ActivityView.Activities = []
+
     @Published var isSelected: [Bool] = Array(repeating: false, count: 10)
     @Published var isTaken: CaffeineIntake? = .not
     
