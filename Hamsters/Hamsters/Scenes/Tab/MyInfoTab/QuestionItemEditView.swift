@@ -10,12 +10,10 @@ import SwiftUI
 struct QuestionItemEditView: View {
     @StateObject var viewModel = MyInfoViewModel()
     
-    let selectedSex = SexClassification(rawValue: UserDefaults.standard.string(forKey: UserDefaultsKey.hamsterName.rawValue) ?? "female")
-    
     var body: some View {
         List {
             Section {
-                if selectedSex != .male {
+                if viewModel.savedSex != "male" {
                     Toggle(isOn: $viewModel.onPeriod) {
                         Text("월경 여부")
                     }
