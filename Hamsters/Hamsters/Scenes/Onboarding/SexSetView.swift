@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct SexSetView: View {
-    @Binding var onboardingPage: Onboarding
-    @Binding var selectedSex: SexClassification?
+    @EnvironmentObject var viewModel: OnboardingViewModel
     
     @State private var isActiveNext = false
     @State private var isMemopause = false
@@ -18,42 +17,42 @@ struct SexSetView: View {
         VStack(alignment: .leading, spacing: 22) {
             HStack(spacing: 13) {
                 Button {
-                    selectedSex = .female
+                    viewModel.selectedSex = .female
                     isActiveNext = true
                 } label: {
                     Text("여성")
                         .font(.headline)
-                        .foregroundStyle(selectedSex == .female || selectedSex == .menopause ? .white : .thoNavy)
+                        .foregroundStyle(viewModel.selectedSex == .female || viewModel.selectedSex == .menopause ? .white : .thoNavy)
                         .padding(.vertical, 15)
                         .frame(maxWidth: .infinity)
-                        .background(selectedSex == .female || selectedSex == .menopause ? .thoNavy : .thoDisabled)
+                        .background(viewModel.selectedSex == .female || viewModel.selectedSex == .menopause ? .thoNavy : .thoDisabled)
                         .cornerRadius(15)
                 }
                 
                 Button {
-                    selectedSex = .male
+                    viewModel.selectedSex = .male
                     isMemopause = false
                     isActiveNext = true
                 } label: {
                     Text("남성")
                         .font(.headline)
-                        .foregroundStyle(selectedSex == .male ? .white : .thoNavy)
+                        .foregroundStyle(viewModel.selectedSex == .male ? .white : .thoNavy)
                         .padding(.vertical, 15)
                         .frame(maxWidth: .infinity)
-                        .background(selectedSex == .male ? .thoNavy : .thoDisabled)
+                        .background(viewModel.selectedSex == .male ? .thoNavy : .thoDisabled)
                         .cornerRadius(15)
                 }
             }
             .padding(.horizontal, 24)
             
             // 폐경 여부
-            if selectedSex == .female || selectedSex == .menopause {
+            if viewModel.selectedSex == .female || viewModel.selectedSex == .menopause {
                 Button {
                     isMemopause.toggle()
                     if isMemopause {
-                        selectedSex = .menopause
+                        viewModel.selectedSex = .menopause
                     } else {
-                        selectedSex = .female
+                        viewModel.selectedSex = .female
                     }
                 } label: {
                     HStack {
@@ -71,13 +70,13 @@ struct SexSetView: View {
             
             Spacer()
             
-            OnboardingNextButton(isActive: $isActiveNext, title: onboardingPage.nextButtonTitle) {
-                onboardingPage = Onboarding(rawValue: onboardingPage.rawValue + 1) ?? .medication
+            OnboardingNextButton(isActive: $isActiveNext, title: viewModel.onboardingPage.nextButtonTitle) {
+                viewModel.onboardingPage = .medication
             }
         }
-        .padding(.top, onboardingPage.topPadding)
+        .padding(.top, viewModel.onboardingPage.topPadding)
         .onAppear {
-            if selectedSex != nil {
+            if viewModel.selectedSex != nil {
                 isActiveNext = true
             }
         }
@@ -85,5 +84,5 @@ struct SexSetView: View {
 }
 
 #Preview {
-    SexSetView(onboardingPage: .constant(.sex), selectedSex: .constant(nil))
+    SexSetView()
 }

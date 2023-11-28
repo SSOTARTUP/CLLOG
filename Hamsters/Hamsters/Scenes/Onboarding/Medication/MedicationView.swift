@@ -9,8 +9,7 @@ import SwiftUI
 
 struct MedicationView: View {
     @EnvironmentObject var medicineViewModel: MedicineViewModel
-    
-    @Binding var onboardingPage: Onboarding
+    @EnvironmentObject var onboardingViewModel: OnboardingViewModel
 
     @State private var isActiveNext = false
     @State private var showingSheet = false
@@ -106,7 +105,7 @@ struct MedicationView: View {
             
             VStack(spacing: 0) {
                 Button(action: {
-                    onboardingPage = Onboarding(rawValue: onboardingPage.rawValue + 1) ?? .smoking
+                    onboardingViewModel.onboardingPage = .smoking
                 }, label: {
                     Text("지금은 건너뛰기")
                         .font(.footnote)
@@ -116,8 +115,8 @@ struct MedicationView: View {
                 .disabled(isActiveNext)
                 .padding(.bottom, 20)
                 
-                OnboardingNextButton(isActive: $isActiveNext, title: onboardingPage.nextButtonTitle) {
-                    onboardingPage = Onboarding(rawValue: onboardingPage.rawValue + 1) ?? .smoking
+                OnboardingNextButton(isActive: $isActiveNext, title: onboardingViewModel.onboardingPage.nextButtonTitle) {
+                    onboardingViewModel.onboardingPage = .smoking
                 }
             }
         }
@@ -131,6 +130,6 @@ struct MedicationView: View {
 
 
 #Preview {
-    MedicationView(onboardingPage: .constant(.medication))
+    MedicationView()
         .environmentObject(MedicineViewModel())
 }

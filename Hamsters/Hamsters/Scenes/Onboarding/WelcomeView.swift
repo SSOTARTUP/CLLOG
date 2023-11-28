@@ -15,8 +15,7 @@ struct Info:Identifiable{
 }
 
 struct WelcomeView: View {
-    @Binding var onboardingPage: Onboarding
-    
+    @EnvironmentObject var viewModel: OnboardingViewModel
     @State private var selectedIndex = 0
     @State var isPresentedBottomSheet: Bool = false
 
@@ -59,21 +58,21 @@ struct WelcomeView: View {
 
             Spacer()
             
-            OnboardingNextButton(isActive: .constant(true), title: onboardingPage.nextButtonTitle) {
+            OnboardingNextButton(isActive: .constant(true), title: viewModel.onboardingPage.nextButtonTitle) {
                 isPresentedBottomSheet.toggle()
             }
         }
         .sheet(isPresented: $isPresentedBottomSheet) {
-            TermsView(isPresentedBottomSheet: $isPresentedBottomSheet, onboardingPage: $onboardingPage)
+            TermsView(isPresentedBottomSheet: $isPresentedBottomSheet)
                 .presentationDetents([.medium])
         }
     }
 }
 
 struct TermsView:View{
+    @EnvironmentObject var viewModel: OnboardingViewModel
     @Binding var isPresentedBottomSheet:Bool
-    @Binding var onboardingPage: Onboarding
-
+    
     var body: some View{
         VStack(alignment:.center,spacing: 0){
             HStack{
@@ -137,7 +136,7 @@ struct TermsView:View{
             .padding(.bottom, 50)
             
             OnboardingNextButton(isActive: .constant(true), title: "전체 동의 및 다음") {
-                onboardingPage = Onboarding(rawValue: onboardingPage.rawValue + 1) ?? .profile
+                viewModel.onboardingPage = .profile
             }
             .padding(.bottom,100)
         }
@@ -152,5 +151,5 @@ extension WelcomeView{
 }
 
 #Preview{
-    WelcomeView(onboardingPage: .constant(.welcome))
+    WelcomeView()
 }

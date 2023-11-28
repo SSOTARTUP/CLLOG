@@ -31,6 +31,8 @@ enum Onboarding: Int {
         }
     }
     
+    var pageNumber: Int { return rawValue }
+    
     var subtitle: String? {
         switch self {
         case .medication:

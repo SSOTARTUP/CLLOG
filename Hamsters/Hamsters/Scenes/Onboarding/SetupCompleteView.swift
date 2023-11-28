@@ -8,9 +8,7 @@
 import SwiftUI
 
 struct SetupCompleteView: View {
-    @AppStorage(UserDefaultsKey.complete.rawValue) private var setupComplete: Bool = false
-    
-    @Binding var onboardingPage: Onboarding
+    @EnvironmentObject var viewModel: OnboardingViewModel
     
     var body: some View {
         VStack(spacing: 0) {
@@ -37,14 +35,14 @@ struct SetupCompleteView: View {
             
             Spacer()
 
-            OnboardingNextButton(isActive: .constant(true), title: onboardingPage.nextButtonTitle) {
-                setupComplete = true
-                onboardingPage = Onboarding(rawValue: onboardingPage.rawValue + 1) ?? .end
+            OnboardingNextButton(isActive: .constant(true), title: viewModel.onboardingPage.nextButtonTitle) {
+                viewModel.completeOnboarding()
+                viewModel.onboardingPage = .end
             }
         }
     }
 }
 
 #Preview {
-    SetupCompleteView(onboardingPage: .constant(.complete))
+    SetupCompleteView()
 }
