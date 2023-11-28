@@ -7,9 +7,11 @@
 
 import SwiftUI
 
-struct CheerUpView: View {
-    @Binding var pageNumber: Int
-    @Binding var isActiveRecord: Bool
+struct CheerUpView<T: RecordProtocol>: View {
+    @ObservedObject var viewModel: T
+    
+//    @Binding var pageNumber: Int
+//    @Binding var isActiveRecord: Bool
     
     var body: some View {
         VStack(spacing: 0) {
@@ -24,11 +26,15 @@ struct CheerUpView: View {
             
             Spacer()
             
-            DailyRecordNextButton(pageNumber: $pageNumber, isActiveRecord: $isActiveRecord, title: "다음")
+//            DailyRecordNextButton(pageNumber: $pageNumber, isActiveRecord: $isActiveRecord, title: "다음")
+            NextButton(title: "다음", isActive: .constant(true)) {
+                viewModel.bottomButtonClicked()
+            }
+            .padding(.bottom, 40)
         }
     }
 }
 
 #Preview {
-    CheerUpView(pageNumber: .constant(7), isActiveRecord: .constant(true))
+    CheerUpView(viewModel: DailyRecordViewModel())
 }

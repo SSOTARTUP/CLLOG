@@ -135,7 +135,7 @@ struct ActivityView: View {
             Spacer()
             
             NextButton(title: "다음", isActive: $isActive) {
-                
+                viewModel.bottomButtonClicked()
             }
             .padding(.horizontal, 24)
             .padding(.bottom, 30)
