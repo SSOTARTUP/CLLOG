@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct SmokingSetView: View {
-    @Binding var onboardingPage: Onboarding
-    @Binding var status: SmokingStatus?
+    @EnvironmentObject var viewModel: OnboardingViewModel
     
     @State private var isActiveNext = false
     
@@ -17,28 +16,28 @@ struct SmokingSetView: View {
         VStack(alignment: .leading, spacing: 0) {
             HStack(spacing: 13) {
                 Button {
-                    status = .smoking
+                    viewModel.smokingStatus = .smoking
                     isActiveNext = true
                 } label: {
                     Text("흡연")
                         .font(.headline)
-                        .foregroundStyle(status == .smoking ? .white : .thoNavy)
+                        .foregroundStyle(viewModel.smokingStatus == .smoking ? .white : .thoNavy)
                         .padding(.vertical, 15)
                         .frame(maxWidth: .infinity)
-                        .background(status == .smoking ? .thoNavy : .thoDisabled)
+                        .background(viewModel.smokingStatus == .smoking ? .thoNavy : .thoDisabled)
                         .cornerRadius(15)
                 }
                 
                 Button {
-                    status = .nonSmoking
+                    viewModel.smokingStatus = .nonSmoking
                     isActiveNext = true
                 } label: {
                     Text("비흡연")
                         .font(.headline)
-                        .foregroundStyle(status == .nonSmoking ? .white : .thoNavy)
+                        .foregroundStyle(viewModel.smokingStatus == .nonSmoking ? .white : .thoNavy)
                         .padding(.vertical, 15)
                         .frame(maxWidth: .infinity)
-                        .background(status == .nonSmoking ? .thoNavy : .thoDisabled)
+                        .background(viewModel.smokingStatus == .nonSmoking ? .thoNavy : .thoDisabled)
                         .cornerRadius(15)
                 }
             }
@@ -46,13 +45,13 @@ struct SmokingSetView: View {
             
             Spacer()
             
-            OnboardingNextButton(isActive: $isActiveNext, title: onboardingPage.nextButtonTitle) {
-                onboardingPage = Onboarding(rawValue: onboardingPage.rawValue + 1) ?? .complete
+            OnboardingNextButton(isActive: $isActiveNext, title: viewModel.onboardingPage.nextButtonTitle) {
+                viewModel.onboardingPage = .complete
             }
         }
-        .padding(.top, onboardingPage.topPadding)
+        .padding(.top, viewModel.onboardingPage.topPadding)
         .onAppear {
-            if status != nil {
+            if viewModel.smokingStatus != nil {
                 isActiveNext = true
             }
         }
@@ -60,5 +59,5 @@ struct SmokingSetView: View {
 }
 
 #Preview {
-    SmokingSetView(onboardingPage: .constant(.smoking), status: .constant(nil))
+    SmokingSetView()
 }

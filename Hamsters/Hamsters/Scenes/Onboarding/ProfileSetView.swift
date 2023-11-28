@@ -8,17 +8,10 @@
 import SwiftUI
 
 struct ProfileSetView: View {
-    @Binding var onboardingPage: Onboarding
-    
-    @Binding var hamName: String
-    @Binding var name: String
-    @Binding var selectedHamster: selectedHam?
+    @EnvironmentObject var viewModel: OnboardingViewModel
     
     @State private var isActive = false
-    
-    
     @State var scroll:ScrollViewProxy?
-    
     @FocusState private var focusField:ProfileSetView.Field?
     
     var body: some View {
@@ -34,34 +27,34 @@ struct ProfileSetView: View {
                     }
                     HStack {
                         Button {
-                            selectedHamster = .gray
+                            viewModel.selectedHamster = .gray
                             focusField = .hamName
                             validate()
                         } label: {
-                            Image(selectedHamster == .gray ? "GrayCircleHam_s" : "GrayCircleHam")
+                            Image(viewModel.selectedHamster == .gray ? "GrayCircleHam_s" : "GrayCircleHam")
                         }
                         Spacer()
                         Button {
-                            selectedHamster = .yellow
+                            viewModel.selectedHamster = .yellow
                             focusField = .hamName
                             validate()
                         } label: {
-                            Image(selectedHamster == .yellow ? "YellowCircleHam_s" : "YellowCircleHam")                        }
+                            Image(viewModel.selectedHamster == .yellow ? "YellowCircleHam_s" : "YellowCircleHam")                        }
                         Spacer()
                         Button {
-                            selectedHamster = .black
+                            viewModel.selectedHamster = .black
                             focusField = .hamName
                             validate()
                         } label: {
-                            Image(selectedHamster == .black ? "BlackCircleHam_s" : "BlackCircleHam")
+                            Image(viewModel.selectedHamster == .black ? "BlackCircleHam_s" : "BlackCircleHam")
                         }
                     }
                 }
-                .padding(EdgeInsets(top: onboardingPage.topPadding, leading: 24, bottom: 20, trailing: 24))
+                .padding(EdgeInsets(top: viewModel.onboardingPage.topPadding, leading: 24, bottom: 20, trailing: 24))
                 .id(0)
 
                 VStack(spacing:0) {
-                    ProfileInput(input: $hamName,field:.hamName,focusField:focusField)
+                    ProfileInput(input: $viewModel.hamsterName,field:.hamName,focusField:focusField)
                         .onSubmit {
                             focusField = .name
                             withAnimation {
@@ -79,13 +72,13 @@ struct ProfileSetView: View {
                                 }
                             }
                         }
-                        .onChange(of: hamName) { _ in
+                        .onChange(of: viewModel.hamsterName) { _ in
                             validate()
                         }
 
                         .padding(.bottom,20)
                         .id(1)
-                    ProfileInput(input: $name,field:.name,focusField:focusField)
+                    ProfileInput(input: $viewModel.userName,field:.name,focusField:focusField)
                         .onSubmit {
                             focusField = nil
                         }
@@ -100,7 +93,7 @@ struct ProfileSetView: View {
                                 }
                             }
                         }
-                        .onChange(of: name) { _ in
+                        .onChange(of: viewModel.userName) { _ in
                             validate()
                         }
                         .id(2)
@@ -111,10 +104,10 @@ struct ProfileSetView: View {
             }
         }
         
-        OnboardingNextButton(isActive: $isActive, title: onboardingPage.nextButtonTitle) {
+        OnboardingNextButton(isActive: $isActive, title: viewModel.onboardingPage.nextButtonTitle) {
             switch validation{
             case .complete:
-                onboardingPage = Onboarding(rawValue: onboardingPage.rawValue + 1) ?? .sex
+                viewModel.onboardingPage = .sex
             case .error(let e):
                 if e == "character"{
                     withAnimation {
@@ -151,11 +144,11 @@ extension ProfileSetView{
     }
     
     var validation:Status{
-        if selectedHamster == nil{
+        if viewModel.selectedHamster == nil{
             return .error("character")
-        }else if hamName.count == 0 || hamName.count > 7{
+        }else if viewModel.hamsterName.count == 0 || viewModel.hamsterName.count > 7{
             return .error("hamName")
-        }else if name.count == 0 || name.count > 7{
+        }else if viewModel.userName.count == 0 || viewModel.userName.count > 7{
             return .error("name")
         }else{
             return .complete
@@ -169,5 +162,5 @@ extension ProfileSetView{
 }
 
 #Preview {
-    ProfileSetView(onboardingPage: .constant(.profile), hamName: .constant("햄깅"), name: .constant("홍길동"), selectedHamster: .constant(nil))
+    ProfileSetView()
 }

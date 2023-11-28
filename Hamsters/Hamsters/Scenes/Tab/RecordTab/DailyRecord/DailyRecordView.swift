@@ -39,10 +39,9 @@ struct DailyRecordView: View {
                     MenstruationCheckView(viewModel: viewModel)
                     
                 case .activity:
-                    EmptyView()
                     ActivityView(viewModel: viewModel)
                 case .encourage:
-                    EmptyView()
+                    CheerUpView(viewModel: viewModel)
                     
                 case .smoking: //  흡연량
                     SmokingCheckView(viewModel: viewModel)
