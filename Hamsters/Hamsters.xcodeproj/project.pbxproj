@@ -59,7 +59,7 @@
 		307B7D7B2AE43053007CB7F5 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307B7D7A2AE43053007CB7F5 /* MainTabView.swift */; };
 		307B7D7D2AE43092007CB7F5 /* TabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307B7D7C2AE43092007CB7F5 /* TabItem.swift */; };
 		307B7D7F2AE43254007CB7F5 /* RecordMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307B7D7E2AE43254007CB7F5 /* RecordMainView.swift */; };
-		307B7D812AE432A2007CB7F5 /* DiaryMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307B7D802AE432A2007CB7F5 /* DiaryMainView.swift */; };
+		307B7D812AE432A2007CB7F5 /* DiaryContentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307B7D802AE432A2007CB7F5 /* DiaryContentsView.swift */; };
 		307B7D842AE432EF007CB7F5 /* StatisticsMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307B7D832AE432EF007CB7F5 /* StatisticsMainView.swift */; };
 		307B7D872AE43322007CB7F5 /* MyInfoMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307B7D862AE43322007CB7F5 /* MyInfoMainView.swift */; };
 		307B7D8A2AE4E0B1007CB7F5 /* AdditionalMemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307B7D892AE4E0B1007CB7F5 /* AdditionalMemoView.swift */; };
@@ -180,7 +180,7 @@
 		307B7D7A2AE43053007CB7F5 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		307B7D7C2AE43092007CB7F5 /* TabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItem.swift; sourceTree = "<group>"; };
 		307B7D7E2AE43254007CB7F5 /* RecordMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordMainView.swift; sourceTree = "<group>"; };
-		307B7D802AE432A2007CB7F5 /* DiaryMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryMainView.swift; sourceTree = "<group>"; };
+		307B7D802AE432A2007CB7F5 /* DiaryContentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryContentsView.swift; sourceTree = "<group>"; };
 		307B7D832AE432EF007CB7F5 /* StatisticsMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsMainView.swift; sourceTree = "<group>"; };
 		307B7D862AE43322007CB7F5 /* MyInfoMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoMainView.swift; sourceTree = "<group>"; };
 		307B7D892AE4E0B1007CB7F5 /* AdditionalMemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalMemoView.swift; sourceTree = "<group>"; };
@@ -505,7 +505,7 @@
 			isa = PBXGroup;
 			children = (
 				7622B5D22B0AE35000FA970B /* viewModel */,
-				307B7D802AE432A2007CB7F5 /* DiaryMainView.swift */,
+				307B7D802AE432A2007CB7F5 /* DiaryContentsView.swift */,
 				7622B5D52B0AFDB100FA970B /* DiaryUpdateView.swift */,
 				3014AC2C2B0DE71F00B52B12 /* DiaryTempWeeklyView.swift */,
 				3014AC282B0DCCB400B52B12 /* DiaryExpandedCalendarView.swift */,
@@ -710,7 +710,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5E54BCF2B1722D7004BB493 /* EditMedicineView.swift in Sources */,
-				307B7D812AE432A2007CB7F5 /* DiaryMainView.swift in Sources */,
+				307B7D812AE432A2007CB7F5 /* DiaryContentsView.swift in Sources */,
 				307B7D712AE424A2007CB7F5 /* AlarmRow.swift in Sources */,
 				30EEFF372B09D13F0016D8BA /* ProfileEditView.swift in Sources */,
 				30BB50C22AE0C0680050CF69 /* DailyRecordNextButton.swift in Sources */,

@@ -9,7 +9,7 @@ import SwiftUI
 import Charts
 import WrappingHStack
 
-struct DiaryMainView: View {
+struct DiaryContentsView: View {
     
     @StateObject var viewModel = DiaryMainViewModel()
     @State var isPresentedBottomSheet: Bool = false
