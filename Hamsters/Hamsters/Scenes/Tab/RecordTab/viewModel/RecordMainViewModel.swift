@@ -95,9 +95,13 @@ extension RecordMainViewModel {
                     
                     return medicine.alarms.map { alarm in
                         let isTaken = fetchedHistory.filter { $0.id == alarm.id }.count > 0 ? true : false
-                        return MedicineSchedule(id: alarm.id, capacity: medicine.capacity, name: medicine.name, unit: medicine.unit, settingTime: alarm.date, isTaken: isTaken)
+                        return MedicineSchedule(id: alarm.id, capacity: medicine.capacity, name: medicine.name, unit: medicine.unit, settingTime: alarm.date, isTaken: isTaken, scheduleType: .specific)
                     }
                 }
+//                if medicine.sortedDays == "필요 시" {
+//                    let isTaken = fetchedHistory.filter { $0.id == alarm.id }.count > 0 ? true : false
+//                    return MedicineSchedule(id: alarm.id, capacity: medicine.capacity, name: medicine.name, unit: medicine.unit, settingTime: alarm.date, isTaken: isTaken, scheduleType: .specific)
+//                }
                 return nil
             }
             .flatMap { $0 }
