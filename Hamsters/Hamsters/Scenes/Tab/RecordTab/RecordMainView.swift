@@ -18,57 +18,57 @@ struct RecordMainView: View {
     @StateObject var viewModel = RecordMainViewModel()
     
     var body: some View {
-            ZStack(alignment: .top) {
-                // MARK: 배경
- 
-                Color.sky
-                
-                VStack {
-                    Image("Cloud")
-                        .resizable()
-                        .scaledToFit()
-                        .padding(.top, 24)
-                    
-                    Spacer()
-                    
-                    Image("Mound")
-                        .resizable()
-                        .scaledToFit()
-                        .offset(y: -200)
-                }
-                
-                // MARK: 헤더
-                VStack(spacing: 0) {
-                    HStack {
-                        Text(selectedDate.monthAndDay)
-                        
-                        if selectedDate.basic == Date().basic {
-                            Text("오늘")
-                                .fontWeight(.semibold)
-                        }
-                    }
-                    .padding()
+        ZStack(alignment: .top) {
+            // MARK: 배경
 
-                    RecordWeeklyCalendar(selectedDate: $selectedDate, isToday: $isToday)
-                        .padding(.top)
-                        
-                    Spacer()
-                    
-                    Image("goldenHamster")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(maxHeight: 160)
-                        .padding(.bottom, 28)
-                    
-                    RecordButton(status: isToday) {
-                        isActiveSheet = true
-                    }
-                    .padding(.bottom, 28)
-                    
-                    DailyMedicationList()
-                }
-                .padding(.top, safeAreaInsets.top)
+            Color.sky
+            
+            VStack {
+                Image("Cloud")
+                    .resizable()
+                    .scaledToFit()
+                    .padding(.top, 24)
+                
+                Spacer()
+                
+                Image("Mound")
+                    .resizable()
+                    .scaledToFit()
+                    .offset(y: -200)
             }
+            
+            // MARK: 헤더
+            VStack(spacing: 0) {
+                HStack {
+                    Text(selectedDate.monthAndDay)
+                    
+                    if selectedDate.basic == Date().basic {
+                        Text("오늘")
+                            .fontWeight(.semibold)
+                    }
+                }
+                .padding()
+
+                RecordWeeklyCalendar(selectedDate: $selectedDate, isToday: $isToday)
+                    .padding(.top)
+                    
+                Spacer()
+                
+                Image("goldenHamster")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(maxHeight: 160)
+                    .padding(.bottom, 28)
+                
+                RecordButton(status: isToday) {
+                    isActiveSheet = true
+                }
+                .padding(.bottom, 28)
+                
+                DailyMedicationList(viewModel: viewModel)
+            }
+            .padding(.top, safeAreaInsets.top)
+        }
         .ignoresSafeArea(.container, edges: .top)
         .fullScreenCover(isPresented: $isActiveSheet) {
             DailyRecordView(isActiveSheet: $isActiveSheet)
