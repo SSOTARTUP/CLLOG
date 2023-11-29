@@ -151,9 +151,14 @@ extension TakensManager {
 
 
 extension TakensManager {
-    enum Status: Error {
+    enum Status: LocalizedError {
         case success
         case fail
         case none
+        
+        var errorDescription: String? {
+            "오류 발생"
+        }
+        
     }
 }

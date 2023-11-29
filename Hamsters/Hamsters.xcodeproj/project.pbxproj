@@ -481,6 +481,7 @@
 		307B7D782AE42FB5007CB7F5 /* Tab */ = {
 			isa = PBXGroup;
 			children = (
+				307B7D7A2AE43053007CB7F5 /* MainTabView.swift */,
 				307B7D792AE43017007CB7F5 /* RecordTab */,
 				307B7D822AE432D0007CB7F5 /* DiaryTab */,
 				307B7D852AE43304007CB7F5 /* StatisticsTab */,
@@ -496,7 +497,6 @@
 				307B7D7E2AE43254007CB7F5 /* RecordMainView.swift */,
 				30A0B2392B065A1D00F51AE1 /* RecordWeeklyCalendar.swift */,
 				301971572AE50A0800728D16 /* DailyMedicationList.swift */,
-				307B7D7A2AE43053007CB7F5 /* MainTabView.swift */,
 				305240422ADFA766008FCD14 /* DailyRecord */,
 			);
 			path = RecordTab;

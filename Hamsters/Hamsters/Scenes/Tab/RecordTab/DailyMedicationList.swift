@@ -8,11 +8,13 @@
 import SwiftUI
 
 struct DailyMedicationList: View {
-    let medicineList = Medicine.sampleData
+    @ObservedObject var viewModel: RecordMainViewModel
+//    let medicineList = Medicine.sampleData
 //    let medicineList: [Medicine] = []
     @State private var isTaken: [Bool] = Array(repeating: false, count: Medicine.sampleData.count)
     
     var body: some View {
+        var _ = print(viewModel.medicineSchedule)
         VStack(spacing: 0) {
             // MARK: 헤더
             HStack {
@@ -44,18 +46,18 @@ struct DailyMedicationList: View {
             }
             .padding(24)
             
-            if medicineList.isEmpty {
+            if viewModel.medicineSchedule.isEmpty {
                 Text("복용중인 약이 없습니다")
                     .foregroundStyle(.secondary)
                     .frame(height: 136)
             } else {
                 ScrollView(.horizontal) {
                     HStack(spacing: 4) {
-                        ForEach(0..<medicineList.count, id: \.self) { index in
+                        ForEach(viewModel.medicineSchedule, id: \.id) { schedule in
                             Button {
-                                isTaken[index].toggle()
+                                viewModel.takeMedicine(schedule)
                             } label: {
-                                MedicationCheckItem(isTaken: $isTaken[index], time: medicineList[index].alarms[0].date, name: medicineList[index].name, capacity: medicineList[index].capacity, unit: medicineList[index].unit)
+                                MedicationCheckItem(medicineInfo: schedule)
                             }
                         }
                     }
@@ -74,15 +76,30 @@ struct DailyMedicationList: View {
     }
 }
 
+//struct MedicineSchedule {
+//    let id: UUID
+//    let capacity: String
+//    let name: String
+//    let unit: String
+//    let settingTime: Date
+//    
+//    var timeTaken: Date?
+//    var isTaken: Bool
+//}
+
+//struct HistoryModel: Codable {
+//    let id: UUID
+//    var capacity: String
+//    var name: String
+//    var settingTime: Date
+//    var timeTaken: Date
+//    var unit: String
+//}
+
 extension DailyMedicationList {
     struct MedicationCheckItem: View {
-        @Binding var isTaken: Bool
-        
-        let time: Date
-        let name: String
-        let capacity: String
-        let unit: String
-        
+        let medicineInfo: MedicineSchedule
+
         var body: some View {
             HStack {
                 VStack(alignment: .leading) {
@@ -91,35 +108,35 @@ extension DailyMedicationList {
                             .font(.title3)
                             .fontWeight(.semibold)
                         
-                        Text(time.shortTimeWithoutSecond)
+                        Text(medicineInfo.settingTime.shortTimeWithoutSecond)
                             .font(.footnote)
                     }
-                    .foregroundStyle(isTaken ? .thoGreen : .secondary)
+                    .foregroundStyle(medicineInfo.isTaken ? .thoGreen : .secondary)
                     
                     Spacer()
                     
                     Group {
-                        Text(name)
+                        Text(medicineInfo.name)
                             .font(.headline)
                             .multilineTextAlignment(.leading)
                             .lineLimit(2)
                         
-                        Text(capacity + unit)
+                        Text(medicineInfo.capacity + medicineInfo.unit)
                             .font(.footnote)
                     }
-                    .foregroundStyle(isTaken ? Color.white : .thoNavy)
+                    .foregroundStyle(medicineInfo.isTaken ? Color.white : .thoNavy)
                 }
                 
                 Spacer()
             }
             .padding(12)
             .frame(width: 108, height: 136)
-            .background(isTaken ? .thoNavy : .thoDisabled)
+            .background(medicineInfo.isTaken ? .thoNavy : .thoDisabled)
             .cornerRadius(10)
         }
     }
 }
 
 #Preview {
-    DailyMedicationList()
+    DailyMedicationList(viewModel: RecordMainViewModel())
 }
