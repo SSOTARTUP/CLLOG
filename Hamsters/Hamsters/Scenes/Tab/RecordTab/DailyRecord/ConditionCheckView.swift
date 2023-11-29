@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-// 꼭 enum으로 처리해야 할 항목인가..?
 enum Condition: String, CaseIterable {
     case inattentive = "산만한 정도"
     case attention = "집중하기 어려움"

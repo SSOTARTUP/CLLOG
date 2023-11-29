@@ -78,10 +78,6 @@ struct SideEffectCheckView<T: RecordProtocol>: View {
                     viewModel.bottomButtonClicked()
                 }
                 .padding(.bottom, 40)
-//                .disabled((viewModel.popularEffect.count < 1 && viewModel.dangerEffect.count < 1))
-                
-//                DailyRecordNextButton(pageNumber: $pageNumber, isActiveRecord:.constant(true), title: "다음")
-//                    .disabled(popularEffect.count < 1 && dangerEffect.count < 1)
             }
         }
     }
