@@ -11,7 +11,6 @@ import CoreData
 
 class RecordMainViewModel: NSObject, ObservableObject {
     @Published var medicineSchedule: [MedicineSchedule] = []
-    @Published var status: Status = .none
     @Published var datesOnRecord: [String] = []
     @Published var recordStatus: RecordStatus = .noRecord
     
@@ -86,10 +85,6 @@ extension RecordMainViewModel {
             let fetchedHistory = TakensManager.shared.fetchHistory(date: today)
         else {
             return
-        }
-        
-        if let _ = DayRecordsManager.shared.fetchDayRecord(for: Date()) {
-            status = .exist
         }
         
         let weekday = Calendar.current.component(.weekday, from: today)
