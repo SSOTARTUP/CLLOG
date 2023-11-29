@@ -10,6 +10,10 @@ import SwiftUI
 
 class DailyRecordViewModel: RecordProtocol {
         
+    init() {
+        HealthKitManager.shared.requestAuthorization()
+    }
+    
     private let coreDataManager = CoreDataManager.shared
 
     @AppStorage(UserDefaultsKey.dailyRecordPage.rawValue) var dailyRecordPages: String = [
