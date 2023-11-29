@@ -14,7 +14,6 @@ struct ConditionView: View {
     @State var scroll:ScrollViewProxy?
     
     var body: some View {
-        // progressbar 추가
         ScrollViewReader { value in
             ScrollView {
                 HStack {
@@ -39,7 +38,7 @@ struct ConditionView: View {
                             dailyRecordViewModel.bottomButtonClicked()
                         }
                         .padding(.top,24)
-                        .padding(.bottom,41)
+                        .padding(.bottom,40)
                     case .none:
                         let _ = print("nil")
                     }
