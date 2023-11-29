@@ -15,11 +15,9 @@ struct SetupCompleteView: View {
         VStack(spacing: 0) {
             ZStack {                
                 VStack {
-                    LottieConfettiView(filename: "onboardingHamster")
+                    LottieConfettiView(filename: "OnBoardingFin")
                         .frame(width: hamsterSize, height: hamsterSize)
-//                        .border(.red)
 
-                        
                     Text("준비 완료!")
                         .font(.title)
                         .fontWeight(.semibold)
