@@ -18,9 +18,9 @@ struct DiaryMainView: View {
     let moodLabels = ["우울함", "고조됨", "화남", "불안함"]
     let sampleMedicine = Medicine.sampleData
     let columns = [
-                   GridItem(.flexible(), spacing: 15),
-                   GridItem(.flexible(), spacing: 15)
-               ]
+        GridItem(.flexible(), spacing: 15),
+        GridItem(.flexible(), spacing: 15)
+    ]
     var body: some View {
         ScrollView {
             VStack(spacing: 16) {
@@ -287,7 +287,8 @@ struct DiaryMainView: View {
                 
                 // 선택 옵션들
                 LazyVGrid(columns: columns, spacing: 15) {
-                        // 월경 여부
+                    // 월경 여부
+                    if(UserDefaultsKey.sex.rawValue == "female" && viewModel.isPeriod == true) {
                         VStack(alignment: .leading, spacing: 0) {
                             Text("월경 여부")
                                 .font(.callout)
@@ -302,63 +303,66 @@ struct DiaryMainView: View {
                         .padding(16)
                         .background(Color.white)
                         .cornerRadius(15)
-                        // 카페인
-                        VStack(alignment: .leading, spacing: 0) {
-                            Text("오늘의 카페인")
-                                .font(.callout)
-                                .fontWeight(.semibold)
-                                .padding(.bottom, 9)
-                            HStack(alignment: .bottom) {
-                                Text(viewModel.amountOfCaffein.description)
-                                    .font(.largeTitle)
-                                    .foregroundStyle(.indigo)
-                                    .bold()
-                                Text("잔")
-                                    .font(.body)
-                            }
+                    } else {
+                        
+                    }
+                    // 카페인
+                    VStack(alignment: .leading, spacing: 0) {
+                        Text("오늘의 카페인")
+                            .font(.callout)
+                            .fontWeight(.semibold)
+                            .padding(.bottom, 9)
+                        HStack(alignment: .bottom) {
+                            Text(viewModel.amountOfCaffein.description)
+                                .font(.largeTitle)
+                                .foregroundStyle(.indigo)
+                                .bold()
+                            Text("잔")
+                                .font(.body)
                         }
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(16)
-                        .background(Color.white)
-                        .cornerRadius(15)
+                    }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(16)
+                    .background(Color.white)
+                    .cornerRadius(15)
                     
-                        // 흡연량
-                        VStack(alignment: .leading, spacing: 0) {
-                            Text("오늘의 흡연량")
-                                .font(.callout)
-                                .fontWeight(.semibold)
-                                .padding(.bottom, 9)
-                            HStack(alignment: .bottom) {
-                                Text(viewModel.amountOfSmoking.description)
-                                    .font(.largeTitle)
-                                    .foregroundStyle(.pink)
-                                    .bold()
-                                Text("개피")
-                            }
+                    // 흡연량
+                    VStack(alignment: .leading, spacing: 0) {
+                        Text("오늘의 흡연량")
+                            .font(.callout)
+                            .fontWeight(.semibold)
+                            .padding(.bottom, 9)
+                        HStack(alignment: .bottom) {
+                            Text(viewModel.amountOfSmoking.description)
+                                .font(.largeTitle)
+                                .foregroundStyle(.pink)
+                                .bold()
+                            Text("개피")
                         }
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(16)
-                        .background(Color.white)
-                        .cornerRadius(15)
-                        // 음주량
-                        VStack(alignment: .leading, spacing: 0) {
-                            Text("오늘의 음주량")
-                                .font(.callout)
-                                .fontWeight(.semibold)
-                                .padding(.bottom, 9)
-                            HStack(alignment: .bottom) {
-                                Text(viewModel.amountOfAlcohol.description)
-                                    .font(.largeTitle)
-                                    .foregroundStyle(.indigo)
-                                    .bold()
-                                Text("잔")
-                                    .font(.body)
-                            }
+                    }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(16)
+                    .background(Color.white)
+                    .cornerRadius(15)
+                    // 음주량
+                    VStack(alignment: .leading, spacing: 0) {
+                        Text("오늘의 음주량")
+                            .font(.callout)
+                            .fontWeight(.semibold)
+                            .padding(.bottom, 9)
+                        HStack(alignment: .bottom) {
+                            Text(viewModel.amountOfAlcohol.description)
+                                .font(.largeTitle)
+                                .foregroundStyle(.indigo)
+                                .bold()
+                            Text("잔")
+                                .font(.body)
                         }
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(16)
-                        .background(Color.white)
-                        .cornerRadius(15)
+                    }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(16)
+                    .background(Color.white)
+                    .cornerRadius(15)
                 }
                 
             }
