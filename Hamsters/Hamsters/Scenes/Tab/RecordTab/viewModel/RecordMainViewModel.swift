@@ -11,6 +11,7 @@ import CoreData
 
 class RecordMainViewModel: NSObject, ObservableObject {
     @Published var medicineSchedule: [MedicineSchedule] = []
+    @Published var selectedDat: Date = Date()
 
     private let takensController: NSFetchedResultsController<Takens>
     private let medicinesController: NSFetchedResultsController<Medicines>

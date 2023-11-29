@@ -13,7 +13,7 @@ struct WeeklyCalendarView: UIViewRepresentable {
     @Binding var selectedDate: Date
     @Binding var calendarHeight: CGFloat
     @Binding var existLog: [String]
-    @Binding var isToday: IsToday
+    @Binding var dateStatus: DateStatus
     @State private var isFirstLoad = true
     
     func makeUIView(context: Context) -> FSCalendar {
@@ -30,20 +30,20 @@ struct WeeklyCalendarView: UIViewRepresentable {
     
     // 유킷 -> 스유
     func makeCoordinator() -> Coordinator {
-        Coordinator(selectedDate: $selectedDate, calendarHeight: $calendarHeight, existLog: $existLog, isToday: $isToday)
+        Coordinator(selectedDate: $selectedDate, calendarHeight: $calendarHeight, existLog: $existLog, dateStatus: $dateStatus)
     }
     
     class Coordinator: NSObject, FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
         @Binding var selectedDate: Date
         @Binding var calendarHeight: CGFloat
         @Binding var existLog: [String]
-        @Binding var isToday: IsToday
+        @Binding var dateStatus: DateStatus
         
-        init(selectedDate: Binding<Date>, calendarHeight: Binding<CGFloat>, existLog: Binding<[String]>, isToday: Binding<IsToday>) {
+        init(selectedDate: Binding<Date>, calendarHeight: Binding<CGFloat>, existLog: Binding<[String]>, dateStatus: Binding<DateStatus>) {
             self._selectedDate = selectedDate
             self._calendarHeight = calendarHeight
             self._existLog = existLog
-            self._isToday = isToday
+            self._dateStatus = dateStatus
         }
         
         func calendar(_ calendar: FSCalendar,
@@ -55,11 +55,11 @@ struct WeeklyCalendarView: UIViewRepresentable {
                 selectedDate = date
                 
                 if date.basicDash > Date.now.basicDash {
-                    isToday = .future
+                    dateStatus = .future
                 } else if date.basicDash < Date.now.basicDash {
-                    isToday = .past
+                    dateStatus = .past
                 } else {
-                    isToday = .today
+                    dateStatus = .today
                 }
             }
         }
@@ -108,6 +108,9 @@ struct WeeklyCalendarView: UIViewRepresentable {
             Date()
         }
         
+        func minimumDate(for calendar: FSCalendar) -> Date {
+            Date()
+        }
     }
 }
 
@@ -146,6 +149,6 @@ extension WeeklyCalendarView {
 }
 
 #Preview {
-    WeeklyCalendarView(selectedDate: .constant(Date()), calendarHeight: .constant(300), existLog: .constant(["2023-11-16", "2023-11-15", "2023-11-13", "2023-11-11", "2023-11-9"]), isToday: .constant(.today))
+    WeeklyCalendarView(selectedDate: .constant(Date()), calendarHeight: .constant(300), existLog: .constant(["2023-11-16", "2023-11-15", "2023-11-13", "2023-11-11", "2023-11-9"]), dateStatus: .constant(.today))
         .border(.red)
 }

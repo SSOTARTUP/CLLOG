@@ -13,7 +13,7 @@ struct RecordMainView: View {
         
     @State private var selectedDate = Date()
     @State private var isActiveSheet = false
-    @State private var isToday: IsToday = .today
+    @State private var dateStatus: DateStatus = .today
     
     @StateObject var viewModel = RecordMainViewModel()
     
@@ -49,7 +49,7 @@ struct RecordMainView: View {
                 }
                 .padding()
 
-                RecordWeeklyCalendar(selectedDate: $selectedDate, isToday: $isToday)
+                RecordWeeklyCalendar(selectedDate: $selectedDate, dateStatus: $dateStatus)
                     .padding(.top)
                     
                 Spacer()
@@ -60,7 +60,7 @@ struct RecordMainView: View {
                     .frame(maxHeight: 160)
                     .padding(.bottom, 28)
                 
-                RecordButton(status: isToday) {
+                RecordButton(status: dateStatus) {
                     isActiveSheet = true
                 }
                 .padding(.bottom, 28)
@@ -79,7 +79,7 @@ struct RecordMainView: View {
 extension RecordMainView {
     struct RecordWeeklyCalendar: View {
         @Binding var selectedDate: Date
-        @Binding var isToday: IsToday
+        @Binding var dateStatus: DateStatus
         @State private var weeklyHeight: CGFloat = 220.0
        
         var body: some View {
@@ -116,7 +116,7 @@ extension RecordMainView {
                 .padding(.horizontal, 22)
                 .frame(height: 80)
                 
-                WeeklyCalendarView(selectedDate: $selectedDate, calendarHeight: $weeklyHeight, existLog: .constant(["2023-11-16", "2023-11-15", "2023-11-13", "2023-11-11", "2023-11-9"]), isToday: $isToday)
+                WeeklyCalendarView(selectedDate: $selectedDate, calendarHeight: $weeklyHeight, existLog: .constant(["2023-11-16", "2023-11-15", "2023-11-13", "2023-11-11", "2023-11-9"]), dateStatus: $dateStatus)
                     .frame(width: screenBounds().width - 38, height: weeklyHeight)
             }
         }
@@ -125,7 +125,7 @@ extension RecordMainView {
     
     
     struct RecordButton: View {
-        let status: IsToday
+        let status: DateStatus
         var action: () -> Void
         
         var body: some View {
@@ -148,7 +148,7 @@ extension RecordMainView {
 }
 
 
-enum IsToday {
+enum DateStatus {
     case past
     case today
     case future
