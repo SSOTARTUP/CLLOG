@@ -9,19 +9,15 @@ import SwiftUI
 
 struct DiaryExpandedCalendarView: View {
     @Environment(\.dismiss) private var dismiss
-    @EnvironmentObject var viewModel: DiaryMainViewModel
+    @ObservedObject var viewModel: DiaryMainViewModel
     @State private var goToday: Bool = false
-    
-//    init() {
-//        setNavigationBar()
-//    }
     
     var body: some View {
         NavigationStack {
             VStack {
                 headerSection()
                 
-                DiaryMonthlyCalendar(goToday: $goToday)
+                DiaryMonthlyCalendar(viewModel: viewModel, goToday: $goToday)
                     .padding(.horizontal, 24)
 
                 bottomSection()
@@ -113,5 +109,5 @@ extension DiaryExpandedCalendarView {
 }
 
 #Preview {
-    DiaryExpandedCalendarView()
+    DiaryExpandedCalendarView(viewModel: DiaryMainViewModel())
 }

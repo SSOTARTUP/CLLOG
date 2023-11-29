@@ -9,7 +9,7 @@ import SwiftUI
 import FSCalendar
 
 struct DiaryWeeklyCalendar: UIViewRepresentable {
-    @EnvironmentObject var viewModel: DiaryMainViewModel
+    @ObservedObject var viewModel: DiaryMainViewModel
     @Binding var calendarHeight: CGFloat
     
     func makeUIView(context: Context) -> FSCalendar {

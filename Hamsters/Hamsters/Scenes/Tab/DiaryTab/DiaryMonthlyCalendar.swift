@@ -9,11 +9,11 @@ import SwiftUI
 import FSCalendar
 
 struct DiaryMonthlyCalendar: UIViewRepresentable {
-    @EnvironmentObject var viewModel: DiaryMainViewModel
+    @ObservedObject var viewModel: DiaryMainViewModel
     @Binding var goToday: Bool
     @State private var isFirstLoad = true
     
-    let sampleDate = ["2023-11-11", "2023-11-12", "2023-11-13", "2023-11-15", "2023-11-16", "2023-11-19", "2023-11-20", "2023-11-21", "2023-11-22"]
+//    let sampleDate = ["2023-11-11", "2023-11-12", "2023-11-13", "2023-11-15", "2023-11-16", "2023-11-19", "2023-11-20", "2023-11-21", "2023-11-30"]
 
     func makeUIView(context: Context) -> FSCalendar {
         configureCalendar()
@@ -41,7 +41,7 @@ struct DiaryMonthlyCalendar: UIViewRepresentable {
     
     // 유킷 -> 스유
     func makeCoordinator() -> Coordinator {
-        Coordinator(selectedDate: $viewModel.tempDate, goToday: $goToday, recordingDates: sampleDate)
+        Coordinator(selectedDate: $viewModel.tempDate, goToday: $goToday, recordingDates: viewModel.datesOnRecord)
     }
     
     class Coordinator: NSObject, FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {

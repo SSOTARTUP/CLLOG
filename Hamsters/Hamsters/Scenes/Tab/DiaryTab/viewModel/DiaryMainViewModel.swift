@@ -123,8 +123,11 @@ class DiaryMainViewModel: NSObject, RecordProtocol {
     
     // 캘린더 관련
     @Published var tempDate: Date = Date()
+    @Published var datesOnRecord: [String] = []
+    @AppStorage(UserDefaultsKey.startDate.rawValue) private var startDate: String = ""
 
     @Published var medicines: [Medicine] = []
+    
 }
 
 extension DiaryMainViewModel {
@@ -135,6 +138,19 @@ extension DiaryMainViewModel {
     
     func move() {
         selectedDate = tempDate
+    }
+    
+    func loadDates() {
+        let today = Date()
+        let startDate = startDate.toDate()! // 앱 사용 시작일로부터 조회
+        
+        let recordDatesDict = DayRecordsManager.shared.fetchDayRecords(from: startDate, to: today)
+        
+        if let recordDatesDict = recordDatesDict {
+            datesOnRecord = recordDatesDict.compactMap{ $0.0.basicDash }
+        } else {
+            datesOnRecord = []
+        }
     }
     
     func bottomButtonClicked() {
