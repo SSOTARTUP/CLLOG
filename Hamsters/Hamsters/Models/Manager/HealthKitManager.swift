@@ -121,7 +121,7 @@ extension HealthKitManager {
                 return result + sample.endDate.timeIntervalSince(sample.startDate)
             }
             
-            completion(firstSleepStart?.KST, lastSleepEnd?.KST, totalSleepTime)
+            completion(firstSleepStart, lastSleepEnd, totalSleepTime)
         }
         
         healthStore.execute(query)
