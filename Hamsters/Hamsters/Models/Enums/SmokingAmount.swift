@@ -34,32 +34,4 @@ enum SmokingAmount: Int, CaseIterable {
             "1갑 초과"
         }
     }
-    
-    var diaryValue: String {
-        switch self {
-        case .min0:
-            "오늘은 흡연하지 않았어요!"
-        case .min1:
-            "1~5"
-        case .min6:
-            "6~10"
-        case .min11:
-            "11~15"
-        case .min16:
-            "16~20"
-        case .min21:
-            "1"
-        }
-    }
-}
-
-extension SmokingAmount {
-    static func from(value: Int) -> SmokingAmount {
-        for smokingAmount in SmokingAmount.allCases {
-            if value <= smokingAmount.maxValue {
-                return smokingAmount
-            }
-        }
-        return .min21
-    }
 }

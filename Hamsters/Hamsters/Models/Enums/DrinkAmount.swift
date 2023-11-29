@@ -28,28 +28,4 @@ enum DrinkAmount: Int, CaseIterable {
             "2병 초과"
         }
     }
-    
-    var diaryValue: String {
-        switch self {
-        case .max0:
-            "0"
-        case .max1:
-            "1"
-        case .max2:
-            "1~2"
-        case .max3:
-            "2"
-        }
-    }
-}
-
-extension DrinkAmount {
-    static func from(value: Int) -> DrinkAmount {
-        for drinkAmount in DrinkAmount.allCases {
-            if value <= drinkAmount.maxValue {
-                return drinkAmount
-            }
-        }
-        return .max3 
-    }
 }
