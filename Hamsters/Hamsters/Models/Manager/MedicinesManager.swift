@@ -28,9 +28,21 @@ extension MedicinesManager {
         newMedicine.unit = medicine.unit
         newMedicine.frequency = try? JSONEncoder().encode(medicine.frequency)
 //        newMedicine.alarms = try? JSONEncoder().encode([medicine.alarms])
-        newMedicine.alarms = try? JSONEncoder().encode(medicine.alarms)
         newMedicine.freOption = medicine.freOption.rawValue
         newMedicine.sortedDays = medicine.sortedDays
+        if medicine.sortedDays == "필요 시"{
+            let calendar = Calendar.current
+            let todayMidnight = calendar.startOfDay(for: Date())
+            var components = DateComponents()
+            components.hour = 23
+            components.minute = 59
+            components.second = 59
+            let finalDate = calendar.date(byAdding: components, to: todayMidnight)!
+            newMedicine.alarms = try? JSONEncoder().encode([AlarmItem(id: UUID(), date: finalDate, isEnabled: false)])
+        } else {
+            newMedicine.alarms = try? JSONEncoder().encode(medicine.alarms)
+        }
+
         coreDataManager.saveContext()
         print("CoreData::: 투여약 저장")
     }
