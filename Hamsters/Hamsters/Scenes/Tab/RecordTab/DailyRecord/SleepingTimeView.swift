@@ -56,7 +56,7 @@ struct SleepingTimeView<T: RecordProtocol>: View {
                             .monospacedDigit()
                             .frame(maxWidth: .infinity) // 이 줄이 추가되었습니다.
                     }
-                   
+                    
                 }
                 .padding(.horizontal, 48)
                 
@@ -65,7 +65,7 @@ struct SleepingTimeView<T: RecordProtocol>: View {
                         .padding(.vertical, 20)
                         .padding(.bottom, 16)
                     
-
+                    
                     VStack(spacing: 0) {
                         Text("총 수면시간")
                             .font(.footnote)
@@ -91,7 +91,7 @@ struct SleepingTimeView<T: RecordProtocol>: View {
                 Button {
                     viewModel.sleepingTime = (getTimeDifference().0 * 60) + getTimeDifference().1
                     viewModel.bottomButtonClicked()
-
+                    
                 } label: {
                     Text("다음")
                         .font(.headline)
@@ -106,6 +106,11 @@ struct SleepingTimeView<T: RecordProtocol>: View {
                 .padding(.bottom, 40)
             }
             
+        }
+        .onAppear{
+            if let viewModel = viewModel as? DailyRecordViewModel {
+                viewModel.loadHealthKitSleepData()
+            }
         }
     }
     

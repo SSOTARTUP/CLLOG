@@ -9,9 +9,9 @@ import Foundation
 import SwiftUI
 
 class DailyRecordViewModel: RecordProtocol {
-        
+    
     private let coreDataManager = CoreDataManager.shared
-
+    
     @AppStorage(UserDefaultsKey.dailyRecordPage.rawValue) var dailyRecordPages: String = [
         DailyRecordPage.condition,
         DailyRecordPage.mood,
@@ -58,7 +58,7 @@ class DailyRecordViewModel: RecordProtocol {
     @Published var isPeriod = false
     
     @Published var list: Activities = []
-
+    
     @Published var isSelected: [Bool] = Array(repeating: false, count: 10)
     @Published var isTaken: CaffeineIntake? = .not
     
@@ -94,8 +94,46 @@ class DailyRecordViewModel: RecordProtocol {
             amountOfAlcohol: amountOfAlcohol,
             memo: memo
         )
-
+        
         DayRecordsManager.shared.saveDayRecord(dayRecord)
+    }
+    
+    func loadHealthKitSleepData() {
+        HealthKitManager.shared.fetchSleepData(.today) { sleepStart, sleepEnd, _ in
+            DispatchQueue.main.async {
+                guard let sleepStart = sleepStart, let sleepEnd = sleepEnd else {
+                    print("HealthKit에서 수면 데이터를 가져올 수 없습니다.")
+                    return
+                }
+                
+                // 수면 시작 및 종료 시간을 기반으로 각도와 진행 상태를 설정합니다.
+                self.startAngle = self.calculateAngle(from: sleepStart)
+                self.toAngle = self.calculateAngle(from: sleepEnd)
+                self.startProgress = self.calculateProgress(from: sleepStart)
+                self.toProgress = self.calculateProgress(from: sleepEnd)
+            }
+        }
+    }
+    
+    // 날짜를 각도로 변환하는 함수
+    func calculateAngle(from date: Date) -> Double {
+        let calendar = Calendar.current
+        let hour = calendar.component(.hour, from: date)
+        let minutes = calendar.component(.minute, from: date)
+        
+        // 360도 원에서 각 시간당 15도, 각 분당 0.25도
+        return Double(hour) * 15.0 + Double(minutes) * 0.25
+    }
+    
+    // 날짜를 진행 상태(0.0 ~ 1.0)로 변환하는 함수
+    func calculateProgress(from date: Date) -> CGFloat {
+        let calendar = Calendar.current
+        let hour = calendar.component(.hour, from: date)
+        let minutes = calendar.component(.minute, from: date)
+        
+        // 24시간을 기준으로 한 시간과 분의 비율
+        let totalMinutes = Double(hour) * 60.0 + Double(minutes)
+        return CGFloat(totalMinutes / 1440.0) // 하루는 1440분
     }
     
     func startOfDay(for date: Date) -> Date {
