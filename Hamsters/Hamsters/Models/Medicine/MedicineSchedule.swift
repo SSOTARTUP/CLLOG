@@ -16,4 +16,10 @@ struct MedicineSchedule {
     
     var timeTaken: Date?
     var isTaken: Bool
+    var scheduleType: ScheduleType
+    
+    enum ScheduleType {
+        case specific
+        case necessary
+    }
 }
