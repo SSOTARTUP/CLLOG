@@ -65,6 +65,7 @@ class DummyManager {
                 popularEffect: [.constipated,.cough,.cough],
                 dangerEffect: [.auditoryHallucinations,.chestPain,.mania],
                 weight: 50.0,
+                acitivty: [], //운동 추가하기
                 amountOfSmoking: 3,
                 amountOfCaffein: 3,
                 isPeriod: false,

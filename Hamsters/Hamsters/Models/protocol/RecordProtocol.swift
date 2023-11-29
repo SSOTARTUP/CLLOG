@@ -30,6 +30,8 @@ protocol RecordProtocol: ObservableObject {
     var selectedKg: Int { get set }
     var selectedGr: Int { get set }
     
+    var list: Activities { get set }
+
     var amountOfSmoking: Int { get set }
     
     var amountOfCaffein: Int { get set }

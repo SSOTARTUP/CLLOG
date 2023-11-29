@@ -13,7 +13,7 @@ class DiaryMainViewModel: RecordProtocol {
     private let coreDataManager = CoreDataManager.shared
     
     init() {
-  //      status = initialize()
+        status = initialize()
         //calendar view 로직에 따라 주석이 해제될 수 있음.
     }
     
@@ -30,6 +30,8 @@ class DiaryMainViewModel: RecordProtocol {
         DailyRecordPage.sideEffect,
         DailyRecordPage.weightCheck,
         DailyRecordPage.menstruation,
+        DailyRecordPage.encourage,
+        DailyRecordPage.activity,
         DailyRecordPage.smoking,
         DailyRecordPage.caffein,
         DailyRecordPage.drink,
@@ -62,6 +64,8 @@ class DiaryMainViewModel: RecordProtocol {
     @Published var selectedKg: Int = 50
     @Published var selectedGr: Int = 0
     
+    @Published var list: Activities = []
+
     @Published var amountOfSmoking = 0
     
     @Published var amountOfCaffein = 0
@@ -88,6 +92,7 @@ extension DiaryMainViewModel {
             popularEffect: popularEffect,
             dangerEffect: dangerEffect,
             weight: weight,
+            acitivty: list,
             amountOfSmoking: amountOfSmoking,
             amountOfCaffein: amountOfCaffein,
             isPeriod: isPeriod,
@@ -103,7 +108,6 @@ extension DiaryMainViewModel {
             // 해당 날짜에 데일리 레코드가 없음.
             return .none
         }
-        
         userValues = record.conditionValues
         moodValues = record.moodValues
         
@@ -112,6 +116,8 @@ extension DiaryMainViewModel {
         popularEffect = record.popularEffect
         dangerEffect = record.dangerEffect
         
+        list = record.acitivty
+
         weight = record.weight
         
         amountOfSmoking = record.amountOfSmoking

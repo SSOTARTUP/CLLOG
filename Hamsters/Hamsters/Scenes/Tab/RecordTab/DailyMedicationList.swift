@@ -14,7 +14,6 @@ struct DailyMedicationList: View {
     @State private var isTaken: [Bool] = Array(repeating: false, count: Medicine.sampleData.count)
     
     var body: some View {
-        var _ = print(viewModel.medicineSchedule)
         VStack(spacing: 0) {
             // MARK: 헤더
             HStack {
