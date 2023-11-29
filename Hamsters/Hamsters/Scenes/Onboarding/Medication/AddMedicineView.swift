@@ -68,20 +68,17 @@ struct AddMedicineView: View {
         self._isActiveNext = isActiveNext
         self.editingMedicine = editingMedicine
         
-        // 편집할 Medicine이 제공되면 상태 변수를 해당 값으로 설정
         if let editingMedicine = editingMedicine {
+            // 기존 약물을 편집하는 경우
             _medicineName = State(initialValue: editingMedicine.name)
             _capacity = State(initialValue: editingMedicine.capacity)
             _selectedMediIndex = State(initialValue: mediCapacity.firstIndex(of: editingMedicine.unit) ?? 0)
             _selectedOption = State(initialValue: editingMedicine.freOption)
             _selectedDays = State(initialValue: editingMedicine.frequency)
             _alarms = State(initialValue: editingMedicine.alarms)
-//            alarmModel.setAlarms(editingMedicine.alarms)
             _alarmModel = StateObject(wrappedValue: AlarmViewModel(alarms: editingMedicine.alarms))
-
-            print("알람 초기화: \(editingMedicine.alarms)")
         } else {
-            // 새로운 약물 추가
+            // 새 약물을 추가하는 경우
             _medicineName = State(initialValue: "")
             _capacity = State(initialValue: "")
             _selectedMediIndex = State(initialValue: 0)
@@ -91,6 +88,7 @@ struct AddMedicineView: View {
             _alarmModel = StateObject(wrappedValue: AlarmViewModel())
         }
     }
+
     
     var body: some View {
         
@@ -104,7 +102,7 @@ struct AddMedicineView: View {
                         .fontWeight(.bold)
                         .padding(.bottom, 20)
                     
-                    Text("투여약 추가")
+                    Text(editingMedicine != nil ? "투여약 수정" : "투여약 추가")
                         .font(.largeTitle)
                         .fontWeight(.bold)
                         .padding(.bottom, 48)
@@ -118,12 +116,13 @@ struct AddMedicineView: View {
                             
                             Text(" 약 이름")
                                 .font(.headline)
-                                .foregroundStyle(.thoNavy)
+                                .foregroundStyle(editingMedicine != nil ? Color.secondary : .thoNavy)
                         }
                         //                        .padding(.leading, 8)
                         .padding(.bottom, 6)
                         
                         TextField("약 이름 입력", text: $medicineName)
+                            .disabled(editingMedicine != nil)
                             .focused($isInputFocused)
                             .font(.body)
                             .padding(.vertical, 11)
@@ -149,12 +148,13 @@ struct AddMedicineView: View {
                                     .foregroundStyle(.red)
                                 Text(" 용량")
                                     .font(.headline)
-                                    .foregroundStyle(.thoNavy)
+                                    .foregroundStyle(editingMedicine != nil ? Color.secondary : .thoNavy)
                             }
                             //                            .padding(.leading, 8)
                             .padding(.bottom, 6)
                         }
                         TextField("용량 추가", text: $capacity)
+                            .disabled(editingMedicine != nil)
                             .focused($isInputFocused)
                             .keyboardType(.numberPad)
                             .font(.body)
@@ -181,6 +181,7 @@ struct AddMedicineView: View {
                                         .background(selectedMediIndex == index ? Color.thoNavy : Color.thoDisabled) // 선택된 버튼은 다른 배경을 가집니다.
                                         .cornerRadius(13)
                                 })
+                                .disabled(editingMedicine != nil)
                                 
                             }
                         }
@@ -303,6 +304,7 @@ struct AddMedicineView: View {
                         print(medicineViewModel.medicines)
                         print(alarmModel.alarms)
                         isActiveNext = true
+                        
                         dismiss()
                     }, label: {
                         Text("저장")

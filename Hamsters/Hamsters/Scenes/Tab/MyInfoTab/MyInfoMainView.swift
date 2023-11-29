@@ -10,7 +10,7 @@ import SwiftUI
 struct MyInfoMainView: View {
     @AppStorage(UserDefaultsKey.userName.rawValue) private var storedUserkname: String?
     @AppStorage(UserDefaultsKey.hamsterImage.rawValue) private var storedHamsterImage: String?
-    
+        
     var body: some View {
         NavigationStack {
             List {
@@ -45,7 +45,7 @@ struct MyInfoMainView: View {
                         }
                     }
                     
-                    NavigationLink(destination: EmptyView()) {
+                    NavigationLink(destination: EditMedicineView()) {
                         HStack {
                             Image(systemName: "pills.fill")
                                 .foregroundStyle(.thoNavy)

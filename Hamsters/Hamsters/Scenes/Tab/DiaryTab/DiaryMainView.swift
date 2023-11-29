@@ -13,13 +13,11 @@ struct DiaryMainView: View {
     
     @StateObject var viewModel = DiaryMainViewModel()
     @State var isPresentedBottomSheet: Bool = false
-    @State var diaryDate: Date = Date()
     @AppStorage(UserDefaultsKey.sex.rawValue) var savedSex: String = "male"
     @AppStorage(UserDefaultsKey.PageControl.period.rawValue) private var isOnPeriod: Bool = true
     @AppStorage(UserDefaultsKey.PageControl.caffeine.rawValue) private var isOnCaffeine: Bool = true
     @AppStorage(UserDefaultsKey.PageControl.smoking.rawValue) private var isOnSmoking: Bool = true
     @AppStorage(UserDefaultsKey.PageControl.drink.rawValue) private var isOnDrink: Bool = true
-    
     let conditionLabels = ["주의력", "과잉행동", "충동성", "조직 및 시간관리"]
     let moodLabels = ["우울함", "고조됨", "화남", "불안함"]
     let sampleMedicine = Medicine.sampleData
@@ -28,15 +26,7 @@ struct DiaryMainView: View {
         GridItem(.flexible(), spacing: 15)
     ]
     var body: some View {
-//        Button {
-//                    print(viewModel.status)
-//                    DummyManager.shared.insertDayRecords()
-//            let hm = HistoryModel(id: UUID(), capacity: "123", name: "zz", settingTime: Date(), timeTaken: Date(), unit: "AS")
-//            TakensManager.shared.updateHistory(date: Date(), historyModel: hm)
-//        } label: {
-//            Text("Click ME")
-//        }
-        if viewModel.status != .none {
+        if viewModel.status == .exist {
             ScrollView {
 
                 VStack(spacing: 16) {
@@ -505,6 +495,9 @@ struct DiaryMainView: View {
             .sheet(isPresented: $isPresentedBottomSheet) {
                 DiaryUpdateView(viewModel: viewModel)
             }
+            .onAppear {
+                
+            }
         } else {
             ZStack {
                 Color.thoTextField
@@ -559,7 +552,6 @@ extension DiaryMainView {
         viewModel.currentPage = currentPage
     }
 }
-
 #Preview {
     DiaryMainView()
 }

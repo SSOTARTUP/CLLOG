@@ -104,6 +104,17 @@ class DiaryMainViewModel: NSObject, RecordProtocol {
     @Published var memo = ""
     
     @Published var pageNumber = 0
+//    @Published var selectedDate: Date = Date()
+    @Published var tempDate: Date = Date()
+
+    func openMonthly() {
+        tempDate = selectedDate
+    }
+    
+    func move() {
+        selectedDate = tempDate
+    }
+    
 }
 
 extension DiaryMainViewModel {
