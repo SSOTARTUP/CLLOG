@@ -25,10 +25,7 @@ struct WeeklyCalendarView: UIViewRepresentable {
         uiView.delegate = context.coordinator
         uiView.dataSource = context.coordinator
         
-        if isFirstLoad {
-            uiView.reloadData()
-            isFirstLoad = false
-        }
+        uiView.reloadData()
     }
     
     // 유킷 -> 스유
