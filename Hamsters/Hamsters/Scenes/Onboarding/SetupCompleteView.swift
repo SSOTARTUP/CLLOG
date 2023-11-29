@@ -25,7 +25,7 @@ struct SetupCompleteView: View {
                         .fontWeight(.semibold)
                         .padding(.bottom, 12)
                     
-                    Text("일상을 변화시킬 나를 위한 단서,\nClue가 도와줄게요!")
+                    Text("일상을 변화시킬 나를 위한 단서,\n클록이 도와줄게요!")
                         .multilineTextAlignment(.center)
                         .foregroundStyle(.secondary)
                 }

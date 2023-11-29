@@ -16,7 +16,7 @@ struct OnboardingView: View {
         NavigationStack {
             VStack(spacing: 0) {
                 if 0 < onboardingViewModel.onboardingPage.pageNumber && onboardingViewModel.onboardingPage.pageNumber < 6 {
-                    ProgressBarAndTitle(pageNumber: onboardingViewModel.onboardingPage.pageNumber, totalPage: onboardingViewModel.onboardingPage.pageTotal, title: onboardingViewModel.onboardingPage.title, subtitle: onboardingViewModel.onboardingPage.subtitle)
+                    ProgressBarAndTitle(pageNumber: onboardingViewModel.onboardingPage.pageNumber, totalPage: onboardingViewModel.onboardingPage.pageTotal, title: onboardingViewModel.onboardingPage.title, subtitle: onboardingViewModel.onboardingPage.subtitle(name: onboardingViewModel.userName))
                 }
                 
                 switch onboardingViewModel.onboardingPage {
