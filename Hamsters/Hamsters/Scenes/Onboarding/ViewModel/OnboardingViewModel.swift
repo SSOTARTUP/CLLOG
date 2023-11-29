@@ -16,6 +16,8 @@ class OnboardingViewModel: ObservableObject {
     @AppStorage(UserDefaultsKey.smoking.rawValue) private var storedSmoking: Bool = false
     @AppStorage(UserDefaultsKey.complete.rawValue) private var setupComplete: Bool = false
     
+    @AppStorage(UserDefaultsKey.startDate.rawValue) private var startDate: String = Date().summaryWithTimeWithSecond
+    
     // 기록 페이지 구성
     @AppStorage(UserDefaultsKey.dailyRecordPage.rawValue) var dailyRecordPages: String = [
         DailyRecordPage.condition,
@@ -104,6 +106,8 @@ class OnboardingViewModel: ObservableObject {
         isOnDrink = true
         
         setupComplete = true
+        
+        startDate = Date().summaryWithTimeWithSecond
     }
 }
 
