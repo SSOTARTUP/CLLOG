@@ -11,7 +11,8 @@ struct DailyCompleteView<T: RecordProtocol>: View {
 
     @ObservedObject var viewModel: T
     @Environment(\.dismiss) private var dismiss
-
+    
+    @AppStorage(UserDefaultsKey.hamsterImage.rawValue) private var storedHamster: String = ""
 
     var body: some View {
         VStack(spacing: 0) {
@@ -19,11 +20,18 @@ struct DailyCompleteView<T: RecordProtocol>: View {
             
             ZStack {
                 VStack(spacing: 0) {
-                    Image("HamsterV")
-                        .resizable()
-                        .scaledToFit()
-                        .padding(.horizontal, 125)
-                        .padding(.bottom, 33)
+                    ZStack {
+                        switch selectedHam(rawValue: storedHamster)! {
+                        case .gray:
+                            LottieConfettiView(filename: selectedHam(rawValue: storedHamster)!.recordFinishImageName)
+                        case .yellow:
+                            LottieConfettiView(filename: selectedHam(rawValue: storedHamster)!.recordFinishImageName)
+                        case .black:
+                            LottieConfettiView(filename: selectedHam(rawValue: storedHamster)!.recordFinishImageName)
+                        }
+                    }
+                    .padding(.horizontal, 64)
+                    .padding(.bottom, 33)
                     
                     Text("오늘도 기록 완료!")
                         .font(.largeTitle)
@@ -38,8 +46,7 @@ struct DailyCompleteView<T: RecordProtocol>: View {
                 
                 LottieConfettiView(filename: "onboardingConfetti")
             }
-            
-            Spacer()
+            .padding(.bottom, 100)
             
 
             NextButton(title: "다음", isActive: .constant(true)) {

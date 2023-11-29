@@ -14,6 +14,8 @@ struct RecordMainView: View {
     @StateObject var viewModel = RecordMainViewModel()
     @State private var isActiveSheet = false
     
+    @AppStorage(UserDefaultsKey.hamsterImage.rawValue) private var storedHamster: String = ""
+    
     var body: some View {
         ZStack(alignment: .top) {
             // MARK: 배경
@@ -51,12 +53,33 @@ struct RecordMainView: View {
                     
                 Spacer()
                 
-                Image("goldenHamster")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(maxHeight: 160)
-                    .padding(.bottom, 28)
-                
+                ZStack {
+                    switch selectedHam(rawValue: storedHamster)! {
+                    case .gray:
+                        if viewModel.recordStatus == .noRecord {
+                            LottieConfettiView(filename: selectedHam(rawValue: storedHamster)!.beforeRecordImageName)
+                        } else {
+                            LottieConfettiView(filename: selectedHam(rawValue: storedHamster)!.afterRecordImageName)
+                        }
+                            
+                    case .yellow:
+                        if viewModel.recordStatus == .noRecord {
+                            LottieConfettiView(filename: selectedHam(rawValue: storedHamster)!.beforeRecordImageName)
+                        } else {
+                            LottieConfettiView(filename: selectedHam(rawValue: storedHamster)!.afterRecordImageName)
+                        }
+                        
+                    case .black:
+                        if viewModel.recordStatus == .noRecord {
+                            LottieConfettiView(filename: selectedHam(rawValue: storedHamster)!.beforeRecordImageName)
+                        } else {
+                            LottieConfettiView(filename: selectedHam(rawValue: storedHamster)!.afterRecordImageName)
+                        }
+                    }
+                }
+                .frame(maxHeight: 160)
+                .padding(.bottom, 28)
+
                 RecordButton(status: viewModel.recordStatus) {
                     isActiveSheet = true
                 }
