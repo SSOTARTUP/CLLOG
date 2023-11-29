@@ -7,13 +7,36 @@
 
 import Foundation
 import SwiftUI
+import CoreData
 
-class DiaryMainViewModel: RecordProtocol {
+class DiaryMainViewModel: NSObject, RecordProtocol {
     
     private let coreDataManager = CoreDataManager.shared
     
-    init() {
-  //      status = initialize()
+    private let dayRecordsController: NSFetchedResultsController<DayRecords>
+    private let context: NSManagedObjectContext = CoreDataManager.shared.persistentContainer.viewContext
+    
+    override init() {
+        let fetchRequest: NSFetchRequest<DayRecords> = DayRecords.fetchRequest()
+        fetchRequest.sortDescriptors = [NSSortDescriptor(keyPath: \DayRecords.date, ascending: true)]
+//        fetchRequest.predicate = NSPredicate(format: "date == %@", Date() as CVarArg)
+
+        dayRecordsController = NSFetchedResultsController(
+            fetchRequest: fetchRequest,
+            managedObjectContext: context,
+            sectionNameKeyPath: nil,
+            cacheName: nil)
+        
+        super.init()
+        dayRecordsController.delegate = self
+
+        
+        do {
+            try dayRecordsController.performFetch()
+            status = initialize()
+        } catch {
+            print("Failed to fetch items: \(error)")
+        }
         //calendar view 로직에 따라 주석이 해제될 수 있음.
     }
     
@@ -22,6 +45,7 @@ class DiaryMainViewModel: RecordProtocol {
             status = initialize()
         }
     }
+    
 
     @AppStorage(UserDefaultsKey.dailyRecordPage.rawValue) var dailyRecordPages: String = [
         DailyRecordPage.condition,
@@ -30,6 +54,8 @@ class DiaryMainViewModel: RecordProtocol {
         DailyRecordPage.sideEffect,
         DailyRecordPage.weightCheck,
         DailyRecordPage.menstruation,
+        DailyRecordPage.encourage,
+        DailyRecordPage.activity,
         DailyRecordPage.smoking,
         DailyRecordPage.caffein,
         DailyRecordPage.drink,
@@ -62,6 +88,8 @@ class DiaryMainViewModel: RecordProtocol {
     @Published var selectedKg: Int = 50
     @Published var selectedGr: Int = 0
     
+    @Published var list: Activities = []
+
     @Published var amountOfSmoking = 0
     
     @Published var amountOfCaffein = 0
@@ -99,6 +127,7 @@ extension DiaryMainViewModel {
             popularEffect: popularEffect,
             dangerEffect: dangerEffect,
             weight: weight,
+            acitivty: list,
             amountOfSmoking: amountOfSmoking,
             amountOfCaffein: amountOfCaffein,
             isPeriod: isPeriod,
@@ -110,11 +139,11 @@ extension DiaryMainViewModel {
     }
     
     func initialize() -> Status{
+        print("diaryMainVIewModel 델리게이트 initialize")
         guard let record = DayRecordsManager.shared.fetchDayRecord(for: selectedDate) else {
             // 해당 날짜에 데일리 레코드가 없음.
             return .none
         }
-        
         userValues = record.conditionValues
         moodValues = record.moodValues
         
@@ -123,6 +152,8 @@ extension DiaryMainViewModel {
         popularEffect = record.popularEffect
         dangerEffect = record.dangerEffect
         
+        list = record.acitivty
+
         weight = record.weight
         
         amountOfSmoking = record.amountOfSmoking
@@ -142,5 +173,11 @@ extension DiaryMainViewModel {
     enum Status {
         case none
         case exist
+    }
+}
+
+extension DiaryMainViewModel: NSFetchedResultsControllerDelegate {
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        status = initialize()
     }
 }

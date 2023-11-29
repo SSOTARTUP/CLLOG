@@ -11,16 +11,23 @@ import CoreData
 
 class RecordMainViewModel: NSObject, ObservableObject {
     @Published var medicineSchedule: [MedicineSchedule] = []
+    @Published var datesOnRecord: [String] = []
+    @Published var recordStatus: RecordStatus = .noRecord
+    
+    @Published var selectedDate: Date = Date()
+
+    private let startDateString = UserDefaults.standard.string(forKey: UserDefaultsKey.startDate.rawValue)
 
     private let takensController: NSFetchedResultsController<Takens>
     private let medicinesController: NSFetchedResultsController<Medicines>
-    
+    private let dayRecordsController: NSFetchedResultsController<DayRecords>
+
     private let context: NSManagedObjectContext = CoreDataManager.shared.persistentContainer.viewContext
     
     override init() {
         let fetchTakensRequest: NSFetchRequest<Takens> = Takens.fetchRequest()
         fetchTakensRequest.sortDescriptors = [NSSortDescriptor(keyPath: \Takens.date, ascending: true)]
-        let startDate = Calendar.current.startOfDay(for: Date())
+//        let startDate = Calendar.current.startOfDay(for: Date())
 //        fetchTakensRequest.predicate = NSPredicate(format: "date == %@", startDate as CVarArg)
         
         takensController = NSFetchedResultsController(
@@ -38,14 +45,27 @@ class RecordMainViewModel: NSObject, ObservableObject {
             sectionNameKeyPath: nil,
             cacheName: nil)
         
+        
+        let dayRecordsfetchRequest: NSFetchRequest<DayRecords> = DayRecords.fetchRequest()
+        dayRecordsfetchRequest.sortDescriptors = [NSSortDescriptor(keyPath: \DayRecords.date, ascending: true)]
+//        fetchRequest.predicate = NSPredicate(format: "date == %@", Date() as CVarArg)
+
+        dayRecordsController = NSFetchedResultsController(
+            fetchRequest: dayRecordsfetchRequest,
+            managedObjectContext: context,
+            sectionNameKeyPath: nil,
+            cacheName: nil)
+        
         super.init()
+        
         takensController.delegate = self
         medicinesController.delegate = self
+        dayRecordsController.delegate = self
 
         do {
             try takensController.performFetch()
             try medicinesController.performFetch()
-            print("init update")
+            try dayRecordsController.performFetch()
             update()
         } catch {
             print("Failed to fetch items: \(error)")
@@ -56,7 +76,7 @@ class RecordMainViewModel: NSObject, ObservableObject {
 extension RecordMainViewModel {
 
     private func update() {
-        print("RecordMainViewModel:: UPDATE")
+        print("RecordMainViewModel:: 델리게이트 UPDATE")
         let today = Date()
         TakensManager.shared.createEmptyTakens(date: today)
         
@@ -75,16 +95,38 @@ extension RecordMainViewModel {
                     
                     return medicine.alarms.map { alarm in
                         let isTaken = fetchedHistory.filter { $0.id == alarm.id }.count > 0 ? true : false
-                        return MedicineSchedule(id: alarm.id, capacity: medicine.capacity, name: medicine.name, unit: medicine.unit, settingTime: alarm.date, isTaken: isTaken)
+                        return MedicineSchedule(id: alarm.id, capacity: medicine.capacity, name: medicine.name, unit: medicine.unit, settingTime: alarm.date, isTaken: isTaken, scheduleType: .specific)
                     }
                 }
+//                if medicine.sortedDays == "필요 시" {
+//                    let isTaken = fetchedHistory.filter { $0.id == alarm.id }.count > 0 ? true : false
+//                    return MedicineSchedule(id: alarm.id, capacity: medicine.capacity, name: medicine.name, unit: medicine.unit, settingTime: alarm.date, isTaken: isTaken, scheduleType: .specific)
+//                }
                 return nil
             }
             .flatMap { $0 }
             .sorted{ compareTimeOnly(date1: $0.settingTime, date2: $1.settingTime) }
         
         medicineSchedule = result
+        loadDates()
         print("update success")
+    }
+    
+    private func loadDates() {
+        let today = Date()
+        let startDate = Calendar.current.date(byAdding: .day, value: -6, to: today) ?? Date()   // 일주일치만 조회
+        
+        let recordDatesDict = DayRecordsManager.shared.fetchDayRecords(from: startDate, to: today)
+        
+        if let recordDatesDict = recordDatesDict {
+            datesOnRecord = recordDatesDict.compactMap{ $0.0.basicDash }
+        } else {
+            datesOnRecord = []
+        }
+        
+        if datesOnRecord.contains(today.basicDash) {
+            recordStatus = .record
+        }
     }
     
     func takeMedicine(_ medicine: MedicineSchedule) {
@@ -92,7 +134,7 @@ extension RecordMainViewModel {
 
         let historyModel = HistoryModel(id: medicine.id, capacity: medicine.capacity, name: medicine.name, settingTime: medicine.settingTime, timeTaken: now, unit: medicine.unit)
     
-        let status = TakensManager.shared.updateHistory(date: now, historyModel: historyModel)
+        _ = TakensManager.shared.updateHistory(date: now, historyModel: historyModel)
     }
     
     func compareTimeOnly(date1: Date, date2: Date) -> Bool{
@@ -108,5 +150,10 @@ extension RecordMainViewModel {
 extension RecordMainViewModel: NSFetchedResultsControllerDelegate {
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         update()
+    }
+    
+    enum Status {
+        case exist
+        case none
     }
 }

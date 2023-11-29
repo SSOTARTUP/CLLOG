@@ -50,7 +50,7 @@ struct ActivityView: View {
             
             List {
                 Section {
-                    ForEach(Array(viewModel.list.filter{ $0.from == .user } .enumerated()),id:\.self.offset) { offset,activity in
+                    ForEach(Array(viewModel.list.filter{ Activity.From(rawValue:$0.from) == .user } .enumerated()),id:\.self.offset) { offset,activity in
                         HStack {
                             Text(activity.name)
                                 .font(.body)
@@ -84,7 +84,7 @@ struct ActivityView: View {
                     }
 
                 } header: {
-                    if viewModel.list.filter({ $0.from == .user }).count > 0 {
+                    if viewModel.list.filter({ Activity.From(rawValue:$0.from) == .user }).count > 0 {
                         HStack {
                             Text("내가 추가한 운동")
                                 .font(.headline)
@@ -98,7 +98,7 @@ struct ActivityView: View {
                 }
                 
                 Section {
-                    ForEach(viewModel.list.filter{ $0.from == .healthKit }) { activity in
+                    ForEach(viewModel.list.filter{ Activity.From(rawValue:$0.from) == .healthKit }) { activity in
                         HStack {
                             Text(activity.name)
                                 .font(.body)
@@ -115,7 +115,7 @@ struct ActivityView: View {
                         .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
                     }
                 } header: {
-                    if viewModel.list.filter({ $0.from == .healthKit }).count > 0 {
+                    if viewModel.list.filter({ Activity.From(rawValue:$0.from) == .healthKit }).count > 0 {
                         HStack {
                             Text("연동된 운동 데이터")
                                 .font(.headline)
@@ -137,8 +137,7 @@ struct ActivityView: View {
             NextButton(title: "다음", isActive: $isActive) {
                 viewModel.bottomButtonClicked()
             }
-            .padding(.horizontal, 24)
-            .padding(.bottom, 30)
+            .padding(.bottom, 40)
         }.onAppear{
             HealthKitManager.shared.fetchWorkouts(.yesterday) { sample, error in
                 if error != nil {
@@ -158,45 +157,45 @@ struct ActivityView: View {
         }
     }
 }
+typealias Activities = [Activity]
 
-extension ActivityView {
-    typealias Activities = [Activity]
+struct Activity: Identifiable, Codable {
+    let id = UUID()
+    let from: String
+    var name: String
+    var time: Int
     
-    struct Activity:Identifiable {
-        var id = UUID()
-        let from: From
-        var name: String
-        var time: Int
-        
-        enum From {
-            case user
-            case healthKit
-        }
-        
-        var dsc: String{
-            if time % 60 == 0 {
-                return "\(self.time/60)시간"
-            } else if time < 60 {
-                return "\(self.time%60)분"
-            } else {
-                return "\(self.time/60)시간 \(self.time%60)분"
-            }
-        }
-        
-        init?(from: From, name: String, time: Int) {
-            guard name.count > 0 && name.count <= 15 else {
-                return nil
-            }
-            guard time > 0 else {
-                return nil
-            }
-            self.from = from
-            self.name = name
-            self.time = time
+    enum From: String {
+        case user
+        case healthKit
+    }
+    
+    var dsc: String{
+        if time % 60 == 0 {
+            return "\(self.time/60)시간"
+        } else if time < 60 {
+            return "\(self.time%60)분"
+        } else {
+            return "\(self.time/60)시간 \(self.time%60)분"
         }
     }
     
+    init?(from: From, name: String, time: Int) {
+        guard name.count > 0 && name.count <= 15 else {
+            return nil
+        }
+        
+        guard time > 0 else {
+            return nil
+        }
+        
+        self.from = from.rawValue
+        self.name = name
+        self.time = time
+    }
 }
+
+
 
 #Preview {
     ActivityView(viewModel: DailyRecordViewModel())

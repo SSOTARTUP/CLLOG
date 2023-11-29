@@ -21,3 +21,15 @@ extension String {
             .compactMap { DailyRecordPage(rawValue: $0) }
     }
 }
+
+extension String {
+    public func toDate() -> Date? {
+        let dateFormatter = createKoKRFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        if let date = dateFormatter.date(from: self) {
+            return date
+        } else {
+            return nil
+        }
+    }
+}

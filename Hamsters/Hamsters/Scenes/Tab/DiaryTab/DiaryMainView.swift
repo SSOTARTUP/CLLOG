@@ -28,6 +28,7 @@ struct DiaryMainView: View {
     var body: some View {
         if viewModel.status == .exist {
             ScrollView {
+
                 VStack(spacing: 16) {
                     // 컨디션 차트
                     VStack(alignment: .leading) {

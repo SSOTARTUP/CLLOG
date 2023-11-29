@@ -16,6 +16,8 @@ enum UserDefaultsKey: String {
     case complete   // 설정 완료 - Bool
     case dailyRecordPage
     
+    case startDate
+    
     enum PageControl: String {
         case period
         case caffeine

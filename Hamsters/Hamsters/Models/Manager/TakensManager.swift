@@ -130,10 +130,8 @@ extension TakensManager {
             
             if let index = history.firstIndex(where: { $0.id == historyModel.id }) {
                 history.remove(at: index)
-                print("TakensManager:: check disabled")
             } else {
                 history.append(historyModel)
-                print("TakensManager:: check activated")
             }
             guard let encodedHistory =  try? JSONEncoder().encode(history) else {
                 return .fail
