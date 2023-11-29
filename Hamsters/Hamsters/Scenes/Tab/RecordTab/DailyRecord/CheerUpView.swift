@@ -10,17 +10,23 @@ import SwiftUI
 struct CheerUpView<T: RecordProtocol>: View {
     @ObservedObject var viewModel: T
     
+    @AppStorage(UserDefaultsKey.hamsterImage.rawValue) private var storedHamster: String = ""
+    
     var body: some View {
         VStack(spacing: 0) {
             Spacer()
             
-            Image("HamsterV")
-                .resizable()
-                .scaledToFit()
-                .padding(.horizontal, 100)
-            
-            Text("애니메이션 예정")
-            
+            ZStack {
+                switch selectedHam(rawValue: storedHamster)! {
+                case .gray:
+                    LottieConfettiView(filename: selectedHam(rawValue: storedHamster)!.CheerUpImageName)
+                case .yellow:
+                    LottieConfettiView(filename: selectedHam(rawValue: storedHamster)!.CheerUpImageName)
+                case .black:
+                    LottieConfettiView(filename: selectedHam(rawValue: storedHamster)!.CheerUpImageName)
+                }
+            }
+
             Spacer()
 
             NextButton(title: "다음", isActive: .constant(true)) {

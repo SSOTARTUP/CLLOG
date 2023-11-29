@@ -77,7 +77,6 @@ struct RecordMainView: View {
                         }
                     }
                 }
-                .scaledToFit()
                 .frame(maxHeight: 160)
                 .padding(.bottom, 28)
 
