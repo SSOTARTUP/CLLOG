@@ -28,8 +28,17 @@ struct DiaryMainView: View {
         GridItem(.flexible(), spacing: 15)
     ]
     var body: some View {
-        if DayRecordsManager.shared.fetchDayRecord(for: diaryDate) != nil {
+//        Button {
+//                    print(viewModel.status)
+//                    DummyManager.shared.insertDayRecords()
+//            let hm = HistoryModel(id: UUID(), capacity: "123", name: "zz", settingTime: Date(), timeTaken: Date(), unit: "AS")
+//            TakensManager.shared.updateHistory(date: Date(), historyModel: hm)
+//        } label: {
+//            Text("Click ME")
+//        }
+        if viewModel.status != .none {
             ScrollView {
+
                 VStack(spacing: 16) {
                     // 컨디션 차트
                     VStack(alignment: .leading) {
