@@ -63,6 +63,7 @@
 		307B7D842AE432EF007CB7F5 /* StatisticsMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307B7D832AE432EF007CB7F5 /* StatisticsMainView.swift */; };
 		307B7D872AE43322007CB7F5 /* MyInfoMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307B7D862AE43322007CB7F5 /* MyInfoMainView.swift */; };
 		307B7D8A2AE4E0B1007CB7F5 /* AdditionalMemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307B7D892AE4E0B1007CB7F5 /* AdditionalMemoView.swift */; };
+		309AE7F92B17662A002F7038 /* onboardingHamster.json in Resources */ = {isa = PBXBuildFile; fileRef = 309AE7F82B17662A002F7038 /* onboardingHamster.json */; };
 		30A0B2382B06594D00F51AE1 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 30A0B2372B06594D00F51AE1 /* FSCalendar */; };
 		30A0B23A2B065A1D00F51AE1 /* RecordWeeklyCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A0B2392B065A1D00F51AE1 /* RecordWeeklyCalendar.swift */; };
 		30BB50B92ADFABBC0050CF69 /* ConditionSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BB50B82ADFABBC0050CF69 /* ConditionSlider.swift */; };
@@ -183,6 +184,7 @@
 		307B7D832AE432EF007CB7F5 /* StatisticsMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsMainView.swift; sourceTree = "<group>"; };
 		307B7D862AE43322007CB7F5 /* MyInfoMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoMainView.swift; sourceTree = "<group>"; };
 		307B7D892AE4E0B1007CB7F5 /* AdditionalMemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalMemoView.swift; sourceTree = "<group>"; };
+		309AE7F82B17662A002F7038 /* onboardingHamster.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = onboardingHamster.json; sourceTree = "<group>"; };
 		30A0B2392B065A1D00F51AE1 /* RecordWeeklyCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordWeeklyCalendar.swift; sourceTree = "<group>"; };
 		30BB50B82ADFABBC0050CF69 /* ConditionSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionSlider.swift; sourceTree = "<group>"; };
 		30BB50BD2ADFFAE00050CF69 /* ConditionCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionCheckView.swift; sourceTree = "<group>"; };
@@ -263,6 +265,7 @@
 		300E8E9F2AFB3174001728FE /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				309AE7F82B17662A002F7038 /* onboardingHamster.json */,
 				300E8EA22AFC67C3001728FE /* onboardingConfetti.json */,
 				304180D42ADA8E39002AD2E3 /* Assets.xcassets */,
 			);
@@ -694,6 +697,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				300E8EA32AFC67C3001728FE /* onboardingConfetti.json in Resources */,
+				309AE7F92B17662A002F7038 /* onboardingHamster.json in Resources */,
 				304180D82ADA8E39002AD2E3 /* Preview Assets.xcassets in Resources */,
 				304180D52ADA8E39002AD2E3 /* Assets.xcassets in Resources */,
 			);
