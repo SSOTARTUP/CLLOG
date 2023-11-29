@@ -9,7 +9,7 @@ import SwiftUI
 import FSCalendar
 
 struct DiaryMonthlyCalendar: UIViewRepresentable {
-    @EnvironmentObject var calendarViewModel: DiaryCalendarViewModel
+    @EnvironmentObject var viewModel: DiaryMainViewModel
     @Binding var goToday: Bool
     @State private var isFirstLoad = true
     
@@ -24,26 +24,24 @@ struct DiaryMonthlyCalendar: UIViewRepresentable {
         uiView.delegate = context.coordinator
         uiView.dataSource = context.coordinator
         
-        // 해당 달 이후로 달력 생성 막기 위해
-        if isFirstLoad {
-            uiView.select(calendarViewModel.tempDate)
-            uiView.setCurrentPage(calendarViewModel.tempDate, animated: true)
-            uiView.reloadData()
-            isFirstLoad = false
-        }
+        uiView.select(viewModel.tempDate)
+        uiView.setCurrentPage(viewModel.tempDate, animated: true)
+        uiView.reloadData()
         
         // 오늘로 돌아가는 버튼 동작 위해
         if goToday {
-            uiView.select(Date())
-            calendarViewModel.tempDate = Date()
-            uiView.reloadData()
-            goToday = false
+            DispatchQueue.main.async {
+                uiView.select(Date())
+                viewModel.tempDate = Date()
+                uiView.reloadData()
+                goToday = false
+            }
         }
     }
     
     // 유킷 -> 스유
     func makeCoordinator() -> Coordinator {
-        Coordinator(selectedDate: $calendarViewModel.tempDate, goToday: $goToday, recordingDates: sampleDate)
+        Coordinator(selectedDate: $viewModel.tempDate, goToday: $goToday, recordingDates: sampleDate)
     }
     
     class Coordinator: NSObject, FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
@@ -94,7 +92,7 @@ struct DiaryMonthlyCalendar: UIViewRepresentable {
                     backgroundView.topAnchor.constraint(equalTo: cell.topAnchor, constant: -4)
                 ])
             } else {
-                cell.backgroundView = UIImageView(image: UIImage(named: ""))
+                cell.backgroundView = nil
             }
         }
         
