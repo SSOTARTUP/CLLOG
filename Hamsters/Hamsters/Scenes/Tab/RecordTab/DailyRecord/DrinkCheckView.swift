@@ -75,8 +75,6 @@ struct DrinkCheckView<T: RecordProtocol>: View {
                 viewModel.bottomButtonClicked()
             }
             .padding(.bottom, 40)
-            
-//            DailyRecordNextButton(pageNumber: $pageNumber, isActiveRecord: .constant(true), title: "다음")
         }
     }
 }

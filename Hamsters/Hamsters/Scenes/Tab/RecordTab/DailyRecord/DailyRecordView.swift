@@ -40,6 +40,7 @@ struct DailyRecordView: View {
                     
                 case .activity:
                     ActivityView(viewModel: viewModel)
+                    
                 case .encourage:
                     CheerUpView(viewModel: viewModel)
                     

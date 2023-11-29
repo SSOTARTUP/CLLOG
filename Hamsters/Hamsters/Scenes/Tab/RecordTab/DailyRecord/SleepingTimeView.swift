@@ -103,7 +103,7 @@ struct SleepingTimeView<T: RecordProtocol>: View {
                         .cornerRadius(15)
                         .padding(.horizontal, 16)
                 }
-                .padding(.bottom, 30)
+                .padding(.bottom, 40)
             }
             
         }

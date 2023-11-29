@@ -11,7 +11,7 @@ struct ActivityModalView: View {
     
     @State private var input: String = ""
     @State private var time: Int = 0
-    @Binding var list: ActivityView.Activities
+    @Binding var list: Activities
     @Environment(\.dismiss) private var dismiss
     
     var index: Int
@@ -25,7 +25,7 @@ struct ActivityModalView: View {
                     .toolbar {
                         ToolbarItem(placement: .topBarTrailing) {
                             Button {
-                                guard let item = ActivityView.Activity(from: .user, name: input, time: time) else { return }
+                                guard let item = Activity(from: .user, name: input, time: time) else { return }
                                 
                                 if index != -1 {
                                     list[index] = item

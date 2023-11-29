@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct HistoryModel: Codable {
+struct HistoryModel: Codable,Identifiable {
     let id: UUID
     var capacity: String
     var name: String

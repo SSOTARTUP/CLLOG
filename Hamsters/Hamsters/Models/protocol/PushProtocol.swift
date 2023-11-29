@@ -21,7 +21,6 @@ extension PushProtocol {
         
         let calendar = Calendar.current
         guard let medicines = fetchedMedicines else { return .error }
-        print(medicines)
         medicines.forEach { medicine in
             for alarm in medicine.alarms {
                 if !alarm.isEnabled {

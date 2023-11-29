@@ -72,7 +72,6 @@
 		30BB50C22AE0C0680050CF69 /* DailyRecordNextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BB50C12AE0C0680050CF69 /* DailyRecordNextButton.swift */; };
 		30BB50C42AE1FCA80050CF69 /* MoodCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BB50C32AE1FCA80050CF69 /* MoodCheckView.swift */; };
 		30BB50C92AE395F80050CF69 /* SmokingCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BB50C82AE395F80050CF69 /* SmokingCheckView.swift */; };
-		30BB50CB2AE3A4C30050CF69 /* DailyRecordNextTwoButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BB50CA2AE3A4C30050CF69 /* DailyRecordNextTwoButtons.swift */; };
 		30D60C912AFFD048005D5D96 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D60C902AFFD048005D5D96 /* Onboarding.swift */; };
 		30D60C952B00FD1C005D5D96 /* NextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D60C942B00FD1C005D5D96 /* NextButton.swift */; };
 		30E376C72B011FCA00E8A10D /* CheerUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E376C62B011FCA00E8A10D /* CheerUpView.swift */; };
@@ -191,7 +190,6 @@
 		30BB50C12AE0C0680050CF69 /* DailyRecordNextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyRecordNextButton.swift; sourceTree = "<group>"; };
 		30BB50C32AE1FCA80050CF69 /* MoodCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodCheckView.swift; sourceTree = "<group>"; };
 		30BB50C82AE395F80050CF69 /* SmokingCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmokingCheckView.swift; sourceTree = "<group>"; };
-		30BB50CA2AE3A4C30050CF69 /* DailyRecordNextTwoButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyRecordNextTwoButtons.swift; sourceTree = "<group>"; };
 		30D60C902AFFD048005D5D96 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
 		30D60C942B00FD1C005D5D96 /* NextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButton.swift; sourceTree = "<group>"; };
 		30E376C62B011FCA00E8A10D /* CheerUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheerUpView.swift; sourceTree = "<group>"; };
@@ -435,7 +433,6 @@
 			children = (
 				305240452ADFA855008FCD14 /* DailyRecordProgressBar.swift */,
 				30BB50C12AE0C0680050CF69 /* DailyRecordNextButton.swift */,
-				30BB50CA2AE3A4C30050CF69 /* DailyRecordNextTwoButtons.swift */,
 				B5F904CF2AE4E61200FDE4CB /* CapsuleView.swift */,
 				30BB50B82ADFABBC0050CF69 /* ConditionSlider.swift */,
 				76D52F412AFE9B86009A0698 /* ComputerChat.swift */,
@@ -481,6 +478,7 @@
 		307B7D782AE42FB5007CB7F5 /* Tab */ = {
 			isa = PBXGroup;
 			children = (
+				307B7D7A2AE43053007CB7F5 /* MainTabView.swift */,
 				307B7D792AE43017007CB7F5 /* RecordTab */,
 				307B7D822AE432D0007CB7F5 /* DiaryTab */,
 				307B7D852AE43304007CB7F5 /* StatisticsTab */,
@@ -496,7 +494,6 @@
 				307B7D7E2AE43254007CB7F5 /* RecordMainView.swift */,
 				30A0B2392B065A1D00F51AE1 /* RecordWeeklyCalendar.swift */,
 				301971572AE50A0800728D16 /* DailyMedicationList.swift */,
-				307B7D7A2AE43053007CB7F5 /* MainTabView.swift */,
 				305240422ADFA766008FCD14 /* DailyRecord */,
 			);
 			path = RecordTab;
@@ -778,7 +775,6 @@
 				30BB50C02ADFFB710050CF69 /* DailyRecordView.swift in Sources */,
 				B58CD82E2B0C516300E12608 /* TakenMedicines+CoreDataClass.swift in Sources */,
 				3014AC462B13A22E00B52B12 /* StatisticsCalendarViewModel.swift in Sources */,
-				30BB50CB2AE3A4C30050CF69 /* DailyRecordNextTwoButtons.swift in Sources */,
 				76B387162B008A9D0067CDAF /* Date.swift in Sources */,
 				307B7D7F2AE43254007CB7F5 /* RecordMainView.swift in Sources */,
 				76BFF2F92B103DE000124280 /* StatisticsMainViewModel.swift in Sources */,

@@ -19,6 +19,8 @@ class DailyRecordViewModel: RecordProtocol {
         DailyRecordPage.sideEffect,
         DailyRecordPage.weightCheck,
         DailyRecordPage.menstruation,
+        DailyRecordPage.encourage,
+        DailyRecordPage.activity,
         DailyRecordPage.smoking,
         DailyRecordPage.caffein,
         DailyRecordPage.drink,
@@ -55,7 +57,7 @@ class DailyRecordViewModel: RecordProtocol {
     
     @Published var isPeriod = false
     
-    @Published var list: ActivityView.Activities = []
+    @Published var list: Activities = []
 
     @Published var isSelected: [Bool] = Array(repeating: false, count: 10)
     @Published var isTaken: CaffeineIntake? = .not
@@ -85,6 +87,7 @@ class DailyRecordViewModel: RecordProtocol {
             popularEffect: popularEffect,
             dangerEffect: dangerEffect,
             weight: weight,
+            acitivty: list,
             amountOfSmoking: amountOfSmoking,
             amountOfCaffein: amountOfCaffein,
             isPeriod: isPeriod,
