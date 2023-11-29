@@ -20,7 +20,6 @@ struct DiaryContentsView: View {
     @AppStorage(UserDefaultsKey.PageControl.drink.rawValue) private var isOnDrink: Bool = true
     let conditionLabels = ["주의력", "과잉행동", "충동성", "조직 및 시간관리"]
     let moodLabels = ["우울함", "고조됨", "화남", "불안함"]
-    let sampleMedicine = Medicine.sampleData
     let columns = [
         GridItem(.flexible(), spacing: 15),
         GridItem(.flexible(), spacing: 15)
@@ -112,26 +111,37 @@ struct DiaryContentsView: View {
                             .font(.callout)
                             .fontWeight(.semibold)
                             .padding(.bottom, 9)
-                        
-                        VStack {
-                            ForEach(Array(sampleMedicine.enumerated()), id: \.element.id) { index, medicine in
-                                if index > 0 {
-                                    Divider() // 첫 번째 항목을 제외하고 Divider 추가
+                        if !viewModel.medicines.isEmpty {
+                            VStack {
+                                ForEach(Array(viewModel.medicines.indices), id: \.self) { index in
+                                    let medicine = viewModel.medicines[index]
+                                    if index > 0 {
+                                        Divider() // 첫 번째 항목을 제외하고 Divider 추가
+                                    }
+                                    HStack {
+                                        Text("\(medicine.name) " + "\(medicine.capacity)\(medicine.unit)")
+                                            .font(.body)
+                                        Spacer()
+                                        Text("\(medicine.times)회")
+                                            .font(.body)
+                                            .foregroundStyle(.blue)
+                                    }
+                                    .padding(12)
                                 }
-                                HStack {
-                                    Text("\(medicine.name) " + "\(medicine.capacity)\(medicine.unit)")
-                                        .font(.body)
-                                    Spacer()
-                                    Text("2회")
-                                        .font(.body)
-                                        .foregroundStyle(.blue)
-                                }
-                                .padding(12)
+                            }
+                            .background(.thoTextField)
+                            .cornerRadius(10)
+                        } else {
+                            HStack {
+                                Spacer()
+                                Text("기록된 약물이 없어요!")
+                                    .font(.body)
+                                    .foregroundStyle(.secondary)
+                                Spacer()
                             }
                         }
-                        .background(.thoTextField)
-                        .cornerRadius(10)
                     }
+                    .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(16)
                     .background(Color.white)
                     .cornerRadius(15)
@@ -426,8 +436,6 @@ struct DiaryContentsView: View {
                                         .font(.largeTitle)
                                         .foregroundStyle(.indigo)
                                         .bold()
-                                    //                                Text("잔")
-                                    //                                    .font(.body)
                                 }
                             }
                             .frame(maxWidth: .infinity, alignment: .leading)
