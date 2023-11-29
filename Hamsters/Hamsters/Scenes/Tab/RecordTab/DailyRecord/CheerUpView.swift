@@ -10,9 +10,6 @@ import SwiftUI
 struct CheerUpView<T: RecordProtocol>: View {
     @ObservedObject var viewModel: T
     
-//    @Binding var pageNumber: Int
-//    @Binding var isActiveRecord: Bool
-    
     var body: some View {
         VStack(spacing: 0) {
             Spacer()
@@ -25,8 +22,7 @@ struct CheerUpView<T: RecordProtocol>: View {
             Text("애니메이션 예정")
             
             Spacer()
-            
-//            DailyRecordNextButton(pageNumber: $pageNumber, isActiveRecord: $isActiveRecord, title: "다음")
+
             NextButton(title: "다음", isActive: .constant(true)) {
                 viewModel.bottomButtonClicked()
             }

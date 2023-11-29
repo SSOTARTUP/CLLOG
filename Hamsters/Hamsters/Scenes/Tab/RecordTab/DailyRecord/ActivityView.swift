@@ -137,8 +137,7 @@ struct ActivityView: View {
             NextButton(title: "다음", isActive: $isActive) {
                 viewModel.bottomButtonClicked()
             }
-            .padding(.horizontal, 24)
-            .padding(.bottom, 30)
+            .padding(.bottom, 40)
         }.onAppear{
             HealthKitManager.shared.fetchWorkouts(.yesterday) { sample, error in
                 if error != nil {

@@ -10,8 +10,6 @@ import SwiftUI
 struct SmokingCheckView<T: RecordProtocol>: View {
     @ObservedObject var viewModel: T
     
-
-    
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             if let _ = viewModel as? DailyRecordViewModel {
@@ -75,8 +73,6 @@ struct SmokingCheckView<T: RecordProtocol>: View {
                 viewModel.bottomButtonClicked()
             }
             .padding(.bottom, 40)
-            
-//            DailyRecordNextButton(pageNumber: $pageNumber, isActiveRecord: .constant(true), title: "다음")
         }
     }
 }

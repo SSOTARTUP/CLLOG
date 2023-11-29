@@ -29,8 +29,7 @@ enum Mood: CaseIterable {
 
 struct MoodCheckView<T: RecordProtocol>: View {
     @ObservedObject var viewModel: T
-    
-    
+
     var body: some View {
         ZStack(alignment: .top) {
             ScrollView {
@@ -62,7 +61,6 @@ struct MoodCheckView<T: RecordProtocol>: View {
                     .padding(.top, 24)
                     .padding(.bottom, 40)
                 }
-   //             .padding(.top, 78)  // title 영역만큼
             }
             .scrollIndicators(.never)
         }

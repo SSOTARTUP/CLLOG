@@ -113,7 +113,7 @@ extension DateFormatter {
     }
 }
 
-private func createKoKRFormatter() -> DateFormatter {
+func createKoKRFormatter() -> DateFormatter {
     let dateFormatter = DateFormatter()
     dateFormatter.locale = Locale(identifier: "ko_KR")
     dateFormatter.timeZone = TimeZone(abbreviation: "KST")
