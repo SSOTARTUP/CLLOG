@@ -12,11 +12,10 @@ import CoreData
 class RecordMainViewModel: NSObject, ObservableObject {
     @Published var medicineSchedule: [MedicineSchedule] = []
     @Published var datesOnRecord: [String] = []
+    @Published var recordStatus: RecordStatus = .noRecord
     
-    // 캘린더 관련 변수
     @Published var selectedDate: Date = Date()
-    @Published var dateStatus: DateStatus = .today
-    
+
     private let startDateString = UserDefaults.standard.string(forKey: UserDefaultsKey.startDate.rawValue)
 
     private let takensController: NSFetchedResultsController<Takens>
@@ -27,7 +26,7 @@ class RecordMainViewModel: NSObject, ObservableObject {
     override init() {
         let fetchTakensRequest: NSFetchRequest<Takens> = Takens.fetchRequest()
         fetchTakensRequest.sortDescriptors = [NSSortDescriptor(keyPath: \Takens.date, ascending: true)]
-        let startDate = Calendar.current.startOfDay(for: Date())
+//        let startDate = Calendar.current.startOfDay(for: Date())
 //        fetchTakensRequest.predicate = NSPredicate(format: "date == %@", startDate as CVarArg)
         
         takensController = NSFetchedResultsController(
@@ -105,6 +104,10 @@ extension RecordMainViewModel {
             datesOnRecord = recordDatesDict.compactMap{ $0.0.basicDash }
         } else {
             datesOnRecord = []
+        }
+        
+        if datesOnRecord.contains(today.basicDash) {
+            recordStatus = .record
         }
     }
     

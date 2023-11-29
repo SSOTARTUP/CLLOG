@@ -27,20 +27,18 @@ struct WeeklyCalendarView: UIViewRepresentable {
     
     // 유킷 -> 스유
     func makeCoordinator() -> Coordinator {
-        Coordinator(selectedDate: $viewModel.selectedDate, calendarHeight: $calendarHeight, existLog: $viewModel.datesOnRecord, dateStatus: $viewModel.dateStatus)
+        Coordinator(selectedDate: $viewModel.selectedDate, calendarHeight: $calendarHeight, existLog: $viewModel.datesOnRecord)
     }
     
     class Coordinator: NSObject, FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
         @Binding var selectedDate: Date
         @Binding var calendarHeight: CGFloat
         @Binding var existLog: [String]
-        @Binding var dateStatus: DateStatus
         
-        init(selectedDate: Binding<Date>, calendarHeight: Binding<CGFloat>, existLog: Binding<[String]>, dateStatus: Binding<DateStatus>) {
+        init(selectedDate: Binding<Date>, calendarHeight: Binding<CGFloat>, existLog: Binding<[String]>) {
             self._selectedDate = selectedDate
             self._calendarHeight = calendarHeight
             self._existLog = existLog
-            self._dateStatus = dateStatus
         }
         
         func calendar(_ calendar: FSCalendar,
@@ -50,14 +48,6 @@ struct WeeklyCalendarView: UIViewRepresentable {
                 guard let self = self else { return }
                 
                 selectedDate = date
-                
-                if date.basicDash > Date.now.basicDash {
-                    dateStatus = .future
-                } else if date.basicDash < Date.now.basicDash {
-                    dateStatus = .past
-                } else {
-                    dateStatus = .today
-                }
             }
         }
         

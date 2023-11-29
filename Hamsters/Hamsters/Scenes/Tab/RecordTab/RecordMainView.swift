@@ -17,7 +17,6 @@ struct RecordMainView: View {
     var body: some View {
         ZStack(alignment: .top) {
             // MARK: 배경
-
             Color.sky
             
             VStack {
@@ -58,7 +57,7 @@ struct RecordMainView: View {
                     .frame(maxHeight: 160)
                     .padding(.bottom, 28)
                 
-                RecordButton(status: viewModel.dateStatus) {
+                RecordButton(status: viewModel.recordStatus) {
                     isActiveSheet = true
                 }
                 .padding(.bottom, 28)
@@ -122,7 +121,7 @@ extension RecordMainView {
     
     
     struct RecordButton: View {
-        let status: DateStatus
+        let status: RecordStatus
         var action: () -> Void
         
         var body: some View {
@@ -139,53 +138,59 @@ extension RecordMainView {
                     .padding(.horizontal, 61)
                     .shadow(color: .black.opacity(status.buttonShadowOpacity), radius: 2, x: 0, y: 4)
             }
-            .disabled(status != .today)
+            .disabled(status.buttonDisabled)
         }
     }
 }
 
 
-enum DateStatus {
-    case past
-    case today
-    case future
-        var buttonTitle: String {
-            switch self {
-            case .past:
-                "과거의 기록은 추가할 수 없어요!"
-            case .today:
-                "오늘의 상태 추가하기"
-            case .future:
-                "미래의 기록은 추가할 수 없어요!"
-            }
+enum RecordStatus {
+    case noRecord
+    case record
+    
+    var buttonDisabled: Bool {
+        switch self {
+        case .noRecord: false
+        case .record: true
         }
+    }
+    
+    var buttonTitle: String {
+        switch self {
+        case .noRecord:
+            "오늘의 상태 추가하기"
+            
+        case .record:
+            "오늘의 기록 완료!"
+        }
+    }
         
-        var buttonBackgroundColor: Color {
-            switch self {
-            case .today:
-                Color.thoNavy
-            default:
-                Color.thoDisabled
-            }
+    var buttonBackgroundColor: Color {
+        switch self {
+        case .noRecord:
+            Color.thoNavy
+        case .record:
+            Color.thoDisabled
         }
-        
-        var buttonTextColor: Color {
-            switch self {
-            case .today:
-                Color.white
-            default:
-                Color.thoNavy
-            }
+    }
+    
+    var buttonTextColor: Color {
+        switch self {
+        case .noRecord:
+            Color.white
+        case .record:
+            Color.thoNavy
         }
-        
-        var buttonShadowOpacity: Double {
-            switch self {
-            case .today:
-                0.25
-            default:
-                0.0
-            }
+    }
+    
+    var buttonShadowOpacity: Double {
+        switch self {
+        case .noRecord:
+            0.25
+        case .record:
+            0.0
         }
+    }
 }
 
 #Preview {
