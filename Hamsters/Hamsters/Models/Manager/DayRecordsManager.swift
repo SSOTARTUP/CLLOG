@@ -106,6 +106,7 @@ extension DayRecordsManager {
                   let conditionValues = try? JSONDecoder().decode([Double].self, from: conditionValuesData),
                   let moodValues = try? JSONDecoder().decode([Double].self, from: moodValuesData) else {
                 return nil
+                print("CoreData 레코드 조회 성공")
             }
             
             return DayRecord(

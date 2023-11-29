@@ -120,6 +120,7 @@
 		B597462A2AE504220074D5CC /* MenstruationCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59746292AE504220074D5CC /* MenstruationCheckView.swift */; };
 		B597462C2AE5D7190074D5CC /* SleepingTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B597462B2AE5D7190074D5CC /* SleepingTimeView.swift */; };
 		B5BDEC282B0AADAD0018D1C9 /* DailyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BDEC272B0AADAD0018D1C9 /* DailyViewModel.swift */; };
+		B5E54BCF2B1722D7004BB493 /* EditMedicineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E54BCE2B1722D7004BB493 /* EditMedicineView.swift */; };
 		B5F904C72AE4E0DA00FDE4CB /* SideEffectCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F904C62AE4E0DA00FDE4CB /* SideEffectCheckView.swift */; };
 		B5F904CA2AE4E13500FDE4CB /* WrappingHStack in Frameworks */ = {isa = PBXBuildFile; productRef = B5F904C92AE4E13500FDE4CB /* WrappingHStack */; };
 		B5F904CE2AE4E4DF00FDE4CB /* SideEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F904CD2AE4E4DF00FDE4CB /* SideEffects.swift */; };
@@ -241,6 +242,7 @@
 		B59746292AE504220074D5CC /* MenstruationCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenstruationCheckView.swift; sourceTree = "<group>"; };
 		B597462B2AE5D7190074D5CC /* SleepingTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepingTimeView.swift; sourceTree = "<group>"; };
 		B5BDEC272B0AADAD0018D1C9 /* DailyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DailyViewModel.swift; path = Hamsters/Models/Record/DailyViewModel.swift; sourceTree = SOURCE_ROOT; };
+		B5E54BCE2B1722D7004BB493 /* EditMedicineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMedicineView.swift; sourceTree = "<group>"; };
 		B5F904C62AE4E0DA00FDE4CB /* SideEffectCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideEffectCheckView.swift; sourceTree = "<group>"; };
 		B5F904CD2AE4E4DF00FDE4CB /* SideEffects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideEffects.swift; sourceTree = "<group>"; };
 		B5F904CF2AE4E61200FDE4CB /* CapsuleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsuleView.swift; sourceTree = "<group>"; };
@@ -537,6 +539,7 @@
 				307B7D862AE43322007CB7F5 /* MyInfoMainView.swift */,
 				30EEFF362B09D13F0016D8BA /* ProfileEditView.swift */,
 				30EEFF382B09D15C0016D8BA /* QuestionItemEditView.swift */,
+				B5E54BCE2B1722D7004BB493 /* EditMedicineView.swift */,
 			);
 			path = MyInfoTab;
 			sourceTree = "<group>";
@@ -709,6 +712,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5E54BCF2B1722D7004BB493 /* EditMedicineView.swift in Sources */,
 				307B7D812AE432A2007CB7F5 /* DiaryMainView.swift in Sources */,
 				307B7D712AE424A2007CB7F5 /* AlarmRow.swift in Sources */,
 				30EEFF372B09D13F0016D8BA /* ProfileEditView.swift in Sources */,
@@ -955,7 +959,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Hamsters/Preview Content\"";
-				DEVELOPMENT_TEAM = TAP4M2PF77;
+				DEVELOPMENT_TEAM = YKG7843K2L;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Hamsters/Info.plist;
@@ -975,7 +979,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ThotartUp.ClueH;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ThotartUp.ClueHs;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -997,7 +1001,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Hamsters/Preview Content\"";
-				DEVELOPMENT_TEAM = TAP4M2PF77;
+				DEVELOPMENT_TEAM = YKG7843K2L;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Hamsters/Info.plist;
@@ -1017,7 +1021,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ThotartUp.ClueH;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ThotartUp.ClueHs;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
