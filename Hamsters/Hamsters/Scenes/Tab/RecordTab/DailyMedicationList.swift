@@ -75,26 +75,6 @@ struct DailyMedicationList: View {
     }
 }
 
-//struct MedicineSchedule {
-//    let id: UUID
-//    let capacity: String
-//    let name: String
-//    let unit: String
-//    let settingTime: Date
-//    
-//    var timeTaken: Date?
-//    var isTaken: Bool
-//}
-
-//struct HistoryModel: Codable {
-//    let id: UUID
-//    var capacity: String
-//    var name: String
-//    var settingTime: Date
-//    var timeTaken: Date
-//    var unit: String
-//}
-
 extension DailyMedicationList {
     struct MedicationCheckItem: View {
         let medicineInfo: MedicineSchedule
@@ -107,8 +87,13 @@ extension DailyMedicationList {
                             .font(.title3)
                             .fontWeight(.semibold)
                         
-                        Text(medicineInfo.settingTime.shortTimeWithoutSecond)
-                            .font(.footnote)
+                        if medicineInfo.scheduleType == .specific {
+                            Text(medicineInfo.settingTime.shortTimeWithoutSecond)
+                                .font(.footnote)
+                        } else if medicineInfo.scheduleType == .necessary {
+                            Text("필요시")
+                                .font(.footnote)
+                        }
                     }
                     .foregroundStyle(medicineInfo.isTaken ? .thoGreen : .secondary)
                     
