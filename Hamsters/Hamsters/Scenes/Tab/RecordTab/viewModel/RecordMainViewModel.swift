@@ -11,10 +11,12 @@ import CoreData
 
 class RecordMainViewModel: NSObject, ObservableObject {
     @Published var medicineSchedule: [MedicineSchedule] = []
+    @Published var status: Status = .none
 
     private let takensController: NSFetchedResultsController<Takens>
     private let medicinesController: NSFetchedResultsController<Medicines>
-    
+    private let dayRecordsController: NSFetchedResultsController<DayRecords>
+
     private let context: NSManagedObjectContext = CoreDataManager.shared.persistentContainer.viewContext
     
     override init() {
@@ -38,13 +40,27 @@ class RecordMainViewModel: NSObject, ObservableObject {
             sectionNameKeyPath: nil,
             cacheName: nil)
         
+        
+        let dayRecordsfetchRequest: NSFetchRequest<DayRecords> = DayRecords.fetchRequest()
+        dayRecordsfetchRequest.sortDescriptors = [NSSortDescriptor(keyPath: \DayRecords.date, ascending: true)]
+//        fetchRequest.predicate = NSPredicate(format: "date == %@", Date() as CVarArg)
+
+        dayRecordsController = NSFetchedResultsController(
+            fetchRequest: dayRecordsfetchRequest,
+            managedObjectContext: context,
+            sectionNameKeyPath: nil,
+            cacheName: nil)
+        
         super.init()
+        
         takensController.delegate = self
         medicinesController.delegate = self
+        dayRecordsController.delegate = self
 
         do {
             try takensController.performFetch()
             try medicinesController.performFetch()
+            try dayRecordsController.performFetch()
             update()
         } catch {
             print("Failed to fetch items: \(error)")
@@ -64,6 +80,10 @@ extension RecordMainViewModel {
             let fetchedHistory = TakensManager.shared.fetchHistory(date: today)
         else {
             return
+        }
+        
+        if let _ = DayRecordsManager.shared.fetchDayRecord(for: Date()) {
+            status = .exist
         }
         
         let weekday = Calendar.current.component(.weekday, from: today)
@@ -106,5 +126,10 @@ extension RecordMainViewModel {
 extension RecordMainViewModel: NSFetchedResultsControllerDelegate {
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         update()
+    }
+    
+    enum Status {
+        case exist
+        case none
     }
 }

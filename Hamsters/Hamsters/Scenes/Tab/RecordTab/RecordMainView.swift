@@ -59,11 +59,13 @@ struct RecordMainView: View {
                     .scaledToFit()
                     .frame(maxHeight: 160)
                     .padding(.bottom, 28)
-                
-                RecordButton(status: isToday) {
-                    isActiveSheet = true
+                if viewModel.status == .none {
+                    RecordButton(status: isToday) {
+                        isActiveSheet = true
+                    }
+                    .padding(.bottom, 28)
                 }
-                .padding(.bottom, 28)
+
                 
                 DailyMedicationList(viewModel: viewModel)
             }
