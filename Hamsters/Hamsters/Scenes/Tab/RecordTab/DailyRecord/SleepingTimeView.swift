@@ -240,23 +240,30 @@ struct SleepingTimeView<T: RecordProtocol>: View {
         }
     }
     
-    
     func getTime(angle: Double) -> Date {
         // 360도를 기준으로 비율을 계산하여 전체 분으로 변환합니다. (24시간 * 60분 = 1440분)
         let totalMinutes = (angle / 360) * 1440
-        
+
         // 총 분을 시간과 분으로 분리합니다.
         let hours = Int(totalMinutes) / 60
         let minutes = Int(totalMinutes) % 60
-        
+
         // 현재 날짜에서 시간과 분을 설정합니다.
-        if let date = Calendar.current.date(bySettingHour: hours, minute: minutes, second: 0, of: Date()) {
+        var components = DateComponents()
+        components.hour = hours
+        components.minute = minutes
+
+        // 현지 타임존을 사용하여 날짜를 계산합니다.
+        let localCalendar = Calendar.current
+        if let date = localCalendar.date(from: components) {
             return date
         }
-        
+
         // 예외 상황에 대비하여 현재 시간을 반환합니다.
         return Date()
     }
+    
+    
     
     func getTimeDifference() -> (Int, Int) {
         let startDate = getTime(angle: viewModel.startAngle)

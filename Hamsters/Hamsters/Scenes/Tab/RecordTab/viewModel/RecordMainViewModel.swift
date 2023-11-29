@@ -16,8 +16,6 @@ class RecordMainViewModel: NSObject, ObservableObject {
     
     @Published var selectedDate: Date = Date()
 
-    private let startDateString = UserDefaults.standard.string(forKey: UserDefaultsKey.startDate.rawValue)
-
     private let takensController: NSFetchedResultsController<Takens>
     private let medicinesController: NSFetchedResultsController<Medicines>
     private let dayRecordsController: NSFetchedResultsController<DayRecords>

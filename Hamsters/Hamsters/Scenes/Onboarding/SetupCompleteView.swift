@@ -9,21 +9,20 @@ import SwiftUI
 
 struct SetupCompleteView: View {
     @EnvironmentObject var viewModel: OnboardingViewModel
+    let hamsterSize = UIScreen.main.bounds.width - 140
     
     var body: some View {
         VStack(spacing: 0) {
             ZStack {                
                 VStack {
-                    Image("HamsterV")
-                        .resizable()
-                        .scaledToFit()
-                        .padding(.horizontal, 124)
-                        .padding(.bottom, 32)
-                        
+                    LottieConfettiView(filename: "OnBoardingFin")
+                        .frame(width: hamsterSize, height: hamsterSize)
+
                     Text("준비 완료!")
                         .font(.title)
                         .fontWeight(.semibold)
-                        .padding(.bottom, 12)
+                        .padding(.top, 24)
+                        .padding(.bottom, 8)
                     
                     Text("일상을 변화시킬 나를 위한 단서,\n클록이 도와줄게요!")
                         .multilineTextAlignment(.center)

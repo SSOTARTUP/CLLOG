@@ -9,6 +9,10 @@ import Foundation
 import SwiftUI
 
 class DailyRecordViewModel: RecordProtocol {
+        
+    init() {
+        HealthKitManager.shared.requestAuthorization()
+    }
     
     private let coreDataManager = CoreDataManager.shared
     
@@ -111,6 +115,10 @@ class DailyRecordViewModel: RecordProtocol {
                 self.toAngle = self.calculateAngle(from: sleepEnd)
                 self.startProgress = self.calculateProgress(from: sleepStart)
                 self.toProgress = self.calculateProgress(from: sleepEnd)
+                print(sleepStart)
+                print(sleepEnd)
+
+
             }
         }
     }

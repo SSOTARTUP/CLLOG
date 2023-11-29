@@ -55,7 +55,7 @@ extension HealthKitManager {
 //MARK: 운동 데이터
 extension HealthKitManager {
     
-    func fetchWorkouts(_ predicate:Predicate,completion: @escaping ([HKWorkout]?, Error?) -> Void) {
+    func fetchWorkouts(_ predicate:Predicate, completion: @escaping ([HKWorkout]?, Error?) -> Void) {
         let workoutType = HKObjectType.workoutType()
         let calendar = Calendar.current
 
@@ -85,16 +85,28 @@ extension HealthKitManager {
 //MARK: 수면 데이터
 extension HealthKitManager {
     
-    func fetchSleepData(_ predicate:Predicate,completion: @escaping (Date?, Date?, TimeInterval?) -> Void) {
+    func fetchSleepData(_ predicate: Predicate, completion: @escaping (Date?, Date?, TimeInterval?) -> Void) {
         guard let sleepType = HKObjectType.categoryType(forIdentifier: .sleepAnalysis) else {
             completion(nil, nil, nil)
             return
         }
         
-        let startOfDay = Calendar.current.startOfDay(for: Date())
+        let midnight = Calendar.current.startOfDay(for: Date())
     //    let yesterday = Calendar.current.date(byAdding: .day, value: -1, to: Date())
         
-        let predicate = HKQuery.predicateForSamples(withStart: startOfDay, end: Date(), options: .strictStartDate)
+        let calendar = Calendar.current
+
+        guard let previousDay = calendar.date(byAdding: .day, value: -1, to: midnight) else {
+            fatalError("전날 계산에 실패했습니다.")
+        }
+
+        var components = DateComponents()
+        components.hour = 21
+        guard let previousDayAtNinePM = calendar.date(byAdding: components, to: previousDay) else {
+            fatalError("전날 21시 계산에 실패했습니다.")
+        }
+
+        let predicate = HKQuery.predicateForSamples(withStart: previousDayAtNinePM, end: Date(), options: .strictStartDate)
         
         let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierEndDate, ascending: true)
         let query = HKSampleQuery(sampleType: sleepType, predicate: predicate, limit: HKObjectQueryNoLimit, sortDescriptors: [sortDescriptor]) { _, samples, error in
@@ -109,7 +121,7 @@ extension HealthKitManager {
                 return result + sample.endDate.timeIntervalSince(sample.startDate)
             }
             
-            completion(firstSleepStart?.KST, lastSleepEnd?.KST, totalSleepTime)
+            completion(firstSleepStart, lastSleepEnd, totalSleepTime)
         }
         
         healthStore.execute(query)

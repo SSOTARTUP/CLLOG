@@ -33,4 +33,49 @@ enum selectedHam: String, CaseIterable {
             "BlackCircleHam_s"
         }
     }
+    
+    var beforeRecordImageName: String {
+        switch self {
+        case .gray:
+            "Main_Ham1_Before"
+        case .yellow:
+            "Main_Ham2_Before"
+        case .black:
+            "Main_Ham3_Before"
+        }
+    }
+    
+    var afterRecordImageName: String {
+        switch self {
+        case .gray:
+            "Main_Ham1_After"
+        case .yellow:
+            "Main_Ham2_After"
+        case .black:
+            "Main_Ham3_After"
+        }
+    }
+    
+    var recordFinishImageName: String {
+        switch self {
+        case .gray:
+            "RecordFin_Ham1"
+        case .yellow:
+            "RecordFin_Ham2"
+        case .black:
+            "RecordFin_Ham3"
+        }
+    }
+    
+    var CheerUpImageName: String {
+        switch self {
+        case .gray:
+            "Middle_Ham1"
+        case .yellow:
+            "Middle_Ham2"
+        case .black:
+            "Middle_Ham3"
+        }
+    }
+
 }

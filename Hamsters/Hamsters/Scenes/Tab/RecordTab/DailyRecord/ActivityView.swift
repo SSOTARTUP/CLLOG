@@ -139,7 +139,7 @@ struct ActivityView: View {
             }
             .padding(.bottom, 40)
         }.onAppear{
-            HealthKitManager.shared.fetchWorkouts(.yesterday) { sample, error in
+            HealthKitManager.shared.fetchWorkouts(.today) { sample, error in
                 if error != nil {
                     return
                 }
