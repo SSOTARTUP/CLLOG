@@ -16,6 +16,7 @@ struct DayRecord {
     var popularEffect: [SideEffects.Major]
     var dangerEffect: [SideEffects.Dangerous]
     var weight: Double
+    var acitivty: [Activity]
     var amountOfSmoking: Int
     var amountOfCaffein: Int
     var isPeriod: Bool

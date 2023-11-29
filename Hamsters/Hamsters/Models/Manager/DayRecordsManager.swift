@@ -30,6 +30,7 @@ extension DayRecordsManager {
         newDayRecord.popularEffect = try? JSONEncoder().encode(dayRecord.popularEffect)
         newDayRecord.dangerEffect = try? JSONEncoder().encode(dayRecord.dangerEffect)
         newDayRecord.weight = dayRecord.weight
+        newDayRecord.activity = try? JSONEncoder().encode(dayRecord.acitivty)
         newDayRecord.amountOfSmoking = Int16(dayRecord.amountOfSmoking)
         newDayRecord.amountOfCaffein = Int16(dayRecord.amountOfCaffein)
         newDayRecord.isPeriod = dayRecord.isPeriod
@@ -69,6 +70,7 @@ extension DayRecordsManager {
         newDayRecord.popularEffect = try? JSONEncoder().encode(dayRecord.popularEffect)
         newDayRecord.dangerEffect = try? JSONEncoder().encode(dayRecord.dangerEffect)
         newDayRecord.weight = dayRecord.weight
+        newDayRecord.activity = try? JSONEncoder().encode(dayRecord.acitivty)
         newDayRecord.amountOfSmoking = Int16(dayRecord.amountOfSmoking)
         newDayRecord.amountOfCaffein = Int16(dayRecord.amountOfCaffein)
         newDayRecord.isPeriod = dayRecord.isPeriod
@@ -101,6 +103,8 @@ extension DayRecordsManager {
                   let dangerEffectData = entity.dangerEffect,
                   let conditionValuesData = entity.conditionValues,
                   let moodValuesData = entity.moodValues,
+                  let acitivityData = entity.activity,
+                  let activity = try? JSONDecoder().decode([Activity].self, from: acitivityData),
                   let popularEffect = try? JSONDecoder().decode([SideEffects.Major].self, from: popularEffectData),
                   let dangerEffect = try? JSONDecoder().decode([SideEffects.Dangerous].self, from: dangerEffectData),
                   let conditionValues = try? JSONDecoder().decode([Double].self, from: conditionValuesData),
@@ -116,6 +120,7 @@ extension DayRecordsManager {
                 popularEffect: popularEffect,
                 dangerEffect: dangerEffect,
                 weight: entity.weight,
+                acitivty: activity,
                 amountOfSmoking: Int(entity.amountOfSmoking),
                 amountOfCaffein: Int(entity.amountOfCaffein),
                 isPeriod: entity.isPeriod,
@@ -147,6 +152,8 @@ extension DayRecordsManager {
                       let dangerEffectData = entity.dangerEffect,
                       let conditionValuesData = entity.conditionValues,
                       let moodValuesData = entity.moodValues,
+                      let acitivityData = entity.activity,
+                      let activity = try? JSONDecoder().decode([Activity].self, from: acitivityData),
                       let popularEffect = try? JSONDecoder().decode([SideEffects.Major].self, from: popularEffectData),
                       let dangerEffect = try? JSONDecoder().decode([SideEffects.Dangerous].self, from: dangerEffectData),
                       let conditionValues = try? JSONDecoder().decode([Double].self, from: conditionValuesData),
@@ -162,6 +169,7 @@ extension DayRecordsManager {
                     popularEffect: popularEffect,
                     dangerEffect: dangerEffect,
                     weight: entity.weight,
+                    acitivty: activity,
                     amountOfSmoking: Int(entity.amountOfSmoking),
                     amountOfCaffein: Int(entity.amountOfCaffein),
                     isPeriod: entity.isPeriod,
@@ -193,6 +201,8 @@ extension DayRecordsManager {
                       let dangerEffectData = entity.dangerEffect,
                       let conditionValuesData = entity.conditionValues,
                       let moodValuesData = entity.moodValues,
+                      let acitivityData = entity.activity,
+                      let activity = try? JSONDecoder().decode([Activity].self, from: acitivityData),
                       let popularEffect = try? JSONDecoder().decode([SideEffects.Major].self, from: popularEffectData),
                       let dangerEffect = try? JSONDecoder().decode([SideEffects.Dangerous].self, from: dangerEffectData),
                       let conditionValues = try? JSONDecoder().decode([Double].self, from: conditionValuesData),
@@ -207,6 +217,7 @@ extension DayRecordsManager {
                     popularEffect: popularEffect,
                     dangerEffect: dangerEffect,
                     weight: entity.weight,
+                    acitivty: activity,
                     amountOfSmoking: Int(entity.amountOfSmoking),
                     amountOfCaffein: Int(entity.amountOfCaffein),
                     isPeriod: entity.isPeriod,
@@ -255,6 +266,7 @@ extension DayRecordsManager {
                 existingRecord.popularEffect = try? JSONEncoder().encode(dayRecord.popularEffect)
                 existingRecord.dangerEffect = try? JSONEncoder().encode(dayRecord.dangerEffect)
                 existingRecord.weight = dayRecord.weight
+                existingRecord.activity = try? JSONEncoder().encode(dayRecord.acitivty)
                 existingRecord.amountOfSmoking = Int16(dayRecord.amountOfSmoking)
                 existingRecord.amountOfCaffein = Int16(dayRecord.amountOfCaffein)
                 existingRecord.isPeriod = dayRecord.isPeriod

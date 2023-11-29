@@ -35,6 +35,7 @@ class DailyViewModel: ObservableObject {
             popularEffect: popularEffect,
             dangerEffect: dangerEffect,
             weight: weight,
+            acitivty: [],
             amountOfSmoking: amountOfSmoking,
             amountOfCaffein: amountOfCaffein,
             isPeriod: isPeriod,
