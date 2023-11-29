@@ -19,7 +19,7 @@ struct DiaryMainView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                DiaryWeeklyCalendar(calendarHeight: $calendarHeight)
+                DiaryWeeklyCalendar(viewModel: viewModel, calendarHeight: $calendarHeight)
                     .background(
                         Color.thoNavy
                             .shadow(color: .black.opacity(0.2), radius: 6, x: 0, y: 4)
@@ -34,6 +34,7 @@ struct DiaryMainView: View {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
                         showMonthly = true
+                        viewModel.loadDates()
                     } label: {
                         Image(systemName: "calendar")
                             .foregroundStyle(.white)
@@ -44,13 +45,12 @@ struct DiaryMainView: View {
             .toolbarBackground(Color.thoNavy, for: .navigationBar)
             .toolbarBackground(.visible, for: .navigationBar)
             .fullScreenCover(isPresented: $showMonthly) {
-                DiaryExpandedCalendarView()
+                DiaryExpandedCalendarView(viewModel: viewModel)
                     .onAppear {
                         viewModel.openMonthly()
                     }
             }
         }
-        .environmentObject(viewModel)
     }
 }
 
