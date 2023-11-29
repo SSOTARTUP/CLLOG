@@ -40,7 +40,7 @@ class DiaryMainViewModel: NSObject, RecordProtocol {
         //calendar view 로직에 따라 주석이 해제될 수 있음.
     }
     
-    var selectedDate: Date = Date(){
+    @Published var selectedDate: Date = Date(){
         didSet{
             status = initialize()
         }
@@ -104,9 +104,13 @@ class DiaryMainViewModel: NSObject, RecordProtocol {
     @Published var memo = ""
     
     @Published var pageNumber = 0
-//    @Published var selectedDate: Date = Date()
+    
+    // 캘린더 관련
     @Published var tempDate: Date = Date()
+}
 
+extension DiaryMainViewModel {
+    // 캘린더 관련
     func openMonthly() {
         tempDate = selectedDate
     }
@@ -115,9 +119,6 @@ class DiaryMainViewModel: NSObject, RecordProtocol {
         selectedDate = tempDate
     }
     
-}
-
-extension DiaryMainViewModel {
     func bottomButtonClicked() {
         let dayRecord = DayRecord(
             date: Calendar.current.startOfDay(for: selectedDate), // 저장 시 현재 날짜 사용

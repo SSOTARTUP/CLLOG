@@ -9,12 +9,12 @@ import SwiftUI
 
 struct DiaryExpandedCalendarView: View {
     @Environment(\.dismiss) private var dismiss
-    @EnvironmentObject var calendarViewModel: DiaryCalendarViewModel
+    @EnvironmentObject var viewModel: DiaryMainViewModel
     @State private var goToday: Bool = false
     
-    init() {
-        setNavigationBar()
-    }
+//    init() {
+//        setNavigationBar()
+//    }
     
     var body: some View {
         NavigationStack {
@@ -22,7 +22,6 @@ struct DiaryExpandedCalendarView: View {
                 headerSection()
                 
                 DiaryMonthlyCalendar(goToday: $goToday)
-                    .environmentObject(calendarViewModel)
                     .padding(.horizontal, 24)
 
                 bottomSection()
@@ -52,7 +51,7 @@ struct DiaryExpandedCalendarView: View {
 }
 
 extension DiaryExpandedCalendarView {
-    private func setNavigationBar() {
+    private func setNavigationBar(color: UIColor) {
         let appearance = UINavigationBarAppearance()
         appearance.shadowColor = .clear
         appearance.backgroundColor = .white
@@ -97,7 +96,7 @@ extension DiaryExpandedCalendarView {
                 .foregroundStyle(.thoTextField)
             
             Button {
-                calendarViewModel.move()
+                viewModel.move()
                 dismiss()
             } label: {
                 Text("선택한 날짜로 이동")
