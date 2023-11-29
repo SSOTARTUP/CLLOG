@@ -1,31 +1,33 @@
 //
-//  DiaryMainView.swift
+//  DiaryContentsView.swift
 //  Hamsters
 //
-//  Created by Chaeeun Shin on 11/22/23.
+//  Created by Chaeeun Shin on 10/22/23.
 //
 
 import SwiftUI
+import Charts
+import WrappingHStack
 
-struct DiaryMainView: View {
-    @StateObject private var viewModel = DiaryMainViewModel()
-    @State private var calendarHeight: CGFloat = 300.0
-    @State private var showMonthly = false
+struct DiaryContentsView: View {
     
-//    init() {
-//        setNavigationBar()
-//    }
-    
+    @EnvironmentObject var viewModel: DiaryMainViewModel
+    @State var isPresentedBottomSheet: Bool = false
+    @AppStorage(UserDefaultsKey.sex.rawValue) var savedSex: String = "male"
+    @AppStorage(UserDefaultsKey.PageControl.period.rawValue) private var isOnPeriod: Bool = true
+    @AppStorage(UserDefaultsKey.PageControl.caffeine.rawValue) private var isOnCaffeine: Bool = true
+    @AppStorage(UserDefaultsKey.PageControl.smoking.rawValue) private var isOnSmoking: Bool = true
+    @AppStorage(UserDefaultsKey.PageControl.drink.rawValue) private var isOnDrink: Bool = true
+    let conditionLabels = ["주의력", "과잉행동", "충동성", "조직 및 시간관리"]
+    let moodLabels = ["우울함", "고조됨", "화남", "불안함"]
+    let sampleMedicine = Medicine.sampleData
+    let columns = [
+        GridItem(.flexible(), spacing: 15),
+        GridItem(.flexible(), spacing: 15)
+    ]
     var body: some View {
-        NavigationStack {
-            VStack {
-                DiaryWeeklyCalendar(calendarHeight: $calendarHeight)
-                    .background(
-                        Color.thoNavy
-                            .shadow(color: .black.opacity(0.2), radius: 6, x: 0, y: 4)
-                    )
-                    .frame(height: calendarHeight)
-
+        if viewModel.status == .exist {
+            ScrollView {
 
                 VStack(spacing: 16) {
                     // 컨디션 차트
@@ -167,7 +169,7 @@ struct DiaryMainView: View {
                             .padding(.bottom, 9)
                         
                         WrappingHStack(alignment: .leading, horizontalSpacing: 8, verticalSpacing: 10) {
-                            ForEach(viewModel.dangerEffect, id: \.self) { effect in
+                            ForEach(viewModel.popularEffect, id: \.self) { effect in
                                 Text(effect.rawValue)
                                     .font(.footnote)
                                     .padding(.horizontal, 20)
@@ -187,29 +189,18 @@ struct DiaryMainView: View {
                     // 수면시간, 체중
                     VStack(alignment: .leading, spacing: 0) {
                         HStack(spacing: 15) {
-                            // 오늘의 수면시간
                             VStack(alignment: .leading, spacing: 0) {
                                 Text("오늘의 수면시간")
                                     .font(.callout)
                                     .fontWeight(.semibold)
                                     .padding(.bottom, 9)
-
-                                HStack(alignment: .bottom, spacing: 0) {
-                                    Text("\(viewModel.sleepingTime / 60)")
+                                HStack(alignment: .bottom) {
+                                    Text(viewModel.sleepingTime.description)
                                         .font(.largeTitle)
                                         .foregroundStyle(.thoNavy)
                                         .bold()
                                     Text("시간")
                                         .font(.body)
-                                    
-                                    if viewModel.sleepingTime % 60 > 0 {
-                                        Text(" \(viewModel.sleepingTime % 60)")
-                                            .font(.largeTitle)
-                                            .foregroundStyle(.thoNavy)
-                                            .bold()
-                                        Text("분")
-                                            .font(.body)
-                                    }
                                 }
                             }
                             .frame(maxWidth: .infinity, alignment: .leading)
@@ -217,13 +208,11 @@ struct DiaryMainView: View {
                             .background(Color.white)
                             .cornerRadius(15)
                             
-                            // 오늘의 체중
                             VStack(alignment: .leading, spacing: 0) {
                                 Text("오늘의 체중")
                                     .font(.callout)
                                     .fontWeight(.semibold)
                                     .padding(.bottom, 9)
-                                
                                 HStack(alignment: .bottom) {
                                     Text(viewModel.weight.description)
                                         .font(.largeTitle)
@@ -237,106 +226,67 @@ struct DiaryMainView: View {
                             .padding(16)
                             .background(Color.white)
                             .cornerRadius(15)
+                            
                         }
                     }
-
+                    
                     // 운동량
                     VStack(alignment: .leading, spacing: 0) {
                         Text("오늘의 운동량")
                             .font(.callout)
                             .fontWeight(.semibold)
                             .padding(.bottom, 9)
+                        Text(" 내가 추가한 운동")
+                            .font(.headline)
+                            .fontWeight(.semibold)
+                            .foregroundStyle(.thoNavy)
+                            .padding(.bottom, 5)
                         
-                        if !viewModel.list.isEmpty {
-                            VStack(alignment: .leading, spacing: 0) {
-                                
-                                    Text("내가 추가한 운동")
-                                        .font(.headline)
-                                        .fontWeight(.semibold)
+                        VStack {
+                            ForEach(Array(sampleMedicine.enumerated()), id: \.element.id) { index, medicine in
+                                if index > 0 {
+                                    Divider() // 첫 번째 항목을 제외하고 Divider 추가
+                                }
+                                HStack {
+                                    Text("\(medicine.name) " + "\(medicine.capacity)\(medicine.unit)")
+                                        .font(.body)
+                                    Spacer()
+                                    Text("2시간 5분")
+                                        .font(.body)
                                         .foregroundStyle(.thoNavy)
-                                        .padding(.bottom, 5)
-                                if viewModel.list.contains(where: { Activity.From(rawValue: $0.from) == .user }) {
-
-                                    VStack {
-                                        ForEach(Array(viewModel.list.enumerated()), id: \.element.id) { index, activity in
-                                            if Activity.From(rawValue: activity.from) == .user {
-                                                if index > 0 {
-                                                    Divider()
-                                                }
-                                                HStack {
-                                                    Text(activity.name)
-                                                        .font(.body)
-                                                    Spacer()
-                                                    Text(activity.dsc)
-                                                        .font(.body)
-                                                        .foregroundStyle(.thoNavy)
-                                                }
-                                                .padding(10)
-                                            }
-                                        }
-                                    }
-                                    .background(.thoTextField)
-                                    .cornerRadius(10)
-                                    .padding(.bottom, 36)
-                                } else {
-                                    HStack {
-                                        Spacer()
-                                        Text("추가한 운동이 없어요!")
-                                            .font(.body)
-                                            .foregroundStyle(.secondary)
-                                        Spacer()
-                                    }
                                 }
-                                
-                                Text("연동된 운동 데이터")
-                                    .font(.headline)
-                                    .fontWeight(.semibold)
-                                    .foregroundStyle(.thoNavy)
-                                    .padding(.bottom, 5)
-                                
-                                if viewModel.list.contains(where: { Activity.From(rawValue: $0.from) == .healthKit }) {
-                                    
-                                    VStack {
-                                        ForEach(Array(viewModel.list.enumerated()), id: \.element.id) { index, activity in
-                                            if Activity.From(rawValue: activity.from) == .healthKit {
-                                                if index > 0 {
-                                                    Divider()
-                                                }
-                                                HStack {
-                                                    Text(activity.name)
-                                                        .font(.body)
-                                                    Spacer()
-                                                    Text(activity.dsc)
-                                                        .font(.body)
-                                                        .foregroundStyle(.thoNavy)
-                                                }
-                                                .padding(10)
-                                            }
-                                        }
-                                    }
-                                    .background(.thoTextField)
-                                    .cornerRadius(10)
-                                } else {
-                                    HStack {
-                                        Spacer()
-                                        Text("연동된 데이터가 없어요!")
-                                            .font(.body)
-                                            .foregroundStyle(.secondary)
-                                        Spacer()
-                                    }
-                                }
-                            }
-                        } else {
-                            HStack {
-                                Spacer()
-                                Text("기록된 항목이 없어요!")
-                                    .font(.body)
-                                    .foregroundStyle(.secondary)
-                                Spacer()
+                                .padding(10)
                             }
                         }
+                        .background(.thoTextField)
+                        .cornerRadius(10)
+                        .padding(.bottom, 36)
+                        
+                        Text(" 연동된 운동 데이터")
+                            .font(.headline)
+                            .fontWeight(.semibold)
+                            .foregroundStyle(.thoNavy)
+                            .padding(.bottom, 5)
+                        
+                        VStack {
+                            ForEach(Array(sampleMedicine.enumerated()), id: \.element.id) { index, medicine in
+                                if index > 0 {
+                                    Divider() // 첫 번째 항목을 제외하고 Divider 추가
+                                }
+                                HStack {
+                                    Text("\(medicine.name) " + "\(medicine.capacity)\(medicine.unit)")
+                                        .font(.body)
+                                    Spacer()
+                                    Text("2시간 5분")
+                                        .font(.body)
+                                        .foregroundStyle(.thoNavy)
+                                }
+                                .padding(10)
+                            }
+                        }
+                        .background(.thoTextField)
+                        .cornerRadius(10)
                     }
-                    .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(16)
                     .background(Color.white)
                     .cornerRadius(15)
@@ -441,44 +391,18 @@ struct DiaryMainView: View {
                                     .font(.callout)
                                     .fontWeight(.semibold)
                                     .padding(.bottom, 9)
-                                
-                                let smokingAmount = SmokingAmount.from(value: viewModel.amountOfSmoking)
-                                
-                                if viewModel.amountOfSmoking > 0 {
-                                    HStack(alignment: .bottom) {
-                                        Text(smokingAmount.diaryValue)
-                                            .font(.largeTitle)
-                                            .foregroundStyle(.pink)
-                                            .bold()
-                                        
-                                        // 흡연량에 따라 추가적인 텍스트 표시
-                                        switch smokingAmount {
-                                        case .min0:
-                                            Text("개피")
-                                        case .min1:
-                                            Text("개피")
-                                        case .min6:
-                                            Text("개피")
-                                        case .min11:
-                                            Text("개피")
-                                        case .min16:
-                                            Text("개피")
-                                        case .min21:
-                                            Text("갑 초과")
-                                        }
-                                    }
-                                } else {
-                                    Text("오늘은 흡연하지 않았어요!")
-                                        .font(.footnote)
-                                        .multilineTextAlignment(.center)
-                                        .foregroundStyle(.secondary)
+                                HStack(alignment: .bottom) {
+                                    Text(viewModel.amountOfSmoking.description)
+                                        .font(.largeTitle)
+                                        .foregroundStyle(.pink)
+                                        .bold()
+                                    Text("개피")
                                 }
                             }
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .padding(16)
                             .background(Color.white)
                             .cornerRadius(15)
-                
                         } else {
                             VStack(alignment: .leading, spacing: 0) {
                                 Text("오늘의 흡연량")
@@ -490,6 +414,7 @@ struct DiaryMainView: View {
                                         .font(.largeTitle)
                                         .foregroundStyle(.pink)
                                         .bold()
+                                    //                                Text("개피")
                                 }
                             }
                             .frame(maxWidth: .infinity, alignment: .leading)
@@ -505,33 +430,13 @@ struct DiaryMainView: View {
                                     .font(.callout)
                                     .fontWeight(.semibold)
                                     .padding(.bottom, 9)
-                                
-                                    let drinkAmount = DrinkAmount.from(value: viewModel.amountOfAlcohol)
                                 HStack(alignment: .bottom) {
-                                    if viewModel.amountOfAlcohol > 0 {
-                                        Text(drinkAmount.diaryValue)
-                                            .font(.largeTitle)
-                                            .foregroundStyle(.purple)
-                                            .bold()
-                                        switch drinkAmount {
-                                        case .max1:
-                                            Text("병 미만")
-                                                .font(.body)
-                                        case .max2:
-                                            Text("병")
-                                                .font(.body)
-                                        case .max3:
-                                            Text("병 초과")
-                                                .font(.body)
-                                        case .max0:
-                                            Text("")
-                                        }
-                                    } else {
-                                        Text("오늘은 마시지 않았어요!")
-                                            .font(.footnote)
-                                            .multilineTextAlignment(.center)
-                                            .foregroundStyle(.secondary)
-                                    }
+                                    Text(viewModel.amountOfAlcohol.description)
+                                        .font(.largeTitle)
+                                        .foregroundStyle(.purple)
+                                        .bold()
+                                    Text("잔")
+                                        .font(.body)
                                 }
                             }
                             .frame(maxWidth: .infinity, alignment: .leading)
@@ -549,6 +454,8 @@ struct DiaryMainView: View {
                                         .font(.largeTitle)
                                         .foregroundStyle(.purple)
                                         .bold()
+                                    //                                Text("잔")
+                                    //                                    .font(.body)
                                 }
                             }
                             .frame(maxWidth: .infinity, alignment: .leading)
@@ -565,7 +472,7 @@ struct DiaryMainView: View {
                             .fontWeight(.semibold)
                             .padding(.bottom, 9)
                         Text(viewModel.memo)
-                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .frame(maxWidth: .infinity)
                             .multilineTextAlignment(.leading)
                             .font(.body)
                             .padding(16)
@@ -583,36 +490,68 @@ struct DiaryMainView: View {
                         .foregroundStyle(.secondary)
                 }
                 .padding(16)
-
-                DiaryContentsView()
-
             }
-            .navigationTitle(viewModel.selectedDate.simple)
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button {
-                        showMonthly = true
-                    } label: {
-                        Image(systemName: "calendar")
-                            .foregroundStyle(.white)
-                    }
+            .background(.thoTextField)
+            .sheet(isPresented: $isPresentedBottomSheet) {
+                DiaryUpdateView(viewModel: viewModel)
+            }
+            .onAppear {
+                
+            }
+        } else {
+            ZStack {
+                Color.thoTextField
+                VStack(alignment: .center) {
+                    Image("noneDiary")
+                        .resizable()
+                        .scaledToFit()
+                        .padding(.horizontal, 130)
+                        .padding(.bottom, 20)
+                    Text("기록된 항목이 없어요!")
+                        .font(.body)
+                        .foregroundStyle(.secondary)
                 }
             }
-            .toolbarColorScheme(.dark, for: .navigationBar)
-            .toolbarBackground(Color.thoNavy, for: .navigationBar)
-            .toolbarBackground(.visible, for: .navigationBar)
-            .fullScreenCover(isPresented: $showMonthly) {
-                DiaryExpandedCalendarView()
-                    .onAppear {
-                        viewModel.openMonthly()
-                    }
-            }
+            .ignoresSafeArea()
         }
-        .environmentObject(viewModel)
+        
     }
 }
 
+struct BarProgressStyle: ProgressViewStyle {
+    
+    var color: Color = .thoOrange
+    var height: Double = 24.0
+    
+    func makeBody(configuration: Configuration) -> some View {
+        
+        let progress = configuration.fractionCompleted ?? 0.0
+        
+        GeometryReader { geometry in
+            
+            VStack(alignment: .leading) {
+                
+                RoundedRectangle(cornerRadius: 8)
+                    .fill(Color.thoTextField)
+                    .frame(height: height)
+                    .frame(width: geometry.size.width)
+                    .overlay(alignment: .leading) {
+                        RoundedRectangle(cornerRadius: 8)
+                            .fill(color)
+                            .frame(width: geometry.size.width * progress)
+                    }
+            }
+            
+        }
+    }
+}
+
+extension DiaryContentsView {
+    func showModal(_ currentPage: DailyRecordPage) {
+        isPresentedBottomSheet.toggle()
+        viewModel.currentPage = currentPage
+    }
+}
 #Preview {
-    DiaryMainView()
+    DiaryContentsView()
 }

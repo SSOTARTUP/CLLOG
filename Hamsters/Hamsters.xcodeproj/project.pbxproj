@@ -14,8 +14,7 @@
 		3014AC272B0DAFDB00B52B12 /* DiaryMonthlyCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3014AC262B0DAFDB00B52B12 /* DiaryMonthlyCalendar.swift */; };
 		3014AC292B0DCCB400B52B12 /* DiaryExpandedCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3014AC282B0DCCB400B52B12 /* DiaryExpandedCalendarView.swift */; };
 		3014AC2B2B0DE67E00B52B12 /* DiaryWeeklyCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3014AC2A2B0DE67E00B52B12 /* DiaryWeeklyCalendar.swift */; };
-		3014AC2D2B0DE71F00B52B12 /* DiaryTempWeeklyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3014AC2C2B0DE71F00B52B12 /* DiaryTempWeeklyView.swift */; };
-		3014AC2F2B0EF44500B52B12 /* DiaryCalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3014AC2E2B0EF44500B52B12 /* DiaryCalendarViewModel.swift */; };
+		3014AC2D2B0DE71F00B52B12 /* DiaryMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3014AC2C2B0DE71F00B52B12 /* DiaryMainView.swift */; };
 		3014AC312B121E3B00B52B12 /* SelectPeriodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3014AC302B121E3B00B52B12 /* SelectPeriodView.swift */; };
 		3014AC332B12249B00B52B12 /* MonthPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3014AC322B12249B00B52B12 /* MonthPicker.swift */; };
 		3014AC372B1301A500B52B12 /* PeriodSelectCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3014AC362B1301A500B52B12 /* PeriodSelectCalendar.swift */; };
@@ -59,7 +58,7 @@
 		307B7D7B2AE43053007CB7F5 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307B7D7A2AE43053007CB7F5 /* MainTabView.swift */; };
 		307B7D7D2AE43092007CB7F5 /* TabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307B7D7C2AE43092007CB7F5 /* TabItem.swift */; };
 		307B7D7F2AE43254007CB7F5 /* RecordMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307B7D7E2AE43254007CB7F5 /* RecordMainView.swift */; };
-		307B7D812AE432A2007CB7F5 /* DiaryMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307B7D802AE432A2007CB7F5 /* DiaryMainView.swift */; };
+		307B7D812AE432A2007CB7F5 /* DiaryContentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307B7D802AE432A2007CB7F5 /* DiaryContentsView.swift */; };
 		307B7D842AE432EF007CB7F5 /* StatisticsMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307B7D832AE432EF007CB7F5 /* StatisticsMainView.swift */; };
 		307B7D872AE43322007CB7F5 /* MyInfoMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307B7D862AE43322007CB7F5 /* MyInfoMainView.swift */; };
 		307B7D8A2AE4E0B1007CB7F5 /* AdditionalMemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307B7D892AE4E0B1007CB7F5 /* AdditionalMemoView.swift */; };
@@ -134,8 +133,7 @@
 		3014AC262B0DAFDB00B52B12 /* DiaryMonthlyCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryMonthlyCalendar.swift; sourceTree = "<group>"; };
 		3014AC282B0DCCB400B52B12 /* DiaryExpandedCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryExpandedCalendarView.swift; sourceTree = "<group>"; };
 		3014AC2A2B0DE67E00B52B12 /* DiaryWeeklyCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryWeeklyCalendar.swift; sourceTree = "<group>"; };
-		3014AC2C2B0DE71F00B52B12 /* DiaryTempWeeklyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryTempWeeklyView.swift; sourceTree = "<group>"; };
-		3014AC2E2B0EF44500B52B12 /* DiaryCalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryCalendarViewModel.swift; sourceTree = "<group>"; };
+		3014AC2C2B0DE71F00B52B12 /* DiaryMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryMainView.swift; sourceTree = "<group>"; };
 		3014AC302B121E3B00B52B12 /* SelectPeriodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPeriodView.swift; sourceTree = "<group>"; };
 		3014AC322B12249B00B52B12 /* MonthPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthPicker.swift; sourceTree = "<group>"; };
 		3014AC362B1301A500B52B12 /* PeriodSelectCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodSelectCalendar.swift; sourceTree = "<group>"; };
@@ -180,7 +178,7 @@
 		307B7D7A2AE43053007CB7F5 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		307B7D7C2AE43092007CB7F5 /* TabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItem.swift; sourceTree = "<group>"; };
 		307B7D7E2AE43254007CB7F5 /* RecordMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordMainView.swift; sourceTree = "<group>"; };
-		307B7D802AE432A2007CB7F5 /* DiaryMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryMainView.swift; sourceTree = "<group>"; };
+		307B7D802AE432A2007CB7F5 /* DiaryContentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryContentsView.swift; sourceTree = "<group>"; };
 		307B7D832AE432EF007CB7F5 /* StatisticsMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsMainView.swift; sourceTree = "<group>"; };
 		307B7D862AE43322007CB7F5 /* MyInfoMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoMainView.swift; sourceTree = "<group>"; };
 		307B7D892AE4E0B1007CB7F5 /* AdditionalMemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalMemoView.swift; sourceTree = "<group>"; };
@@ -505,9 +503,9 @@
 			isa = PBXGroup;
 			children = (
 				7622B5D22B0AE35000FA970B /* viewModel */,
-				307B7D802AE432A2007CB7F5 /* DiaryMainView.swift */,
+				3014AC2C2B0DE71F00B52B12 /* DiaryMainView.swift */,
+				307B7D802AE432A2007CB7F5 /* DiaryContentsView.swift */,
 				7622B5D52B0AFDB100FA970B /* DiaryUpdateView.swift */,
-				3014AC2C2B0DE71F00B52B12 /* DiaryTempWeeklyView.swift */,
 				3014AC282B0DCCB400B52B12 /* DiaryExpandedCalendarView.swift */,
 				3014AC2A2B0DE67E00B52B12 /* DiaryWeeklyCalendar.swift */,
 				3014AC262B0DAFDB00B52B12 /* DiaryMonthlyCalendar.swift */,
@@ -571,7 +569,6 @@
 			isa = PBXGroup;
 			children = (
 				7622B5D32B0AE37C00FA970B /* DiaryMainViewModel.swift */,
-				3014AC2E2B0EF44500B52B12 /* DiaryCalendarViewModel.swift */,
 			);
 			path = viewModel;
 			sourceTree = "<group>";
@@ -710,7 +707,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5E54BCF2B1722D7004BB493 /* EditMedicineView.swift in Sources */,
-				307B7D812AE432A2007CB7F5 /* DiaryMainView.swift in Sources */,
+				307B7D812AE432A2007CB7F5 /* DiaryContentsView.swift in Sources */,
 				307B7D712AE424A2007CB7F5 /* AlarmRow.swift in Sources */,
 				30EEFF372B09D13F0016D8BA /* ProfileEditView.swift in Sources */,
 				30BB50C22AE0C0680050CF69 /* DailyRecordNextButton.swift in Sources */,
@@ -741,7 +738,7 @@
 				B597462A2AE504220074D5CC /* MenstruationCheckView.swift in Sources */,
 				3014AC2B2B0DE67E00B52B12 /* DiaryWeeklyCalendar.swift in Sources */,
 				76B771132B0B5BA0007EE7EA /* RecordProtocol.swift in Sources */,
-				3014AC2D2B0DE71F00B52B12 /* DiaryTempWeeklyView.swift in Sources */,
+				3014AC2D2B0DE71F00B52B12 /* DiaryMainView.swift in Sources */,
 				B59311642B01A77C0092A2E0 /* CoreDataModel.xcdatamodeld in Sources */,
 				B593116E2B01B8740092A2E0 /* CoreDataManager.swift in Sources */,
 				305240172ADD73EB008FCD14 /* SmokingStatus.swift in Sources */,
@@ -767,7 +764,6 @@
 				76D52F472AFF2AD2009A0698 /* UserChat.swift in Sources */,
 				307B7D872AE43322007CB7F5 /* MyInfoMainView.swift in Sources */,
 				30A0B23A2B065A1D00F51AE1 /* RecordWeeklyCalendar.swift in Sources */,
-				3014AC2F2B0EF44500B52B12 /* DiaryCalendarViewModel.swift in Sources */,
 				B5F904D02AE4E61200FDE4CB /* CapsuleView.swift in Sources */,
 				30E376C72B011FCA00E8A10D /* CheerUpView.swift in Sources */,
 				30BB50C42AE1FCA80050CF69 /* MoodCheckView.swift in Sources */,

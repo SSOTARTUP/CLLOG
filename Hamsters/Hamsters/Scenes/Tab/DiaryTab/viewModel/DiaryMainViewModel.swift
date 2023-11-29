@@ -14,6 +14,8 @@ class DiaryMainViewModel: NSObject, RecordProtocol {
     private let coreDataManager = CoreDataManager.shared
     
     private let dayRecordsController: NSFetchedResultsController<DayRecords>
+    private let takensController: NSFetchedResultsController<Takens>
+
     private let context: NSManagedObjectContext = CoreDataManager.shared.persistentContainer.viewContext
     
     override init() {
@@ -27,12 +29,26 @@ class DiaryMainViewModel: NSObject, RecordProtocol {
             sectionNameKeyPath: nil,
             cacheName: nil)
         
+        let fetchTakensRequest: NSFetchRequest<Takens> = Takens.fetchRequest()
+        fetchTakensRequest.sortDescriptors = [NSSortDescriptor(keyPath: \Takens.date, ascending: true)]
+//        let startDate = Calendar.current.startOfDay(for: Date())
+//        fetchTakensRequest.predicate = NSPredicate(format: "date == %@", startDate as CVarArg)
+        
+        takensController = NSFetchedResultsController(
+            fetchRequest: fetchTakensRequest,
+            managedObjectContext: context,
+            sectionNameKeyPath: nil,
+            cacheName: nil)
+        
         super.init()
         dayRecordsController.delegate = self
+        takensController.delegate = self
 
         
         do {
             try dayRecordsController.performFetch()
+            try takensController.performFetch()
+
             status = initialize()
         } catch {
             print("Failed to fetch items: \(error)")
@@ -40,7 +56,7 @@ class DiaryMainViewModel: NSObject, RecordProtocol {
         //calendar view 로직에 따라 주석이 해제될 수 있음.
     }
     
-    var selectedDate: Date = Date(){
+    @Published var selectedDate: Date = Date(){
         didSet{
             status = initialize()
         }
@@ -104,9 +120,15 @@ class DiaryMainViewModel: NSObject, RecordProtocol {
     @Published var memo = ""
     
     @Published var pageNumber = 0
-//    @Published var selectedDate: Date = Date()
+    
+    // 캘린더 관련
     @Published var tempDate: Date = Date()
 
+    @Published var medicines: [Medicine] = []
+}
+
+extension DiaryMainViewModel {
+    // 캘린더 관련
     func openMonthly() {
         tempDate = selectedDate
     }
@@ -115,9 +137,6 @@ class DiaryMainViewModel: NSObject, RecordProtocol {
         selectedDate = tempDate
     }
     
-}
-
-extension DiaryMainViewModel {
     func bottomButtonClicked() {
         let dayRecord = DayRecord(
             date: Calendar.current.startOfDay(for: selectedDate), // 저장 시 현재 날짜 사용
@@ -139,7 +158,7 @@ extension DiaryMainViewModel {
     }
     
     func initialize() -> Status{
-        print("diaryMainVIewModel 델리게이트 initialize")
+        print("DiaryMainViewModel 델리게이트 update")
         guard let record = DayRecordsManager.shared.fetchDayRecord(for: selectedDate) else {
             // 해당 날짜에 데일리 레코드가 없음.
             return .none
@@ -166,18 +185,38 @@ extension DiaryMainViewModel {
         amountOfAlcohol = record.amountOfAlcohol
         
         memo = record.memo
+        guard let history = TakensManager.shared.fetchHistory(date: selectedDate) else { return .error }
         
+        var historyDic: [String: Medicine] = [:]
+        history.forEach {
+            if var hd = historyDic["\($0.name)|\($0.capacity)|\($0.unit)"]{
+                hd.times += 1
+                historyDic["\($0.name)|\($0.capacity)|\($0.unit)"] = hd
+            } else {
+                historyDic["\($0.name)|\($0.capacity)|\($0.unit)"] = Medicine(name: $0.name, capacity: $0.capacity, unit: $0.unit, times: 1)
+            }
+        }
+        
+        medicines = historyDic.map { $0.value }
         return .exist
     }
     
     enum Status {
         case none
         case exist
+        case error
     }
 }
 
 extension DiaryMainViewModel: NSFetchedResultsControllerDelegate {
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         status = initialize()
+    }
+    
+    struct Medicine {
+        let name: String
+        let capacity: String
+        let unit: String
+        var times: Int
     }
 }
