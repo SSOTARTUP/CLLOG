@@ -10,12 +10,9 @@ import UIKit
 import FSCalendar
 
 struct WeeklyCalendarView: UIViewRepresentable {
-    @Binding var selectedDate: Date
+    @EnvironmentObject var viewModel: RecordMainViewModel
     @Binding var calendarHeight: CGFloat
-    @Binding var existLog: [String]
-    @Binding var dateStatus: DateStatus
-    @State private var isFirstLoad = true
-    
+
     func makeUIView(context: Context) -> FSCalendar {
         configureCalendar()
     }
@@ -30,7 +27,7 @@ struct WeeklyCalendarView: UIViewRepresentable {
     
     // 유킷 -> 스유
     func makeCoordinator() -> Coordinator {
-        Coordinator(selectedDate: $selectedDate, calendarHeight: $calendarHeight, existLog: $existLog, dateStatus: $dateStatus)
+        Coordinator(selectedDate: $viewModel.selectedDate, calendarHeight: $calendarHeight, existLog: $viewModel.datesOnRecord, dateStatus: $viewModel.dateStatus)
     }
     
     class Coordinator: NSObject, FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
@@ -149,6 +146,6 @@ extension WeeklyCalendarView {
 }
 
 #Preview {
-    WeeklyCalendarView(selectedDate: .constant(Date()), calendarHeight: .constant(300), existLog: .constant(["2023-11-16", "2023-11-15", "2023-11-13", "2023-11-11", "2023-11-9"]), dateStatus: .constant(.today))
-        .border(.red)
+    WeeklyCalendarView(calendarHeight: .constant(300))
+        .environmentObject(RecordMainViewModel())
 }

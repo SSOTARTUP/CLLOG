@@ -10,12 +10,9 @@ import CoreData
 
 struct RecordMainView: View {
     @Environment(\.safeAreaInsets) private var safeAreaInsets
-        
-    @State private var selectedDate = Date()
-    @State private var isActiveSheet = false
-    @State private var dateStatus: DateStatus = .today
-    
+
     @StateObject var viewModel = RecordMainViewModel()
+    @State private var isActiveSheet = false
     
     var body: some View {
         ZStack(alignment: .top) {
@@ -40,16 +37,17 @@ struct RecordMainView: View {
             // MARK: 헤더
             VStack(spacing: 0) {
                 HStack {
-                    Text(selectedDate.monthAndDay)
+                    Text(viewModel.selectedDate.monthAndDay)
                     
-                    if selectedDate.basic == Date().basic {
+                    if viewModel.selectedDate.basic == Date().basic {
                         Text("오늘")
                             .fontWeight(.semibold)
                     }
                 }
                 .padding()
 
-                RecordWeeklyCalendar(selectedDate: $selectedDate, dateStatus: $dateStatus)
+                RecordWeeklyCalendar()
+                    .environmentObject(viewModel)
                     .padding(.top)
                     
                 Spacer()
@@ -60,7 +58,7 @@ struct RecordMainView: View {
                     .frame(maxHeight: 160)
                     .padding(.bottom, 28)
                 
-                RecordButton(status: dateStatus) {
+                RecordButton(status: viewModel.dateStatus) {
                     isActiveSheet = true
                 }
                 .padding(.bottom, 28)
@@ -78,8 +76,7 @@ struct RecordMainView: View {
 
 extension RecordMainView {
     struct RecordWeeklyCalendar: View {
-        @Binding var selectedDate: Date
-        @Binding var dateStatus: DateStatus
+        @EnvironmentObject var viewModel: RecordMainViewModel
         @State private var weeklyHeight: CGFloat = 220.0
        
         var body: some View {
@@ -87,36 +84,36 @@ extension RecordMainView {
                 HStack {
                     RoundedRectangle(cornerRadius: 40)
                         .stroke(Color.thoNavy)
-                        .opacity(selectedDate.basicWithDay.suffix(1) == "월" ? 1 : 0)
+                        .opacity(viewModel.selectedDate.basicWithDay.suffix(1) == "월" ? 1 : 0)
 
                     RoundedRectangle(cornerRadius: 40)
                         .stroke(Color.thoNavy)
-                        .opacity(selectedDate.basicWithDay.suffix(1) == "화" ? 1 : 0)
+                        .opacity(viewModel.selectedDate.basicWithDay.suffix(1) == "화" ? 1 : 0)
                     
                     RoundedRectangle(cornerRadius: 40)
                         .stroke(Color.thoNavy)
-                        .opacity(selectedDate.basicWithDay.suffix(1) == "수" ? 1 : 0)
+                        .opacity(viewModel.selectedDate.basicWithDay.suffix(1) == "수" ? 1 : 0)
                     
                     RoundedRectangle(cornerRadius: 40)
                         .stroke(Color.thoNavy)
-                        .opacity(selectedDate.basicWithDay.suffix(1) == "목" ? 1 : 0)
+                        .opacity(viewModel.selectedDate.basicWithDay.suffix(1) == "목" ? 1 : 0)
                     
                     RoundedRectangle(cornerRadius: 40)
                         .stroke(Color.thoNavy)
-                        .opacity(selectedDate.basicWithDay.suffix(1) == "금" ? 1 : 0)
+                        .opacity(viewModel.selectedDate.basicWithDay.suffix(1) == "금" ? 1 : 0)
                     
                     RoundedRectangle(cornerRadius: 40)
                         .stroke(Color.thoNavy)
-                        .opacity(selectedDate.basicWithDay.suffix(1) == "토" ? 1 : 0)
+                        .opacity(viewModel.selectedDate.basicWithDay.suffix(1) == "토" ? 1 : 0)
                     
                     RoundedRectangle(cornerRadius: 40)
                         .stroke(Color.thoNavy)
-                        .opacity(selectedDate.basicWithDay.suffix(1) == "일" ? 1 : 0)
+                        .opacity(viewModel.selectedDate.basicWithDay.suffix(1) == "일" ? 1 : 0)
                 }
                 .padding(.horizontal, 22)
                 .frame(height: 80)
                 
-                WeeklyCalendarView(selectedDate: $selectedDate, calendarHeight: $weeklyHeight, existLog: .constant(["2023-11-16", "2023-11-15", "2023-11-13", "2023-11-11", "2023-11-9"]), dateStatus: $dateStatus)
+                WeeklyCalendarView(calendarHeight: $weeklyHeight)
                     .frame(width: screenBounds().width - 38, height: weeklyHeight)
             }
         }
