@@ -33,14 +33,22 @@ enum Onboarding: Int {
     
     var pageNumber: Int { return rawValue }
     
-    var subtitle: String? {
+    func subtitle(name: String) -> String? {
         switch self {
         case .medication:
-            "Clue가 \(UserDefaults.standard.string(forKey: "username") ?? "이름없음")님을 더 잘 케어할 수 있어요!"
+            return "클록이 \(name)님을 더 잘 케어할 수 있어요!"
         default:
-            nil
+            return nil
         }
     }
+//    var subtitle(name: String): String? {
+//        switch self {
+//        case .medication:
+//            "클록이 \(UserDefaults.standard.string(forKey: "username") ?? "이름없음")님을 더 잘 케어할 수 있어요!"
+//        default:
+//            nil
+//        }
+//    }
     
     var nextButtonTitle: String {
         switch self {
