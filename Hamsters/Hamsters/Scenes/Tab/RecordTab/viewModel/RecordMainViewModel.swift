@@ -95,13 +95,10 @@ extension RecordMainViewModel {
                     
                     return medicine.alarms.map { alarm in
                         let isTaken = fetchedHistory.filter { $0.id == alarm.id }.count > 0 ? true : false
-                        return MedicineSchedule(id: alarm.id, capacity: medicine.capacity, name: medicine.name, unit: medicine.unit, settingTime: alarm.date, isTaken: isTaken, scheduleType: .specific)
+                        return MedicineSchedule(id: alarm.id, capacity: medicine.capacity, name: medicine.name, unit: medicine.unit, settingTime: alarm.date, isTaken: isTaken, scheduleType: is235959(alarm.date) ? .necessary : .specific)
                     }
                 }
-//                if medicine.sortedDays == "필요 시" {
-//                    let isTaken = fetchedHistory.filter { $0.id == alarm.id }.count > 0 ? true : false
-//                    return MedicineSchedule(id: alarm.id, capacity: medicine.capacity, name: medicine.name, unit: medicine.unit, settingTime: alarm.date, isTaken: isTaken, scheduleType: .specific)
-//                }
+                
                 return nil
             }
             .flatMap { $0 }
@@ -144,6 +141,13 @@ extension RecordMainViewModel {
         let components2 = calendar.dateComponents([.hour, .minute], from: date2)
 
         return (components1.hour! * 60 + components1.minute!) < (components2.hour! * 60 + components2.minute!)
+    }
+    
+    func is235959(_ date: Date) -> Bool {
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.hour, .minute, .second], from: date)
+
+        return components.hour == 23 && components.minute == 59 && components.second == 59
     }
 }
 
