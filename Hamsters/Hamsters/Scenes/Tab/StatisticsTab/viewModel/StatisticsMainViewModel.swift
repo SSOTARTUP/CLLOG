@@ -27,6 +27,7 @@ class StatisticsMainViewModel: NSObject, ObservableObject {
     private let context: NSManagedObjectContext = CoreDataManager.shared.persistentContainer.viewContext
     
     override init() {
+        print("@@@@@")
         let fetchTakensRequest: NSFetchRequest<Takens> = Takens.fetchRequest()
         fetchTakensRequest.sortDescriptors = [NSSortDescriptor(keyPath: \Takens.date, ascending: true)]
         
@@ -51,7 +52,7 @@ class StatisticsMainViewModel: NSObject, ObservableObject {
         super.init()
         takensController.delegate = self
         dayRecordsController.delegate = self
-
+        print("staticMainViewModel init")
         do {
             try takensController.performFetch()
             try dayRecordsController.performFetch()

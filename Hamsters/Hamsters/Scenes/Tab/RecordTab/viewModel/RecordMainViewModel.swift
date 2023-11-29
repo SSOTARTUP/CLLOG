@@ -45,7 +45,6 @@ class RecordMainViewModel: NSObject, ObservableObject {
         do {
             try takensController.performFetch()
             try medicinesController.performFetch()
-            print("init update")
             update()
         } catch {
             print("Failed to fetch items: \(error)")
@@ -56,7 +55,7 @@ class RecordMainViewModel: NSObject, ObservableObject {
 extension RecordMainViewModel {
 
     private func update() {
-        print("RecordMainViewModel:: UPDATE")
+        print("RecordMainViewModel:: 델리게이트 UPDATE")
         let today = Date()
         TakensManager.shared.createEmptyTakens(date: today)
         
@@ -84,7 +83,6 @@ extension RecordMainViewModel {
             .sorted{ compareTimeOnly(date1: $0.settingTime, date2: $1.settingTime) }
         
         medicineSchedule = result
-        print("update success")
     }
     
     func takeMedicine(_ medicine: MedicineSchedule) {
