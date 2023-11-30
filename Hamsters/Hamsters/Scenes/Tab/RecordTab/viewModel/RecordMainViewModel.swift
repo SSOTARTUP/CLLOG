@@ -74,7 +74,6 @@ class RecordMainViewModel: NSObject, ObservableObject {
 extension RecordMainViewModel {
 
     private func update() {
-        print("RecordMainViewModel:: 델리게이트 UPDATE")
         let today = Date()
         TakensManager.shared.createEmptyTakens(date: today)
         
@@ -93,7 +92,7 @@ extension RecordMainViewModel {
                     
                     return medicine.alarms.map { alarm in
                         let isTaken = fetchedHistory.filter { $0.id == alarm.id }.count > 0 ? true : false
-                        return MedicineSchedule(id: alarm.id, capacity: medicine.capacity, name: medicine.name, unit: medicine.unit, settingTime: alarm.date, isTaken: isTaken, scheduleType: is235959(alarm.date) ? .necessary : .specific)
+                        return MedicineSchedule(id: alarm.id, capacity: medicine.capacity, name: medicine.name, unit: medicine.unit, settingTime: alarm.date, isTaken: isTaken, scheduleType: checkTime(alarm.date))
                     }
                 }
                 
@@ -141,12 +140,19 @@ extension RecordMainViewModel {
         return (components1.hour! * 60 + components1.minute!) < (components2.hour! * 60 + components2.minute!)
     }
     
-    func is235959(_ date: Date) -> Bool {
+    func checkTime(_ date: Date) -> MedicineSchedule.ScheduleType {
         let calendar = Calendar.current
         let components = calendar.dateComponents([.hour, .minute, .second], from: date)
 
-        return components.hour == 23 && components.minute == 59 && components.second == 59
+        if components.hour == 23 && components.minute == 59 && components.second == 59 {
+            return .necessary
+        } else if components.hour == 1 && components.minute == 1 && components.second == 1 {
+            return .none
+        } else {
+            return .specific
+        }
     }
+
 }
 
 extension RecordMainViewModel: NSFetchedResultsControllerDelegate {

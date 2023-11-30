@@ -21,5 +21,6 @@ struct MedicineSchedule {
     enum ScheduleType {
         case specific
         case necessary
+        case none
     }
 }
