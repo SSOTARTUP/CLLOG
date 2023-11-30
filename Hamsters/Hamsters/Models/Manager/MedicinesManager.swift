@@ -39,6 +39,15 @@ extension MedicinesManager {
             components.second = 59
             let finalDate = calendar.date(byAdding: components, to: todayMidnight)!
             newMedicine.alarms = try? JSONEncoder().encode([AlarmItem(id: UUID(), date: finalDate, isEnabled: false)])
+        } else if medicine.alarms.count == 0 {
+            let calendar = Calendar.current
+            let todayone = calendar.startOfDay(for: Date())
+            var components = DateComponents()
+            components.hour = 1
+            components.minute = 1
+            components.second = 1
+            let finalDate = calendar.date(byAdding: components, to: todayone)!
+            newMedicine.alarms = try? JSONEncoder().encode([AlarmItem(id: UUID(), date: finalDate, isEnabled: false)])
         } else {
             newMedicine.alarms = try? JSONEncoder().encode(medicine.alarms)
         }
