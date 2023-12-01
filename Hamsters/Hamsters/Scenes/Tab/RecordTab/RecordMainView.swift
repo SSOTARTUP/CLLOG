@@ -79,8 +79,15 @@ struct RecordMainView: View {
                 }
                 .frame(maxHeight: 160)
                 .padding(.bottom, 28)
-
-                RecordButton(status: viewModel.recordStatus) {
+                
+                // 원본
+//                RecordButton(status: viewModel.recordStatus) {
+//                    isActiveSheet = true
+//                }
+//                .padding(.bottom, 28)
+                
+                // 쇼케이스용
+                RecordButton() {
                     isActiveSheet = true
                 }
                 .padding(.bottom, 28)
@@ -142,26 +149,49 @@ extension RecordMainView {
     }
     
     
+    // 원본
+//    struct RecordButton: View {
+//        let status: RecordStatus
+//        var action: () -> Void
+//        
+//        var body: some View {
+//            Button {
+//                action()
+//            } label: {
+//                Text(status.buttonTitle)
+//                    .font(.headline)
+//                    .foregroundStyle(status.buttonTextColor)
+//                    .padding(.vertical, 15)
+//                    .frame(maxWidth: .infinity)
+//                    .background(status.buttonBackgroundColor)
+//                    .cornerRadius(12)
+//                    .padding(.horizontal, 61)
+//                    .shadow(color: .black.opacity(status.buttonShadowOpacity), radius: 2, x: 0, y: 4)
+//            }
+//            .disabled(status.buttonDisabled)
+//        }
+//    }
     
+    // 쇼케이스용
     struct RecordButton: View {
-        let status: RecordStatus
+//        let status: RecordStatus
         var action: () -> Void
         
         var body: some View {
             Button {
                 action()
             } label: {
-                Text(status.buttonTitle)
+                Text("오늘의 상태 추가하기")
                     .font(.headline)
-                    .foregroundStyle(status.buttonTextColor)
+                    .foregroundStyle(.white)
                     .padding(.vertical, 15)
                     .frame(maxWidth: .infinity)
-                    .background(status.buttonBackgroundColor)
+                    .background(.thoNavy)
                     .cornerRadius(12)
                     .padding(.horizontal, 61)
-                    .shadow(color: .black.opacity(status.buttonShadowOpacity), radius: 2, x: 0, y: 4)
+                    .shadow(color: .black.opacity(0.25), radius: 2, x: 0, y: 4)
             }
-            .disabled(status.buttonDisabled)
+//            .disabled(status.buttonDisabled)
         }
     }
 }
