@@ -12,10 +12,14 @@ struct StatisticsMainView: View {
     @StateObject var viewModel = StatisticsMainViewModel()
     
     var body: some View {
-        VStack {
-
+        ScrollView {
+            Image("statisticsImage")
+                .resizable()
+                .scaledToFit()
         }
-
+        .ignoresSafeArea()
+        .scrollIndicators(.never)
+        .background(.thoTextField)
     }
 }
 
