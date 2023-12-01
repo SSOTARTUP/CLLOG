@@ -20,6 +20,8 @@ struct DailyCompleteView<T: RecordProtocol>: View {
             
             ZStack {
                 VStack(spacing: 0) {
+                    Spacer()
+                    
                     ZStack {
                         switch selectedHam(rawValue: storedHamster)! {
                         case .gray:
@@ -30,8 +32,8 @@ struct DailyCompleteView<T: RecordProtocol>: View {
                             LottieConfettiView(filename: selectedHam(rawValue: storedHamster)!.recordFinishImageName)
                         }
                     }
-                    .padding(.horizontal, 64)
-                    .padding(.bottom, 33)
+                    .padding(.horizontal, 80)
+                    .padding(.bottom, 16)
                     
                     Text("오늘도 기록 완료!")
                         .font(.largeTitle)
@@ -47,7 +49,6 @@ struct DailyCompleteView<T: RecordProtocol>: View {
                 LottieConfettiView(filename: "onboardingConfetti")
             }
             .padding(.bottom, 100)
-            
 
             NextButton(title: "완료", isActive: .constant(true)) {
                 if let vm = viewModel as? DailyRecordViewModel {

@@ -21,7 +21,7 @@ struct LottieConfettiView: UIViewRepresentable {
 
         animationView.animation = LottieAnimation.named(filename)
         animationView.contentMode = .scaleAspectFit
-        animationView.loopMode = .playOnce
+        animationView.loopMode = .loop
 
         animationView.play()
         
