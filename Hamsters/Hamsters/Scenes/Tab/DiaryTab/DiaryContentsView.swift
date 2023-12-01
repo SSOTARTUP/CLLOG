@@ -455,7 +455,7 @@ struct DiaryContentsView: View {
                                 let smokingAmount = SmokingAmount.from(value: viewModel.amountOfSmoking)
                                 
                                 if viewModel.amountOfSmoking > 0 {
-                                    HStack(alignment: .bottom) {
+                                    HStack(alignment: .bottom, spacing: 5) {
                                         Text(smokingAmount.diaryValue)
                                             .font(.largeTitle)
                                             .foregroundStyle(.pink)
