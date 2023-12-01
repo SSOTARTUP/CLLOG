@@ -9,9 +9,7 @@ import SwiftUI
 
 struct DailyMedicationList: View {
     @ObservedObject var viewModel: RecordMainViewModel
-//    let medicineList = Medicine.sampleData
-//    let medicineList: [Medicine] = []
-    @State private var isTaken: [Bool] = Array(repeating: false, count: Medicine.sampleData.count)
+    @State private var showMedicineEditSheet = false
     
     var body: some View {
         VStack(spacing: 0) {
@@ -24,22 +22,10 @@ struct DailyMedicationList: View {
                 
                 Spacer()
                 
-                Group {
-                    Button {
-                        
-                    } label: {
-                        Text("추가")
-                    }
-                    
-                    
-                    Divider()
-                        .frame(height: 20)
-                    
-                    Button {
-                        
-                    } label: {
-                        Text("수정")
-                    }
+                Button {
+                    showMedicineEditSheet.toggle()
+                } label: {
+                    Text("편집")
                 }
                 .foregroundStyle(.secondary)
             }
@@ -72,8 +58,12 @@ struct DailyMedicationList: View {
             RoundedCorner(radius: 20, corners: [.topLeft, .topRight])
                 .foregroundStyle(.white)
         )
+        .fullScreenCover(isPresented: $showMedicineEditSheet) {
+            EditMedicineSheet()
+        }
     }
 }
+
 
 extension DailyMedicationList {
     struct MedicationCheckItem: View {
@@ -117,6 +107,28 @@ extension DailyMedicationList {
             .frame(width: 108, height: 136)
             .background(medicineInfo.isTaken ? .thoNavy : .thoDisabled)
             .cornerRadius(10)
+        }
+    }
+    
+    struct EditMedicineSheet: View {
+        @Environment(\.dismiss) private var dismiss
+        
+        var body: some View {
+            NavigationStack {
+                EditMedicineView()
+                    .toolbar {
+                        ToolbarItem(placement: .topBarTrailing) {
+                            Button {
+                                dismiss()
+                            } label: {
+                                Image(systemName: "xmark.circle.fill")
+                                    .foregroundStyle(.thoNavy)
+                            }
+                        }
+                    }
+                    .navigationTitle("복용 약물 편집")
+                    .navigationBarTitleDisplayMode(.inline)
+            }
         }
     }
 }
