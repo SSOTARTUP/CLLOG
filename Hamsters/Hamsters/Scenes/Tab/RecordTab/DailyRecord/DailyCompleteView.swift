@@ -49,7 +49,7 @@ struct DailyCompleteView<T: RecordProtocol>: View {
             .padding(.bottom, 100)
             
 
-            NextButton(title: "다음", isActive: .constant(true)) {
+            NextButton(title: "완료", isActive: .constant(true)) {
                 if let vm = viewModel as? DailyRecordViewModel {
                     dismiss()
                     vm.saveRecord()

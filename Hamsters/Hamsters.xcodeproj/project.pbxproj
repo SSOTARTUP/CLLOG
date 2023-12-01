@@ -1035,11 +1035,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Hamsters/Preview Content\"";
-				DEVELOPMENT_TEAM = YKG7843K2L;
+				DEVELOPMENT_TEAM = FJ72KV3U2A;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Hamsters/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Clue;
+				INFOPLIST_KEY_CFBundleDisplayName = "클록";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.medical";
 				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "다음 의료 데이터에 접근을 허용해 주시기 바랍니다.";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "다음 건강 정보를 기록할 권한을 요청합니다.";
@@ -1055,7 +1055,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ThotartUp.ClueHs;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ThotartUp.Clue;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1077,11 +1077,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Hamsters/Preview Content\"";
-				DEVELOPMENT_TEAM = YKG7843K2L;
+				DEVELOPMENT_TEAM = FJ72KV3U2A;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Hamsters/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Clue;
+				INFOPLIST_KEY_CFBundleDisplayName = "클록";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.medical";
 				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "다음 의료 데이터에 접근을 허용해 주시기 바랍니다.";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "다음 건강 정보를 기록할 권한을 요청합니다.";
@@ -1097,7 +1097,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ThotartUp.ClueHs;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ThotartUp.Clue;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
