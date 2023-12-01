@@ -212,50 +212,50 @@ struct AddMedicineView: View {
                             .foregroundStyle(.secondary)
                             .padding(.bottom, 28)
                         
-                        
-                        Text("시간")
-                            .font(.headline)
-                            .foregroundStyle(.thoNavy)
-                            .padding(.leading, 8)
-                            .padding(.bottom, 6)
-                        
-                        
-                        // 시간 추가
-                        VStack(alignment: .leading, spacing: 0) {
+                        if selectedOption != .asNeeded {
+                            Text("시간")
+                                .font(.headline)
+                                .foregroundStyle(.thoNavy)
+                                .padding(.leading, 8)
+                                .padding(.bottom, 6)
                             
-                            ForEach(Array(zip(0..<alarmModel.alarms.count, alarmModel.alarms)), id: \.0) { index, alarm in
+                            // 시간 추가
+                            VStack(alignment: .leading, spacing: 0) {
                                 
-                                if index > 0 {
+                                ForEach(Array(zip(0..<alarmModel.alarms.count, alarmModel.alarms)), id: \.0) { index, alarm in
+                                    
+                                    if index > 0 {
+                                        Divider()
+                                    }
+
+                                    AlarmRow(alarm: $alarmModel.alarms[index], removeAction: {
+                                            alarmModel.removeAlarmTime(at: index)
+                                    })
+
+                                }
+                                
+                                if alarmModel.alarms.count > 0 {
                                     Divider()
                                 }
-
-                                AlarmRow(alarm: $alarmModel.alarms[index], removeAction: {
-                                        alarmModel.removeAlarmTime(at: index)
+                                
+                                Button(action: {
+                                    addAlarm()
+                                    print(alarmModel.alarms)
+                                }, label: {
+                                    HStack(spacing: 13){
+                                        Image(systemName: "plus.circle.fill")
+                                            .foregroundStyle(.thoNavy)
+                                        Text("시간 추가")
+                                        Spacer()
+                                    }
+                                    .font(.body)
                                 })
-
+                                .padding(16)
                             }
-                            
-                            if alarmModel.alarms.count > 0 {
-                                Divider()
-                            }
-                            
-                            Button(action: {
-                                addAlarm()
-                                print(alarmModel.alarms)
-                            }, label: {
-                                HStack(spacing: 13){
-                                    Image(systemName: "plus.circle.fill")
-                                        .foregroundStyle(.thoNavy)
-                                    Text("시간 추가")
-                                    Spacer()
-                                }
-                                .font(.body)
-                            })
-                            .padding(16)
+                            .frame(maxWidth: .infinity)
+                            .background(Color(uiColor: .secondarySystemBackground))
+                            .cornerRadius(10)
                         }
-                        .frame(maxWidth: .infinity)
-                        .background(Color(uiColor: .secondarySystemBackground))
-                        .cornerRadius(10)
                     }
                     .padding(.horizontal, 16)
                 }
