@@ -36,6 +36,7 @@ struct EditMedicineView: View {
                     .background(.thoNavy)
                     .cornerRadius(15)
                 })
+                .padding(.top, 20)
                 .padding(.bottom, 44)
                 .sheet(isPresented: $showingSheet, onDismiss: loadMedicines) {
                     AddMedicineView(isActiveNext: $isActiveNext)
@@ -115,6 +116,7 @@ struct EditMedicineView: View {
             .onAppear(perform: loadMedicines)
         }
         .navigationTitle("복용 약물 설정")
+        .navigationBarTitleDisplayMode(.inline)
     }
     
     private func loadMedicines() {
