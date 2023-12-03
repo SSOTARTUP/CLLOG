@@ -128,7 +128,14 @@ class DiaryMainViewModel: NSObject, RecordProtocol {
 
     @Published var medicines: [Medicine] = []
     
-    @Published var isPresentedBottomSheet = false
+    @Published var isPresentedBottomSheet = false {
+        didSet {
+            if isPresentedBottomSheet == false {
+             //   bottomButtonClicked()
+                print("faling")
+            }
+        }
+    }
 }
 
 extension DiaryMainViewModel {
@@ -172,6 +179,8 @@ extension DiaryMainViewModel {
         )
         
         DayRecordsManager.shared.updateDayRecord(dayRecord)
+        
+        isPresentedBottomSheet = false
     }
     
     func initialize() -> Status{
