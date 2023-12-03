@@ -48,10 +48,70 @@ class DummyManager {
     func insertHistory() {
         for i in 0..<10 {
             guard let date = Calendar.current.date(byAdding: .day, value: -i, to: Date()) else { break }
-            let hm = HistoryModel(id: UUID(), capacity: "C", name: "NAME\(i)", settingTime: date, timeTaken: Date(), unit: "정")
+            let hm = HistoryModel(id: UUID(), capacity: "30", name: "콘서타", settingTime: date, timeTaken: Date(), unit: "정")
             TakensManager.shared.updateHistory(date: date, historyModel: hm)
         }
 
+    }
+    
+    func showcaseDayRecord() {
+        insertHistory()
+        guard var date1 = Calendar.current.date(byAdding: .day, value: 0, to: Date()) else { return }
+        let dayRecord1 = DayRecord(
+            date: Calendar.current.startOfDay(for: date1),
+            conditionValues: [3.0,1.0,2.0,3.0],
+            moodValues: [1.0,1.0,2.0,3.0],
+            sleepingTime: 8,
+            popularEffect: [.constipated,.cough,.cough],
+            dangerEffect: [.auditoryHallucinations,.chestPain,.mania],
+            weight: 55.0,
+            acitivty: [], //운동 추가하기
+            amountOfSmoking: 3,
+            amountOfCaffein: 2,
+            isPeriod: false,
+            amountOfAlcohol: 3,
+            memo: ""
+        )
+
+        DayRecordsManager.shared.saveDayRecord(dayRecord1)
+        
+        guard var date2 = Calendar.current.date(byAdding: .day, value: -1, to: Date()) else { return }
+        let dayRecord2 = DayRecord(
+            date: Calendar.current.startOfDay(for: date2),
+            conditionValues: [3.0,1.0,2.0,3.0],
+            moodValues: [1.0,1.0,2.0,3.0],
+            sleepingTime: 8,
+            popularEffect: [.constipated,.cough,.cough],
+            dangerEffect: [.auditoryHallucinations,.chestPain,.mania],
+            weight: 55.0,
+            acitivty: [], //운동 추가하기
+            amountOfSmoking: 3,
+            amountOfCaffein: 2,
+            isPeriod: false,
+            amountOfAlcohol: 3,
+            memo: ""
+        )
+
+        DayRecordsManager.shared.saveDayRecord(dayRecord2)
+        
+        guard var date3 = Calendar.current.date(byAdding: .day, value: -2, to: Date()) else { return }
+        let dayRecord3 = DayRecord(
+            date: Calendar.current.startOfDay(for: date3),
+            conditionValues: [3.0,1.0,2.0,3.0],
+            moodValues: [1.0,1.0,2.0,3.0],
+            sleepingTime: 8,
+            popularEffect: [.constipated,.cough,.cough],
+            dangerEffect: [.auditoryHallucinations,.chestPain,.mania],
+            weight: 55.0,
+            acitivty: [], //운동 추가하기
+            amountOfSmoking: 3,
+            amountOfCaffein: 2,
+            isPeriod: false,
+            amountOfAlcohol: 3,
+            memo: ""
+        )
+
+        DayRecordsManager.shared.saveDayRecord(dayRecord3)
     }
     
     func insertDayRecords() {

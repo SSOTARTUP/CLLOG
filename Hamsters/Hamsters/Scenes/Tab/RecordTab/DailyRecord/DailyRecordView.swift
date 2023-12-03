@@ -19,7 +19,6 @@ struct DailyRecordView: View {
             VStack(spacing: 12){
                 DailyRecordProgressBar(pageNumber: viewModel.pageNumber, total: viewModel.dailyRecordPages.convertStringToPage.count)
 
-
                 switch viewModel.currentPage {
                 case .condition: // ADHD 컨디션 기록
                     ConditionView(dailyRecordViewModel: viewModel)

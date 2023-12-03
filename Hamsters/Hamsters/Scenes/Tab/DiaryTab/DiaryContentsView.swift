@@ -27,7 +27,6 @@ struct DiaryContentsView: View {
     var body: some View {
         if viewModel.status == .exist {
             ScrollView {
-
                 VStack(spacing: 16) {
                     // 컨디션 차트
                     VStack(alignment: .leading) {
@@ -596,10 +595,12 @@ struct DiaryContentsView: View {
                                             Text("")
                                         }
                                     } else {
-                                        Text("오늘은 마시지 않았어요!")
-                                            .font(.footnote)
-                                            .multilineTextAlignment(.center)
-                                            .foregroundStyle(.secondary)
+                                        HStack(alignment: .bottom) {
+                                            Text("-")
+                                                .font(.largeTitle)
+                                                .foregroundStyle(.purple)
+                                                .bold()
+                                        }
                                     }
                                 }
                             }
