@@ -56,7 +56,7 @@ class DummyManager {
     
     func showcaseDayRecord() {
         insertHistory()
-        guard var date1 = Calendar.current.date(byAdding: .day, value: 0, to: Date()) else { return }
+        guard var date1 = Calendar.current.date(byAdding: .day, value: -1, to: Date()) else { return }
         let dayRecord1 = DayRecord(
             date: Calendar.current.startOfDay(for: date1),
             conditionValues: [4.0,1.0,3.0,1.0],
@@ -66,7 +66,7 @@ class DummyManager {
             dangerEffect: [.auditoryHallucinations,.chestPain,.mania],
             weight: 55.0,
             acitivty: [], //운동 추가하기
-            amountOfSmoking: 3,
+            amountOfSmoking: 1,
             amountOfCaffein: 2,
             isPeriod: false,
             amountOfAlcohol: 3,
@@ -75,7 +75,7 @@ class DummyManager {
 
         DayRecordsManager.shared.saveDayRecord(dayRecord1)
         
-        guard var date2 = Calendar.current.date(byAdding: .day, value: -1, to: Date()) else { return }
+        guard var date2 = Calendar.current.date(byAdding: .day, value: -2, to: Date()) else { return }
         let dayRecord2 = DayRecord(
             date: Calendar.current.startOfDay(for: date2),
             conditionValues: [3.0,1.0,2.0,3.0],
@@ -85,7 +85,7 @@ class DummyManager {
             dangerEffect: [.auditoryHallucinations,.chestPain,.mania],
             weight: 54.0,
             acitivty: [], //운동 추가하기
-            amountOfSmoking: 3,
+            amountOfSmoking: 6,
             amountOfCaffein: 2,
             isPeriod: false,
             amountOfAlcohol: 3,
@@ -94,7 +94,7 @@ class DummyManager {
 
         DayRecordsManager.shared.saveDayRecord(dayRecord2)
         
-        guard var date3 = Calendar.current.date(byAdding: .day, value: -2, to: Date()) else { return }
+        guard var date3 = Calendar.current.date(byAdding: .day, value: -3, to: Date()) else { return }
         let dayRecord3 = DayRecord(
             date: Calendar.current.startOfDay(for: date3),
             conditionValues: [1.0,4.0,2.0,3.0],
@@ -104,7 +104,7 @@ class DummyManager {
             dangerEffect: [.auditoryHallucinations,.chestPain,.mania],
             weight: 56.0,
             acitivty: [], //운동 추가하기
-            amountOfSmoking: 3,
+            amountOfSmoking: 11,
             amountOfCaffein: 2,
             isPeriod: false,
             amountOfAlcohol: 3,
