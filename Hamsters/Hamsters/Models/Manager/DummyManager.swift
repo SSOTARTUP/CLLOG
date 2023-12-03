@@ -66,7 +66,7 @@ class DummyManager {
             dangerEffect: [.auditoryHallucinations,.chestPain,.mania],
             weight: 55.0,
             acitivty: [], //운동 추가하기
-            amountOfSmoking: 3,
+            amountOfSmoking: 1,
             amountOfCaffein: 2,
             isPeriod: false,
             amountOfAlcohol: 3,
@@ -85,7 +85,7 @@ class DummyManager {
             dangerEffect: [.auditoryHallucinations,.chestPain,.mania],
             weight: 54.0,
             acitivty: [], //운동 추가하기
-            amountOfSmoking: 3,
+            amountOfSmoking: 6,
             amountOfCaffein: 2,
             isPeriod: false,
             amountOfAlcohol: 3,
@@ -104,7 +104,7 @@ class DummyManager {
             dangerEffect: [.auditoryHallucinations,.chestPain,.mania],
             weight: 56.0,
             acitivty: [], //운동 추가하기
-            amountOfSmoking: 3,
+            amountOfSmoking: 11,
             amountOfCaffein: 2,
             isPeriod: false,
             amountOfAlcohol: 3,
