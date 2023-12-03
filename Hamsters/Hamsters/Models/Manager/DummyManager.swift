@@ -59,8 +59,8 @@ class DummyManager {
         guard var date1 = Calendar.current.date(byAdding: .day, value: 0, to: Date()) else { return }
         let dayRecord1 = DayRecord(
             date: Calendar.current.startOfDay(for: date1),
-            conditionValues: [3.0,1.0,2.0,3.0],
-            moodValues: [1.0,1.0,2.0,3.0],
+            conditionValues: [4.0,1.0,3.0,1.0],
+            moodValues: [1.0,2.0,3.0,4.0],
             sleepingTime: 8,
             popularEffect: [.constipated,.cough,.cough],
             dangerEffect: [.auditoryHallucinations,.chestPain,.mania],
@@ -83,7 +83,7 @@ class DummyManager {
             sleepingTime: 8,
             popularEffect: [.constipated,.cough,.cough],
             dangerEffect: [.auditoryHallucinations,.chestPain,.mania],
-            weight: 55.0,
+            weight: 54.0,
             acitivty: [], //운동 추가하기
             amountOfSmoking: 3,
             amountOfCaffein: 2,
@@ -97,12 +97,12 @@ class DummyManager {
         guard var date3 = Calendar.current.date(byAdding: .day, value: -2, to: Date()) else { return }
         let dayRecord3 = DayRecord(
             date: Calendar.current.startOfDay(for: date3),
-            conditionValues: [3.0,1.0,2.0,3.0],
-            moodValues: [1.0,1.0,2.0,3.0],
+            conditionValues: [1.0,4.0,2.0,3.0],
+            moodValues: [3.0,4.0,1.0,3.0],
             sleepingTime: 8,
             popularEffect: [.constipated,.cough,.cough],
             dangerEffect: [.auditoryHallucinations,.chestPain,.mania],
-            weight: 55.0,
+            weight: 56.0,
             acitivty: [], //운동 추가하기
             amountOfSmoking: 3,
             amountOfCaffein: 2,
