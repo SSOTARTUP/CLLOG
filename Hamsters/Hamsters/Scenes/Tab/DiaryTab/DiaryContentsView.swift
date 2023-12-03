@@ -529,10 +529,12 @@ struct DiaryContentsView: View {
                                         }
                                     }
                                 } else {
-                                    Text("오늘은 흡연하지 않았어요!")
-                                        .font(.footnote)
-                                        .multilineTextAlignment(.center)
-                                        .foregroundStyle(.secondary)
+                                    HStack(alignment: .bottom) {
+                                        Text("-")
+                                            .font(.largeTitle)
+                                            .foregroundStyle(.pink)
+                                            .bold()
+                                    }
                                 }
                             }
                             .frame(maxWidth: .infinity, alignment: .leading)
