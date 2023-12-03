@@ -16,7 +16,7 @@ class DummyManager {
         var newMedicine: Medicine
         newMedicine = Medicine(name: "콘서타 - 월화수",
                                    capacity: "30",
-                                   unit: "정",
+                                   unit: "mg",
                                    frequency: [.monday,.tuesday,.wednesday],
                                    alarms: [AlarmItem(date: Date(), isEnabled: true),AlarmItem(date: Date(), isEnabled: true)],
                                    freOption: .specificDay,
@@ -26,7 +26,7 @@ class DummyManager {
         
         newMedicine = Medicine(name: "콘서타- 매일",
                                    capacity: "30",
-                                   unit: "정",
+                                   unit: "mg",
                                frequency: [.monday,.tuesday,.wednesday,.thursday,.friday,.saturday,.sunday],
                                    alarms: [AlarmItem(date: Date(), isEnabled: true),AlarmItem(date: Date(), isEnabled: true)],
                                     freOption: .everyDay,
@@ -36,7 +36,7 @@ class DummyManager {
         
         newMedicine = Medicine(name: "콘서타 - 목",
                                    capacity: "30",
-                                   unit: "정",
+                                   unit: "mg",
                                frequency: [.thursday,.friday,.saturday,.sunday],
                                    alarms: [AlarmItem(date: Date(), isEnabled: true),AlarmItem(date: Date(), isEnabled: true)],
                                freOption: .specificDay,
@@ -48,7 +48,7 @@ class DummyManager {
     func insertHistory() {
         for i in 0..<10 {
             guard let date = Calendar.current.date(byAdding: .day, value: -i, to: Date()) else { break }
-            let hm = HistoryModel(id: UUID(), capacity: "30", name: "콘서타", settingTime: date, timeTaken: Date(), unit: "정")
+            let hm = HistoryModel(id: UUID(), capacity: "30", name: "콘서타", settingTime: date, timeTaken: Date(), unit: "mg")
             TakensManager.shared.updateHistory(date: date, historyModel: hm)
         }
 
