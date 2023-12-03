@@ -55,35 +55,41 @@ struct EditMedicineView: View {
                 .padding(.horizontal, 24)
                 .padding(.bottom, 5)
                 
-                VStack (alignment: .leading, spacing: 0){
+                VStack (alignment: .leading, spacing: 0) {
                     // medicineViewModel에서 medicines 배열을 순회하며 각 Medicine 객체에 대한 행을 생성
                     List {
-                        ForEach(medicines.indices, id: \.self) { index in
-                            let medicine = medicines[index]
-                            
-                            // 각각의 Medicine 객체를 사용하여 MedicineRow 뷰를 생성
-                            MedicineRow(medicine: medicine)
-                                .frame(maxWidth: .infinity)
-                                .listRowInsets(EdgeInsets()) // 이를 통해 여백이 제거되고 텍스트가 행의 전체 너비를 차지합니다.
-                                .swipeActions(allowsFullSwipe: false) {
-                                    Button {
-                                        indexSetToDelete = IndexSet(arrayLiteral: index)
-                                        showingAlert = true
-                                    } label: {
-                                        Label("삭제", systemImage: "trash.fill")
+                        Section(header: Spacer(minLength: 0)){
+                            ForEach(medicines.indices, id: \.self) { index in
+                                let medicine = medicines[index]
+                                
+                                // 각각의 Medicine 객체를 사용하여 MedicineRow 뷰를 생성
+                                MedicineRow(medicine: medicine)
+                                    .frame(maxWidth: .infinity)
+                                    .listRowInsets(EdgeInsets()) // 이를 통해 여백이 제거되고 텍스트가 행의 전체 너비를 차지합니다.
+                                    .swipeActions(allowsFullSwipe: false) {
+                                        Button {
+                                            indexSetToDelete = IndexSet(arrayLiteral: index)
+                                            showingAlert = true
+                                        } label: {
+                                            Label("삭제", systemImage: "trash.fill")
+                                        }
+                                        .tint(.red)
+                                        
+                                        Button {
+                                            editingMedicine = medicine
+                                            showingEditSheet.toggle()
+                                        } label: {
+                                            Label("편집", systemImage: "square.and.pencil")
+                                        }
+                                        .tint(.yellow)
                                     }
-                                    .tint(.red)
-                                    
-                                    Button {
-                                        editingMedicine = medicine
-                                        showingEditSheet.toggle()
-                                    } label: {
-                                        Label("편집", systemImage: "square.and.pencil")
-                                    }
-                                    .tint(.yellow)
-                                }
+                            }
+                            .listRowBackground(Color(uiColor: .secondarySystemBackground))
                         }
+                        .listRowInsets(EdgeInsets(top: 5, leading: 20, bottom: 0, trailing: 20))
                     }
+                    .scrollContentBackground(.hidden)
+                    .environment(\.defaultMinListHeaderHeight, 1)
                     .sheet(isPresented: $showingEditSheet, onDismiss: { loadMedicines() }) {
                         if let editingMedicine = editingMedicine {
                             AddMedicineView(isActiveNext: $isActiveNext, editingMedicine: editingMedicine)
@@ -103,15 +109,10 @@ struct EditMedicineView: View {
                             }
                         }
                     }
-                    .cornerRadius(10)
-                    .listStyle(.plain)
                     
+                    Spacer()
                 }
-                .cornerRadius(15)
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .padding(.bottom, 44)
-                .padding(.horizontal, 24)
-                
+                .padding(.bottom, 28)
             }
             .onAppear(perform: loadMedicines)
         }
