@@ -81,7 +81,7 @@ struct EditMedicineView: View {
                                         } label: {
                                             Label("편집", systemImage: "square.and.pencil")
                                         }
-                                        .tint(.yellow)
+                                        .tint(.orange)
                                     }
                             }
                             .listRowBackground(Color(uiColor: .secondarySystemBackground))
