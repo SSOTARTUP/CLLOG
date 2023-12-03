@@ -21,6 +21,24 @@ enum DailyRecordPage: Int {
     case drink
     case memo
     case complete
+    
+    var title: String {
+        switch self {
+        case .condition: "오늘의 컨디션"
+        case .mood: "오늘의 기분"
+        case .sleeping: "수면량"
+        case .sideEffect: "오늘의 부작용"
+        case .weightCheck: "체중"
+        case .menstruation: "월경 여부"
+        case .encourage: "격려"
+        case .activity: "오늘의 운동량"
+        case .smoking: "오늘의 흡연량"
+        case .caffein: "오늘의 카페인"
+        case .drink: "오늘의 음주량"
+        case .memo: "메모"
+        case .complete: "완료"
+        }
+    }
 }
 
 typealias DailyRecordPages = [DailyRecordPage]

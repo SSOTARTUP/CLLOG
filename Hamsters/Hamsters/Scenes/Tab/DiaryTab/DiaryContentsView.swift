@@ -11,7 +11,7 @@ import WrappingHStack
 
 struct DiaryContentsView: View {
     
-    @StateObject var viewModel = DiaryMainViewModel()
+    @ObservedObject var viewModel: DiaryMainViewModel
     @State var isPresentedBottomSheet: Bool = false
     @AppStorage(UserDefaultsKey.sex.rawValue) var savedSex: String = "male"
     @AppStorage(UserDefaultsKey.PageControl.period.rawValue) private var isOnPeriod: Bool = true
@@ -69,6 +69,10 @@ struct DiaryContentsView: View {
                     .padding(16)
                     .background(Color.white)
                     .cornerRadius(15)
+                    .onTapGesture {
+                        viewModel.isPresentedBottomSheet = true
+                        viewModel.currentPage = .condition
+                    }
                     
                     // 기분 프로그래스
                     VStack(alignment: .leading, spacing: 0) {
@@ -104,6 +108,10 @@ struct DiaryContentsView: View {
                     .padding(16)
                     .background(Color.white)
                     .cornerRadius(15)
+                    .onTapGesture {
+                        viewModel.isPresentedBottomSheet = true
+                        viewModel.currentPage = .mood
+                    }
                     
                     // 복용 약물
                     VStack(alignment: .leading, spacing: 0) {
@@ -145,7 +153,10 @@ struct DiaryContentsView: View {
                     .padding(16)
                     .background(Color.white)
                     .cornerRadius(15)
-                    
+                    .onTapGesture {
+//                        viewModel.isPresentedBottomSheet = true
+//                        viewModel.currentPage = .me
+                    }
                     // 오늘의 흔한 부작용
                     VStack(alignment: .leading, spacing: 0) {
                         Text("오늘의 흔한 부작용")
@@ -170,6 +181,10 @@ struct DiaryContentsView: View {
                     .padding(16)
                     .background(Color.white)
                     .cornerRadius(15)
+                    .onTapGesture {
+                        viewModel.isPresentedBottomSheet = true
+                        viewModel.currentPage = .sideEffect
+                    }
                     
                     // 오늘의 위험 부작용
                     VStack(alignment: .leading, spacing: 0) {
@@ -195,6 +210,10 @@ struct DiaryContentsView: View {
                     .padding(16)
                     .background(Color.white)
                     .cornerRadius(15)
+                    .onTapGesture {
+                        viewModel.isPresentedBottomSheet = true
+                        viewModel.currentPage = .sideEffect
+                    }
                     
                     // 수면시간, 체중
                     VStack(alignment: .leading, spacing: 0) {
@@ -228,6 +247,10 @@ struct DiaryContentsView: View {
                             .padding(16)
                             .background(Color.white)
                             .cornerRadius(15)
+                            .onTapGesture {
+                                viewModel.isPresentedBottomSheet = true
+                                viewModel.currentPage = .sleeping
+                            }
                             
                             // 오늘의 체중
                             VStack(alignment: .leading, spacing: 0) {
@@ -249,6 +272,11 @@ struct DiaryContentsView: View {
                             .padding(16)
                             .background(Color.white)
                             .cornerRadius(15)
+                            .onTapGesture {
+                                viewModel.isPresentedBottomSheet = true
+                                viewModel.currentPage = .weightCheck
+                            }
+                            
                         }
                     }
 
@@ -352,7 +380,10 @@ struct DiaryContentsView: View {
                     .padding(16)
                     .background(Color.white)
                     .cornerRadius(15)
-                    
+                    .onTapGesture {
+                        viewModel.isPresentedBottomSheet = true
+                        viewModel.currentPage = .activity
+                    }
                     // 선택 옵션들
                     LazyVGrid(columns: columns, spacing: 15) {
                         // 월경 여부
@@ -372,6 +403,11 @@ struct DiaryContentsView: View {
                                 .padding(16)
                                 .background(Color.white)
                                 .cornerRadius(15)
+                                .onTapGesture {
+                                    viewModel.isPresentedBottomSheet = true
+                                    viewModel.currentPage = .menstruation
+                                }
+                                
                             } else {
                                 VStack(alignment: .leading, spacing: 0) {
                                     Text("월경 여부")
@@ -387,6 +423,10 @@ struct DiaryContentsView: View {
                                 .padding(16)
                                 .background(Color.white)
                                 .cornerRadius(15)
+                                .onTapGesture {
+                                    viewModel.isPresentedBottomSheet = true
+                                    viewModel.currentPage = .menstruation
+                                }
                             }
                         } else {
                             VStack(alignment: .leading, spacing: 0) {
@@ -403,6 +443,10 @@ struct DiaryContentsView: View {
                             .padding(16)
                             .background(Color.white)
                             .cornerRadius(15)
+                            .onTapGesture {
+                                viewModel.isPresentedBottomSheet = true
+                                viewModel.currentPage = .menstruation
+                            }
                         }
                         
                         // 카페인
@@ -425,6 +469,10 @@ struct DiaryContentsView: View {
                             .padding(16)
                             .background(Color.white)
                             .cornerRadius(15)
+                            .onTapGesture {
+                                viewModel.isPresentedBottomSheet = true
+                                viewModel.currentPage = .caffein
+                            }
                         } else {
                             VStack(alignment: .leading, spacing: 0) {
                                 Text("오늘의 카페인")
@@ -442,6 +490,10 @@ struct DiaryContentsView: View {
                             .padding(16)
                             .background(Color.white)
                             .cornerRadius(15)
+                            .onTapGesture {
+                                viewModel.isPresentedBottomSheet = true
+                                viewModel.currentPage = .caffein
+                            }
                         }
                         
                         // 흡연량
@@ -488,7 +540,10 @@ struct DiaryContentsView: View {
                             .padding(16)
                             .background(Color.white)
                             .cornerRadius(15)
-                
+                            .onTapGesture {
+                                viewModel.isPresentedBottomSheet = true
+                                viewModel.currentPage = .smoking
+                            }
                         } else {
                             VStack(alignment: .leading, spacing: 0) {
                                 Text("오늘의 흡연량")
@@ -506,6 +561,10 @@ struct DiaryContentsView: View {
                             .padding(16)
                             .background(Color.white)
                             .cornerRadius(15)
+                            .onTapGesture {
+                                viewModel.isPresentedBottomSheet = true
+                                viewModel.currentPage = .smoking
+                            }
                         }
                         
                         // 음주량
@@ -548,6 +607,10 @@ struct DiaryContentsView: View {
                             .padding(16)
                             .background(Color.white)
                             .cornerRadius(15)
+                            .onTapGesture {
+                                viewModel.isPresentedBottomSheet = true
+                                viewModel.currentPage = .drink
+                            }
                         } else {
                             VStack(alignment: .leading, spacing: 0) {
                                 Text("오늘의 음주량")
@@ -565,6 +628,10 @@ struct DiaryContentsView: View {
                             .padding(16)
                             .background(Color.white)
                             .cornerRadius(15)
+                            .onTapGesture {
+                                viewModel.isPresentedBottomSheet = true
+                                viewModel.currentPage = .drink
+                            }
                         }
                     }
                     
@@ -586,6 +653,10 @@ struct DiaryContentsView: View {
                     .padding(16)
                     .background(Color.white)
                     .cornerRadius(15)
+                    .onTapGesture {
+                        viewModel.isPresentedBottomSheet = true
+                        viewModel.currentPage = .memo
+                    }
                     
                     Text("각 항목을 터치하면 수정할 수 있습니다.")
                         .font(.footnote)
@@ -657,5 +728,5 @@ extension DiaryContentsView {
     }
 }
 #Preview {
-    DiaryContentsView()
+    DiaryContentsView(viewModel: DiaryMainViewModel())
 }

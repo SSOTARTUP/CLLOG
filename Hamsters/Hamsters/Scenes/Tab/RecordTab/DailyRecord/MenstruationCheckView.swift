@@ -50,7 +50,7 @@ struct MenstruationCheckView<T: RecordProtocol>: View {
             
             Spacer()
             
-            NextButton(title: "다음", isActive: .constant(true)) {
+            NextButton(title: ((viewModel as? DailyRecordViewModel) != nil) ? "다음" : "확인", isActive: .constant(true)) {
                 viewModel.bottomButtonClicked()
             }
             .padding(.bottom, 40)
