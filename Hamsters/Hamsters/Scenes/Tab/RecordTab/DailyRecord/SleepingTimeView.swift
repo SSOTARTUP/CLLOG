@@ -93,7 +93,7 @@ struct SleepingTimeView<T: RecordProtocol>: View {
                     viewModel.bottomButtonClicked()
                     
                 } label: {
-                    Text("다음")
+                    Text(((viewModel as? DailyRecordViewModel) != nil) ? "다음" : "확인")
                         .font(.headline)
                         .fontWeight(.semibold)
                         .foregroundStyle(.white)

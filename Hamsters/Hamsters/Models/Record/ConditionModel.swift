@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ConditionModel: Identifiable ,Equatable{
+struct ConditionModel: Identifiable, Equatable{
     var id = UUID()
     let sender: Sender
     var text: String?

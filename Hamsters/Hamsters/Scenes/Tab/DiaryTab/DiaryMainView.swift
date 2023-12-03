@@ -12,10 +12,6 @@ struct DiaryMainView: View {
     @State private var calendarHeight: CGFloat = 300.0
     @State private var showMonthly = false
     
-//    init() {
-//        setNavigationBar()
-//    }
-    
     var body: some View {
         NavigationStack {
             VStack {
@@ -26,7 +22,7 @@ struct DiaryMainView: View {
                     )
                     .frame(height: calendarHeight)
 
-                DiaryContentsView()
+                DiaryContentsView(viewModel: viewModel)
             }
             .navigationTitle(viewModel.selectedDate.simple)
             .navigationBarTitleDisplayMode(.inline)
@@ -50,6 +46,9 @@ struct DiaryMainView: View {
                         viewModel.openMonthly()
                     }
             }
+        }
+        .sheet(isPresented: $viewModel.isPresentedBottomSheet) {
+            DiaryUpdateView(viewModel: viewModel)
         }
     }
 }

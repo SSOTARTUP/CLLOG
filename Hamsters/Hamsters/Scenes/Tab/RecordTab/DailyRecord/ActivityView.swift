@@ -7,13 +7,13 @@
 
 import SwiftUI
 
-struct ActivityView: View {
+struct ActivityView<T: RecordProtocol>: View {
     
     @State var showingSheet = false
     @State var isActive = true
 //    @State var list: Activities = []
     @State var index: Int = -1
-    @ObservedObject var viewModel: DailyRecordViewModel
+    @ObservedObject var viewModel: T
 
     var body: some View {
         VStack(spacing: 0) {

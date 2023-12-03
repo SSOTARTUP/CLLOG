@@ -13,7 +13,8 @@ struct ActivityModalView: View {
     @State private var time: Int = 0
     @Binding var list: Activities
     @Environment(\.dismiss) private var dismiss
-    
+    @FocusState private var isTextFieldFocused: Bool
+
     var index: Int
     
     var body: some View {
@@ -35,7 +36,10 @@ struct ActivityModalView: View {
                                 
                                 dismiss()
                             } label: {
+                        
                                 Text("완료")
+                                    .foregroundStyle((input.count > 0 && input.count <= 15 && time > 0) ? .thoNavy : .thoDisabled)
+                
                             }
                         }
                     }
@@ -63,7 +67,8 @@ struct ActivityModalView: View {
                         .onChange(of: input) { _ in
                             input = input.trim()
                         }
-                    
+                        .focused($isTextFieldFocused)
+
                     Text("최대 15자까지 입력 가능합니다.")
                         .font(.footnote)
                         .foregroundStyle(input.count > 15 ? .red : .secondary)
@@ -144,12 +149,14 @@ struct ActivityModalView: View {
                 .padding(.top, 28)
                 .padding(.horizontal, 16)
                 
-                Image("ActivityModalHam")
-                    .resizable()
-                    .scaledToFit()
-                    .padding(.horizontal, 72)
-                    .padding(.top, 58)
-                
+                if !isTextFieldFocused {
+                    Image("ActivityModalHam")
+                        .resizable()
+                        .scaledToFit()
+                        .padding(.top, 58)
+                        .padding(.horizontal, 72)
+                }
+
                 Spacer()
                     
             }

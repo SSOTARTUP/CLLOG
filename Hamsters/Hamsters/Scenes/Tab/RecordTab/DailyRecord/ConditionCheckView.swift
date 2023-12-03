@@ -34,6 +34,7 @@ struct ConditionCheckView: View {
                     .padding(.top, 24)
                     .padding(.bottom, 40)
                 }
+                .padding(.horizontal, 16)
             }
             .scrollIndicators(.never)
             

@@ -128,6 +128,9 @@ class DiaryMainViewModel: NSObject, RecordProtocol {
 
     @Published var medicines: [Medicine] = []
     
+    @Published var isPresentedBottomSheet = false
+    
+    var initiaRecord: DayRecord?
 }
 
 extension DiaryMainViewModel {
@@ -154,9 +157,10 @@ extension DiaryMainViewModel {
     }
     
     func bottomButtonClicked() {
-        let dayRecord = DayRecord(
+        
+        initiaRecord = DayRecord(
             date: Calendar.current.startOfDay(for: selectedDate), // 저장 시 현재 날짜 사용
-            conditionValues: answer.map{ $0 }.sorted{ $0.key.rawValue < $1.key.rawValue }.map{ Double($0.value.rawValue) },
+            conditionValues: userValues,
             moodValues: moodValues,
             sleepingTime: sleepingTime,
             popularEffect: popularEffect,
@@ -170,8 +174,11 @@ extension DiaryMainViewModel {
             memo: memo
         )
         
-        DayRecordsManager.shared.updateDayRecord(dayRecord)
+        DayRecordsManager.shared.updateDayRecord(initiaRecord!)
+        
+        isPresentedBottomSheet = false
     }
+    
     
     func initialize() -> Status{
         print("DiaryMainViewModel 델리게이트 update")
@@ -179,6 +186,7 @@ extension DiaryMainViewModel {
             // 해당 날짜에 데일리 레코드가 없음.
             return .none
         }
+        
         userValues = record.conditionValues
         moodValues = record.moodValues
         
@@ -214,6 +222,9 @@ extension DiaryMainViewModel {
         }
         
         medicines = historyDic.map { $0.value }
+        
+        initiaRecord = record
+        
         return .exist
     }
     
