@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "MyStatus1_d.png",
+      "filename" : "My Status=1, Selected=False.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "My Status=1, Selected=False@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "My Status=1, Selected=False@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

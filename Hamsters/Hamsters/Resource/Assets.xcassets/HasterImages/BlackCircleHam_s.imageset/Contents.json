@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "BlackCircleHam_s.png",
+      "filename" : "character=3, Select_=Selected.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
@@ -11,6 +11,7 @@
       "scale" : "2x"
     },
     {
+      "filename" : "character=3, Select_=Selected@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
