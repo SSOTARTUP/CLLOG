@@ -59,6 +59,7 @@ class DiaryMainViewModel: NSObject, RecordProtocol {
     @Published var selectedDate: Date = Date(){
         didSet{
             status = initialize()
+            print("STATUS",status)
         }
     }
     
@@ -181,12 +182,11 @@ extension DiaryMainViewModel {
     
     
     func initialize() -> Status{
-        print("DiaryMainViewModel 델리게이트 update")
+        print("DiaryMainViewModel 델리게이트 update",selectedDate)
         guard let record = DayRecordsManager.shared.fetchDayRecord(for: selectedDate) else {
             // 해당 날짜에 데일리 레코드가 없음.
             return .none
         }
-        
         userValues = record.conditionValues
         moodValues = record.moodValues
         
