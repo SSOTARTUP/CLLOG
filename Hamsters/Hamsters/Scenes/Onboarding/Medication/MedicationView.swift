@@ -39,7 +39,7 @@ struct MedicationView: View {
                     .background(.thoNavy)
                     .cornerRadius(15)
                 })
-                .padding(.bottom, 44)
+                .padding(.bottom, 28)
                 .sheet(isPresented: $showingSheet) {
                     AddMedicineView(isActiveNext: $isActiveNext)
                 }
@@ -74,7 +74,9 @@ struct MedicationView: View {
                                     .tint(.yellow)
                                 }
                         }
+                        .listRowBackground(Color(uiColor: .secondarySystemBackground))
                     }
+                    .scrollContentBackground(.hidden)
                     .sheet(isPresented: $showingEditSheet) {
                         if let editingMedicine = editingMedicine {
                             AddMedicineView(isActiveNext: $isActiveNext, editingMedicine: editingMedicine)
@@ -91,14 +93,9 @@ struct MedicationView: View {
                             }
                         }
                     }
-                    .cornerRadius(10)
-                    .listStyle(.plain)
                 }
-                .cornerRadius(15)
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .padding(.bottom, 44)
-                .padding(.horizontal, 24)
-                
+                .frame(maxHeight: .infinity)
+                .padding(.bottom, 28)
             }
             
             Spacer()

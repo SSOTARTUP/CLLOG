@@ -28,7 +28,7 @@ struct MedicineRow: View {
         }
         .padding(.vertical, 4)
         .padding(.horizontal, 16)
-        .background(Color(uiColor: .secondarySystemBackground))
+//        .background(Color(uiColor: .secondarySystemBackground))
     }
 }
 
