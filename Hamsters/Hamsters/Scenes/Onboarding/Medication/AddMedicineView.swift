@@ -13,6 +13,8 @@ struct AddMedicineView: View {
     //    @StateObject private var medicineViewModel = MedicineViewModel()
     @EnvironmentObject var medicineViewModel: MedicineViewModel
     @StateObject private var alarmModel = AlarmViewModel()
+    @State private var isSaveButtonEnabled: Bool = false
+    
     
     @Binding var isActiveNext: Bool
     var editingMedicine: Medicine?
@@ -27,7 +29,7 @@ struct AddMedicineView: View {
     @State private var selectedDays: [Day] = []
     @State private var selectedOption: Option = .everyDay
     @State private var alarms: [AlarmItem] = []
-
+    
     
     let mediCapacity = ["정", "mg", "mcg", "mL", "g", "%"]
     let mediColumn = Array(repeating: GridItem(.flexible(), spacing: 6), count: 3)
@@ -88,7 +90,7 @@ struct AddMedicineView: View {
             _alarmModel = StateObject(wrappedValue: AlarmViewModel())
         }
     }
-
+    
     
     var body: some View {
         
@@ -227,11 +229,11 @@ struct AddMedicineView: View {
                                     if index > 0 {
                                         Divider()
                                     }
-
+                                    
                                     AlarmRow(alarm: $alarmModel.alarms[index], removeAction: {
-                                            alarmModel.removeAlarmTime(at: index)
+                                        alarmModel.removeAlarmTime(at: index)
                                     })
-
+                                    
                                 }
                                 
                                 if alarmModel.alarms.count > 0 {
@@ -309,8 +311,19 @@ struct AddMedicineView: View {
                     }, label: {
                         Text("저장")
                     })
+                    .disabled(!isSaveButtonEnabled)
+                    .foregroundStyle(isSaveButtonEnabled ? .blue : .gray)
                 }
             }
+        }
+        .onAppear {
+            isSaveButtonEnabled = !medicineName.isEmpty && !capacity.isEmpty
+        }
+        .onChange(of: medicineName) { _ in
+            isSaveButtonEnabled = !medicineName.isEmpty && !capacity.isEmpty
+        }
+        .onChange(of: capacity) { _ in
+            isSaveButtonEnabled = !medicineName.isEmpty && !capacity.isEmpty
         }
     }
     // MARK: - function
@@ -337,6 +350,6 @@ struct AddMedicineView: View {
 }
 
 #Preview {
-//    AddMedicineView(isActiveNext: .constant(true))
+    //    AddMedicineView(isActiveNext: .constant(true))
     AddMedicineView(isActiveNext: .constant(true), editingMedicine: Medicine.sampleData.first)
 }
